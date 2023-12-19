@@ -9,3 +9,4 @@
 
 terragrunt/common_variables.tf
 terragrunt/backend.tf
+terragrunt/provider.tf
