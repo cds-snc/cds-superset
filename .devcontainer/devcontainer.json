@@ -31,7 +31,8 @@
 			"extensions": [
 				"hashicorp.terraform",
 				"github.copilot",
-				"github.vscode-github-actions"
+				"github.vscode-github-actions",
+				"hashicorp.hcl"
 			]
 		}
 	},

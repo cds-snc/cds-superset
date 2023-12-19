@@ -14,6 +14,7 @@ variable "common_tags" {
 variable "vpc_id" {}
 
 variable "allowed_security_groups" {
+  default = {}
   type = map(string)
 }
 
@@ -24,7 +25,7 @@ variable "private_subnet_ids" {
 # Engine
 # -------
 variable "node_type" {
-  type = map(string)
+  type = string
 }
 
 variable "engine" {
@@ -34,7 +35,7 @@ variable "engine" {
 }
 
 variable "engine_version" {
-  type = map(string)
+  type = string
 }
 
 variable "port" {
@@ -42,7 +43,7 @@ variable "port" {
 }
 
 variable "parameter_group_name" {
-  type = map(string)
+  type = string
 }
 
 variable "allowed_cidr_blocks" {
