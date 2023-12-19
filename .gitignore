@@ -6,3 +6,6 @@
 
 # Terragrunt
 .terragrunt-cache/
+
+terragrunt/common_variables.tf
+terragrunt/backend.tf
