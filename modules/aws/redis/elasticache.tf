@@ -1,10 +1,10 @@
 resource "aws_elasticache_cluster" "default" {
   cluster_id           = join("-", [local.prefix, "redis"])
   engine               = var.engine
-  node_type            = lookup(var.node_type, var.common_tags["env"])
+  node_type            = var.node_type
   num_cache_nodes      = 1
-  parameter_group_name = lookup(var.parameter_group_name, var.common_tags["env"])
-  engine_version       = lookup(var.engine_version, var.common_tags["env"])
+  parameter_group_name = var.parameter_group_name
+  engine_version       = var.engine_version
   port                 = var.port
   security_group_ids = [
     aws_security_group.default.id,

@@ -33,7 +33,7 @@ variable "ecs_service_security_group_ingress_rules" {
 
 # ECS
 variable "ecs_cluster" {
-  type = map(string)
+  type = string
 }
 
 variable "platform_version" {

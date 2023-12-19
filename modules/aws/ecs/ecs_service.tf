@@ -1,6 +1,6 @@
 resource "aws_ecs_service" "default" {
   name                   = local.prefix
-  cluster                = var.ecs_cluster["name"]
+  cluster                = var.ecs_cluster
   task_definition        = aws_ecs_task_definition.default.arn
   desired_count          = var.desired_count
   launch_type            = "FARGATE"
