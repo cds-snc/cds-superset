@@ -114,16 +114,6 @@ resource "aws_security_group_rule" "allow_all" {
   security_group_id = aws_security_group.superset_ecs.id
 }
 
-import {
-  to = aws_security_group_rule.allow_all
-  id = "sg-038e16631d49d3f69_egress_all_0_0_0.0.0.0/0"
-}
-
-import {
-  to = aws_security_group.superset_ecs
-  id = "sg-038e16631d49d3f69"
-}
-
 resource "aws_ecs_service" "superset_image" {
   name = "superset"
 
@@ -152,9 +142,4 @@ resource "aws_ecs_service" "superset_image" {
     assign_public_ip = false
 
   }
-}
-
-import {
-  to = aws_ecs_service.superset_image
-  id = "superset/superset"
 }
