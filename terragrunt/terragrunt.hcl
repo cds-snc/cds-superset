@@ -1,6 +1,6 @@
 locals {
-  account_id       = "009883649233"
-  env              = "scratch"
+  account_id       = "066023111852"
+  env              = "prod"
   product_name     = "cds-superset"
   cost_center_code = "${local.product_name}-${local.env}"
 }

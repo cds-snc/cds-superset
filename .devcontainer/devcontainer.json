@@ -32,7 +32,9 @@
 				"hashicorp.terraform",
 				"github.copilot",
 				"github.vscode-github-actions",
-				"hashicorp.hcl"
+				"hashicorp.hcl",
+				"redhat.vscode-yaml",
+				"timonwong.shellcheck"
 			]
 		}
 	},
