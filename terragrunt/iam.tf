@@ -53,10 +53,10 @@ data "aws_iam_policy_document" "superset_task_execution_role" {
   statement {
     effect = "Allow"
 
-  actions = [
-    "ecr:GetDownloadUrlForlayer",
-    "ecr:BatchGetImage"
-  ]
+    actions = [
+      "ecr:GetDownloadUrlForlayer",
+      "ecr:BatchGetImage"
+    ]
 
     resources = [aws_ecr_repository.superset.arn]
   }
