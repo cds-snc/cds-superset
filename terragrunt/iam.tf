@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "superset_task_execution_role" {
     ]
 
     resources = [
-      "${aws_cloudwatch_log_group.superset-image.arn}:*"
+      "${aws_cloudwatch_log_group.superset.arn}:*"
     ]
   }
 
