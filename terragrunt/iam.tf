@@ -58,7 +58,7 @@ data "aws_iam_policy_document" "superset_task_execution_role" {
       "ecr:BatchGetImage"
     ]
 
-    resources = [aws_ecr_repository.superset.arn]
+    resources = [aws_ecr_repository.superset-image.arn]
   }
 }
 
