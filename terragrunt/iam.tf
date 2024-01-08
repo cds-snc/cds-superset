@@ -49,6 +49,17 @@ data "aws_iam_policy_document" "superset_task_execution_role" {
       "${aws_cloudwatch_log_group.superset.arn}:*"
     ]
   }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ecr:GetDownloadUrlForlayer",
+      "ecr:BatchGetImage"
+    ]
+
+    resources = [aws_ecr_repository.superset-image.arn]
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy" {
