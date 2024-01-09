@@ -1,5 +1,5 @@
 
-name: Container plan
+name: Container build and Push
 on:
   push:
     branches:
