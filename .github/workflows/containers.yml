@@ -34,14 +34,19 @@ jobs:
           sarif_file: hadolint-results.sarif
           wait-for-processing: true
 
+      - name: format json
+        run: |
+          fmt=$( jq . <<< ${ process.env.HADOLINT_RESULTS} )
+          echo "HADOLINT_RESULTS_FMT=$fmt" >> "$GITHUB_ENV"
+
       - name: Update Pull Request
         uses: actions/github-script@v6
         with:
           script: |
             const output = `
             #### Hadolint: \`${{ steps.hadolint.outcome }}\`
-            \`\`\`
-            ${process.env.HADOLINT_RESULTS}
+            \`\`\`json
+            ${process.env.HADOLINT_RESULTS_fmt}
             \`\`\`
             `;
 
