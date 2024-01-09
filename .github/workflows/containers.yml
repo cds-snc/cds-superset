@@ -35,8 +35,7 @@ jobs:
           wait-for-processing: true
 
       - name: format json
-        run: |
-          echo "HADOLINT_RESULTS_FMT=$(jq . <<< $HADOLINT_RESULTS)" >> $GITHUB_ENV
+        run: echo "HADOLINT_RESULTS_FMT=$(jq . <<< "$HADOLINT_RESULTS")" >> $GITHUB_ENV
 
       - name: Update Pull Request
         uses: actions/github-script@v6
