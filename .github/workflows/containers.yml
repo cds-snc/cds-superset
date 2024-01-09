@@ -36,8 +36,7 @@ jobs:
 
       - name: format json
         run: |
-          FMT=$( jq . <<< ${processs.env.HADOLINT_RESULTS} )
-          echo "HADOLINT_RESULTS_FMT=$FMT" >> "$GITHUB_ENV"
+          jq . <<< $HADOLINT_RESULTS
 
       - name: Update Pull Request
         uses: actions/github-script@v6
