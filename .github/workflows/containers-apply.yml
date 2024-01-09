@@ -1,7 +1,6 @@
 
 name: Container plan
 on:
-  workflow-dispatch:
   push:
     branches:
       - main
@@ -32,8 +31,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v3
-
-    - name: Build Container
 
     # TODO: Replace with a locked down IAM roel
     - name: configure aws credentials using OIDC
