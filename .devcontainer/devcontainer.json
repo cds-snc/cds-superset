@@ -34,7 +34,8 @@
 				"github.vscode-github-actions",
 				"hashicorp.hcl",
 				"redhat.vscode-yaml",
-				"timonwong.shellcheck"
+				"timonwong.shellcheck",
+				"ms-python.python"
 			]
 		}
 	},
