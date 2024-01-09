@@ -1,0 +1,21 @@
+
+name: Container plan
+on:
+  pull_request:
+    paths:
+      - "containers/**"
+      - ".github/workflows/containers.yml"
+
+jobs:
+  containers-plan:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: ./containers/Dockerfile
+          
