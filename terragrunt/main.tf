@@ -83,7 +83,7 @@ data "template_file" "superset-image" {
     AWS_LOGS_GROUP         = aws_cloudwatch_log_group.superset.name
     AWS_LOGS_REGION        = var.region
     AWS_LOGS_STREAM_PREFIX = "task"
-    SUPERSET_IMAGE         = "apache/superset:latest"
+    SUPERSET_IMAGE         = "${aws_ecr_repository.superset-image.repository_url}:latest"
     SUPERSET_SECRET_KEY    = "foo" # TODO: generate it and store it as a secret
   }
 }
