@@ -1,5 +1,6 @@
 locals {
   account_id       = "066023111852"
+  domain           = "superset.cdssandbox.xyz"
   env              = "prod"
   product_name     = "cds-superset"
   cost_center_code = "${local.product_name}-${local.env}"
@@ -9,6 +10,7 @@ locals {
 
 inputs = {
   account_id   = local.account_id
+  domain       = local.domain
   env          = local.env
   product_name = local.product_name
   region       = "ca-central-1"

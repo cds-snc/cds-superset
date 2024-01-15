@@ -17,17 +17,20 @@ module "superset_ecs" {
   desired_count = 1
 
   # Task definition
-  container_image     = "${aws_ecr_repository.superset-image.repository_url}:latest"
-  container_host_port = 8088
-  container_port      = 8088
-  container_secrets   = local.container_secrets
+  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
+  container_host_port                 = 8088
+  container_port                      = 8088
+  container_secrets                   = local.container_secrets
+  container_read_only_root_filesystem = false
 
   task_exec_role_policy_documents = [
     data.aws_iam_policy_document.ssm_parameters.json
   ]
 
-  subnet_ids         = module.vpc.private_subnet_ids
-  security_group_ids = [aws_security_group.superset_ecs.id]
+  # Networking
+  lb_target_group_arn = aws_lb_target_group.superset.arn
+  subnet_ids          = module.vpc.private_subnet_ids
+  security_group_ids  = [aws_security_group.superset_ecs.id]
 
   billing_tag_value = var.billing_code
 }
