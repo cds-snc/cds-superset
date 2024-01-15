@@ -3,6 +3,11 @@ variable "account_id" {
   type        = string
 }
 
+variable "domain" {
+  description = "The domain to use for the service."
+  type        = string
+}
+
 variable "env" {
   description = "The current running environment"
   type        = string
