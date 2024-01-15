@@ -50,5 +50,5 @@ resource "aws_ssm_parameter" "superset_secret_key" {
   name  = "superset_secret_key"
   type  = "SecureString"
   value = var.superset_secret_key
-  tags  = locals.common_tags
+  tags  = local.common_tags
 }
