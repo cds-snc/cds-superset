@@ -4,8 +4,5 @@ resource "aws_ecr_repository" "superset-image" {
   image_scanning_configuration {
     scan_on_push = true
   }
-  tags = {
-    CostCentre = var.billing_code
-    Terraform  = true
-  }
+  tags = local.common_tags
 }
