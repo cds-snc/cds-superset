@@ -15,13 +15,15 @@ inputs = {
   product_name = local.product_name
   region       = "ca-central-1"
   billing_code = local.cost_center_code
+
+  superset_database_instance_class  = "db.t3.medium"
+  superset_database_instances_count = 2
 }
 
 generate "provider" {
   path      = "provider.tf"
   if_exists = "overwrite"
   contents  = file("../common/provider.tf")
-
 }
 
 generate "common_variables" {
