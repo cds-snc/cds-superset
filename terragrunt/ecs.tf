@@ -1,6 +1,10 @@
 locals {
   container_environment = [
     {
+      "name"  = "EXAMPLES_DATABASE_DB"
+      "value" = "examples"
+    },
+    {
       "name"  = "SUPERSET_DATABASE_DB"
       "value" = "superset"
     },
@@ -61,7 +65,7 @@ module "superset_ecs" {
 
 data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
   statement {
-    sid    = "GetWeblateSSMParameters"
+    sid    = "GetSSMParameters"
     effect = "Allow"
     actions = [
       "ssm:GetParameter",
@@ -78,6 +82,7 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
 
 data "aws_iam_policy_document" "ecs_task_create_tunnel" {
   statement {
+    sid    = "CreateSSMTunnel"
     effect = "Allow"
     actions = [
       "ssmmessages:CreateControlChannel",
