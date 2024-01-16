@@ -34,6 +34,8 @@ module "superset_ecs" {
   task_memory   = 8192
   desired_count = 1
 
+  enable_execute_command = true
+
   # Task definition
   container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
   container_host_port                 = 8088
@@ -43,7 +45,10 @@ module "superset_ecs" {
   container_read_only_root_filesystem = false
 
   task_exec_role_policy_documents = [
-    data.aws_iam_policy_document.ssm_parameters.json
+    data.aws_iam_policy_document.ecs_task_ssm_parameters.json
+  ]
+  task_role_policy_documents = [
+    data.aws_iam_policy_document.ecs_task_create_tunnel.json
   ]
 
   # Networking
@@ -54,7 +59,7 @@ module "superset_ecs" {
   billing_tag_value = var.billing_code
 }
 
-data "aws_iam_policy_document" "ssm_parameters" {
+data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
   statement {
     sid    = "GetWeblateSSMParameters"
     effect = "Allow"
@@ -68,6 +73,19 @@ data "aws_iam_policy_document" "ssm_parameters" {
       aws_ssm_parameter.superset_database_username.arn,
       aws_ssm_parameter.superset_database_password.arn,
     ]
+  }
+}
+
+data "aws_iam_policy_document" "ecs_task_create_tunnel" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ssmmessages:CreateControlChannel",
+      "ssmmessages:CreateDataChannel",
+      "ssmmessages:OpenControlChannel",
+      "ssmmessages:OpenDataChannel"
+    ]
+    resources = ["*"]
   }
 }
 
