@@ -9,7 +9,7 @@ locals {
       "value" = "superset"
     },
     {
-      "name" = "CACHE_REDIS_URL"
+      "name"  = "CACHE_REDIS_URL"
       "value" = module.superset-redis.endpoint_address
     }
   ]

@@ -9,9 +9,6 @@ module "superset-redis" {
   engine_version       = "7.1"
   port                 = 6379
   allowed_security_groups = {
-  #   "worker"      = module.superset-core.ecs_service_security_group_id
-  #   "app"         = module.superset-core.app_service_security_group_id
-  #   "worker_beat" = module.superset-core.worker_beat_service_security_group_id
-  "app" = aws_security_group.superset_ecs
+    "app" = aws_security_group.superset_ecs
   }
 }
