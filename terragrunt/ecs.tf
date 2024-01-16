@@ -3,7 +3,7 @@ locals {
     {
       "name"  = "EXAMPLES_DATABASE_DB"
       "value" = "examples"
-    },    
+    },
     {
       "name"  = "SUPERSET_DATABASE_DB"
       "value" = "superset"
