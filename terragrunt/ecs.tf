@@ -8,6 +8,10 @@ locals {
       "name"  = "SUPERSET_DATABASE_DB"
       "value" = "superset"
     },
+    {
+      "name" = "CACHE_REDIS_URL"
+      "value" = module.superset-redis.redis_url
+    }
   ]
   container_secrets = [
     {
