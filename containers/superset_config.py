@@ -22,23 +22,26 @@ SQLALCHEMY_EXAMPLES_URI = (
     f"{DATABASE_HOST}/{EXAMPLES_DB}"
 )
 
+
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
 CELERY_CONFIG = None
 
-# Caching: https://superset.apache.org/docs/installation/cache
-CACHE_CONFIG = {
-    "CACHE_TYPE": "SupersetMetastoreCache",
-    "CACHE_DEFAULT_TIMEOUT": 300,
-    "CACHE_KEY_PREFIX": "superset_",
-}
 
-# FILTER_STATE_CACHE_CONFIG = {
-#     'CACHE_TYPE': 'RedisCache',
-#     'CACHE_DEFAULT_TIMEOUT': 300,
-#     'CACHE_KEY_PREFIX': 'superset_',
-#     'CACHE_REDIS_URL': os.getenv('CACHE_REDIS_URL')
-# }
-DATA_CACHE_CONFIG = CACHE_CONFIG
+# Caching: https://superset.apache.org/docs/installation/cache
+REDIS_URL = os.getenv("REDIS_URL")
+
+def redis_cache (key, timeout) :
+    return {
+        'CACHE_TYPE': 'RedisCache',
+        'CACHE_DEFAULT_TIMEOUT': timeout,
+        'CACHE_KEY_PREFIX': key,
+        'CACHE_REDIS_URL': REDIS_URL
+    }
+
+FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 300)
+EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache("superset_explore_form_data_cache_", 300)
+DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 300)
+CACHE_CONFIG = redis_cache("superset_cache_", 300)
 
 SQLLAB_CTAS_NO_LIMIT = True
 
