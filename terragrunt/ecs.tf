@@ -45,6 +45,9 @@ data "aws_iam_policy_document" "ssm_parameters" {
     ]
     resources = [
       aws_ssm_parameter.superset_secret_key.arn,
+      aws_ssm_parameter.superset_database_host.arn,
+      aws_ssm_parameter.superset_database_username.arn,
+      aws_ssm_parameter.superset_database_password.arn,
     ]
   }
 }
