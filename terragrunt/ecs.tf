@@ -1,7 +1,25 @@
 locals {
+  container_environment = [
+    {
+      "name"  = "SUPERSET_DATABASE_DB"
+      "value" = "superset"
+    },
+  ]
   container_secrets = [
     {
-      "name"      = "SUPERSET_SECRET_KEY",
+      "name"      = "SUPERSET_DATABASE_HOST"
+      "valueFrom" = aws_ssm_parameter.superset_database_host.arn
+    },
+    {
+      "name"      = "SUPERSET_DATABASE_USER"
+      "valueFrom" = aws_ssm_parameter.superset_database_username.arn
+    },
+    {
+      "name"      = "SUPERSET_DATABASE_PASSWORD"
+      "valueFrom" = aws_ssm_parameter.superset_database_password.arn
+    },
+    {
+      "name"      = "SUPERSET_SECRET_KEY"
       "valueFrom" = aws_ssm_parameter.superset_secret_key.arn
     },
   ]
@@ -20,6 +38,7 @@ module "superset_ecs" {
   container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
   container_host_port                 = 8088
   container_port                      = 8088
+  container_environment               = local.container_environment
   container_secrets                   = local.container_secrets
   container_read_only_root_filesystem = false
 
