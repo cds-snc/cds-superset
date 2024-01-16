@@ -2,6 +2,11 @@ FROM apache/superset:3.0.2
 # Switching to root to install the required packages
 USER root
 
+# Required to create `examples` database as part of bootstrap
+# RUN apt-get update &&\
+#     apt-get install --no-install-recommends -y \
+#         postgresql-client
+
 # Example: installing a driver to connect to Redshift
 # Find which driver you need based on the analytics database
 # you want to connect to here:
