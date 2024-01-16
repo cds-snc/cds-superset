@@ -2,6 +2,7 @@
 *.tfstate
 *.tfstate.backup
 *.tfplan
+*.tfvars
 .terraform/
 
 # Terragrunt
