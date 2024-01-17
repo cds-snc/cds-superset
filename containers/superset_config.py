@@ -28,7 +28,7 @@ CELERY_CONFIG = None
 
 
 # Caching: https://superset.apache.org/docs/installation/cache
-REDIS_URL = os.getenv("REDIS_URL")
+REDIS_URL = os.getenv("CACHE_REDIS_URL")
 
 def redis_cache (key, timeout) :
     return {
