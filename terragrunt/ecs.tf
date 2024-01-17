@@ -10,7 +10,7 @@ locals {
     },
     {
       "name"  = "CACHE_REDIS_URL"
-      "value" = module.superset-redis.endpoint_address
+      "value" = "${module.superset-redis.endpoint_address}:${module.superset-redis.redis_port}"
     }
   ]
   container_secrets = [
