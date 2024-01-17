@@ -9,6 +9,10 @@ locals {
       "value" = "cds-snc.ca"
     },
     {
+      "name"  = "GOOGLE_OAUTH_LOGIN"
+      "value" = "true"
+    },    
+    {
       "name"  = "EXAMPLES_DATABASE_DB"
       "value" = "examples"
     },
