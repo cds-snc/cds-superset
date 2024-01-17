@@ -1,3 +1,15 @@
+variable "google_oauth_client_id" {
+  description = "Google OAuth client ID to enable logging in with Google."
+  type        = string
+  sensitive   = true
+}
+
+variable "google_oauth_client_secret" {
+  description = "Google OAuth client secret to enable logging in with Google."
+  type        = string
+  sensitive   = true
+}
+
 variable "superset_database_instances_count" {
   description = "The number of instances in the database cluster."
   type        = number
