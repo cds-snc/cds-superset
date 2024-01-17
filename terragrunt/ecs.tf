@@ -1,6 +1,14 @@
 locals {
   container_environment = [
     {
+      "name"  = "GOOGLE_AUTH_DOMAIN"
+      "value" = var.domain
+    },
+    {
+      "name"  = "GOOGLE_OAUTH_EMAIL_DOMAIN"
+      "value" = "cds-snc.ca"
+    },
+    {
       "name"  = "EXAMPLES_DATABASE_DB"
       "value" = "examples"
     },
@@ -14,6 +22,14 @@ locals {
     }
   ]
   container_secrets = [
+    {
+      "name"      = "GOOGLE_OAUTH_CLIENT_ID"
+      "valueFrom" = aws_ssm_parameter.google_oauth_client_id.arn
+    },
+    {
+      "name"      = "GOOGLE_OAUTH_CLIENT_SECRET"
+      "valueFrom" = aws_ssm_parameter.google_oauth_client_secret.arn
+    },
     {
       "name"      = "SUPERSET_DATABASE_HOST"
       "valueFrom" = aws_ssm_parameter.superset_database_host.arn
@@ -76,6 +92,8 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
       "ssm:GetParameters",
     ]
     resources = [
+      aws_ssm_parameter.google_oauth_client_id.arn,
+      aws_ssm_parameter.google_oauth_client_secret.arn,
       aws_ssm_parameter.superset_secret_key.arn,
       aws_ssm_parameter.superset_database_host.arn,
       aws_ssm_parameter.superset_database_username.arn,
@@ -96,6 +114,20 @@ data "aws_iam_policy_document" "ecs_task_create_tunnel" {
     ]
     resources = ["*"]
   }
+}
+
+resource "aws_ssm_parameter" "google_oauth_client_id" {
+  name  = "google_oauth_client_id"
+  type  = "SecureString"
+  value = var.google_oauth_client_id
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "google_oauth_client_secret" {
+  name  = "google_oauth_client_secret"
+  type  = "SecureString"
+  value = var.google_oauth_client_secret
+  tags  = local.common_tags
 }
 
 resource "aws_ssm_parameter" "superset_secret_key" {
