@@ -6,3 +6,6 @@ plan:
 		-var="superset_database_password=$(TF_VAR_SUPERSET_DATABASE_PASSWORD)" \
 		-var="superset_secret_key=$(TF_VAR_SUPERSET_SECRET_KEY)" \
 		--terragrunt-working-dir terragrunt
+	
+fmt:
+	@terraform fmt -recursive
