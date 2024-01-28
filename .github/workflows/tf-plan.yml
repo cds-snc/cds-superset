@@ -48,7 +48,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Terraform plan
-        uses: cds-snc/terraform-plan@v3.1.0
+        uses: cds-snc/terraform-plan@v3.2.0
         with:
           comment-delete: true
           comment-title: "Production"
