@@ -15,7 +15,7 @@ variable "vpc_id" {}
 
 variable "allowed_security_groups" {
   default = {}
-  type = map(string)
+  type    = map(string)
 }
 
 variable "private_subnet_ids" {
