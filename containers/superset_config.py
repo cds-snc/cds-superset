@@ -24,7 +24,6 @@ SQLALCHEMY_EXAMPLES_URI = (
     f"{DATABASE_HOST}/{EXAMPLES_DB}"
 )
 
-
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
 CELERY_CONFIG = None
 
