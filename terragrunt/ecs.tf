@@ -106,6 +106,19 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
   }
 }
 
+data "aws_iam_policy_document" "ecs_task_assume_roles" {
+  statement {
+    sid    = "AssumeRoles"
+    effect = "Allow"
+    actions = [
+      "sts:AssumeRole"
+    ]
+    resources = [
+      "arn:aws:iam::${var.account_id}:role/SupersetAthenaRead"
+    ]
+  }
+}
+
 data "aws_iam_policy_document" "ecs_task_create_tunnel" {
   statement {
     sid    = "CreateSSMTunnel"
