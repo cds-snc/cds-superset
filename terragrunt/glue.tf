@@ -30,11 +30,6 @@ resource "aws_glue_crawler" "cur_data_extract" {
   }
 }
 
-import {
-  to = aws_glue_crawler.cur_data_extract
-  id = "Cost and Usage Report 2.0"
-}
-
 resource "aws_iam_role" "glue_crawler" {
   name               = "AWSGlueServiceRole-cds_cur_extract_crawler"
   assume_role_policy = data.aws_iam_policy_document.glue.json
@@ -42,11 +37,6 @@ resource "aws_iam_role" "glue_crawler" {
   tags = {
     Terraform = "true"
   }
-}
-
-import {
-  to = aws_iam_role.glue_crawler
-  id = "AWSGlueServiceRole-cds_cur_extract_crawler"
 }
 
 data "aws_iam_policy_document" "glue" {
@@ -74,22 +64,11 @@ resource "aws_iam_role_policy_attachment" "glue_attach_policy" {
   role       = aws_iam_role.glue_crawler.name
 }
 
-import {
-  to = aws_iam_role_policy_attachment.glue_attach_policy
-  id = "AWSGlueServiceRole-cds_cur_extract_crawler/arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
-
-}
-
 resource "aws_iam_policy" "glue_s3_crawler" {
   name        = "AWSGlueServiceRole-cds_cur_extract_crawler-EZCRC-s3Policy"
   policy      = data.aws_iam_policy_document.glue_s3_crawler.json
   description = "This policy will be used for Glue Crawler and Job execution. Please do NOT delete!"
   path        = "/service-role/"
-}
-
-import {
-  to = aws_iam_policy.glue_s3_crawler
-  id = "arn:aws:iam::066023111852:policy/service-role/AWSGlueServiceRole-cds_cur_extract_crawler-EZCRC-s3Policy"
 }
 
 data "aws_iam_policy_document" "glue_s3_crawler" {
@@ -107,19 +86,9 @@ resource "aws_iam_role_policy_attachment" "glue_s3_crawler" {
   role       = aws_iam_role.glue_crawler.name
 }
 
-import {
-  to = aws_iam_role_policy_attachment.glue_s3_crawler
-  id = "AWSGlueServiceRole-cds_cur_extract_crawler/arn:aws:iam::066023111852:policy/service-role/AWSGlueServiceRole-cds_cur_extract_crawler-EZCRC-s3Policy"
-}
-
 resource "aws_athena_database" "cur_data_extract_database" {
   name   = "curdatabase"
   bucket = data.aws_s3_bucket.cur_data_extract.id
-}
-
-import {
-  to = aws_athena_database.cur_data_extract_database
-  id = "curdatabase"
 }
 
 data "aws_s3_bucket" "cur_data_extract_queries" {
