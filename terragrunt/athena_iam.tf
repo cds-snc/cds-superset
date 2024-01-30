@@ -39,6 +39,7 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "athena:GetQueryExecution",
       "athena:GetQueryResults",
       "athena:GetQueryResultsStream",
+      "athena:GetTableMetadata",
       "athena:GetWorkGroup",
       "athena:ListDatabases",
       "athena:ListDataCatalogs",
@@ -52,6 +53,22 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "athena:CreatePreparedStatement",
       "athena:DeletePreparedStatement",
       "athena:GetPreparedStatement"
+    ]
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "GlueRead"
+    actions = [
+      "glue:BatchGetPartition",
+      "glue:GetDatabase",
+      "glue:GetDatabases",
+      "glue:GetPartition",
+      "glue:GetPartitions",
+      "glue:GetTable",
+      "glue:GetTables",
+      "glue:GetTableVersion",
+      "glue:GetTableVersions"
     ]
     resources = ["*"]
   }
