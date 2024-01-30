@@ -54,7 +54,7 @@ locals {
 }
 
 module "superset_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.4"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.5"
 
   cluster_name  = "superset"
   service_name  = "superset"
