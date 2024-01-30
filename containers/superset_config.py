@@ -36,10 +36,11 @@ def redis_cache (key, timeout) :
         'CACHE_KEY_PREFIX': key,
         'CACHE_REDIS_URL': REDIS_URL
     }
-FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 300)
-EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache("superset_explore_form_data_cache_", 300)
-DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 300)
-CACHE_CONFIG = redis_cache("superset_cache_", 300)
+# Cache for 12 hours
+FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 43200)
+EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache("superset_explore_form_data_cache_", 43200)
+DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 43200)
+CACHE_CONFIG = redis_cache("superset_cache_", 43200)
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
