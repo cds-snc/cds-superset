@@ -6,10 +6,6 @@ resource "aws_iam_role" "superset_athena_read" {
   tags = {
     Terraform = "true"
   }
-
-  depends_on = [
-    module.superset_ecs
-  ]
 }
 
 data "aws_iam_policy_document" "superset_ecs_task_role" {
@@ -18,7 +14,7 @@ data "aws_iam_policy_document" "superset_ecs_task_role" {
     principals {
       type = "AWS"
       identifiers = [
-        "arn:aws:iam::${var.account_id}:role/superset_ecs_task_role",
+        module.superset_ecs.task_role_arn
       ]
     }
   }
