@@ -1,5 +1,5 @@
 
-name: Container build and Push
+name: Container build and push
 on:
   push:
     branches:
@@ -32,7 +32,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # TODO: Replace with a locked down IAM roel
+    # TODO: Replace with a locked down IAM role
     - name: configure aws credentials using OIDC
       uses: aws-actions/configure-aws-credentials@v4.0.1
       with:
@@ -49,14 +49,14 @@ jobs:
       run: |
         docker build \
         --file ./containers/Dockerfile \
-        --tag $REGISTRY:$GITHUB_SHA-`date '+%Y-%m-%d'` \
+        --tag $REGISTRY:$GITHUB_SHA \
         --tag $REGISTRY:latest ./containers
 
     - name: Push Container to Amazon ECR
       run: |
-        docker push $REGISTRY:$GITHUB_SHA-`date '+%Y-%m-%d'`
+        docker push $REGISTRY:$GITHUB_SHA
         docker push $REGISTRY:latest
-     
+
     - name: Docker generate SBOM
       uses: cds-snc/security-tools/.github/actions/generate-sbom@eecd7a02a0294b379411c126b61e5c29e253676a # v2.1.4
       with:
