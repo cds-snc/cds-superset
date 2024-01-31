@@ -49,12 +49,12 @@ jobs:
       run: |
         docker build \
         --file ./containers/Dockerfile \
-        --tag $REGISTRY:$GITHUB_SHA \
+        --tag $REGISTRY:sha-$GITHUB_SHA \
         --tag $REGISTRY:latest ./containers
 
     - name: Push Container to Amazon ECR
       run: |
-        docker push $REGISTRY:$GITHUB_SHA
+        docker push $REGISTRY:sha-$GITHUB_SHA
         docker push $REGISTRY:latest
 
     - name: Docker generate SBOM
