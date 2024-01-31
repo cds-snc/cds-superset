@@ -7,8 +7,8 @@ resource "aws_ecr_repository" "superset-image" {
   tags = local.common_tags
 }
 
-resource "aws_ecr_lifecycle_policy" "weblate" {
-  repository = aws_ecr_repository.weblate.name
+resource "aws_ecr_lifecycle_policy" "superset-image" {
+  repository = aws_ecr_repository.superset-image.name
   policy     = <<-EOT
   {
     "rules": [
