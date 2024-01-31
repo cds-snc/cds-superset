@@ -17,13 +17,6 @@ SQLALCHEMY_DATABASE_URI = (
     f"{DATABASE_HOST}/{DATABASE_DB}"
 )
 
-# Examples: remove for production use
-EXAMPLES_DB = os.getenv("EXAMPLES_DATABASE_DB")
-SQLALCHEMY_EXAMPLES_URI = (
-    f"postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}@"
-    f"{DATABASE_HOST}/{EXAMPLES_DB}"
-)
-
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
 CELERY_CONFIG = None
 

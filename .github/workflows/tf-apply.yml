@@ -45,7 +45,7 @@ jobs:
       - name: configure aws credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4.0.1
         with:
-          role-to-assume: arn:aws:iam::066023111852:role/cds-superset-apply 
+          role-to-assume: arn:aws:iam::${{ vars.PROD_AWS_ACCOUNT_ID }}:role/cds-superset-apply 
           role-session-name: TFApply
           aws-region: ${{ env.AWS_REGION }}
 
