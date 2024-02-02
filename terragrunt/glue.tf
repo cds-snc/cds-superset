@@ -1,6 +1,3 @@
-data "aws_s3_bucket" "cur_data_extract" {
-  bucket = "713f18dd-9f30-4976-a152-e81d48cf053a"
-}
 
 resource "aws_glue_crawler" "cur_data_extract" {
   name          = "Cost and Usage Report 2.0"
@@ -93,4 +90,8 @@ resource "aws_athena_database" "cur_data_extract_database" {
 
 data "aws_s3_bucket" "cur_data_extract_queries" {
   bucket = "calvinrodotestbucket"
+}
+
+data "aws_s3_bucket" "cur_tag_etl_output" {
+  bucket = "4d9f3f22-cff9-4407-ab55-a0d2373b382e"
 }
