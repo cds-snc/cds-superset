@@ -22,6 +22,13 @@ module "vpc" {
   billing_tag_value = var.billing_code
 }
 
+resource "aws_service_discovery_private_dns_namespace" "superset" {
+  name        = "superset.ecs.local"
+  description = "DNS namespace used to provide service discovery for the Superset ECS services (application and Celery workers)"
+  vpc         = module.vpc.vpc_id
+  tags        = local.common_tags
+}
+
 #
 # Security groups
 #

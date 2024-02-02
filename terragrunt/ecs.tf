@@ -50,7 +50,7 @@ locals {
 }
 
 module "superset_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.5"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.6"
 
   cluster_name  = "superset"
   service_name  = "superset"
@@ -61,7 +61,7 @@ module "superset_ecs" {
   enable_execute_command = true
 
   # Task definition
-  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
+  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:sha-4affc391bad32289b0033e5ef8fece57d661a3f3"
   container_host_port                 = 8088
   container_port                      = 8088
   container_environment               = local.container_environment
@@ -79,6 +79,10 @@ module "superset_ecs" {
   lb_target_group_arn = aws_lb_target_group.superset.arn
   subnet_ids          = module.vpc.private_subnet_ids
   security_group_ids  = [aws_security_group.superset_ecs.id]
+
+  # Service discovery
+  service_discovery_enabled      = true
+  service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
   billing_tag_value = var.billing_code
 }
