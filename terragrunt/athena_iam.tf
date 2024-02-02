@@ -85,8 +85,8 @@ data "aws_iam_policy_document" "superset_athena_read" {
       data.aws_s3_bucket.tag_data_extract.arn,
       "${data.aws_s3_bucket.cur_data_extract.arn}/*",
       data.aws_s3_bucket.cur_data_extract.arn,
-      "${data.aws_s3_bucket.cur_tag_etl_output}/*",
-      data.aws_s3_bucket.cur_tag_etl_output
+      "${data.aws_s3_bucket.cur_tag_etl_output.arn}/*",
+      data.aws_s3_bucket.cur_tag_etl_output.arn
 
     ]
   }
