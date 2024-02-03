@@ -1,6 +1,7 @@
 import logging
 import os
 
+from celery.schedules import crontab
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 
@@ -26,16 +27,21 @@ REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
 REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
-def redis_cache (key, timeout) :
+
+def redis_cache(key, timeout):
     return {
-        'CACHE_TYPE': 'RedisCache',
-        'CACHE_DEFAULT_TIMEOUT': timeout,
-        'CACHE_KEY_PREFIX': key,
-        'CACHE_REDIS_URL': REDIS_URL
+        "CACHE_TYPE": "RedisCache",
+        "CACHE_DEFAULT_TIMEOUT": timeout,
+        "CACHE_KEY_PREFIX": key,
+        "CACHE_REDIS_URL": REDIS_URL,
     }
+
+
 # Cache for 12 hours
 FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 43200)
-EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache("superset_explore_form_data_cache_", 43200)
+EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache(
+    "superset_explore_form_data_cache_", 43200
+)  # noqa: E501
 DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 43200)
 CACHE_CONFIG = redis_cache("superset_cache_", 43200)
 
@@ -60,11 +66,15 @@ class CeleryConfig(object):
             "schedule": crontab(minute=10, hour=0),
         },
     }
+
+
 CELERY_CONFIG = CeleryConfig
-RESULTS_BACKEND = RedisCache(host=REDIS_HOST, port=REDIS_PORT, key_prefix='superset_results')
+RESULTS_BACKEND = RedisCache(
+    host=REDIS_HOST, port=REDIS_PORT, key_prefix="superset_results"
+)
 
 
-# Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration
+# Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
 GOOGLE_AUTH_DOMAIN = os.getenv("GOOGLE_AUTH_DOMAIN")
 GOOGLE_OAUTH_CLIENT_ID = os.getenv("GOOGLE_OAUTH_CLIENT_ID")
@@ -81,14 +91,12 @@ OAUTH_PROVIDERS = [
         "token_key": "access_token",
         "remote_app": {
             "api_base_url": "https://www.googleapis.com/oauth2/v2/",
-            "client_kwargs": {
-                "scope": "email profile"
-            },
+            "client_kwargs": {"scope": "email profile"},
             "request_token_url": None,
             "access_token_url": "https://accounts.google.com/o/oauth2/token",
             "authorize_url": "https://accounts.google.com/o/oauth2/auth",
             "client_id": GOOGLE_OAUTH_CLIENT_ID,
-            "client_secret": GOOGLE_OAUTH_CLIENT_SECRET
+            "client_secret": GOOGLE_OAUTH_CLIENT_SECRET,
         },
         "whitelist": [GOOGLE_OAUTH_EMAIL_DOMAIN],
     }
