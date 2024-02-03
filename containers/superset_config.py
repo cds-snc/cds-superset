@@ -2,6 +2,7 @@ import logging
 import os
 
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
+from flask_caching.backends.rediscache import RedisCache
 
 logger = logging.getLogger()
 
@@ -17,11 +18,14 @@ SQLALCHEMY_DATABASE_URI = (
     f"{DATABASE_HOST}/{DATABASE_DB}"
 )
 
-# Workers: https://superset.apache.org/docs/installation/async-queries-celery/
-CELERY_CONFIG = None
 
 # Caching: https://superset.apache.org/docs/installation/cache
-REDIS_URL = os.getenv("CACHE_REDIS_URL")
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = os.getenv("REDIS_PORT", "6379")
+REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
+REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
+REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
+
 def redis_cache (key, timeout) :
     return {
         'CACHE_TYPE': 'RedisCache',
@@ -34,6 +38,31 @@ FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 43200)
 EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache("superset_explore_form_data_cache_", 43200)
 DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 43200)
 CACHE_CONFIG = redis_cache("superset_cache_", 43200)
+
+
+# Workers: https://superset.apache.org/docs/installation/async-queries-celery/
+class CeleryConfig(object):
+    broker_url = f"{REDIS_URL}/{REDIS_CELERY_DB}"
+    imports = (
+        "superset.sql_lab",
+        "superset.tasks.scheduler",
+    )
+    result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}"
+    worker_prefetch_multiplier = 10
+    task_acks_late = True
+    beat_schedule = {
+        "reports.scheduler": {
+            "task": "reports.scheduler",
+            "schedule": crontab(minute="*", hour="*"),
+        },
+        "reports.prune_log": {
+            "task": "reports.prune_log",
+            "schedule": crontab(minute=10, hour=0),
+        },
+    }
+CELERY_CONFIG = CeleryConfig
+RESULTS_BACKEND = RedisCache(host=REDIS_HOST, port=REDIS_PORT, key_prefix='superset_results')
+
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
