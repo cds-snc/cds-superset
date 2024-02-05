@@ -1,5 +1,19 @@
 locals {
-  container_environment = [
+  container_env_all = [
+    {
+      "name"  = "SUPERSET_DATABASE_DB"
+      "value" = "superset"
+    },
+    {
+      "name"  = "REDIS_HOST"
+      "value" = module.superset-redis.endpoint_address
+    },
+    {
+      "name"  = "REDIS_PORT"
+      "value" = module.superset-redis.redis_port
+    }
+  ]
+  container_env_google_auth = [
     {
       "name"  = "GOOGLE_AUTH_DOMAIN"
       "value" = var.domain
@@ -11,25 +25,9 @@ locals {
     {
       "name"  = "GOOGLE_OAUTH_LOGIN"
       "value" = "true"
-    },
-    {
-      "name"  = "SUPERSET_DATABASE_DB"
-      "value" = "superset"
-    },
-    {
-      "name"  = "CACHE_REDIS_URL"
-      "value" = "redis://${module.superset-redis.endpoint_address}:${module.superset-redis.redis_port}"
     }
   ]
-  container_secrets = [
-    {
-      "name"      = "GOOGLE_OAUTH_CLIENT_ID"
-      "valueFrom" = aws_ssm_parameter.google_oauth_client_id.arn
-    },
-    {
-      "name"      = "GOOGLE_OAUTH_CLIENT_SECRET"
-      "valueFrom" = aws_ssm_parameter.google_oauth_client_secret.arn
-    },
+  container_secrets_all = [
     {
       "name"      = "SUPERSET_DATABASE_HOST"
       "valueFrom" = aws_ssm_parameter.superset_database_host.arn
@@ -47,10 +45,20 @@ locals {
       "valueFrom" = aws_ssm_parameter.superset_secret_key.arn
     },
   ]
+  container_secrets_google_auth = [
+    {
+      "name"      = "GOOGLE_OAUTH_CLIENT_ID"
+      "valueFrom" = aws_ssm_parameter.google_oauth_client_id.arn
+    },
+    {
+      "name"      = "GOOGLE_OAUTH_CLIENT_SECRET"
+      "valueFrom" = aws_ssm_parameter.google_oauth_client_secret.arn
+    },
+  ]
 }
 
 module "superset_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.6"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.7"
 
   cluster_name  = "superset"
   service_name  = "superset"
@@ -58,35 +66,102 @@ module "superset_ecs" {
   task_memory   = 8192
   desired_count = 1
 
-  enable_execute_command = true
-
   # Task definition
-  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:sha-4affc391bad32289b0033e5ef8fece57d661a3f3"
+  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
+  container_command                   = ["/app/docker/docker-bootstrap.sh", "app"]
   container_host_port                 = 8088
   container_port                      = 8088
-  container_environment               = local.container_environment
-  container_secrets                   = local.container_secrets
+  container_environment               = setunion(local.container_env_all, local.container_env_google_auth)
+  container_secrets                   = setunion(local.container_secrets_all, local.container_secrets_google_auth)
   container_read_only_root_filesystem = false
-
   task_exec_role_policy_documents = [
     data.aws_iam_policy_document.ecs_task_ssm_parameters.json
   ]
   task_role_policy_documents = [
-    data.aws_iam_policy_document.ecs_task_create_tunnel.json
+    data.aws_iam_policy_document.ecs_task_assume_roles.json
   ]
 
   # Networking
-  lb_target_group_arn = aws_lb_target_group.superset.arn
-  subnet_ids          = module.vpc.private_subnet_ids
-  security_group_ids  = [aws_security_group.superset_ecs.id]
-
-  # Service discovery
+  lb_target_group_arn            = aws_lb_target_group.superset.arn
+  subnet_ids                     = module.vpc.private_subnet_ids
+  security_group_ids             = [aws_security_group.superset_ecs.id]
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
   billing_tag_value = var.billing_code
 }
 
+module "celery_worker_ecs" {
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.7"
+
+  create_cluster = false
+  cluster_name   = module.superset_ecs.cluster_name
+  service_name   = "celery-worker"
+  task_cpu       = 1024
+  task_memory    = 2048
+  desired_count  = 1
+
+  # Task definition
+  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
+  container_command                   = ["/app/docker/docker-bootstrap.sh", "worker"]
+  container_host_port                 = 8088
+  container_port                      = 8088
+  container_environment               = local.container_env_all
+  container_secrets                   = local.container_secrets_all
+  container_read_only_root_filesystem = false
+  task_exec_role_policy_documents = [
+    data.aws_iam_policy_document.ecs_task_ssm_parameters.json
+  ]
+  task_role_policy_documents = [
+    data.aws_iam_policy_document.ecs_task_assume_roles.json
+  ]
+
+  # Networking
+  subnet_ids                     = module.vpc.private_subnet_ids
+  security_group_ids             = [aws_security_group.superset_ecs.id]
+  service_discovery_enabled      = true
+  service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
+
+  billing_tag_value = var.billing_code
+}
+
+module "celery_beat_ecs" {
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.0.7"
+
+  create_cluster = false
+  cluster_name   = module.superset_ecs.cluster_name
+  service_name   = "celery-beat"
+  task_cpu       = 512
+  task_memory    = 1024
+  desired_count  = 1
+
+  # Task definition
+  container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
+  container_command                   = ["/app/docker/docker-bootstrap.sh", "beat"]
+  container_host_port                 = 8088
+  container_port                      = 8088
+  container_environment               = local.container_env_all
+  container_secrets                   = local.container_secrets_all
+  container_read_only_root_filesystem = false
+  task_exec_role_policy_documents = [
+    data.aws_iam_policy_document.ecs_task_ssm_parameters.json
+  ]
+  task_role_policy_documents = [
+    data.aws_iam_policy_document.ecs_task_assume_roles.json
+  ]
+
+  # Networking
+  subnet_ids                     = module.vpc.private_subnet_ids
+  security_group_ids             = [aws_security_group.superset_ecs.id]
+  service_discovery_enabled      = true
+  service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
+
+  billing_tag_value = var.billing_code
+}
+
+#
+# IAM policies
+#
 data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
   statement {
     sid    = "GetSSMParameters"
@@ -133,6 +208,9 @@ data "aws_iam_policy_document" "ecs_task_create_tunnel" {
   }
 }
 
+#
+# SSM parameters
+#
 resource "aws_ssm_parameter" "google_oauth_client_id" {
   name  = "google_oauth_client_id"
   type  = "SecureString"
