@@ -32,6 +32,12 @@ case "${1}" in
     echo "Starting web app..."
     /usr/bin/run-server.sh
     ;;
+  upgrade)
+    echo "Upgrading database..."
+    superset db upgrade
+    superset init
+    echo "All done 🌈"
+    ;; 
   *)
     echo "Unknown Operation!!!"
     ;;
