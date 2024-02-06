@@ -10,7 +10,7 @@ locals {
     },
     {
       "name"  = "REDIS_PORT"
-      "value" = module.superset-redis.redis_port
+      "value" = "${tostring(module.superset-redis.redis_port)}"
     }
   ]
   container_env_google_auth = [
