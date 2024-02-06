@@ -62,3 +62,13 @@ jobs:
         service: ${{ matrix.service }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
+
+    - name: Run Superset database upgrade
+      if: ${{ matrix.service == 'superset' }}
+      run: |
+        aws ecs run-task \
+          --cluster ${{ env.ECS_CLUSTER }} \
+          --task-definition superset-upgrade \
+          --launch-type FARGATE \
+          --count 1 \
+          --network-configuration "awsvpcConfiguration={subnets=[${{ secrets.SUPERSET_PRIVATE_SUBNET_IDS }}],securityGroups=[${{ secrets.SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}],assignPublicIp=DISABLED}"
