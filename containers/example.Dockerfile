@@ -1,4 +1,4 @@
-FROM apache/superset
+FROM apache/superset@sha256:dc9271154beca4dda118cd30f6089b23e29896013dab30d5eca3e68544c80bf2
 # We switch to root
 USER root
 
