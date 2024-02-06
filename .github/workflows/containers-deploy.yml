@@ -9,8 +9,6 @@ on:
 env: 
   AWS_REGION: ca-central-1
   ECS_CLUSTER: superset
-  ECS_SERVICE: superset
-  ECS_TASK: superset 
   REGISTRY: ${{ vars.PROD_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
   GITHUB_SHA: ${{ github.sha }}
 
@@ -21,6 +19,12 @@ jobs:
   containers-deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service:
+          - superset
+          - celery-worker
+          - celery-beat
     steps:
     - name: Audit DNS requests
       uses: cds-snc/dns-proxy-action@main
@@ -40,7 +44,7 @@ jobs:
     - name: Download ECS task definition
       run: |
         aws ecs describe-task-definition \
-          --task-definition ${{ env.ECS_TASK }} \
+          --task-definition ${{ matrix.service }} \
           --query taskDefinition > task-definition.json
 
     - name: Update ECS task image
@@ -48,13 +52,13 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@4225e0b507142a2e432b018bc3ccb728559b437a # v1.2.0
       with:
         task-definition: task-definition.json
-        container-name: ${{ env.ECS_TASK }}
+        container-name: ${{ matrix.service }}
         image: ${{ env.REGISTRY }}:sha-${{ env.GITHUB_SHA }}
 
     - name: Deploy updated ECS task
       uses: aws-actions/amazon-ecs-deploy-task-definition@df9643053eda01f169e64a0e60233aacca83799a # v1.4.11
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ${{ env.ECS_SERVICE }}
+        service: ${{ matrix.service }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
