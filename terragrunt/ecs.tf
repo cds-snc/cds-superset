@@ -97,8 +97,8 @@ module "celery_worker_ecs" {
   create_cluster = false
   cluster_name   = module.superset_ecs.cluster_name
   service_name   = "celery-worker"
-  task_cpu       = 1024
-  task_memory    = 2048
+  task_cpu       = 512
+  task_memory    = 1024
   desired_count  = 1
 
   # Task definition
