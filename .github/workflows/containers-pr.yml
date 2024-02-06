@@ -42,6 +42,24 @@ jobs:
           sarif_file: hadolint-results.sarif
           wait-for-processing: true
 
+  python-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Audit DNS requests
+        uses: cds-snc/dns-proxy-action@main
+        env:
+          DNS_PROXY_FORWARDTOSENTINEL: "true"
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Lint and format check
+        run: |
+          make lint
+          make ARGS=--check fmt
+
   docker-build:
     
     runs-on: ubuntu-latest
