@@ -159,6 +159,52 @@ module "celery_beat_ecs" {
   billing_tag_value = var.billing_code
 }
 
+# Create an ECS task that runs database upgrades
+resource "aws_ecs_task_definition" "superset_upgrade" {
+  family             = "superset-upgrade"
+  cpu                = 1024
+  memory             = 2048
+  execution_role_arn = module.superset.task_exec_role_arn
+  task_role_arn      = module.superset.task_role_arn
+  container_definitions = jsonencode([{
+    name      = "superset-upgrade"
+    cpu       = 1024
+    memory    = 2048
+    essential = true
+    command   = ["/app/docker/docker-bootstrap.sh", "upgrade"]
+    image     = "${aws_ecr_repository.superset-image.repository_url}:latest"
+    linuxParameters = {
+      capabilities : {
+        drop : ["ALL"]
+      }
+    }
+    portMappings = [{
+      hostPort : 8088,
+      containerPort : 8088,
+      protocol : "tcp"
+    }]
+    logConfiguration = {
+      logDriver = "awslogs",
+      options = {
+        awslogs-region        = var.region,
+        awslogs-group         = module.superset.cloudwatch_log_group_name,
+        awslogs-stream-prefix = "upgrade"
+      }
+    }
+    environment = local.container_env_all
+    secrets     = local.container_secrets_all
+  }])
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+
+  tags = local.common_tags
+}
+
+
 #
 # IAM policies
 #
