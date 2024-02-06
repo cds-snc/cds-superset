@@ -164,8 +164,8 @@ resource "aws_ecs_task_definition" "superset_upgrade" {
   family             = "superset-upgrade"
   cpu                = 1024
   memory             = 2048
-  execution_role_arn = module.superset.task_exec_role_arn
-  task_role_arn      = module.superset.task_role_arn
+  execution_role_arn = module.superset_ecs.task_exec_role_arn
+  task_role_arn      = module.superset_ecs.task_role_arn
   container_definitions = jsonencode([{
     name      = "superset-upgrade"
     cpu       = 1024
@@ -187,7 +187,7 @@ resource "aws_ecs_task_definition" "superset_upgrade" {
       logDriver = "awslogs",
       options = {
         awslogs-region        = var.region,
-        awslogs-group         = module.superset.cloudwatch_log_group_name,
+        awslogs-group         = module.superset_ecs.cloudwatch_log_group_name,
         awslogs-stream-prefix = "upgrade"
       }
     }
