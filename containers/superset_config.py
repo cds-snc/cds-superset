@@ -1,6 +1,8 @@
 import logging
 import os
 
+import flask
+
 from celery.schedules import crontab
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
@@ -37,13 +39,13 @@ def redis_cache(key, timeout):
     }
 
 
-# Cache for 12 hours
-FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 43200)
+# Cache for 1 day
+FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 60 * 60 * 24)
 EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache(
-    "superset_explore_form_data_cache_", 43200
+    "superset_explore_form_data_cache_", 60 * 60 * 24
 )  # noqa: E501
-DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 43200)
-CACHE_CONFIG = redis_cache("superset_cache_", 43200)
+DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 60 * 60 * 24)
+CACHE_CONFIG = redis_cache("superset_cache_", 60 * 60 * 24)
 
 
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
@@ -72,6 +74,18 @@ CELERY_CONFIG = CeleryConfig
 RESULTS_BACKEND = RedisCache(
     host=REDIS_HOST, port=REDIS_PORT, key_prefix="superset_results"
 )
+
+CELERYBEAT_SCHEDULE = {
+    "cache-warmup-hourly": {
+        "task": "cache-warmup",
+        "schedule": crontab(minute=0, hour="*"),  # hourly
+        "kwargs": {
+            "strategy_name": "top_n_dashboards",
+            "top_n": 5,
+            "since": "7 days ago",
+        },
+    },
+}
 
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
@@ -102,6 +116,17 @@ OAUTH_PROVIDERS = [
     }
 ]
 
+
+RATELIMIT_STORAGE_URI = REDIS_URL
+RATELIMIT_REQUEST_IDENTIFIER = flask.Request.endpoint
+WTF_CSRF_ENABLED = True
+WTF_CSRF_EXEMPT_LIST = [
+    "superset.views.core.log",
+    "superset.views.core.explore_json",
+    "superset.charts.data.api.data",
+]
+
 SQLLAB_CTAS_NO_LIMIT = True
+SIP_15_ENABLED = True
 
 logger.info("Finished setting up custom config for Superset")
