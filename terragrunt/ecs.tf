@@ -60,16 +60,16 @@ locals {
 module "superset_ecs" {
   source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.1.0"
 
-  cluster_name  = "superset"
-  service_name  = "superset"
-  task_cpu      = 1024
-  task_memory   = 8192
+  cluster_name = "superset"
+  service_name = "superset"
+  task_cpu     = 1024
+  task_memory  = 8192
 
   # Scaling
   enable_autoscaling       = true
   desired_count            = 1
   autoscaling_min_capacity = 1
-  autoscaling_max_capacity = 2  
+  autoscaling_max_capacity = 2
 
   # Task definition
   container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
