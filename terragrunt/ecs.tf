@@ -107,9 +107,9 @@ module "celery_worker_ecs" {
 
   # Scaling
   enable_autoscaling       = true
-  desired_count            = 2
-  autoscaling_min_capacity = 2
-  autoscaling_max_capacity = 4
+  desired_count            = 1
+  autoscaling_min_capacity = 1
+  autoscaling_max_capacity = 2
 
   # Task definition
   container_image                     = "${aws_ecr_repository.superset-image.repository_url}:latest"
