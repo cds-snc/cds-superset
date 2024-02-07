@@ -1,8 +1,6 @@
 import logging
 import os
 
-import flask
-
 from celery.schedules import crontab
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
@@ -118,7 +116,6 @@ OAUTH_PROVIDERS = [
 
 
 RATELIMIT_STORAGE_URI = REDIS_URL
-RATELIMIT_REQUEST_IDENTIFIER = flask.Request.endpoint
 WTF_CSRF_ENABLED = True
 WTF_CSRF_EXEMPT_LIST = [
     "superset.views.core.log",
