@@ -1,3 +1,10 @@
+locals {
+  product_data_export_role_arns = [
+    aws_iam_role.data_export.arn,
+    "arn:aws:iam::239043911459:role/DataExportSupersetReadSnaphots",
+  ]
+}
+
 #
 # KMS key used for all product data exports
 #
@@ -33,8 +40,10 @@ data "aws_iam_policy_document" "data_export_kms" {
     actions = [
       "kms:Encrypt",
       "kms:Decrypt",
-      "kms:ReEncrypt*",
-      "kms:GenerateDataKey*",
+      "kms:GenerateDataKey",
+      "kms:GenerateDataKeyWithoutPlaintext",
+      "kms:ReEncryptFrom",
+      "kms:ReEncryptTo",
       "kms:CreateGrant",
       "kms:DescribeKey",
       "kms:RetireGrant"
@@ -42,7 +51,7 @@ data "aws_iam_policy_document" "data_export_kms" {
     resources = ["*"]
     principals {
       type        = "AWS"
-      identifiers = [aws_iam_role.data_export.arn]
+      identifiers = local.product_data_export_role_arns
     }
   }
 
@@ -65,7 +74,7 @@ data "aws_iam_policy_document" "data_export_kms" {
 # Role used by the data export
 #
 resource "aws_iam_role" "data_export" {
-  name               = "AWSRDSDataExport"
+  name               = "DataExportSupersetReadSnaphots"
   assume_role_policy = data.aws_iam_policy_document.data_export_assume.json
   path               = "/service-role/"
   tags = {
@@ -93,25 +102,23 @@ resource "aws_iam_role_policy_attachment" "data_export" {
 }
 
 resource "aws_iam_policy" "data_export" {
-  name        = "AWSRDSDataExport"
+  name        = "DataExportSupersetReadSnaphots"
   policy      = data.aws_iam_policy_document.data_export.json
-  description = "Used by the RDS export process in the product accounts to write to the data export S3 buckets"
+  description = "Used to assume into the product roles that will perform the RDS snapshot exports."
   path        = "/service-role/"
 }
 
 data "aws_iam_policy_document" "data_export" {
   statement {
-    sid = "AllowAssumeRole"
+    effect = "Allow"
     actions = [
       "sts:AssumeRole"
     ]
-    resources = [
-      "arn:aws:iam::239043911459:role/DataExportSupersetReadSnaphots",
-    ]
+    resources = setsubtract(local.product_data_export_role_arns, [aws_iam_role.data_export.arn])
   }
 
   statement {
-    sid = "AllowS3Access"
+    effect = "Allow"
     actions = [
       "s3:PutObject*",
       "s3:ListBucket",
@@ -126,19 +133,20 @@ data "aws_iam_policy_document" "data_export" {
   }
 
   statement {
-    sid = "AllowKMS"
+    effect = "Allow"
     actions = [
       "kms:Encrypt",
       "kms:Decrypt",
-      "kms:ReEncrypt*",
-      "kms:GenerateDataKey*",
+      "kms:GenerateDataKey",
+      "kms:GenerateDataKeyWithoutPlaintext",
+      "kms:ReEncryptFrom",
+      "kms:ReEncryptTo",
       "kms:CreateGrant",
       "kms:DescribeKey",
       "kms:RetireGrant"
     ]
     resources = [
-      module.notify_data_export.s3_bucket_arn,
-      "${module.notify_data_export.s3_bucket_arn}/*",
+      aws_kms_key.data_export.arn
     ]
   }
 }
@@ -147,7 +155,7 @@ data "aws_iam_policy_document" "data_export" {
 # Notify product data
 #
 module "notify_data_export" {
-  source = "github.com/cds-snc/terraform-modules//S3?ref=v9.2.1"
+  source = "github.com/cds-snc/terraform-modules//S3?ref=v9.2.3"
 
   bucket_name = "${var.product_name}-notify-data-export"
   kms_key_arn = aws_kms_key.data_export.arn
@@ -168,7 +176,7 @@ data "aws_iam_policy_document" "notify_data_export" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = [aws_iam_role.data_export.arn]
+      identifiers = local.product_data_export_role_arns
     }
     actions = [
       "s3:PutObject*",
