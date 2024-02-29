@@ -1,7 +1,8 @@
 locals {
-  product_data_export_role_arns = [
+  data_export_role_arns = [
     aws_iam_role.data_export.arn,
-    "arn:aws:iam::239043911459:role/DataExportSupersetReadSnaphots",
+    aws_iam_role.glue_crawler.arn,
+    "arn:aws:iam::239043911459:role/DataExportSupersetReadSnaphots"
   ]
 }
 
@@ -51,7 +52,7 @@ data "aws_iam_policy_document" "data_export_kms" {
     resources = ["*"]
     principals {
       type        = "AWS"
-      identifiers = local.product_data_export_role_arns
+      identifiers = local.data_export_role_arns
     }
   }
 
@@ -114,7 +115,10 @@ data "aws_iam_policy_document" "data_export" {
     actions = [
       "sts:AssumeRole"
     ]
-    resources = setsubtract(local.product_data_export_role_arns, [aws_iam_role.data_export.arn])
+    resources = setsubtract(local.data_export_role_arns, [
+      aws_iam_role.data_export.arn,
+      data.aws_iam_policy.AWSGlueServiceRole.arn
+    ])
   }
 
   statement {
@@ -176,7 +180,7 @@ data "aws_iam_policy_document" "notify_data_export" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = local.product_data_export_role_arns
+      identifiers = local.data_export_role_arns
     }
     actions = [
       "s3:PutObject*",

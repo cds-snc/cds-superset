@@ -1,4 +1,6 @@
-
+#
+# Cost and usage
+#
 resource "aws_glue_crawler" "cur_data_extract" {
   name          = "Cost and Usage Report 2.0"
   database_name = "curdatabase"
@@ -13,6 +15,37 @@ resource "aws_glue_crawler" "cur_data_extract" {
       CrawlerOutput = {
         Tables = {
           TableThreshold = 2
+        }
+      }
+      CreatePartitionIndex = true
+      Version              = 1
+  })
+
+  //Schedule once a day when we want it updating.
+  //schedule = "cron(0 8 * * * *)"
+
+  tags = {
+    Terraform = "true"
+  }
+}
+
+#
+# Notify
+#
+resource "aws_glue_crawler" "notify" {
+  name          = "Notify"
+  database_name = "curdatabase"
+  table_prefix  = "cds_cur_export_crawler_notify_"
+  role          = aws_iam_role.glue_crawler.arn
+  s3_target {
+    path = "s3://${module.notify_data_export.s3_bucket_id}/data/NotificationCanadaCastaging/"
+  }
+
+  configuration = jsonencode(
+    {
+      CrawlerOutput = {
+        Tables = {
+          TableThreshold = 10
         }
       }
       CreatePartitionIndex = true
@@ -74,7 +107,28 @@ data "aws_iam_policy_document" "glue_s3_crawler" {
       "s3:GetObject",
       "s3:PutObject"
     ]
-    resources = ["${data.aws_s3_bucket.cur_data_extract.arn}/cds_/DailyCostExports/*"]
+    resources = [
+      "${data.aws_s3_bucket.cur_data_extract.arn}/cds_/DailyCostExports/*",
+      "${module.notify_data_export.s3_bucket_arn}/*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Encrypt",
+      "kms:Decrypt",
+      "kms:GenerateDataKey",
+      "kms:GenerateDataKeyWithoutPlaintext",
+      "kms:ReEncryptFrom",
+      "kms:ReEncryptTo",
+      "kms:CreateGrant",
+      "kms:DescribeKey",
+      "kms:RetireGrant"
+    ]
+    resources = [
+      aws_kms_key.data_export.arn
+    ]
   }
 }
 
