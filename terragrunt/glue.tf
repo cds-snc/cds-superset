@@ -60,16 +60,19 @@ resource "aws_glue_crawler" "notify" {
   }
 }
 
+#
+# Glue crawler role
+#
 resource "aws_iam_role" "glue_crawler" {
   name               = "AWSGlueServiceRole-cds_cur_extract_crawler"
-  assume_role_policy = data.aws_iam_policy_document.glue.json
+  assume_role_policy = data.aws_iam_policy_document.glue_assume.json
   path               = "/service-role/"
   tags = {
     Terraform = "true"
   }
 }
 
-data "aws_iam_policy_document" "glue" {
+data "aws_iam_policy_document" "glue_assume" {
   statement {
     actions = [
       "sts:AssumeRole",
@@ -148,4 +151,76 @@ data "aws_s3_bucket" "cur_data_extract_queries" {
 
 data "aws_s3_bucket" "cur_tag_etl_output" {
   bucket = "4d9f3f22-cff9-4407-ab55-a0d2373b382e"
+}
+
+#
+# Glue ETL role
+#
+resource "aws_iam_role" "glue_etl" {
+  name               = "AWSGlueServiceRole-etl"
+  assume_role_policy = data.aws_iam_policy_document.glue_assume.json
+  path               = "/service-role/"
+  tags = {
+    Terraform = "true"
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "glue_etl_service_role" {
+  policy_arn = data.aws_iam_policy.AWSGlueServiceRole.arn
+  role       = aws_iam_role.glue_etl.name
+}
+
+resource "aws_iam_role_policy_attachment" "glue_etl" {
+  policy_arn = aws_iam_policy.glue_etl.arn
+  role       = aws_iam_role.glue_etl.name
+}
+
+resource "aws_iam_policy" "glue_etl" {
+  name        = "AWSGlueServiceRole-etl"
+  policy      = data.aws_iam_policy_document.glue_etl.json
+  description = "This policy is used by the Glue ETL jobs to transform the exported data"
+  path        = "/service-role/"
+}
+
+data "aws_iam_policy_document" "glue_etl" {
+  statement {
+    actions = [
+      "s3:GetObject",
+      "s3:PutObject"
+    ]
+    resources = [
+      "${data.aws_s3_bucket.cur_data_extract.arn}/cds_/DailyCostExports/*",
+      "${module.notify_data_export.s3_bucket_arn}/*",
+      "arn:aws:s3:::5bf89a78-1503-4e02-9621-3ac658f558fb/*",
+      "arn:aws:s3:::713f18dd-9f30-4976-a152-e81d48cf053a/*",
+      "arn:aws:s3:::4d9f3f22-cff9-4407-ab55-a0d2373b382e/*"
+    ]
+  }
+
+  statement {
+    actions = [
+      "athena:*"
+    ]
+    resources = [
+      "*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Encrypt",
+      "kms:Decrypt",
+      "kms:GenerateDataKey",
+      "kms:GenerateDataKeyWithoutPlaintext",
+      "kms:ReEncryptFrom",
+      "kms:ReEncryptTo",
+      "kms:CreateGrant",
+      "kms:DescribeKey",
+      "kms:RetireGrant"
+    ]
+    resources = [
+      aws_kms_key.data_export.arn
+    ]
+  }
 }
