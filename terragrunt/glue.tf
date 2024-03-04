@@ -21,8 +21,8 @@ resource "aws_glue_crawler" "cur_data_extract" {
       Version              = 1
   })
 
-  //Schedule once a day when we want it updating.
-  //schedule = "cron(0 8 * * * *)"
+  # Create the new month's partition key
+  schedule = "cron(0 7 1 * ? *)"
 
   tags = {
     Terraform = "true"
@@ -51,9 +51,6 @@ resource "aws_glue_crawler" "notify" {
       CreatePartitionIndex = true
       Version              = 1
   })
-
-  //Schedule once a day when we want it updating.
-  //schedule = "cron(0 8 * * * *)"
 
   tags = {
     Terraform = "true"
