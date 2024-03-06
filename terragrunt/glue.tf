@@ -43,9 +43,6 @@ resource "aws_glue_crawler" "notify" {
 
   configuration = jsonencode(
     {
-      Grouping = {
-        TableGroupingPolicy = "CombineCompatibleSchemas"
-      }
       CrawlerOutput = {
         Tables = {
           TableThreshold = 10
