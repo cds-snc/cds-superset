@@ -31,7 +31,8 @@ resource "aws_iam_policy" "superset_athena_read" {
 
 data "aws_iam_policy_document" "superset_athena_read" {
   statement {
-    sid = "AthenaRead"
+    sid    = "AthenaRead"
+    effect = "Allow"
     actions = [
       "athena:BatchGetNamedQuery",
       "athena:BatchGetQueryExecution",
@@ -58,7 +59,20 @@ data "aws_iam_policy_document" "superset_athena_read" {
   }
 
   statement {
-    sid = "GlueRead"
+    sid    = "GlueDenyExportRead"
+    effect = "Deny"
+    actions = [
+      "glue:GetTable*",
+      "glue:GetPartition*"
+    ]
+    resources = [
+      "arn:aws:glue:${var.region}:${var.account_id}:tables/curdatabase/cds_cur_export_crawler_notify_*"
+    ]
+  }
+
+  statement {
+    sid    = "GlueRead"
+    effect = "Allow"
     actions = [
       "glue:BatchGetPartition",
       "glue:GetDatabase",
@@ -74,7 +88,8 @@ data "aws_iam_policy_document" "superset_athena_read" {
   }
 
   statement {
-    sid = "S3AthenaSourceBucketRead"
+    sid    = "S3AthenaSourceBucketRead"
+    effect = "Allow"
     actions = [
       "s3:GetObject",
       "s3:ListBucket",
@@ -92,7 +107,8 @@ data "aws_iam_policy_document" "superset_athena_read" {
   }
 
   statement {
-    sid = "S3AthenaResultBucketWrite"
+    sid    = "S3AthenaResultBucketWrite"
+    effect = "Allow"
     actions = [
       "s3:PutObject",
       "s3:GetObject",
