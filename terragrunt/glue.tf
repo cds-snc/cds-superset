@@ -181,6 +181,7 @@ resource "aws_iam_policy" "glue_etl" {
 
 data "aws_iam_policy_document" "glue_etl" {
   statement {
+    effect = "Allow"
     actions = [
       "s3:GetObject",
       "s3:PutObject"
@@ -195,6 +196,7 @@ data "aws_iam_policy_document" "glue_etl" {
   }
 
   statement {
+    effect = "Allow"
     actions = [
       "athena:*"
     ]
