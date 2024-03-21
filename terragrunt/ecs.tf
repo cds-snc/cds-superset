@@ -1,6 +1,10 @@
 locals {
   container_env_all = [
     {
+      "name"  = "GUNICORN_KEEPALIVE"
+      "value" = "120"
+    },
+    {
       "name"  = "SUPERSET_DATABASE_DB"
       "value" = "superset"
     },
