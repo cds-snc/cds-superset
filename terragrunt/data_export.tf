@@ -5,8 +5,7 @@ locals {
     aws_iam_role.glue_etl.arn
   ]
   product_export_role_arns = [
-    "arn:aws:iam::239043911459:role/DataExportSupersetReadSnaphots",
-    "arn:aws:iam::296255494825:role/DataExportSupersetReadSnaphots"
+    "arn:aws:iam::239043911459:role/DataExportSupersetReadSnaphots"
   ]
 }
 
