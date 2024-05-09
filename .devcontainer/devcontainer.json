@@ -17,9 +17,9 @@
 			"installTools": false
 		},	
 		"ghcr.io/devcontainers/features/terraform:1": {
-			"version": "1.6.6",
+			"version": "1.8.2",
 			"tflint": "latest",
-			"terragrunt": "0.54.5"
+			"terragrunt": "0.58.3"
 		}
 	},
 
