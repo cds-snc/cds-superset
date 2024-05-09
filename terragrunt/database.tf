@@ -2,7 +2,7 @@
 # RDS Postgress cluster
 #
 module "superset_db" {
-  source = "github.com/cds-snc/terraform-modules//rds?ref=v9.4.2"
+  source = "github.com/cds-snc/terraform-modules//rds?ref=v9.4.4"
   name   = "superset-${var.env}"
 
   database_name  = "superset"
@@ -43,4 +43,14 @@ resource "aws_ssm_parameter" "superset_database_password" {
   type  = "SecureString"
   value = var.superset_database_password
   tags  = local.common_tags
+}
+
+import {
+  to = module.superset_db.aws_security_group_rule.rds_proxy_egress
+  id = "${module.superset_db.proxy_security_group_id}_egress_tcp_5432_5432_self"
+}
+
+import {
+  to = module.superset_db.aws_security_group_rule.rds_proxy_ingress
+  id = "${module.superset_db.proxy_security_group_id}_ingress_tcp_5432_5432_self"
 }
