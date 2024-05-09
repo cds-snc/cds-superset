@@ -47,10 +47,10 @@ resource "aws_ssm_parameter" "superset_database_password" {
 
 import {
   to = module.superset_db.aws_security_group_rule.rds_proxy_egress
-  id = "${module.rds.proxy_security_group_id}_egress_tcp_5432_5432_self"
+  id = "${module.superset_db.proxy_security_group_id}_egress_tcp_5432_5432_self"
 }
 
 import {
   to = module.superset_db.aws_security_group_rule.rds_proxy_ingress
-  id = "${module.rds.proxy_security_group_id}_ingress_tcp_5432_5432_self"
+  id = "${module.superset_db.proxy_security_group_id}_ingress_tcp_5432_5432_self"
 }
