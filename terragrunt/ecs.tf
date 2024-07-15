@@ -191,6 +191,7 @@ resource "aws_ecs_task_definition" "superset_upgrade" {
     image     = "${aws_ecr_repository.superset-image.repository_url}:latest"
     linuxParameters = {
       capabilities : {
+        add : [],
         drop : ["ALL"]
       }
     }
@@ -207,8 +208,11 @@ resource "aws_ecs_task_definition" "superset_upgrade" {
         awslogs-stream-prefix = "upgrade"
       }
     }
-    environment = local.container_env_all
-    secrets     = local.container_secrets_all
+    mountPoints    = []
+    systemControls = []
+    volumesFrom    = []
+    environment    = local.container_env_all
+    secrets        = local.container_secrets_all
   }])
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
