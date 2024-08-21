@@ -3,7 +3,7 @@
 {
 	"name": "Debian",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bullseye@sha256:e0582c7e9ef8095b05d76ce2293cb58c65f4fc4c38e0b02cbbbefa61beb51930",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye@sha256:92527e2557d96e88c8a8aea3b7fa7f656bc6ebcbbc2390a941f7aa51cdc7787f",
 	"containerEnv": {
 		"SHELL": "/bin/zsh"
 	},
