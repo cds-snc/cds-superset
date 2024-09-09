@@ -159,7 +159,7 @@ data "aws_iam_policy_document" "data_export" {
 # Notify product data
 #
 module "notify_data_export" {
-  source = "github.com/cds-snc/terraform-modules//S3?ref=v9.6.3"
+  source = "github.com/cds-snc/terraform-modules//S3?ref=v9.6.4"
 
   bucket_name = "${var.product_name}-notify-data-export"
   kms_key_arn = aws_kms_key.data_export.arn
