@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cds-superset
+  description: AWS infrastructure and custom config used to run CDS's instance of Superset.
+  labels:
+    license: MIT
+spec:
+  type: website
+  lifecycle: experimental
+  owner: cds-snc
