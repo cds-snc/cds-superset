@@ -10,11 +10,11 @@ locals {
     },
     {
       "name"  = "REDIS_HOST"
-      "value" = module.superset-redis.endpoint_address
+      "value" = aws_elasticache_cluster.superset.cache_nodes[0]["address"]
     },
     {
       "name"  = "REDIS_PORT"
-      "value" = "${tostring(module.superset-redis.redis_port)}"
+      "value" = tostring(aws_elasticache_cluster.superset.port)
     }
   ]
   container_env_google_auth = [
