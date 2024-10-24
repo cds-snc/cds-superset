@@ -115,3 +115,21 @@ resource "aws_security_group_rule" "superset_db_ingress_ecs" {
   security_group_id        = aws_security_group.superset_db.id
   source_security_group_id = aws_security_group.superset_ecs.id
 }
+
+# Redis
+resource "aws_security_group" "superset_redis" {
+  name        = "${local.prefix}-redis-sg"
+  description = "Default redis security group"
+  vpc_id      = module.vpc.vpc_id
+  tags        = local.common_tags
+}
+
+resource "aws_security_group_rule" "superset_redis_ingress_ecs" {
+  description              = "Ingress from Superset ECS task to redis"
+  type                     = "ingress"
+  from_port                = 6379
+  to_port                  = 6379
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.superset_redis.id
+  source_security_group_id = aws_security_group.superset_ecs.id
+}
