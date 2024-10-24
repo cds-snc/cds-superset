@@ -19,18 +19,3 @@ resource "aws_elasticache_subnet_group" "superset" {
   name       = join("-", [local.prefix, "redis-subnet-grp"])
   subnet_ids = module.vpc.private_subnet_ids
 }
-
-moved {
-  from = module.superset-redis.aws_elasticache_cluster.default
-  to   = aws_elasticache_cluster.superset
-}
-
-moved {
-  from = module.superset-redis.aws_elasticache_subnet_group.default
-  to   = aws_elasticache_subnet_group.superset
-}
-
-moved {
-  from = module.superset-redis.aws_security_group.default
-  to   = aws_security_group.superset_redis
-}
