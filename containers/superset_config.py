@@ -4,6 +4,7 @@ import os
 from celery.schedules import crontab
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
+from redis import Redis
 
 logger = logging.getLogger()
 
@@ -85,6 +86,14 @@ CELERYBEAT_SCHEDULE = {
     },
 }
 
+# Session management: https://superset.apache.org/docs/security/#user-sessions
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = "Strict"
+SESSION_SERVER_SIDE = True
+SESSION_TYPE = "redis"
+SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+SESSION_USE_SIGNER = True
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
