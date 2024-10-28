@@ -4,10 +4,10 @@
 resource "aws_glue_crawler" "cur_data_extract" {
   name          = "Cost and Usage Report 2.0"
   database_name = "curdatabase"
-  table_prefix  = "cds_cur_export_crawler"
+  table_prefix  = "cds_cur_export_crawler_"
   role          = aws_iam_role.glue_crawler.arn
   s3_target {
-    path = "s3://${data.aws_s3_bucket.cur_data_extract.id}/cds_/DailyCostExports/"
+    path = "s3://${data.aws_s3_bucket.cur_data_extract.id}/cds_/CDSCostAndUsage/"
   }
 
   configuration = jsonencode(
@@ -22,7 +22,7 @@ resource "aws_glue_crawler" "cur_data_extract" {
   })
 
   # Create the new month's partition key
-  schedule = "cron(0 7 1 * ? *)"
+  schedule = "cron(00 7 1 * ? *)"
 
   tags = {
     Terraform = "true"
@@ -108,7 +108,7 @@ data "aws_iam_policy_document" "glue_s3_crawler" {
       "s3:PutObject"
     ]
     resources = [
-      "${data.aws_s3_bucket.cur_data_extract.arn}/cds_/DailyCostExports/*",
+      "${data.aws_s3_bucket.cur_data_extract.arn}/*",
       "${module.notify_data_export.s3_bucket_arn}/*"
     ]
   }
