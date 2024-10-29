@@ -20,7 +20,6 @@ SQLALCHEMY_DATABASE_URI = (
     f"{DATABASE_HOST}/{DATABASE_DB}"
 )
 
-
 # Caching: https://superset.apache.org/docs/installation/cache
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", "6379")
@@ -134,5 +133,16 @@ WTF_CSRF_EXEMPT_LIST = [
 
 SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
+
+# Custom roles
+FAB_ROLES = {
+    "ReadOnly": [
+        [".*", "can_list"],
+        [".*", "can_show"],
+        [".*", "menu_access"],
+        [".*", "can_get"],
+        [".*", "can_info"],
+    ]
+}
 
 logger.info("Finished setting up custom config for Superset")
