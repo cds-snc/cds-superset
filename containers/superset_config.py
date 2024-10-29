@@ -20,7 +20,6 @@ SQLALCHEMY_DATABASE_URI = (
     f"{DATABASE_HOST}/{DATABASE_DB}"
 )
 
-
 # Caching: https://superset.apache.org/docs/installation/cache
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", "6379")
@@ -37,7 +36,6 @@ def redis_cache(key, timeout):
         "CACHE_REDIS_URL": REDIS_URL,
     }
 
-
 # Cache for 1 day
 FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 60 * 60 * 24)
 EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache(
@@ -45,7 +43,6 @@ EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache(
 )  # noqa: E501
 DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 60 * 60 * 24)
 CACHE_CONFIG = redis_cache("superset_cache_", 60 * 60 * 24)
-
 
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
 class CeleryConfig(object):
@@ -67,7 +64,6 @@ class CeleryConfig(object):
             "schedule": crontab(minute=10, hour=0),
         },
     }
-
 
 CELERY_CONFIG = CeleryConfig
 RESULTS_BACKEND = RedisCache(
@@ -134,5 +130,16 @@ WTF_CSRF_EXEMPT_LIST = [
 
 SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
+
+# Custom roles
+FAB_ROLES = {
+    "ReadOnly": [
+        [".*", "can_list"],
+        [".*", "can_show"],
+        [".*", "menu_access"],
+        [".*", "can_get"],
+        [".*", "can_info"]
+    ]
+}
 
 logger.info("Finished setting up custom config for Superset")
