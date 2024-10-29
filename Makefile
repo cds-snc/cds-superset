@@ -1,4 +1,4 @@
-.PHONY: apply build plan fmt install_dev lint
+.PHONY: apply build localhost localhost_reset plan fmt install_dev lint
 
 apply:
 	@terragrunt apply -var="google_oauth_client_id=$(TF_VAR_GOOGLE_OAUTH_CLIENT_ID)" \
@@ -12,6 +12,16 @@ build:
 	@docker build \
         --file ./containers/Dockerfile \
         --tag superset:latest ./containers
+
+localhost:
+	@docker compose up
+
+localhost_reset:
+	@docker compose down
+	@docker rm -f $(docker ps -aq) || true
+	@docker rmi -f $(docker images -q) || true
+	@docker volume prune -f
+	@docker compose up --build
 
 plan: 
 	@terragrunt plan -var="google_oauth_client_id=$(TF_VAR_GOOGLE_OAUTH_CLIENT_ID)" \
