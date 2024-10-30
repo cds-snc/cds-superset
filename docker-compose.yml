@@ -1,0 +1,90 @@
+x-superset-build: 
+  &superset-build
+    context: ./containers
+    dockerfile: Dockerfile
+x-superset-depends-on: &superset-depends-on
+  - db
+  - redis
+x-superset-env: 
+  &superset-env
+  - path: containers/.env.local
+    required: true
+x-superset-volumes:
+  &superset-volumes
+  - ./containers:/app/docker
+  - superset_home:/app/superset_home
+
+services:
+  redis:
+    image: redis:7
+    container_name: superset_cache
+    restart: unless-stopped
+    volumes:
+      - redis:/data
+
+  db:
+    env_file: *superset-env
+    image: postgres:15
+    container_name: superset_db
+    restart: unless-stopped
+    volumes:
+      - db_home:/var/lib/postgresql/data
+
+  superset:
+    build: *superset-build
+    env_file: *superset-env
+    container_name: superset_app
+    command: ["/app/docker/docker-bootstrap.sh", "app"]
+    user: "root"
+    restart: unless-stopped
+    ports:
+      - 8088:8088
+    depends_on: *superset-depends-on
+    volumes: *superset-volumes
+
+  superset-init:
+    build: *superset-build
+    env_file: *superset-env
+    container_name: superset_init
+    command: ["/app/docker/docker-init.sh"]
+    depends_on: *superset-depends-on
+    user: "root"
+    volumes: *superset-volumes
+    healthcheck:
+      disable: true
+
+  superset-worker:
+    build: *superset-build
+    env_file: *superset-env
+    container_name: superset_worker
+    command: ["/app/docker/docker-bootstrap.sh", "worker"]
+    restart: unless-stopped
+    depends_on: *superset-depends-on
+    user: "root"
+    volumes: *superset-volumes
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "celery -A superset.tasks.celery_app:app inspect ping -d celery@$$HOSTNAME",
+        ]
+
+  superset-worker-beat:
+    build: *superset-build
+    env_file: *superset-env
+    container_name: superset_worker_beat
+    command: ["/app/docker/docker-bootstrap.sh", "beat"]
+    restart: unless-stopped
+    depends_on: *superset-depends-on
+    user: "root"
+    volumes: *superset-volumes
+    healthcheck:
+      disable: true
+
+volumes:
+  superset_home:
+    external: false
+  db_home:
+    external: false
+  redis:
+    external: false

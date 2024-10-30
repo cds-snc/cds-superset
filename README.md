@@ -2,6 +2,8 @@
 A modern, enterprise-ready business intelligence web application.
 
 ## Setup
+
+### AWS
 1. Update the configuration in `./containers/superset_config.py`.
 2. Build the Docker image with `make build`.
 3. Run Terraform apply with `make apply`.
@@ -29,6 +31,12 @@ superset fab create-admin \
 # Setup roles/perms
 superset init
 ```
+
+### Localhost
+You will need Docker, and optionally VS Code devcontainers:
+
+1. Run `make localhost`.
+2. Username and password are `admin` at http://localhost:8088.
 
 ## Databases
 Use the database connection details in `./databases` to connect to datasources.
