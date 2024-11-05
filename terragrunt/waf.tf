@@ -284,7 +284,7 @@ resource "aws_kinesis_firehose_delivery_stream" "superset_waf_logs" {
 #
 resource "aws_iam_role" "superset_waf_logs" {
   name               = "superset-waf-logs"
-  assume_role_policy = data.aws_iam_policy_document.superset_waf_logs.json
+  assume_role_policy = data.aws_iam_policy_document.superset_waf_logs_assume.json
 }
 
 resource "aws_iam_role_policy" "superset_waf_logs" {
@@ -293,7 +293,7 @@ resource "aws_iam_role_policy" "superset_waf_logs" {
   policy = data.aws_iam_policy_document.firehose_waf_policy.json
 }
 
-data "aws_iam_policy_document" "superset_waf_logs" {
+data "aws_iam_policy_document" "superset_waf_logs_assume" {
   statement {
     actions = ["sts:AssumeRole"]
     principals {
