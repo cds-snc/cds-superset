@@ -6,7 +6,7 @@ locals {
   ])
 
   superset_error_filters = [
-    "ERROR",
+    "CRITICAL", "ERROR"
   ]
   superset_error_filters_skip = [
     "Error on OAuth authorize"
