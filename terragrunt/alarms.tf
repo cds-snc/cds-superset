@@ -198,7 +198,7 @@ resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
 
   query_string = <<-QUERY
     fields @timestamp, @message, @logStream
-    | filter @message like /ERROR/
+    | filter @message like /${join("|", local.superset_error_filters)}/
     | sort @timestamp desc
     | limit 100
   QUERY
