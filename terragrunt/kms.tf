@@ -5,6 +5,8 @@ resource "aws_kms_key" "cloudwatch_alerts" {
   description         = "SNS topic for CloudWatch alarm alerts"
   enable_key_rotation = true
   policy              = data.aws_iam_policy_document.kms_cloudwatch.json
+
+  tags = local.common_tags
 }
 
 data "aws_iam_policy_document" "kms_cloudwatch" {

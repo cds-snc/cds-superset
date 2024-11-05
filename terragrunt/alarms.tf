@@ -42,6 +42,8 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_cpu" {
     ClusterName = module.superset_ecs.cluster_name
     ServiceName = each.key
   }
+
+  tags = local.common_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
@@ -65,6 +67,8 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
     ClusterName = module.superset_ecs.cluster_name
     ServiceName = each.key
   }
+
+  tags = local.common_tags
 }
 
 #
@@ -89,6 +93,8 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_unhealthy_hosts" 
     LoadBalancer = aws_lb.superset.arn_suffix
     TargetGroup  = aws_lb_target_group.superset.arn_suffix
   }
+
+  tags = local.common_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
@@ -110,6 +116,8 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
     LoadBalancer = aws_lb.superset.arn_suffix
     TargetGroup  = aws_lb_target_group.superset.arn_suffix
   }
+
+  tags = local.common_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
@@ -138,6 +146,8 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
       }
     }
   }
+
+  tags = local.common_tags
 }
 
 #
@@ -174,6 +184,8 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_errors" {
 
   alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+
+  tags = local.common_tags
 }
 
 #
