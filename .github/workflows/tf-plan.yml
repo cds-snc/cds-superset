@@ -10,6 +10,7 @@ env:
   TERRAFORM_VERSION: 1.8.2
   TERRAGRUNT_VERSION: 0.58.3
   TF_SUMMARIZE_VERSION: 0.3.5
+  TF_VAR_cloudwatch_alert_slack_webhook: ${{ secrets.CLOUDWATCH_ALERT_SLACK_WEBHOOK }}
   TF_VAR_google_oauth_client_id: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
   TF_VAR_google_oauth_client_secret: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
   TF_VAR_superset_database_username: ${{ secrets.SUPERSET_DATABASE_USERNAME }}
