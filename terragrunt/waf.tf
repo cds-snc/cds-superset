@@ -289,8 +289,8 @@ resource "aws_iam_role" "superset_waf_logs" {
 
 resource "aws_iam_role_policy" "superset_waf_logs" {
   name   = "superset-waf-logs"
-  role   = aws_iam_role.firehose_waf_logs.id
-  policy = data.aws_iam_policy_document.firehose_waf_policy.json
+  role   = aws_iam_role.superset_waf_logs.id
+  policy = data.aws_iam_policy_document.superset_waf_logs.json
 }
 
 data "aws_iam_policy_document" "superset_waf_logs_assume" {
