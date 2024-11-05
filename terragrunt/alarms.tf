@@ -99,7 +99,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_unhealthy_hosts" 
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
   alarm_name          = "load-balancer-healthy-hosts"
-  alarm_description   = ":dumpster-fire: there are no healthy hosts for the Superset load balance in a 1 minute period."
+  alarm_description   = ":dumpster-fire: there are no healthy hosts for the Superset load balancer in a 1 minute period."
   comparison_operator = "LessThanThreshold"
   threshold           = "1"
   evaluation_periods  = "1"
