@@ -1,5 +1,6 @@
 locals {
-  excluded_common_rules = []
+  excluded_common_rules    = []
+  cbs_satellite_bucket_arn = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
 }
 
 #
@@ -251,4 +252,81 @@ resource "aws_wafv2_rule_group" "rate_limiters_group" {
 resource "aws_wafv2_web_acl_association" "superset" {
   resource_arn = aws_lb.superset.arn
   web_acl_arn  = aws_wafv2_web_acl.superset.arn
+}
+
+#
+# WAF logging
+#
+resource "aws_wafv2_web_acl_logging_configuration" "superset_waf_logs" {
+  log_destination_configs = [aws_kinesis_firehose_delivery_stream.superset_waf_logs.arn]
+  resource_arn            = aws_wafv2_web_acl.superset.arn
+}
+
+resource "aws_kinesis_firehose_delivery_stream" "superset_waf_logs" {
+  # checkov:skip=CKV_AWS_241: Encryption using CMK not required
+  name        = "aws-waf-logs-superset"
+  destination = "extended_s3"
+
+  server_side_encryption {
+    enabled = true
+  }
+
+  extended_s3_configuration {
+    role_arn           = aws_iam_role.superset_waf_logs.arn
+    prefix             = "waf_acl_logs/AWSLogs/${var.account_id}/"
+    bucket_arn         = local.cbs_satellite_bucket_arn
+    compression_format = "GZIP"
+  }
+}
+
+#
+# WAF logging IAM role
+#
+resource "aws_iam_role" "superset_waf_logs" {
+  name               = "superset-waf-logs"
+  assume_role_policy = data.aws_iam_policy_document.superset_waf_logs_assume.json
+}
+
+resource "aws_iam_role_policy" "superset_waf_logs" {
+  name   = "superset-waf-logs"
+  role   = aws_iam_role.superset_waf_logs.id
+  policy = data.aws_iam_policy_document.superset_waf_logs.json
+}
+
+data "aws_iam_policy_document" "superset_waf_logs_assume" {
+  statement {
+    actions = ["sts:AssumeRole"]
+    principals {
+      type        = "Service"
+      identifiers = ["firehose.amazonaws.com"]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "superset_waf_logs" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "s3:AbortMultipartUpload",
+      "s3:GetBucketLocation",
+      "s3:GetObject",
+      "s3:ListBucket",
+      "s3:ListBucketMultipartUploads",
+      "s3:PutObject"
+    ]
+    resources = [
+      local.cbs_satellite_bucket_arn,
+      "${local.cbs_satellite_bucket_arn}/*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "iam:CreateServiceLinkedRole"
+    ]
+    resources = [
+      "arn:aws:iam::*:role/aws-service-role/wafv2.amazonaws.com/AWSServiceRoleForWAFV2Logging"
+    ]
+  }
 }
