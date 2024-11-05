@@ -1,6 +1,7 @@
 locals {
   ecs_services = toset([
     module.superset_ecs,
+    module.celery_beat_ecs,
     module.celery_worker_ecs
   ])
 
