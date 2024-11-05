@@ -1,3 +1,9 @@
+variable "cloudwatch_alert_slack_webhook" {
+  description = "Slack webhook URL used by the CloudWatch alarm SNS topics."
+  type        = string
+  sensitive   = true
+}
+
 variable "google_oauth_client_id" {
   description = "Google OAuth client ID to enable logging in with Google."
   type        = string
