@@ -1,14 +1,13 @@
 
-name: Container Pull Request
+name: Docker Pull Request
 on:
   pull_request:
     paths:
-      - "containers/**"
-      - ".github/workflows/containers-pr.yml"
+      - "docker/**"
+      - ".github/workflows/docker-pr.yml"
 
 jobs:
-  containers-hadolint:
-
+  docker-hadolint:
     runs-on: ubuntu-latest
     permissions:
       contents: read # for actions/checkout to fetch code
@@ -31,7 +30,7 @@ jobs:
         id: hadolint
         uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf # v3.1.0
         with:
-          dockerfile: ./containers/Dockerfile
+          dockerfile: ./docker/Dockerfile
           format: sarif
           output-file: hadolint-results.sarif
           no-fail: true
@@ -78,6 +77,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --file ./containers/Dockerfile \
+          docker build --file ./docker/Dockerfile \
             --tag ${{ github.repository }}:${{ github.sha }} \
-            ./containers
+            ./docker

@@ -4,7 +4,7 @@ A modern, enterprise-ready business intelligence web application.
 ## Setup
 
 ### AWS
-1. Update the configuration in `./containers/superset_config.py`.
+1. Update the configuration in `./docker/superset_config.py`.
 2. Build the Docker image with `make build`.
 3. Run Terraform apply with `make apply`.
 4. Create the database and admin user:

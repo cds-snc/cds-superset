@@ -10,8 +10,8 @@ apply:
 
 build:
 	@docker build \
-        --file ./containers/Dockerfile \
-        --tag superset:latest ./containers
+        --file ./docker/Dockerfile \
+        --tag superset:latest ./docker
 
 localhost:
 	@docker compose up
@@ -32,10 +32,10 @@ plan:
 		--terragrunt-working-dir terragrunt
 
 install_dev:
-	@pip install -r ./containers/requirements_dev.txt
+	@pip install -r ./docker/requirements_dev.txt
 
 fmt: install_dev
-	black ./containers $(ARGS)
+	black ./docker $(ARGS)
 
 lint: install_dev
-	flake8 ./containers
+	flake8 ./docker

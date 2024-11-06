@@ -1,17 +1,17 @@
 x-superset-build: 
   &superset-build
-    context: ./containers
+    context: ./docker
     dockerfile: Dockerfile
 x-superset-depends-on: &superset-depends-on
   - db
   - redis
 x-superset-env: 
   &superset-env
-  - path: containers/.env.local
+  - path: docker/.env.local
     required: true
 x-superset-volumes:
   &superset-volumes
-  - ./containers:/app/docker
+  - ./docker:/app/docker
   - superset_home:/app/superset_home
 
 services:
