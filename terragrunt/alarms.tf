@@ -25,7 +25,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_cpu" {
   for_each = { for service in local.ecs_services : service.service_name => service }
 
   alarm_name          = "ecs-${each.key}-high-cpu"
-  alarm_description   = ":warning: ${each.key} high CPU use over 2 minutes."
+  alarm_description   = "`${each.key}` high CPU use over 2 minutes."
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
   metric_name         = "CPUUtilization"
@@ -50,7 +50,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
   for_each = { for service in local.ecs_services : service.service_name => service }
 
   alarm_name          = "ecs-${each.key}-high-memory"
-  alarm_description   = ":warning: ${each.key} high memory use over 2 minutes."
+  alarm_description   = "`${each.key}` high memory use over 2 minutes."
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
   metric_name         = "MemoryUtilization"
@@ -76,7 +76,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
 #
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_unhealthy_hosts" {
   alarm_name          = "load-balancer-unhealthy-hosts"
-  alarm_description   = ":warning: there are unhealthy Superset load balancer hosts in a 1 minute period."
+  alarm_description   = "There are unhealthy Superset load balancer hosts in a 1 minute period."
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = "1"
   evaluation_periods  = "1"
@@ -99,7 +99,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_unhealthy_hosts" 
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
   alarm_name          = "load-balancer-healthy-hosts"
-  alarm_description   = ":dumpster-fire: there are no healthy hosts for the Superset load balancer in a 1 minute period."
+  alarm_description   = "There are no healthy hosts for the Superset load balancer in a 1 minute period."
   comparison_operator = "LessThanThreshold"
   threshold           = "1"
   evaluation_periods  = "1"
@@ -122,7 +122,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
   alarm_name          = "load-balancer-response-time"
-  alarm_description   = ":warning: response time for the Superset load balancer is greater than 1 second over 5 minutes."
+  alarm_description   = "Response time for the Superset load balancer is greater than 1 second over 5 minutes."
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "5"
   datapoints_to_alarm = "2"
@@ -172,7 +172,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_errors" {
   for_each = { for service in local.ecs_services : service.service_name => service }
 
   alarm_name          = "errors-${each.key}"
-  alarm_description   = ":warning: ${each.key} errors logged over 1 minute."
+  alarm_description   = "`${each.key}` errors logged over 1 minute."
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
   metric_name         = aws_cloudwatch_log_metric_filter.superset_ecs_errors[each.key].metric_transformation[0].name
