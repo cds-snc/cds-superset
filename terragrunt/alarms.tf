@@ -9,6 +9,7 @@ locals {
     "CRITICAL", "ERROR"
   ]
   superset_error_filters_skip = [
+    "'Template' object has no attribute 'strip'",
     "Error on OAuth authorize"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
