@@ -169,6 +169,27 @@ resource "aws_wafv2_web_acl" "superset" {
     }
   }
 
+  rule {
+    name     = "BlockedIPv4"
+    priority = 60
+
+    action {
+      count {}
+    }
+
+    statement {
+      ip_set_reference_statement {
+        arn = module.waf_ip_blocklist.ipv4_blocklist_arn
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "BlockedIPv4"
+      sampled_requests_enabled   = true
+    }
+  }
+
   visibility_config {
     cloudwatch_metrics_enabled = true
     metric_name                = "superset"
@@ -329,4 +350,21 @@ data "aws_iam_policy_document" "superset_waf_logs" {
       "arn:aws:iam::*:role/aws-service-role/wafv2.amazonaws.com/AWSServiceRoleForWAFV2Logging"
     ]
   }
+}
+
+#
+# IPv4 blocklist that is automatically managed by a Lambda function.  Any IP address in the WAF logs
+# that crosses a block threshold will be added to the blocklist.
+#
+module "waf_ip_blocklist" {
+  source = "github.com/cds-snc/terraform-modules//waf_ip_blocklist?ref=v10.0.0"
+
+  service_name                = "superset"
+  athena_database_name        = "access_logs"
+  athena_query_results_bucket = module.athena_bucket.s3_bucket_id
+  athena_query_source_bucket  = var.cbs_satellite_bucket_name
+  athena_waf_table_name       = "waf_logs"
+  athena_workgroup_name       = "primary"
+
+  billing_tag_value = var.billing_code
 }
