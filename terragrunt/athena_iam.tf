@@ -46,6 +46,7 @@ data "aws_iam_policy_document" "superset_athena_read" {
     actions = [
       "athena:BatchGetNamedQuery",
       "athena:BatchGetQueryExecution",
+      "athena:GetDataCatalog",
       "athena:GetNamedQuery",
       "athena:GetQueryExecution",
       "athena:GetQueryResults",
