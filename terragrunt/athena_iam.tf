@@ -1,3 +1,13 @@
+locals {
+  data_lake_account_id = "739275439843"
+  data_lake_region     = "ca-central-1"
+
+  data_lake_athena_bucket_arn      = "arn:aws:s3:::cds-data-lake-athena-production"
+  data_lake_curated_bucket_arn     = "arn:aws:s3:::cds-data-lake-curated-production"
+  data_lake_transformed_bucket_arn = "arn:aws:s3:::cds-data-lake-transformed-production"
+
+}
+
 resource "aws_iam_role" "superset_athena_read" {
   name               = "SupersetAthenaRead"
   description        = "This role allows the Superset ECS task to read from Athena as a datasource"
@@ -59,18 +69,6 @@ data "aws_iam_policy_document" "superset_athena_read" {
   }
 
   statement {
-    sid    = "GlueDenyExportRead"
-    effect = "Deny"
-    actions = [
-      "glue:GetTable*",
-      "glue:GetPartition*"
-    ]
-    resources = [
-      "arn:aws:glue:${var.region}:${var.account_id}:tables/curdatabase/cds_cur_export_crawler_notify_*"
-    ]
-  }
-
-  statement {
     sid    = "GlueRead"
     effect = "Allow"
     actions = [
@@ -96,13 +94,10 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "s3:GetBucketLocation"
     ]
     resources = [
-      "${data.aws_s3_bucket.tag_data_extract.arn}/*",
-      data.aws_s3_bucket.tag_data_extract.arn,
-      "${data.aws_s3_bucket.cur_data_extract.arn}/*",
-      data.aws_s3_bucket.cur_data_extract.arn,
-      "${data.aws_s3_bucket.cur_tag_etl_output.arn}/*",
-      data.aws_s3_bucket.cur_tag_etl_output.arn
-
+      local.data_lake_curated_bucket_arn,
+      "${local.data_lake_curated_bucket_arn}/*",
+      local.data_lake_transformed_bucket_arn,
+      "${local.data_lake_transformed_bucket_arn}/*",
     ]
   }
 
@@ -117,8 +112,8 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "s3:GetBucketLocation"
     ]
     resources = [
-      data.aws_s3_bucket.cur_data_extract_queries.arn,
-      "${data.aws_s3_bucket.cur_data_extract_queries.arn}/*"
+      local.data_lake_athena_bucket_arn,
+      "${local.data_lake_athena_bucket_arn}/*"
     ]
   }
 }
