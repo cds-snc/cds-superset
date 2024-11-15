@@ -32,3 +32,13 @@ module "athena_bucket" {
     },
   ]
 }
+
+resource "aws_athena_data_catalog" "data_lake" {
+  name        = "data-lake-production"
+  description = "Data catalog for access to the CDS data lake"
+  type        = "GLUE"
+
+  parameters = {
+    "catalog-id" = local.data_lake_account_id
+  }
+}
