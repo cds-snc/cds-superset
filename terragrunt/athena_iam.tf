@@ -5,7 +5,10 @@ locals {
   data_lake_athena_bucket_arn      = "arn:aws:s3:::cds-data-lake-athena-production"
   data_lake_curated_bucket_arn     = "arn:aws:s3:::cds-data-lake-curated-production"
   data_lake_transformed_bucket_arn = "arn:aws:s3:::cds-data-lake-transformed-production"
+  data_lake_catalog_arn            = "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:catalog"
 
+  database_operations_aws_production_arn       = "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/operations_aws_production"
+  database_operations_aws_production_table_arn = "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/operations_aws_production/*"
 }
 
 resource "aws_iam_role" "superset_athena_read" {
@@ -41,12 +44,22 @@ resource "aws_iam_policy" "superset_athena_read" {
 
 data "aws_iam_policy_document" "superset_athena_read" {
   statement {
+    sid    = "AthenaDataCatalogAccess"
+    effect = "Allow"
+    actions = [
+      "athena:GetDataCatalog"
+    ]
+    resources = [
+      aws_athena_data_catalog.data_lake.arn
+    ]
+  }
+
+  statement {
     sid    = "AthenaRead"
     effect = "Allow"
     actions = [
       "athena:BatchGetNamedQuery",
       "athena:BatchGetQueryExecution",
-      "athena:GetDataCatalog",
       "athena:GetNamedQuery",
       "athena:GetQueryExecution",
       "athena:GetQueryResults",
@@ -83,7 +96,12 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "glue:GetTableVersion",
       "glue:GetTableVersions"
     ]
-    resources = ["*"]
+    resources = [
+      aws_athena_data_catalog.data_lake.arn,
+      local.data_lake_catalog_arn,
+      local.database_operations_aws_production_arn,
+      local.database_operations_aws_production_table_arn
+    ]
   }
 
   statement {
