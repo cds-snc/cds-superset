@@ -26,12 +26,12 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_cpu" {
   for_each = { for service in local.ecs_services : service.service_name => service }
 
   alarm_name          = "ecs-${each.key}-high-cpu"
-  alarm_description   = "`${each.key}` high CPU use over 2 minutes."
+  alarm_description   = "`${each.key}` high CPU use over 5 minutes."
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = "1"
+  evaluation_periods  = "5"
   metric_name         = "CPUUtilization"
   namespace           = "AWS/ECS"
-  period              = "120"
+  period              = "60"
   statistic           = "Maximum"
   threshold           = local.threshold_ecs_high_cpu
   treat_missing_data  = "notBreaching"
@@ -51,12 +51,12 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
   for_each = { for service in local.ecs_services : service.service_name => service }
 
   alarm_name          = "ecs-${each.key}-high-memory"
-  alarm_description   = "`${each.key}` high memory use over 2 minutes."
+  alarm_description   = "`${each.key}` high memory use over 5 minutes."
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = "1"
+  evaluation_periods  = "5"
   metric_name         = "MemoryUtilization"
   namespace           = "AWS/ECS"
-  period              = "120"
+  period              = "60"
   statistic           = "Maximum"
   threshold           = local.threshold_ecs_high_memory
   treat_missing_data  = "notBreaching"
