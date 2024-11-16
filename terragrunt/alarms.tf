@@ -14,8 +14,8 @@ locals {
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
 
-  threshold_ecs_high_cpu     = 50
-  threshold_ecs_high_memory  = 50
+  threshold_ecs_high_cpu     = 80
+  threshold_ecs_high_memory  = 80
   threshold_lb_response_time = 1
 }
 
