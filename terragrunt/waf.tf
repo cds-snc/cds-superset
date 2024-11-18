@@ -357,12 +357,13 @@ data "aws_iam_policy_document" "superset_waf_logs" {
 # that crosses a block threshold will be added to the blocklist.
 #
 module "waf_ip_blocklist" {
-  source = "github.com/cds-snc/terraform-modules//waf_ip_blocklist?ref=v10.0.0"
+  source = "github.com/cds-snc/terraform-modules//waf_ip_blocklist?ref=v10.0.1"
 
   service_name                = "superset"
   athena_database_name        = "access_logs"
   athena_query_results_bucket = module.athena_bucket.s3_bucket_id
   athena_query_source_bucket  = var.cbs_satellite_bucket_name
+  athena_lb_table_name        = "lb_logs"
   athena_waf_table_name       = "waf_logs"
   athena_workgroup_name       = "primary"
 
