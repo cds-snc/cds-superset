@@ -66,7 +66,7 @@ module "superset_ecs" {
 
   cluster_name = "superset"
   service_name = "superset"
-  task_cpu     = 1024
+  task_cpu     = 2048
   task_memory  = 8192
 
   # Scaling
