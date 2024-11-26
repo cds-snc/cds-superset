@@ -21,7 +21,7 @@ set -eo pipefail
 case "${1}" in
   worker)
     echo "Starting Celery worker..."
-    celery --app=superset.tasks.celery_app:app worker -O fair -l INFO
+    celery --app=superset.tasks.celery_app:app worker -O fair -l INFO --concurrency=${CELERYD_CONCURRENCY:-4}
     ;;
   beat)
     echo "Starting Celery beat..."
@@ -37,7 +37,7 @@ case "${1}" in
     superset db upgrade
     superset init
     echo "All done 🌈"
-    ;; 
+    ;;
   *)
     echo "Unknown Operation!!!"
     ;;

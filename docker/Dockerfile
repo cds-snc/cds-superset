@@ -1,4 +1,4 @@
-FROM apache/superset:4.0.2@sha256:51a90d11a59ac522172642cece4bd8047917253e13d884293fcd0cd48419939c
+FROM apache/superset:4.1.1@sha256:1d1fdaaeb19ce9cdba71620ee1cc6117d73813b2f3b422ce5a1bf752c247b7c0
 USER root
 
 # Add required database driver packages

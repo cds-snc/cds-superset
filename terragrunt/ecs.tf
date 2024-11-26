@@ -15,6 +15,10 @@ locals {
     {
       "name"  = "REDIS_PORT"
       "value" = tostring(aws_elasticache_cluster.superset.port)
+    },
+    {
+      "name"  = "WEBDRIVER_BASEURL"
+      "value" = "https://${var.domain}/"
     }
   ]
   container_env_google_auth = [

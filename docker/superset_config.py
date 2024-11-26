@@ -27,6 +27,7 @@ REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
 REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
+WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
 
 def redis_cache(key, timeout):
     return {
@@ -51,6 +52,7 @@ class CeleryConfig(object):
     broker_url = f"{REDIS_URL}/{REDIS_CELERY_DB}"
     imports = (
         "superset.sql_lab",
+        "superset.tasks.cache",
         "superset.tasks.scheduler",
     )
     result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}"
@@ -65,6 +67,11 @@ class CeleryConfig(object):
             "task": "reports.prune_log",
             "schedule": crontab(minute=10, hour=0),
         },
+        "cache-warmup-dummy": {
+            "task": "cache-warmup",
+            "schedule": crontab(minute="*", hour="*/6"),
+            "kwargs": {"strategy_name": "dummy"},
+        },
     }
 
 
@@ -73,18 +80,6 @@ RESULTS_BACKEND = RedisCache(
     host=REDIS_HOST, port=REDIS_PORT, key_prefix="superset_results"
 )
 
-CELERYBEAT_SCHEDULE = {
-    "cache-warmup-hourly": {
-        "task": "cache-warmup",
-        "schedule": crontab(minute=0, hour="*"),  # hourly
-        "kwargs": {
-            "strategy_name": "top_n_dashboards",
-            "top_n": 5,
-            "since": "7 days ago",
-        },
-    },
-}
-
 # Session management: https://superset.apache.org/docs/security/#user-sessions
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = True
@@ -92,7 +87,6 @@ SESSION_COOKIE_SAMESITE = "Strict"
 SESSION_SERVER_SIDE = True
 SESSION_TYPE = "redis"
 SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
-SESSION_USE_SIGNER = True
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
