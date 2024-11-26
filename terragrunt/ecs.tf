@@ -22,7 +22,7 @@ locals {
     },
     {
       "name"  = "WEBDRIVER_BASEURL"
-      "value" = "https://${var.domain}/"
+      "value" = "https://${var.domain}"
     }
   ]
   container_env_google_auth = [
