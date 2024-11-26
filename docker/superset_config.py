@@ -29,6 +29,7 @@ REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
 WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
 
+
 def redis_cache(key, timeout):
     return {
         "CACHE_TYPE": "RedisCache",
