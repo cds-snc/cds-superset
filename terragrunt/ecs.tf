@@ -17,6 +17,10 @@ locals {
       "value" = tostring(aws_elasticache_cluster.superset.port)
     },
     {
+      "name"  = "THUMBNAIL_SELENIUM_USER"
+      "value" = "cache-warmer"
+    },
+    {
       "name"  = "WEBDRIVER_BASEURL"
       "value" = "https://${var.domain}/"
     }

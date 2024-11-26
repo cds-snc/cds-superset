@@ -15,4 +15,8 @@ COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 COPY superset_config.py /app/superset_config.py
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py
 
+# Code overrides
+# BUG in 4.1.1 for cache warming.  Remove when the fix is released.
+COPY superset/tasks/cache.py /app/superset/tasks/cache.py
+
 USER superset

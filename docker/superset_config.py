@@ -28,6 +28,7 @@ REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
 WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
+THUMBNAIL_SELENIUM_USER = os.getenv("THUMBNAIL_SELENIUM_USER")
 
 
 def redis_cache(key, timeout):
@@ -70,7 +71,7 @@ class CeleryConfig(object):
         },
         "cache-warmup-dummy": {
             "task": "cache-warmup",
-            "schedule": crontab(minute="*", hour="*/6"),
+            "schedule": crontab(minute=0, hour="*/12"),
             "kwargs": {"strategy_name": "dummy"},
         },
     }
@@ -124,6 +125,8 @@ WTF_CSRF_EXEMPT_LIST = [
     "superset.views.core.log",
     "superset.views.core.explore_json",
     "superset.charts.data.api.data",
+    "superset.charts.api.warm_up_cache",
+    "superset.dashboards.api.cache_dashboard_screenshot",
 ]
 
 SQLLAB_CTAS_NO_LIMIT = True
@@ -137,7 +140,10 @@ FAB_ROLES = {
         [".*", "menu_access"],
         [".*", "can_get"],
         [".*", "can_info"],
-    ]
+    ],
+    "CacheWarmer": [
+        [".*", "can_warm_up_cache"],
+    ],
 }
 
 logger.info("Finished setting up custom config for Superset")

@@ -38,4 +38,4 @@ fmt: install_dev
 	black ./docker $(ARGS)
 
 lint: install_dev
-	flake8 ./docker
+	flake8 ./docker/superset_config.py
