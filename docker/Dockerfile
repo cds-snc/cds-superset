@@ -1,4 +1,4 @@
-FROM apache/superset:4.0.2@sha256:51a90d11a59ac522172642cece4bd8047917253e13d884293fcd0cd48419939c
+FROM apache/superset:4.1.1@sha256:1d1fdaaeb19ce9cdba71620ee1cc6117d73813b2f3b422ce5a1bf752c247b7c0
 USER root
 
 # Add required database driver packages
@@ -14,5 +14,9 @@ COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 # https://superset.apache.org/docs/installation/configuring-superset/#configuring-superset
 COPY superset_config.py /app/superset_config.py
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py
+
+# Code overrides
+# BUG in 4.1.1 for cache warming.  Remove when the fix is released.
+COPY superset/tasks/utils.py /app/superset/tasks/utils.py
 
 USER superset
