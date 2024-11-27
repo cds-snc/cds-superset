@@ -16,7 +16,7 @@ COPY superset_config.py /app/superset_config.py
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py
 
 # Code overrides
-# BUG in 4.1.1 for cache warming.  Remove when the fix is released.
+# BUG in v4.1.1 for cache warming.  Remove when the fix is released.
 COPY superset/tasks/utils.py /app/superset/tasks/utils.py
 
 USER superset

@@ -2,7 +2,7 @@ name: Docker deploy
 
 on:
   workflow_run:
-    workflows: ["Container build and push"]
+    workflows: ["Docker build and push"]
     types:
     - completed
 
