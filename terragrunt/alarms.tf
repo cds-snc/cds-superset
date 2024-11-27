@@ -10,7 +10,10 @@ locals {
   ]
   superset_error_filters_skip = [
     "'Template' object has no attribute 'strip'",
-    "Error on OAuth authorize"
+    "COLUMN_NOT_FOUND",
+    "Error on OAuth authorize",
+    "Failed to execute query",
+    "SYNTAX_ERROR"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
 
