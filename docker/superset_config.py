@@ -134,11 +134,15 @@ SIP_15_ENABLED = True
 # Custom roles
 FAB_ROLES = {
     "ReadOnly": [
-        [".*", "can_list"],
-        [".*", "can_show"],
-        [".*", "menu_access"],
-        [".*", "can_get"],
         [".*", "can_info"],
+        [".*", "can_list"],
+        [".*", "can_get"],
+        [".*", "can_external_metadata"],
+        [".*", "can_external_metadata_by_name"],
+        [".*", "can_read"],
+        [".*", "can_show"],
+        ["all_datasource_access", "all_datasource_access"],
+        ["all_database_access", "all_database_access"],
     ],
     "CacheWarmer": [
         [".*", "can_warm_up_cache"],
