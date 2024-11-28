@@ -69,10 +69,19 @@ class CeleryConfig(object):
             "task": "reports.prune_log",
             "schedule": crontab(minute=10, hour=0),
         },
-        "cache-warmup-dummy": {
+        "cache-warmup-charts": {
             "task": "cache-warmup",
-            "schedule": crontab(minute=0, hour="*/12"),
+            "schedule": crontab(minute=0, hour="*/2"),
             "kwargs": {"strategy_name": "dummy"},
+        },
+        "cache-warmup-dashboard": {
+            "task": "cache-warmup",
+            "schedule": crontab(minute=5, hour="*/2"),
+            "kwargs": {
+                "strategy_name": "top_n_dashboards",
+                "top_n": 10,
+                "since": "7 days ago",
+            },
         },
     }
 
@@ -125,6 +134,7 @@ WTF_CSRF_EXEMPT_LIST = [
     "superset.views.core.log",
     "superset.views.core.explore_json",
     "superset.charts.data.api.data",
+    "superset.charts.api.warm_up_cache",
     "superset.dashboards.api.cache_dashboard_screenshot",
 ]
 
