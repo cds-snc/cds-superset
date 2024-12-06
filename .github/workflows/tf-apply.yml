@@ -5,7 +5,10 @@ on:
     branches:
       - main
     paths:
-      - "terragrunt/**"
+      - "terragrunt/aws/**"
+      - "terragrunt/env/prod/**"
+      - "terragrunt/env/common/**"
+      - "terragrunt/env/terragrunt.hcl"
       - ".github/workflows/tf-apply.yml"
 
 env:
