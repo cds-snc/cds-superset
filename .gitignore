@@ -8,6 +8,6 @@
 # Terragrunt
 .terragrunt-cache/
 
-terragrunt/common_variables.tf
-terragrunt/backend.tf
-terragrunt/provider.tf
+terragrunt/aws/common_variables.tf
+terragrunt/aws/backend.tf
+terragrunt/aws/provider.tf
