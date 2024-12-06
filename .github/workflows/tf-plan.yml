@@ -2,7 +2,10 @@ name: Terraform Plan
 on:
   pull_request:
     paths:
-      - "terragrunt/**"
+      - "terragrunt/aws/**"
+      - "terragrunt/env/prod/**"
+      - "terragrunt/env/common/**"
+      - "terragrunt/env/terragrunt.hcl"
       - ".github/workflows/tf-plan.yml"
 
 env:
@@ -53,6 +56,6 @@ jobs:
         with:
           comment-delete: true
           comment-title: "Production"
-          directory: "terragrunt"
+          directory: "terragrunt/env/prod"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           terragrunt: true
