@@ -109,6 +109,8 @@ module "superset_ecs" {
 }
 
 module "celery_worker_ecs" {
+  count = var.env == "production" ? 1 : 0
+
   source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.2.0"
 
   create_cluster = false
@@ -148,6 +150,8 @@ module "celery_worker_ecs" {
 }
 
 module "celery_beat_ecs" {
+  count = var.env == "production" ? 1 : 0
+
   source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.2.0"
 
   create_cluster = false
