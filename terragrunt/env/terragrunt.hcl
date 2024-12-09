@@ -6,7 +6,6 @@ locals {
 inputs = {
   account_id                = local.vars.inputs.account_id
   domain                    = local.vars.inputs.domain
-  domain_prod               = local.vars.inputs.domain_prod
   env                       = local.vars.inputs.env
   product_name              = local.vars.inputs.product_name
   region                    = local.vars.inputs.region
