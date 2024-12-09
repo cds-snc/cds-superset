@@ -14,3 +14,8 @@ resource "aws_route53_record" "superset_A" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_zone" "superset_prod" {
+  name = var.domain_prod
+  tags = local.common_tags
+}
