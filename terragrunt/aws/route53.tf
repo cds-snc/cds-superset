@@ -15,7 +15,7 @@ resource "aws_route53_record" "superset_A" {
   }
 }
 
-resource "aws_route53_zone" "superset_prod" {
-  name = var.domain_prod
-  tags = local.common_tags
+moved {
+  from = aws_route53_zone.superset_prod
+  to   = aws_route53_zone.superset
 }

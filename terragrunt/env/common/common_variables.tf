@@ -18,11 +18,6 @@ variable "domain" {
   type        = string
 }
 
-variable "domain_prod" {
-  description = "The production domain to use for the service."
-  type        = string
-}
-
 variable "env" {
   description = "The current running environment"
   type        = string
