@@ -3,6 +3,7 @@ name: Docker Pull Request
 on:
   pull_request:
     paths:
+      - "version.txt"
       - "docker/**"
       - ".github/workflows/docker-pr.yml"
 
