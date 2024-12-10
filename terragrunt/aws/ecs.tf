@@ -105,6 +105,9 @@ module "superset_ecs" {
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
+  # Allow executing commands on the task
+  enable_execute_command = false
+
   billing_tag_value = var.billing_code
 }
 
