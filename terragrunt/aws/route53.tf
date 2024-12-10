@@ -15,7 +15,9 @@ resource "aws_route53_record" "superset_A" {
   }
 }
 
-moved {
-  from = aws_route53_zone.superset_prod
-  to   = aws_route53_zone.superset
+resource "aws_route53_zone" "superset_cds_snc" {
+  count = var.env == "prod" ? 1 : 0
+
+  name = "superset.cds-snc.ca"
+  tags = local.common_tags
 }
