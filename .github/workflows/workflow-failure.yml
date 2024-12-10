@@ -1,0 +1,24 @@
+name: Workflow failure
+
+on:
+  workflow_run:
+    workflows:
+      - "Docker deploy Production"
+      - "Docker deploy Staging"
+      - "Docker build and push Production"
+      - "Docker build and push Staging"
+      - "Release Please"
+      - "Terraform Apply Production"
+      - "Terraform Apply Staging"
+    types:
+      - completed
+
+jobs:
+  on-failure:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'failure'
+    steps:
+      - name: Notify Slack
+        run: |
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${{ github.event.workflow_run.html_url }}|${{ github.event.workflow.name }}>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ secrets.PROD_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}

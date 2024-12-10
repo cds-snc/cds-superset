@@ -1,17 +1,14 @@
+name: Docker build and push Production
 
-name: Docker build and push
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "docker/**"
-      - ".github/workflows/docker-apply.yml"
+  release:
+    types:
+    - published
 
 env: 
   AWS_REGION: ca-central-1
   REGISTRY: ${{ vars.PROD_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
-  GITHUB_SHA: ${{ github.sha }}
+  TAG_VERSION: ${{ github.ref_name }}
 
 permissions:
   id-token: write
@@ -19,7 +16,6 @@ permissions:
   
 jobs:
   docker-push:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - name: Audit DNS requests
@@ -49,12 +45,12 @@ jobs:
       run: |
         docker build \
         --file ./docker/Dockerfile \
-        --tag $REGISTRY:sha-$GITHUB_SHA \
+        --tag $REGISTRY:${{ env.TAG_VERSION }} \
         --tag $REGISTRY:latest ./docker
 
     - name: Push Container to Amazon ECR
       run: |
-        docker push $REGISTRY:sha-$GITHUB_SHA
+        docker push $REGISTRY:${{ env.TAG_VERSION }}
         docker push $REGISTRY:latest
 
     - name: Docker generate SBOM
