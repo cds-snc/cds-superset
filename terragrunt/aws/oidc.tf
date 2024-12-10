@@ -8,6 +8,8 @@ locals {
 # attribute of each role.
 # 
 module "github_workflow_roles" {
+  count = var.env == "prod" ? 1 : 0
+
   source            = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v10.2.0"
   billing_tag_value = var.billing_code
   roles = [
@@ -24,11 +26,12 @@ module "github_workflow_roles" {
 # attachments are scoped to only the environments that require the role.
 #
 resource "aws_iam_role_policy_attachment" "cds_superset_release" {
-  count      = var.env == "prod" ? 1 : 0
+  count = var.env == "prod" ? 1 : 0
+
   role       = local.cds_superset_release
   policy_arn = data.aws_iam_policy.admin.arn
   depends_on = [
-    module.github_workflow_roles
+    module.github_workflow_roles[0]
   ]
 }
 
