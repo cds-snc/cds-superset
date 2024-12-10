@@ -16,7 +16,7 @@ resource "aws_route53_record" "superset_A" {
 }
 
 resource "aws_route53_zone" "superset_cds_snc" {
-  count = var.env == "production" ? 1 : 0
+  count = var.env == "prod" ? 1 : 0
 
   name = "superset.cds-snc.ca"
   tags = local.common_tags
