@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/cds-snc/cds-superset/compare/v1.1.1...v2.0.0) (2024-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* switch to Aurora Serverless database ([#238](https://github.com/cds-snc/cds-superset/issues/238))
+
+### Features
+
+* switch to Aurora Serverless database ([#238](https://github.com/cds-snc/cds-superset/issues/238)) ([3c18c59](https://github.com/cds-snc/cds-superset/commit/3c18c5995b5e5d9ab8d3a8c1a0b9536563ceec44))
+
 ## [1.1.1](https://github.com/cds-snc/cds-superset/compare/v1.1.0...v1.1.1) (2024-12-11)
 
 
