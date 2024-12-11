@@ -17,6 +17,9 @@ module "superset_db" {
   preferred_backup_window      = "02:00-04:00"
   performance_insights_enabled = true
 
+  serverless_min_capacity = var.superset_database_min_capacity
+  serverless_max_capacity = var.superset_database_max_capacity
+
   vpc_id             = module.vpc.vpc_id
   subnet_ids         = module.vpc.private_subnet_ids
   security_group_ids = [aws_security_group.superset_db.id]

@@ -26,6 +26,16 @@ variable "superset_database_instance_class" {
   type        = string
 }
 
+variable "superset_database_max_capacity" {
+  description = "The maximum capacity for the serverless database."
+  type        = number
+}
+
+variable "superset_database_min_capacity" {
+  description = "The minimum capacity for the serverless database."
+  type        = number
+}
+
 variable "superset_database_username" {
   description = "The username to use for the database."
   type        = string
