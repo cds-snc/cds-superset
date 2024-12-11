@@ -1,16 +1,16 @@
+name: Docker build and push Staging
 
-name: Docker build and push
 on:
   push:
     branches:
       - main
     paths:
       - "docker/**"
-      - ".github/workflows/docker-apply.yml"
+      - ".github/workflows/docker-apply-staging.yml"
 
 env: 
   AWS_REGION: ca-central-1
-  REGISTRY: ${{ vars.PROD_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
+  REGISTRY: ${{ vars.STAGING_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
   GITHUB_SHA: ${{ github.sha }}
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
     - name: configure aws credentials using OIDC
       uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
       with:
-        role-to-assume: arn:aws:iam::${{ vars.PROD_AWS_ACCOUNT_ID }}:role/cds-superset-apply 
+        role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-apply 
         role-session-name: PushContainer
         aws-region: ${{ env.AWS_REGION }}
 
