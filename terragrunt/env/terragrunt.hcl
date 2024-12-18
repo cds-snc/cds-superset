@@ -23,7 +23,7 @@ remote_state {
   config = {
     encrypt             = true
     bucket              = "${local.billing_code}-tf"
-    dynamodb_table      = "terraform-state-lock-dynamo"
+    use_lockfile        = true
     region              = "ca-central-1"
     key                 = "./terraform.tfstate"
     s3_bucket_tags      = { CostCenter : local.billing_code }
