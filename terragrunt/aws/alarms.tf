@@ -10,6 +10,7 @@ locals {
   ]
   superset_error_filters_skip = [
     "'Template' object has no attribute 'strip'",
+    "COLUMN_NOT_FOUND",
     "DML_NOT_ALLOWED_ERROR",
     "Error on OAuth authorize",
     "Failed to execute query",
