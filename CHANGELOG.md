@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/cds-snc/cds-superset/compare/v2.0.2...v2.1.0) (2024-12-19)
+
+
+### Features
+
+* staging access to GC Forms form test data ([#249](https://github.com/cds-snc/cds-superset/issues/249)) ([4991896](https://github.com/cds-snc/cds-superset/commit/4991896ddd5479ba036050466e2e4e12af9f535d))
+
+
+### Miscellaneous Chores
+
+* suppress user query CloudWatch alarms ([#251](https://github.com/cds-snc/cds-superset/issues/251)) ([2a132e4](https://github.com/cds-snc/cds-superset/commit/2a132e45a4dbd38b2ea4579ac0c923262ee9b6f0))
+
 ## [2.0.2](https://github.com/cds-snc/cds-superset/compare/v2.0.1...v2.0.2) (2024-12-18)
 
 
