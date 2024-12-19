@@ -5,10 +5,18 @@ locals {
   data_lake_athena_bucket_arn      = "arn:aws:s3:::cds-data-lake-athena-production"
   data_lake_curated_bucket_arn     = "arn:aws:s3:::cds-data-lake-curated-production"
   data_lake_transformed_bucket_arn = "arn:aws:s3:::cds-data-lake-transformed-production"
-  data_lake_catalog_arn            = "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:catalog"
 
-  database_operations_aws_production_arn       = "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/operations_aws_production"
-  database_operations_aws_production_table_arn = "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/operations_aws_production/*"
+  glue_base_access = [
+    aws_athena_data_catalog.data_lake.arn,
+    "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:catalog",
+    "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/operations_aws_production",
+    "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/operations_aws_production/*"
+  ]
+  glue_staging_access = [
+    "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/platform_gc_forms_production",
+    "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/platform_gc_forms_production/*",
+  ]
+  glue_access = concat(local.glue_base_access, (var.env == "staging" ? local.glue_staging_access : []))
 }
 
 resource "aws_iam_role" "superset_athena_read" {
@@ -96,12 +104,7 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "glue:GetTableVersion",
       "glue:GetTableVersions"
     ]
-    resources = [
-      aws_athena_data_catalog.data_lake.arn,
-      local.data_lake_catalog_arn,
-      local.database_operations_aws_production_arn,
-      local.database_operations_aws_production_table_arn
-    ]
+    resources = local.glue_access
   }
 
   statement {
