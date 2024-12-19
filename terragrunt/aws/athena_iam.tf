@@ -11,7 +11,7 @@ locals {
     "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:catalog",
     "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/operations_aws_production",
     "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/operations_aws_production/*"
-  ] 
+  ]
   glue_staging_access = [
     "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/platform_gc_forms_production",
     "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/platform_gc_forms_production/*",
