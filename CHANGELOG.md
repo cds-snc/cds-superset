@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/cds-snc/cds-superset/compare/v2.2.0...v2.2.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* stop WAF from blocking dashboard saves ([#253](https://github.com/cds-snc/cds-superset/issues/253)) ([8f3ea74](https://github.com/cds-snc/cds-superset/commit/8f3ea743c11ade8bfc2e8ebed70b4246ff39ec8f))
+
 ## [2.2.0](https://github.com/cds-snc/cds-superset/compare/v2.1.0...v2.2.0) (2024-12-20)
 
 
