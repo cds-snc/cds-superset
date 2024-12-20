@@ -1,5 +1,5 @@
 locals {
-  excluded_common_rules    = []
+  excluded_common_rules    = ["SizeRestrictions_BODY"]
   cbs_satellite_bucket_arn = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
 }
 
@@ -165,6 +165,68 @@ resource "aws_wafv2_web_acl" "superset" {
     visibility_config {
       cloudwatch_metrics_enabled = true
       metric_name                = "AWSManagedRulesCommonRuleSet"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Label match rule
+  # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
+  rule {
+    name     = "Label_SizeRestrictions_BODY"
+    priority = 55
+
+    action {
+      block {}
+    }
+
+    statement {
+      and_statement {
+        statement {
+          label_match_statement {
+            scope = "LABEL"
+            key   = "awswaf:managed:aws:core-rule-set:SizeRestrictions_Body"
+          }
+        }
+        statement {
+          not_statement {
+            statement {
+              and_statement {
+                statement {
+                  byte_match_statement {
+                    field_to_match {
+                      method {}
+                    }
+                    positional_constraint = "EXACTLY"
+                    search_string         = "put"
+                    text_transformation {
+                      type     = "LOWERCASE"
+                      priority = 0
+                    }
+                  }
+                }
+                statement {
+                  byte_match_statement {
+                    field_to_match {
+                      uri_path {}
+                    }
+                    positional_constraint = "CONTAINS"
+                    search_string         = "/api/v1/dashboard"
+                    text_transformation {
+                      type     = "LOWERCASE"
+                      priority = 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "Label_SizeRestrictions_BODY"
       sampled_requests_enabled   = true
     }
   }
