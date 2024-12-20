@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/cds-snc/cds-superset/compare/v2.1.0...v2.2.0) (2024-12-20)
+
+
+### Features
+
+* enable Jinja templating in queries ([#252](https://github.com/cds-snc/cds-superset/issues/252)) ([45c9fe3](https://github.com/cds-snc/cds-superset/commit/45c9fe3c14eefd29b41beef602697e28431cd9ab))
+
 ## [2.1.0](https://github.com/cds-snc/cds-superset/compare/v2.0.2...v2.1.0) (2024-12-19)
 
 
