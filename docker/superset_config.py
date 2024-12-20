@@ -141,6 +141,10 @@ WTF_CSRF_EXEMPT_LIST = [
 SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
 
+FEATURE_FLAGS = {
+    "ENABLE_TEMPLATE_PROCESSING": True,
+}
+
 # Custom roles
 FAB_ROLES = {
     "ReadOnly": [
