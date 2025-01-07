@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.2](https://github.com/cds-snc/cds-superset/compare/v2.2.1...v2.2.2) (2025-01-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#258](https://github.com/cds-snc/cds-superset/issues/258)) ([cf9d1d9](https://github.com/cds-snc/cds-superset/commit/cf9d1d93002fec5db34baf681fdef264b2c5e01b))
+* **deps:** update all minor dependencies ([#261](https://github.com/cds-snc/cds-superset/issues/261)) ([50fb0c6](https://github.com/cds-snc/cds-superset/commit/50fb0c6866b1bbd51508293ae6a107b6b70af505))
+* **deps:** update all non-major github action dependencies ([#260](https://github.com/cds-snc/cds-superset/issues/260)) ([f6c7952](https://github.com/cds-snc/cds-superset/commit/f6c7952904bf60ddcccb768cbe8c28b643385271))
+* **deps:** update dependency redis to v5 ([#248](https://github.com/cds-snc/cds-superset/issues/248)) ([beb977c](https://github.com/cds-snc/cds-superset/commit/beb977cdd545829518b9e985ab16dd43c3baef20))
+* **deps:** update github/codeql-action action to v3.27.9 ([#256](https://github.com/cds-snc/cds-superset/issues/256)) ([45e3bcd](https://github.com/cds-snc/cds-superset/commit/45e3bcd9d3fb16fb37b81a4f1ff1ff0b39478f90))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.2.1 ([#257](https://github.com/cds-snc/cds-superset/issues/257)) ([1c5f80b](https://github.com/cds-snc/cds-superset/commit/1c5f80bc8a2a6957068606326282b71d6e443ed0))
+
 ## [2.2.1](https://github.com/cds-snc/cds-superset/compare/v2.2.0...v2.2.1) (2024-12-20)
 
 
