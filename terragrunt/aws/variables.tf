@@ -4,6 +4,11 @@ variable "cloudwatch_alert_slack_webhook" {
   sensitive   = true
 }
 
+variable "glue_databases" {
+  description = "List of Glue databases to grant access to."
+  type        = list(string)
+}
+
 variable "google_oauth_client_id" {
   description = "Google OAuth client ID to enable logging in with Google."
   type        = string
