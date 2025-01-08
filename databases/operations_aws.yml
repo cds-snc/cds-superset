@@ -11,6 +11,6 @@ extra:
   allows_virtual_table_explore: true
   engine_params:
     connect_args:
-      role_arn: arn:aws:iam::066023111852:role/SupersetAthenaRead
+      role_arn: arn:aws:iam::066023111852:role/SupersetAthenaRead-operations_aws_production
 uuid: 5a7d0cc9-a7aa-4a0c-95d2-52b7e88765dd
 version: 1.0.0
