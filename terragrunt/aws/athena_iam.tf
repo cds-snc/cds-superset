@@ -124,7 +124,7 @@ data "aws_iam_policy_document" "glue_database" {
   for_each = toset(var.glue_databases)
 
   statement {
-    sid    = "GlueRead-${each.key}"
+    sid    = "GlueRead"
     effect = "Allow"
     actions = [
       "glue:BatchGetPartition",
