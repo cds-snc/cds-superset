@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.0](https://github.com/cds-snc/cds-superset/compare/v2.2.2...v2.3.0) (2025-01-08)
+
+
+### Features
+
+* create IAM role per Glue database ([#262](https://github.com/cds-snc/cds-superset/issues/262)) ([5e6f610](https://github.com/cds-snc/cds-superset/commit/5e6f61012d98089d790f2e7d5849180d4eb5b549))
+
+
+### Bug Fixes
+
+* non-alpha characters in IAM policy sid ([#264](https://github.com/cds-snc/cds-superset/issues/264)) ([d78a10e](https://github.com/cds-snc/cds-superset/commit/d78a10e152b0a7b48516c89d91cbf038cc2e2d91))
+
 ## [2.2.2](https://github.com/cds-snc/cds-superset/compare/v2.2.1...v2.2.2) (2025-01-07)
 
 
