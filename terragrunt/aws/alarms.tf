@@ -14,7 +14,6 @@ locals {
     "DML_NOT_ALLOWED_ERROR",
     "Error on OAuth authorize",
     "Failed to execute query",
-    "GENERIC_DB_ENGINE_ERROR",
     "SYNTAX_ERROR"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
