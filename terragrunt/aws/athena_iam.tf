@@ -11,7 +11,7 @@ resource "aws_iam_role" "superset_athena_read" {
   for_each = toset(var.glue_databases)
 
   name               = "SupersetAthenaRead-${each.key}"
-  description        = "This role allows the Superset ECS task to read from Athena's Glue catalog ${each.key} database"
+  description        = "This role allows the Superset ECS task to read from ${each.key == "all" ? "all Glue databases" : "the ${each.key} Glue database"}"
   assume_role_policy = data.aws_iam_policy_document.superset_ecs_task_role.json
 
   tags = local.common_tags
@@ -143,8 +143,8 @@ data "aws_iam_policy_document" "glue_database" {
         "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:catalog",
       ],
       [
-        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/${each.key}",
-        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/${each.key}/*"
+        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/${each.key == "all" ? "*" : each.key}",
+        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/${each.key == "all" ? "*" : each.key}/*"
       ]
     )
   }
