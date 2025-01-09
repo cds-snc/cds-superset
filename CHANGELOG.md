@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.4.0](https://github.com/cds-snc/cds-superset/compare/v2.3.0...v2.4.0) (2025-01-09)
+
+
+### Features
+
+* Superset IAM role that can read all databases ([#269](https://github.com/cds-snc/cds-superset/issues/269)) ([0bdba47](https://github.com/cds-snc/cds-superset/commit/0bdba47a0553f033775a051dba6518d490b33c66))
+
+
+### Bug Fixes
+
+* remove suppress of generic DB errors ([#268](https://github.com/cds-snc/cds-superset/issues/268)) ([0646e07](https://github.com/cds-snc/cds-superset/commit/0646e070e19b03e84c094b6fd3bd22344ff23290))
+
+
+### Miscellaneous Chores
+
+* synced file(s) with cds-snc/site-reliability-engineering ([#265](https://github.com/cds-snc/cds-superset/issues/265)) ([1b922fb](https://github.com/cds-snc/cds-superset/commit/1b922fb115612f5bb0344b2519dc1ac3c3d3ddbf))
+* update Operations / AWS DB export ([#267](https://github.com/cds-snc/cds-superset/issues/267)) ([5971342](https://github.com/cds-snc/cds-superset/commit/5971342fc34ab0f40e3fd3662f3fe61f9ef9cc0d))
+
 ## [2.3.0](https://github.com/cds-snc/cds-superset/compare/v2.2.2...v2.3.0) (2025-01-08)
 
 
