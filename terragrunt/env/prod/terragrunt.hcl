@@ -8,6 +8,7 @@ include {
 
 inputs = {
   glue_databases = [
+    "all",
     "operations_aws_production",
   ]
   superset_database_instance_class  = "db.serverless"

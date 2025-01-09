@@ -8,6 +8,7 @@ include {
 
 inputs = {
   glue_databases = [
+    "all",
     "platform_gc_forms_production",
     "operations_aws_production",
   ]
