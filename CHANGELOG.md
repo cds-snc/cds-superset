@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.4.1](https://github.com/cds-snc/cds-superset/compare/v2.4.0...v2.4.1) (2025-01-13)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#273](https://github.com/cds-snc/cds-superset/issues/273)) ([3fb787b](https://github.com/cds-snc/cds-superset/commit/3fb787bdf3127f86f38cc56046a92965311da6d1))
+* suppress AccessDenied DB errors ([#270](https://github.com/cds-snc/cds-superset/issues/270)) ([e5131b6](https://github.com/cds-snc/cds-superset/commit/e5131b6269ec08829354bd27d2fca277e0d7a116))
+* suppress user generated error ([#272](https://github.com/cds-snc/cds-superset/issues/272)) ([e2ef8ca](https://github.com/cds-snc/cds-superset/commit/e2ef8cad2a38ce9b1ddd1308e69ea936f96ea63b))
+
 ## [2.4.0](https://github.com/cds-snc/cds-superset/compare/v2.3.0...v2.4.0) (2025-01-09)
 
 
