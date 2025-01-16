@@ -33,7 +33,7 @@ superset init
 ```
 
 ### Localhost
-You will need Docker, and optionally VS Code devcontainers:
+You will need Docker and Docker Compose, and optionally VS Code devcontainers:
 
 1. Run `make localhost`.
 2. Username and password are `admin` at http://localhost:8088.
