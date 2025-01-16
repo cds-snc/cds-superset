@@ -147,7 +147,7 @@ FEATURE_FLAGS = {
 
 LANGUAGES = {
     'en': {'flag': 'us', 'name': 'English'},
-    'fr': {'flag': 'fr', 'name': 'French'},
+    'fr': {'flag': 'fr', 'name': 'Français'},
 }
 
 # Custom roles
