@@ -145,6 +145,11 @@ FEATURE_FLAGS = {
     "ENABLE_TEMPLATE_PROCESSING": True,
 }
 
+LANGUAGES = {
+    "en": {"flag": "us", "name": "English"},
+    "fr": {"flag": "fr", "name": "Français"},
+}
+
 # Custom roles
 FAB_ROLES = {
     "ReadOnly": [
