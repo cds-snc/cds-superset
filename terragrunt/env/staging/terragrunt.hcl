@@ -10,6 +10,7 @@ inputs = {
   glue_databases = [
     "all",
     "platform_gc_forms_production",
+    "platform_support_production",
     "operations_aws_production",
   ]
   superset_database_instance_class  = "db.serverless"
