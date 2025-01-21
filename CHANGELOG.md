@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.4.2](https://github.com/cds-snc/cds-superset/compare/v2.4.1...v2.4.2) (2025-01-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#278](https://github.com/cds-snc/cds-superset/issues/278)) ([f274d87](https://github.com/cds-snc/cds-superset/commit/f274d877c9d6b8c0c0355bf21358819bc26eddeb))
+* **deps:** update github/codeql-action action to v3.28.1 ([#276](https://github.com/cds-snc/cds-superset/issues/276)) ([c202dce](https://github.com/cds-snc/cds-superset/commit/c202dce0114943e7ce26e0e11e0848f6ed5a998e))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.2.2 ([#277](https://github.com/cds-snc/cds-superset/issues/277)) ([41532e8](https://github.com/cds-snc/cds-superset/commit/41532e8187d67c06586b3c8a4b23aa7d08d85f2d))
+* Enable bilingual feature ([#274](https://github.com/cds-snc/cds-superset/issues/274)) ([2da58cd](https://github.com/cds-snc/cds-superset/commit/2da58cd56a39fc9873ac69a63459e6ebf8720eb5))
+
 ## [2.4.1](https://github.com/cds-snc/cds-superset/compare/v2.4.0...v2.4.1) (2025-01-13)
 
 
