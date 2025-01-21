@@ -10,6 +10,7 @@ inputs = {
   glue_databases = [
     "all",
     "operations_aws_production",
+    "platform_support_production",
   ]
   superset_database_instance_class  = "db.serverless"
   superset_database_instances_count = 1
