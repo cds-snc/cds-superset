@@ -8,7 +8,7 @@ on:
       - "terragrunt/aws/**"
       - "terragrunt/env/staging/**"
       - "terragrunt/env/common/**"
-      - "terragrunt/env/terragrunt.hcl"
+      - "terragrunt/env/root.hcl"
       - ".github/workflows/tf-apply-staging.yml"
 
 env:
