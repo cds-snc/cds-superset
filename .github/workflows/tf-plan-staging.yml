@@ -5,7 +5,7 @@ on:
       - "terragrunt/aws/**"
       - "terragrunt/env/staging/**"
       - "terragrunt/env/common/**"
-      - "terragrunt/env/terragrunt.hcl"
+      - "terragrunt/env/root.hcl"
       - ".github/workflows/tf-plan-staging.yml"
 
 env:
