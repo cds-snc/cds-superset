@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.5.0](https://github.com/cds-snc/cds-superset/compare/v2.4.2...v2.5.0) (2025-01-23)
+
+
+### Features
+
+* grant Staging access to Freshdesk dataset ([#279](https://github.com/cds-snc/cds-superset/issues/279)) ([e5d0a08](https://github.com/cds-snc/cds-superset/commit/e5d0a08c677f827fb5f4733cbe9cf2ba29ea3637))
+* onboard Freshdesk dataset to prod ([#281](https://github.com/cds-snc/cds-superset/issues/281)) ([3f51f24](https://github.com/cds-snc/cds-superset/commit/3f51f24d02111c7c69c9d0e4cdde575b5352314f))
+
+
+### Miscellaneous Chores
+
+* follow Terragrunt naming convention ([#282](https://github.com/cds-snc/cds-superset/issues/282)) ([000a1fa](https://github.com/cds-snc/cds-superset/commit/000a1fa1252486f16939b30cb9ab942dd98152d6))
+
 ## [2.4.2](https://github.com/cds-snc/cds-superset/compare/v2.4.1...v2.4.2) (2025-01-20)
 
 
