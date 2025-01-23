@@ -192,12 +192,11 @@ resource "aws_wafv2_web_acl" "superset" {
             statement {
               and_statement {
                 statement {
-                  byte_match_statement {
+                  regex_match_statement {
                     field_to_match {
                       method {}
                     }
-                    positional_constraint = "EXACTLY"
-                    search_string         = "put"
+                    regex_string = "^(put|post)$"
                     text_transformation {
                       type     = "LOWERCASE"
                       priority = 0
@@ -205,12 +204,11 @@ resource "aws_wafv2_web_acl" "superset" {
                   }
                 }
                 statement {
-                  byte_match_statement {
+                  regex_pattern_set_reference_statement {
                     field_to_match {
                       uri_path {}
                     }
-                    positional_constraint = "CONTAINS"
-                    search_string         = "/api/v1/dashboard"
+                    arn = aws_wafv2_regex_pattern_set.label_sizerestrictions_body_excluded_paths.arn
                     text_transformation {
                       type     = "LOWERCASE"
                       priority = 0
@@ -359,6 +357,20 @@ resource "aws_kinesis_firehose_delivery_stream" "superset_waf_logs" {
     prefix             = "waf_acl_logs/AWSLogs/${var.account_id}/"
     bucket_arn         = local.cbs_satellite_bucket_arn
     compression_format = "GZIP"
+  }
+}
+
+resource "aws_wafv2_regex_pattern_set" "label_sizerestrictions_body_excluded_paths" {
+  name        = "label_sizerestrictions_body_excluded_paths"
+  description = "Paths that should not be blocked by the SizeRestrictions_BODY rule"
+  scope       = "REGIONAL"
+
+  regular_expression {
+    regex_string = "^/api/v1/(dashboard|chart|dataset).*$"
+  }
+
+  regular_expression {
+    regex_string = "^/superset/explore_json/.*$"
   }
 }
 
