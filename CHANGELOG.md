@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.5.1](https://github.com/cds-snc/cds-superset/compare/v2.5.0...v2.5.1) (2025-01-23)
+
+
+### Bug Fixes
+
+* allow API requests for large dashboards ([#285](https://github.com/cds-snc/cds-superset/issues/285)) ([98fabe3](https://github.com/cds-snc/cds-superset/commit/98fabe3f520d9e9f430c7a24b123127b4daef73a))
+
+
+### Miscellaneous Chores
+
+* add Platform / Support database export ([#283](https://github.com/cds-snc/cds-superset/issues/283)) ([390ea2a](https://github.com/cds-snc/cds-superset/commit/390ea2ae29a964ced296be1ae1183c95348bfa28))
+
 ## [2.5.0](https://github.com/cds-snc/cds-superset/compare/v2.4.2...v2.5.0) (2025-01-23)
 
 
