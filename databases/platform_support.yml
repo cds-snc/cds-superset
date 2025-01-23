@@ -1,0 +1,16 @@
+database_name: Platform / Support
+sqlalchemy_uri: awsathena+rest://:@athena.ca-central-1.amazonaws.com:443/platform_support_production?AwsRegion=ca-central-1&catalog_name=data-lake-production&s3_staging_dir=s3%3A%2F%2Fcds-data-lake-athena-production
+cache_timeout: null
+expose_in_sqllab: true
+allow_run_async: false
+allow_ctas: false
+allow_cvas: false
+allow_dml: false
+allow_csv_upload: false
+extra:
+  allows_virtual_table_explore: true
+  engine_params:
+    connect_args:
+      role_arn: arn:aws:iam::066023111852:role/SupersetAthenaRead-platform_support_production
+uuid: 47e7a8a6-ae85-426e-bd5f-b0266624114e
+version: 1.0.0
