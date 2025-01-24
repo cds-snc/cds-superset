@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.2](https://github.com/cds-snc/cds-superset/compare/v2.5.1...v2.5.2) (2025-01-24)
+
+
+### Bug Fixes
+
+* increase rate limit and block IP set ([#286](https://github.com/cds-snc/cds-superset/issues/286)) ([d02b5e1](https://github.com/cds-snc/cds-superset/commit/d02b5e198d2ab0f1d709c8087808c5cd176366b0))
+
 ## [2.5.1](https://github.com/cds-snc/cds-superset/compare/v2.5.0...v2.5.1) (2025-01-23)
 
 
