@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.3](https://github.com/cds-snc/cds-superset/compare/v2.5.2...v2.5.3) (2025-01-24)
+
+
+### Bug Fixes
+
+* combine `Gamma` permissions with `ReadOnly` ([#288](https://github.com/cds-snc/cds-superset/issues/288)) ([2072d59](https://github.com/cds-snc/cds-superset/commit/2072d59f7fa60d015a56b856bbb573b10246535b))
+
 ## [2.5.2](https://github.com/cds-snc/cds-superset/compare/v2.5.1...v2.5.2) (2025-01-24)
 
 
