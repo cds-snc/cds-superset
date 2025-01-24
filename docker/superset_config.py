@@ -107,7 +107,7 @@ GOOGLE_OAUTH_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH_CLIENT_SECRET")
 GOOGLE_OAUTH_EMAIL_DOMAIN = os.getenv("GOOGLE_OAUTH_EMAIL_DOMAIN")
 AUTH_TYPE = AUTH_OAUTH if GOOGLE_OAUTH_LOGIN == "true" else AUTH_DB
 AUTH_USER_REGISTRATION = True
-AUTH_USER_REGISTRATION_ROLE = "Gamma"
+AUTH_USER_REGISTRATION_ROLE = "ReadOnly"
 ENABLE_PROXY_FIX = True
 OAUTH_PROVIDERS = [
     {
@@ -152,16 +152,49 @@ LANGUAGES = {
 
 # Custom roles
 FAB_ROLES = {
+    # Read all data and includes default `Gamma` role permisions
     "ReadOnly": [
-        [".*", "can_info"],
-        [".*", "can_list"],
-        [".*", "can_get"],
         [".*", "can_external_metadata"],
         [".*", "can_external_metadata_by_name"],
+        [".*", "can_get"],
+        [".*", "can_info"],
+        [".*", "can_list"],
         [".*", "can_read"],
         [".*", "can_show"],
-        ["all_datasource_access", "all_datasource_access"],
         ["all_database_access", "all_database_access"],
+        ["all_datasource_access", "all_datasource_access"],
+        ["Api", "can_query"],
+        ["Charts", "can_menu_access"],
+        ["Dashboard", "can_cache_dashboard_screenshot"],
+        ["Dashboard", "can_drill"],
+        ["Dashboard", "can_view_chart_as_table"],
+        ["Data", "can_menu_access"],
+        ["Databases", "can_menu_access"],
+        ["Dashboards", "can_menu_access"],
+        ["FilterSets", "can_add"],
+        ["FilterSets", "can_delete"],
+        ["FilterSets", "can_edit"],
+        ["Home", "can_menu_access"],
+        ["Import Dashboards", "can_menu_access"],
+        ["Log", "can_recent_activity"],
+        ["Plugins", "can_menu_access"],
+        ["ResetMyPasswordView", "can_this_form_get"],
+        ["ResetMyPasswordView", "can_this_form_post"],
+        ["SQLLab", "can_estimate_query_cost"],
+        ["SQLLab", "can_format_sql"],
+        ["SavedQuery", "can_add"],
+        ["SavedQuery", "can_delete"],
+        ["SavedQuery", "can_edit"],
+        ["SqlLab", "can_my_queries"],
+        ["Superset", "can_dashboard"],
+        ["Superset", "can_dashboard_permalink"],
+        ["Superset", "can_log"],
+        ["Superset", "can_profile"],
+        ["Superset", "can_share_chart"],
+        ["Superset", "can_share_dashboard"],
+        ["Superset", "can_slice"],
+        ["UserDBModelView", "can_userinfo"],
+        ["UserOAuthModelView", "can_userinfo"],
     ],
     "CacheWarmer": [
         [".*", "can_warm_up_cache"],
