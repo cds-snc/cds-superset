@@ -234,7 +234,7 @@ resource "aws_wafv2_web_acl" "superset" {
     priority = 60
 
     action {
-      count {}
+      block {}
     }
 
     statement {
@@ -274,7 +274,7 @@ resource "aws_wafv2_rule_group" "rate_limiters_group" {
 
     statement {
       rate_based_statement {
-        limit              = 1000
+        limit              = 2000
         aggregate_key_type = "IP"
 
       }
@@ -297,15 +297,14 @@ resource "aws_wafv2_rule_group" "rate_limiters_group" {
 
     statement {
       rate_based_statement {
-        limit              = 100
+        limit              = 200
         aggregate_key_type = "IP"
         scope_down_statement {
-          byte_match_statement {
-            positional_constraint = "EXACTLY"
+          regex_match_statement {
             field_to_match {
               method {}
             }
-            search_string = "post"
+            regex_string = "^(put|post)$"
             text_transformation {
               priority = 1
               type     = "LOWERCASE"
