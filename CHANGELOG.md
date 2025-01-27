@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.5.4](https://github.com/cds-snc/cds-superset/compare/v2.5.3...v2.5.4) (2025-01-27)
+
+
+### Bug Fixes
+
+* add missing `explore` permissions to ReadOnly role ([#293](https://github.com/cds-snc/cds-superset/issues/293)) ([c7785c0](https://github.com/cds-snc/cds-superset/commit/c7785c02e28fc69eea23e45a7191b6315b66ce9f))
+* switch language translation flags ([#290](https://github.com/cds-snc/cds-superset/issues/290)) ([8e5b891](https://github.com/cds-snc/cds-superset/commit/8e5b8916ac8a42acd0ee1e821369a06223f14d25))
+
+
+### Miscellaneous Chores
+
+* **deps:** update aws-actions/amazon-ecs-render-task-definition action to v1.6.2 ([#291](https://github.com/cds-snc/cds-superset/issues/291)) ([ad5fa98](https://github.com/cds-snc/cds-superset/commit/ad5fa986112022757b251dd34cf25837e3872496))
+
 ## [2.5.3](https://github.com/cds-snc/cds-superset/compare/v2.5.2...v2.5.3) (2025-01-24)
 
 
