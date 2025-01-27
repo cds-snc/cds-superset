@@ -185,6 +185,8 @@ FAB_ROLES = {
         ["SqlLab", "can_my_queries"],
         ["Superset", "can_dashboard"],
         ["Superset", "can_dashboard_permalink"],
+        ["Superset", "can_explore"],
+        ["Superset", "can_explore_json"],
         ["Superset", "can_log"],
         ["Superset", "can_profile"],
         ["Superset", "can_share_chart"],
