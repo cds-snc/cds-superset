@@ -23,6 +23,15 @@ def test_access(app):
             logger.info(f"Found {len(databases)} database connections to test")
 
             for database in databases:
+                # Only test databases that are not impersonating the user.  This is done to
+                # skip database connections like Google Sheets that require user permissions
+                # to access the data.
+                if database.impersonate_user is True:
+                    logger.info(
+                        f"Skipping database '{database.database_name}' as it requires user impersonation"
+                    )
+                    continue
+
                 try:
                     tables = (
                         db.session.query(SqlaTable)
