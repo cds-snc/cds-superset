@@ -6,6 +6,8 @@ from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
+from superset.integration_tests import database
+
 logger = logging.getLogger()
 
 logger.info("Setting up custom config for Superset")
@@ -149,6 +151,16 @@ LANGUAGES = {
     "en": {"flag": "ca", "name": "English"},
     "fr": {"flag": "ca", "name": "Français"},
 }
+
+
+def app_mutator(app):
+    "Run integration tests on app startup"
+    if os.getenv("SUPERSET_APP") == "true":
+        database.test_access(app)
+    return app
+
+
+FLASK_APP_MUTATOR = app_mutator
 
 # Custom roles
 FAB_ROLES = {
