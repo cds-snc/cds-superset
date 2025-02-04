@@ -30,7 +30,7 @@ case "${1}" in
     ;;
   app)
     echo "Starting web app..."
-    /usr/bin/run-server.sh
+    SUPERSET_APP=true /usr/bin/run-server.sh
     ;;
   upgrade)
     echo "Upgrading database..."

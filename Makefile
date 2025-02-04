@@ -35,7 +35,7 @@ install_dev:
 	@pip install -r ./docker/requirements_dev.txt
 
 fmt: install_dev
-	black ./docker/superset_config.py $(ARGS)
+	black ./docker $(ARGS)
 
 lint: install_dev
-	flake8 ./docker/superset_config.py
+	flake8 --ignore=E501 ./docker
