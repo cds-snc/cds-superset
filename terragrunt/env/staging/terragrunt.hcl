@@ -12,6 +12,7 @@ inputs = {
     "platform_gc_forms_production",
     "platform_support_production",
     "operations_aws_production",
+    "bes_crm_salesforce_production",
   ]
   superset_database_instance_class  = "db.serverless"
   superset_database_instances_count = 1
