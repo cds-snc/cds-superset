@@ -155,6 +155,7 @@ LANGUAGES = {
 APP_ICON = "/static/assets/images/logo.png"
 FAVICONS = [{"href": "/static/assets/images/logo.png"}]
 
+
 def app_mutator(app):
     "Run integration tests on app startup"
     if os.getenv("SUPERSET_APP") == "true":
