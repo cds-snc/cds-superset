@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.6.0](https://github.com/cds-snc/cds-superset/compare/v2.5.4...v2.6.0) (2025-02-11)
+
+
+### Features
+
+* add startup database integration tests ([#296](https://github.com/cds-snc/cds-superset/issues/296)) ([d5c61ea](https://github.com/cds-snc/cds-superset/commit/d5c61ea0daee2a133ec07cb3c0b66d2004c13bbd))
+* update branding to use CDS logo ([#303](https://github.com/cds-snc/cds-superset/issues/303)) ([7e26445](https://github.com/cds-snc/cds-superset/commit/7e26445fca72fa56b980135a291892e32a9e7bad))
+
+
+### Bug Fixes
+
+* integration tests for impersonation databases ([#297](https://github.com/cds-snc/cds-superset/issues/297)) ([e8b1408](https://github.com/cds-snc/cds-superset/commit/e8b1408f31bf74b1052d14dffda5181258f9852f))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#302](https://github.com/cds-snc/cds-superset/issues/302)) ([88eacb0](https://github.com/cds-snc/cds-superset/commit/88eacb04711282e3e9ce1db7e6d9884a8dcf7eca))
+* **deps:** update all non-major github action dependencies ([#299](https://github.com/cds-snc/cds-superset/issues/299)) ([8eb27b5](https://github.com/cds-snc/cds-superset/commit/8eb27b55afe7f5c2886afba8586a7340dad18309))
+* **deps:** update dependency authlib to v1.4.1 ([#300](https://github.com/cds-snc/cds-superset/issues/300)) ([8644f56](https://github.com/cds-snc/cds-superset/commit/8644f568c4db1dfe238e7ad333d72a0092a2f37a))
+* **deps:** update dependency black to v25 ([#298](https://github.com/cds-snc/cds-superset/issues/298)) ([fb335b1](https://github.com/cds-snc/cds-superset/commit/fb335b154a0adb952f9beff9496bdf98de1e10a1))
+* **deps:** update github/codeql-action action to v3.28.5 ([#294](https://github.com/cds-snc/cds-superset/issues/294)) ([10539be](https://github.com/cds-snc/cds-superset/commit/10539bed5afebcf4d1db1edf978abbb432825dbf))
+* synced file(s) with cds-snc/site-reliability-engineering ([#301](https://github.com/cds-snc/cds-superset/issues/301)) ([39969de](https://github.com/cds-snc/cds-superset/commit/39969de9bb686d6a8e6229640d07bbf8236f7820))
+
 ## [2.5.4](https://github.com/cds-snc/cds-superset/compare/v2.5.3...v2.5.4) (2025-01-27)
 
 
