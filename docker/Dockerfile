@@ -14,6 +14,7 @@ COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 # https://superset.apache.org/docs/installation/configuring-superset/#configuring-superset
 COPY superset/integration_tests/ /app/superset/integration_tests/
 COPY superset_config.py /app/superset_config.py
+COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py
 
 # Code overrides

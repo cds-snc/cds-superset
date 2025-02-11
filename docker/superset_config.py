@@ -152,6 +152,9 @@ LANGUAGES = {
     "fr": {"flag": "ca", "name": "Français"},
 }
 
+APP_ICON = "/static/assets/images/logo.png"
+FAVICONS = [{"href": "/static/assets/images/logo.png"}]
+
 
 def app_mutator(app):
     "Run integration tests on app startup"
