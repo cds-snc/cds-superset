@@ -15,6 +15,7 @@ locals {
     "DML_NOT_ALLOWED_ERROR",
     "Error on OAuth authorize",
     "Failed to execute query",
+    "Insufficient permissions to execute the query",
     "Only `SELECT` statements are allowed",
     "SYNTAX_ERROR"
   ]
