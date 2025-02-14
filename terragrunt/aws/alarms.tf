@@ -12,6 +12,7 @@ locals {
     "'Template' object has no attribute 'strip'",
     "AccessDenied*GENERIC_DB_ENGINE_ERROR",
     "COLUMN_NOT_FOUND",
+    "contains non-numeric values",
     "DML_NOT_ALLOWED_ERROR",
     "Error on OAuth authorize",
     "Failed to execute query",
