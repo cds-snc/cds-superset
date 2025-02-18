@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.7.0](https://github.com/cds-snc/cds-superset/compare/v2.6.0...v2.7.0) (2025-02-18)
+
+
+### Features
+
+* add salesforces transformed db ([#304](https://github.com/cds-snc/cds-superset/issues/304)) ([d64a66d](https://github.com/cds-snc/cds-superset/commit/d64a66d852d5d9babe7acd1b8900a56b70dfdd24))
+
+
+### Miscellaneous Chores
+
+* **deps:** update all non-major github action dependencies ([#308](https://github.com/cds-snc/cds-superset/issues/308)) ([28b2f14](https://github.com/cds-snc/cds-superset/commit/28b2f14f9aaaf06e9e5c038f40f66f5157a61f8e))
+* suppress user query error ([#306](https://github.com/cds-snc/cds-superset/issues/306)) ([7f48055](https://github.com/cds-snc/cds-superset/commit/7f4805542405e86739f7f0bafca640ff5d3f8cb3))
+* suppress user query errors ([#307](https://github.com/cds-snc/cds-superset/issues/307)) ([579ef9e](https://github.com/cds-snc/cds-superset/commit/579ef9efcfa924d13c49b64b4420da6ad98a90d8))
+
 ## [2.6.0](https://github.com/cds-snc/cds-superset/compare/v2.5.4...v2.6.0) (2025-02-11)
 
 
