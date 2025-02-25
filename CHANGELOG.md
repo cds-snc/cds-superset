@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.7.1](https://github.com/cds-snc/cds-superset/compare/v2.7.0...v2.7.1) (2025-02-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#312](https://github.com/cds-snc/cds-superset/issues/312)) ([0972759](https://github.com/cds-snc/cds-superset/commit/09727596cfefb9feca8e7c90a03a4cc968383d13))
+* **deps:** update actions/create-github-app-token action to v1.11.5 ([#309](https://github.com/cds-snc/cds-superset/issues/309)) ([d00aaca](https://github.com/cds-snc/cds-superset/commit/d00aaca9fe668d0e3c7a229fd2c5538e13bffc25))
+* **deps:** update dependency flake8 to v7.1.2 ([#311](https://github.com/cds-snc/cds-superset/issues/311)) ([b2c654c](https://github.com/cds-snc/cds-superset/commit/b2c654c6b22293da00347b5bd3a3f5da315e3dca))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.3.0 ([#310](https://github.com/cds-snc/cds-superset/issues/310)) ([6e24a83](https://github.com/cds-snc/cds-superset/commit/6e24a839970a8f52dc61d5f7ca8bbc5119d994f0))
+
 ## [2.7.0](https://github.com/cds-snc/cds-superset/compare/v2.6.0...v2.7.0) (2025-02-18)
 
 
