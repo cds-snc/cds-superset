@@ -13,6 +13,22 @@ resource "aws_sns_topic" "cloudwatch_alert_ok" {
   tags              = local.common_tags
 }
 
+resource "aws_sns_topic" "cloudwatch_alert_warning_us_east_1" {
+  provider = aws.us-east-1
+
+  name              = "cloudwatch-alert-warning"
+  kms_master_key_id = aws_kms_key.cloudwatch_alerts_us_east_1.arn
+  tags              = local.common_tags
+}
+
+resource "aws_sns_topic" "cloudwatch_alert_ok_us_east_1" {
+  provider = aws.us-east-1
+
+  name              = "cloudwatch-alert-ok"
+  kms_master_key_id = aws_kms_key.cloudwatch_alerts_us_east_1.arn
+  tags              = local.common_tags
+}
+
 #
 # SNS topic subscriptions
 #
@@ -28,6 +44,22 @@ resource "aws_sns_topic_subscription" "cloudwatch_alert_ok" {
   endpoint  = var.cloudwatch_alert_slack_webhook
 }
 
+resource "aws_sns_topic_subscription" "cloudwatch_alert_warning_us_east_1" {
+  provider = aws.us-east-1
+
+  topic_arn = aws_sns_topic.cloudwatch_alert_warning_us_east_1.arn
+  protocol  = "https"
+  endpoint  = var.cloudwatch_alert_slack_webhook
+}
+
+resource "aws_sns_topic_subscription" "cloudwatch_alert_ok_us_east_1" {
+  provider = aws.us-east-1
+
+  topic_arn = aws_sns_topic.cloudwatch_alert_ok_us_east_1.arn
+  protocol  = "https"
+  endpoint  = var.cloudwatch_alert_slack_webhook
+}
+
 #
 # Allow CloudWatch to use the SNS topics
 #
@@ -38,6 +70,20 @@ resource "aws_sns_topic_policy" "cloudwatch_alert_warning" {
 
 resource "aws_sns_topic_policy" "cloudwatch_alert_ok" {
   arn    = aws_sns_topic.cloudwatch_alert_ok.arn
+  policy = data.aws_iam_policy_document.cloudwatch_events_sns_topic.json
+}
+
+resource "aws_sns_topic_policy" "cloudwatch_alert_warning_us_east_1" {
+  provider = aws.us-east-1
+
+  arn    = aws_sns_topic.cloudwatch_alert_warning_us_east_1.arn
+  policy = data.aws_iam_policy_document.cloudwatch_events_sns_topic.json
+}
+
+resource "aws_sns_topic_policy" "cloudwatch_alert_ok_us_east_1" {
+  provider = aws.us-east-1
+
+  arn    = aws_sns_topic.cloudwatch_alert_ok_us_east_1.arn
   policy = data.aws_iam_policy_document.cloudwatch_events_sns_topic.json
 }
 
