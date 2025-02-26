@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.8.0](https://github.com/cds-snc/cds-superset/compare/v2.7.1...v2.8.0) (2025-02-26)
+
+
+### Features
+
+* add SNS alarm topics in us-east-1 ([#315](https://github.com/cds-snc/cds-superset/issues/315)) ([1546356](https://github.com/cds-snc/cds-superset/commit/154635646994bad98305462247d577307c7c15dc))
+
+
+### Bug Fixes
+
+* always use latest ECS task definition ([#317](https://github.com/cds-snc/cds-superset/issues/317)) ([4b98be2](https://github.com/cds-snc/cds-superset/commit/4b98be27d5e9d5a45c42795a16f988c281d633d3))
+
+
+### Miscellaneous Chores
+
+* synced file(s) with cds-snc/site-reliability-engineering ([#314](https://github.com/cds-snc/cds-superset/issues/314)) ([418f481](https://github.com/cds-snc/cds-superset/commit/418f481ccda551d181f26c375b495f80e1af03d5))
+
 ## [2.7.1](https://github.com/cds-snc/cds-superset/compare/v2.7.0...v2.7.1) (2025-02-24)
 
 
