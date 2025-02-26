@@ -77,6 +77,8 @@ module "superset_ecs" {
   task_cpu     = 2048
   task_memory  = 8192
 
+  service_use_latest_task_def = true
+
   # Scaling
   enable_autoscaling       = true
   desired_count            = 1
@@ -120,6 +122,8 @@ module "celery_worker_ecs" {
   task_cpu       = 1024
   task_memory    = 2048
 
+  service_use_latest_task_def = true
+
   # Scaling
   enable_autoscaling       = true
   desired_count            = 1
@@ -158,6 +162,8 @@ module "celery_beat_ecs" {
   service_name   = "celery-beat"
   task_cpu       = 512
   task_memory    = 1024
+
+  service_use_latest_task_def = true
 
   # Scaling: this must always be 1 or scheduling errors will occur
   desired_count = 1
