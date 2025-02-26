@@ -10,7 +10,7 @@ resource "aws_kms_key" "cloudwatch_alerts" {
 }
 
 resource "aws_kms_key" "cloudwatch_alerts_us_east_1" {
-  provider = aws.us_east_1
+  provider = aws.us-east-1
 
   description         = "SNS topic for CloudWatch alarm alerts"
   enable_key_rotation = true
