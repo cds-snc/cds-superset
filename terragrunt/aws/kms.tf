@@ -9,6 +9,16 @@ resource "aws_kms_key" "cloudwatch_alerts" {
   tags = local.common_tags
 }
 
+resource "aws_kms_key" "cloudwatch_alerts_us_east_1" {
+  provider = aws.us-east-1
+
+  description         = "SNS topic for CloudWatch alarm alerts"
+  enable_key_rotation = true
+  policy              = data.aws_iam_policy_document.kms_cloudwatch.json
+
+  tags = local.common_tags
+}
+
 data "aws_iam_policy_document" "kms_cloudwatch" {
   # checkov:skip=CKV_AWS_109: `resources = ["*"]` identifies the KMS key to which the key policy is attached
   # checkov:skip=CKV_AWS_111: `resources = ["*"]` identifies the KMS key to which the key policy is attached
@@ -39,6 +49,11 @@ data "aws_iam_policy_document" "kms_cloudwatch" {
     principals {
       type        = "Service"
       identifiers = ["logs.${var.region}.amazonaws.com"]
+    }
+
+    principals {
+      type        = "Service"
+      identifiers = ["logs.us-east-1.amazonaws.com"]
     }
   }
 
