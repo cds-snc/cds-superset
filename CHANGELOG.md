@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.8.1](https://github.com/cds-snc/cds-superset/compare/v2.8.0...v2.8.1) (2025-03-03)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#319](https://github.com/cds-snc/cds-superset/issues/319)) ([9d6f045](https://github.com/cds-snc/cds-superset/commit/9d6f04554efc37f9f0936ed6c918c3ff3438536d))
+* **deps:** update all non-major github action dependencies ([#318](https://github.com/cds-snc/cds-superset/issues/318)) ([0eec38d](https://github.com/cds-snc/cds-superset/commit/0eec38de14e53ea135d403c8d3374db3be82bbea))
+
 ## [2.8.0](https://github.com/cds-snc/cds-superset/compare/v2.7.1...v2.8.0) (2025-02-26)
 
 
