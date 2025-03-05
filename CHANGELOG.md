@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/cds-snc/cds-superset/compare/v2.8.1...v2.9.0) (2025-03-05)
+
+
+### Features
+
+* add a WAF rule to only allow Canadian IP addresses ([#321](https://github.com/cds-snc/cds-superset/issues/321)) ([30cb4e8](https://github.com/cds-snc/cds-superset/commit/30cb4e864608c6b14e209a72deeef341bda879ea))
+
 ## [2.8.1](https://github.com/cds-snc/cds-superset/compare/v2.8.0...v2.8.1) (2025-03-03)
 
 
