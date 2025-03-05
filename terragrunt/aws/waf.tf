@@ -54,6 +54,39 @@ resource "aws_wafv2_web_acl" "superset" {
   }
 
   rule {
+    name     = "CanadaOnlyGeoRestriction"
+    priority = 5
+
+    action {
+      block {
+        custom_response {
+          response_code = 403
+          response_header {
+            name  = "waf-block"
+            value = "CanadaOnlyGeoRestriction"
+          }
+        }
+      }
+    }
+
+    statement {
+      not_statement {
+        statement {
+          geo_match_statement {
+            country_codes = ["CA"]
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "CanadaOnlyGeoRestriction"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
     name     = "AWSManagedRulesAmazonIpReputationList"
     priority = 10
 
