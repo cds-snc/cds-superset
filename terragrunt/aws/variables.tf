@@ -58,3 +58,9 @@ variable "superset_secret_key" {
   type        = string
   sensitive   = true
 }
+
+variable "upptime_status_header" {
+  description = "The header to check for Upptime status check requests."
+  type        = string
+  sensitive   = true
+}

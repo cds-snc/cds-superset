@@ -19,8 +19,8 @@ env:
   TF_VAR_superset_database_username: ${{ secrets.STAGING_SUPERSET_DATABASE_USERNAME }}
   TF_VAR_superset_database_password: ${{ secrets.STAGING_SUPERSET_DATABASE_PASSWORD }}
   TF_VAR_superset_secret_key: ${{ secrets.STAGING_SUPERSET_SECRET_KEY }}
+  TF_VAR_upptime_status_header: ${{ secrets.STAGING_UPPTIME_STATUS_HEADER }}
 
-  
 permissions:
   id-token: write
   contents: read
