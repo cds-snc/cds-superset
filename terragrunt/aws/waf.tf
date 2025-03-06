@@ -72,8 +72,27 @@ resource "aws_wafv2_web_acl" "superset" {
     statement {
       not_statement {
         statement {
-          geo_match_statement {
-            country_codes = ["CA"]
+          or_statement {
+            statement {
+              geo_match_statement {
+                country_codes = ["CA"]
+              }
+            }
+            statement {
+              byte_match_statement {
+                positional_constraint = "EXACTLY"
+                field_to_match {
+                  single_header {
+                    name = "upptime"
+                  }
+                }
+                search_string = var.upptime_status_header
+                text_transformation {
+                  priority = 1
+                  type     = "NONE"
+                }
+              }
+            }
           }
         }
       }
