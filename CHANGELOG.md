@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.1](https://github.com/cds-snc/cds-superset/compare/v2.9.0...v2.9.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* update CA geo restriction with Upptime header ([#323](https://github.com/cds-snc/cds-superset/issues/323)) ([26247a2](https://github.com/cds-snc/cds-superset/commit/26247a2055b928f238c17295d4d21653dac062c2))
+
 ## [2.9.0](https://github.com/cds-snc/cds-superset/compare/v2.8.1...v2.9.0) (2025-03-05)
 
 
