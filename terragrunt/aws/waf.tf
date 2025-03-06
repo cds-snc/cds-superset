@@ -54,7 +54,7 @@ resource "aws_wafv2_web_acl" "superset" {
   }
 
   rule {
-    name     = "CanadaOnlyGeoRestriction"
+    name     = "GeoRestriction"
     priority = 5
 
     action {
@@ -63,7 +63,7 @@ resource "aws_wafv2_web_acl" "superset" {
           response_code = 403
           response_header {
             name  = "waf-block"
-            value = "CanadaOnlyGeoRestriction"
+            value = "GeoRestriction"
           }
         }
       }
@@ -73,7 +73,7 @@ resource "aws_wafv2_web_acl" "superset" {
       not_statement {
         statement {
           geo_match_statement {
-            country_codes = ["CA"]
+            country_codes = ["CA", "US"]
           }
         }
       }
@@ -81,7 +81,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "CanadaOnlyGeoRestriction"
+      metric_name                = "GeoRestriction"
       sampled_requests_enabled   = true
     }
   }
