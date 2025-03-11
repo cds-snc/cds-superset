@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.9.2](https://github.com/cds-snc/cds-superset/compare/v2.9.1...v2.9.2) (2025-03-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#328](https://github.com/cds-snc/cds-superset/issues/328)) ([a1c0c69](https://github.com/cds-snc/cds-superset/commit/a1c0c692ad9121604b00eeeb447679900bb7903c))
+* **deps:** update all non-major github action dependencies ([#325](https://github.com/cds-snc/cds-superset/issues/325)) ([f7a4b0d](https://github.com/cds-snc/cds-superset/commit/f7a4b0dc3b003c0b755b1ace4adc4f3692be1433))
+* **deps:** update dependency authlib to v1.5.1 ([#327](https://github.com/cds-snc/cds-superset/issues/327)) ([f1de414](https://github.com/cds-snc/cds-superset/commit/f1de414dce15b76546e46561849c39283be58ee3))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.3.1 ([#326](https://github.com/cds-snc/cds-superset/issues/326)) ([0a29649](https://github.com/cds-snc/cds-superset/commit/0a29649d5e0f844685cafa4246fe7585c1563708))
+
 ## [2.9.1](https://github.com/cds-snc/cds-superset/compare/v2.9.0...v2.9.1) (2025-03-06)
 
 
