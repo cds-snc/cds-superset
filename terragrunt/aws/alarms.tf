@@ -17,6 +17,7 @@ locals {
     "Error on OAuth authorize",
     "Error warming up cache",
     "Failed to execute query",
+    "gsheets error: Unsupported format",
     "Insufficient permissions to execute the query",
     "Only `SELECT` statements are allowed",
     "SYNTAX_ERROR",
