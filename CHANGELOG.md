@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.9.3](https://github.com/cds-snc/cds-superset/compare/v2.9.2...v2.9.3) (2025-03-11)
+
+
+### Bug Fixes
+
+* add warning CloudWatch alarm ([#331](https://github.com/cds-snc/cds-superset/issues/331)) ([8eaccd6](https://github.com/cds-snc/cds-superset/commit/8eaccd693f8941f7937411fb7f1c101a665cf38e))
+
+
+### Miscellaneous Chores
+
+* synced local '.github/workflows/ossf-scorecard.yml' with remote 'tools/sre_file_sync/ossf-scorecard.yml' ([#330](https://github.com/cds-snc/cds-superset/issues/330)) ([dcb6714](https://github.com/cds-snc/cds-superset/commit/dcb6714c37c322d9ea558b943ad6776b9c03b813))
+
 ## [2.9.2](https://github.com/cds-snc/cds-superset/compare/v2.9.1...v2.9.2) (2025-03-10)
 
 
