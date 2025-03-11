@@ -62,6 +62,7 @@ jobs:
         service: ${{ matrix.service }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
+        propagate-tags: SERVICE
 
     - name: Run Superset database upgrade
       if: ${{ matrix.service == 'superset' }}
