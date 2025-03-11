@@ -15,12 +15,20 @@ locals {
     "contains non-numeric values",
     "DML_NOT_ALLOWED_ERROR",
     "Error on OAuth authorize",
+    "Error warming up cache",
     "Failed to execute query",
     "Insufficient permissions to execute the query",
     "Only `SELECT` statements are allowed",
-    "SYNTAX_ERROR"
+    "SYNTAX_ERROR",
+    "TABLE_DOES_NOT_EXIST_ERROR"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
+
+
+  superset_warning_filters = [
+    "Error warming up cache"
+  ]
+  superset_warning_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_warning_filters)}*\")]"
 
   threshold_ecs_high_cpu     = 80
   threshold_ecs_high_memory  = 80
@@ -155,6 +163,44 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
       }
     }
   }
+
+  tags = local.common_tags
+}
+
+#
+# Warnings logged
+#
+resource "aws_cloudwatch_log_metric_filter" "superset_ecs_warnings" {
+  for_each = { for service in local.ecs_services : service.service_name => service }
+
+  name           = "${each.key}-warning"
+  pattern        = local.superset_warning_metric_pattern
+  log_group_name = each.value.cloudwatch_log_group_name
+
+  metric_transformation {
+    name          = "${each.key}-warning"
+    namespace     = "superset"
+    value         = "1"
+    default_value = "0"
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "superset_ecs_warnings" {
+  for_each = { for service in local.ecs_services : service.service_name => service }
+
+  alarm_name          = "warnings-${each.key}"
+  alarm_description   = "`${each.key}` warnings logged over 1 day."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = aws_cloudwatch_log_metric_filter.superset_ecs_warnings[each.key].metric_transformation[0].name
+  namespace           = aws_cloudwatch_log_metric_filter.superset_ecs_warnings[each.key].metric_transformation[0].namespace
+  period              = "86400" # 1 day
+  statistic           = "Sum"
+  threshold           = "3"
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
 
   tags = local.common_tags
 }
