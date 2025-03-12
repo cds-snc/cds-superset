@@ -11,7 +11,7 @@ resource "aws_iam_role" "superset_athena_read" {
   for_each = toset(var.glue_databases)
 
   name               = "SupersetAthenaRead-${each.key}"
-  description        = "This role allows the Superset ECS task and Celery workers to read from ${each.key == "all" ? "all Glue databases" : "the ${each.key} Glue database"}"
+  description        = "This role allows the Superset ECS task and Celery workers to read from the ${each.key} Glue database"
   assume_role_policy = data.aws_iam_policy_document.superset_ecs_task_role.json
 
   tags = local.common_tags

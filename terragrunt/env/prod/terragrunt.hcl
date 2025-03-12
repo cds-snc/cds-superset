@@ -8,7 +8,6 @@ include {
 
 inputs = {
   glue_databases = [
-    "all",
     "operations_aws_production",
     "platform_support_production",
   ]
