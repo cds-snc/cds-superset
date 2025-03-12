@@ -148,6 +148,8 @@ FEATURE_FLAGS = {
     "ENABLE_SUPERSET_META_DB": True,
 }
 
+SUPERSET_META_DB_LIMIT = 10000
+
 LANGUAGES = {
     "en": {"flag": "ca", "name": "English"},
     "fr": {"flag": "ca", "name": "Français"},
