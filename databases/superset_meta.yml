@@ -1,0 +1,11 @@
+database_name: Superset / Meta
+sqlalchemy_uri: superset://
+cache_timeout: null
+expose_in_sqllab: true
+allow_run_async: true
+allow_ctas: false
+allow_cvas: false
+allow_dml: false
+allow_csv_upload: false
+uuid: b6b8f1e9-22a3-44b4-83e3-1e0ffe860284
+version: 1.0.0
