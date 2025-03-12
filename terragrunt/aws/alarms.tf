@@ -24,7 +24,8 @@ locals {
     "SYNTAX_ERROR",
     "Table does not exist",
     "TABLE_DOES_NOT_EXIST_ERROR",
-    "TABLE_NOT_FOUND"
+    "TABLE_NOT_FOUND",
+    "Unsupported format"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
 
