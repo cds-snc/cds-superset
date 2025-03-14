@@ -20,12 +20,13 @@ locals {
     "gsheets error: Unsupported format",
     "Insufficient permissions to execute the query",
     "Only `SELECT` statements are allowed",
-    "sql_lab*Unsupported table",
+    "SQLError",
     "SYNTAX_ERROR",
     "Table does not exist",
     "TABLE_DOES_NOT_EXIST_ERROR",
     "TABLE_NOT_FOUND",
-    "Unsupported format"
+    "Unsupported format",
+    "Unsupported table"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
 
