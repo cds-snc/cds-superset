@@ -164,7 +164,7 @@ module "celery_beat_ecs" {
   service_name     = "celery-beat"
   task_cpu         = 512
   task_memory      = 1024
-  cpu_architecture = "ARM64" 
+  cpu_architecture = "ARM64"
 
   service_use_latest_task_def = true
 
