@@ -72,10 +72,11 @@ locals {
 module "superset_ecs" {
   source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.3.1"
 
-  cluster_name = "superset"
-  service_name = "superset"
-  task_cpu     = 2048
-  task_memory  = 8192
+  cluster_name     = "superset"
+  service_name     = "superset"
+  task_cpu         = 2048
+  task_memory      = 4096
+  cpu_architecture = "ARM64"
 
   service_use_latest_task_def = true
 
@@ -116,11 +117,12 @@ module "superset_ecs" {
 module "celery_worker_ecs" {
   source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.3.1"
 
-  create_cluster = false
-  cluster_name   = module.superset_ecs.cluster_name
-  service_name   = "celery-worker"
-  task_cpu       = 1024
-  task_memory    = 2048
+  create_cluster   = false
+  cluster_name     = module.superset_ecs.cluster_name
+  service_name     = "celery-worker"
+  task_cpu         = 2048
+  task_memory      = 4096
+  cpu_architecture = "ARM64"
 
   service_use_latest_task_def = true
 
@@ -157,11 +159,12 @@ module "celery_worker_ecs" {
 module "celery_beat_ecs" {
   source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.3.1"
 
-  create_cluster = false
-  cluster_name   = module.superset_ecs.cluster_name
-  service_name   = "celery-beat"
-  task_cpu       = 512
-  task_memory    = 1024
+  create_cluster   = false
+  cluster_name     = module.superset_ecs.cluster_name
+  service_name     = "celery-beat"
+  task_cpu         = 512
+  task_memory      = 1024
+  cpu_architecture = "ARM64"
 
   service_use_latest_task_def = true
 
