@@ -1,5 +1,29 @@
 # Changelog
 
+## [2.10.0](https://github.com/cds-snc/cds-superset/compare/v2.9.3...v2.10.0) (2025-03-17)
+
+
+### Features
+
+* add Superset meta database configuration and enable feature flag ([#336](https://github.com/cds-snc/cds-superset/issues/336)) ([e8aef2d](https://github.com/cds-snc/cds-superset/commit/e8aef2d6be38f4141cf0750ec1e7e133e8fd03bb))
+* setup superset meta db limit to 10000 ([#339](https://github.com/cds-snc/cds-superset/issues/339)) ([27bba35](https://github.com/cds-snc/cds-superset/commit/27bba35f890aef3a889bfbde85280e8d52ecdbcb))
+* switch to ARM64 Docker images ([#343](https://github.com/cds-snc/cds-superset/issues/343)) ([ad13ac0](https://github.com/cds-snc/cds-superset/commit/ad13ac0034ad1b8666661eb851893b75d6fe0a08))
+
+
+### Bug Fixes
+
+* allow Celery works to perform async queries ([#337](https://github.com/cds-snc/cds-superset/issues/337)) ([4dc2055](https://github.com/cds-snc/cds-superset/commit/4dc2055a4171d3a706ff722aa9cb0c48d74acfbd))
+* docker SBOM architecture ([#345](https://github.com/cds-snc/cds-superset/issues/345)) ([8ee6773](https://github.com/cds-snc/cds-superset/commit/8ee67735312dea1a0261377f190c78333d22040e))
+* increase Superset meta db row limit to 100k ([#340](https://github.com/cds-snc/cds-superset/issues/340)) ([0d315c6](https://github.com/cds-snc/cds-superset/commit/0d315c687b8e303d7ed6006f3ed02e98bc29d926))
+* propagate tags on new deployments ([#333](https://github.com/cds-snc/cds-superset/issues/333)) ([2309cb5](https://github.com/cds-snc/cds-superset/commit/2309cb5e35897eead96c96bb63fde001c31ca74b))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#344](https://github.com/cds-snc/cds-superset/issues/344)) ([39b1719](https://github.com/cds-snc/cds-superset/commit/39b1719625b354ed1b3c168e851738bf971237f9))
+* **deps:** update all non-major github action dependencies ([#342](https://github.com/cds-snc/cds-superset/issues/342)) ([8ac71ce](https://github.com/cds-snc/cds-superset/commit/8ac71ce76376e6d685fd868bad829cc830a58972))
+* remove the SupersetAthenaReal-all role ([#338](https://github.com/cds-snc/cds-superset/issues/338)) ([79488e9](https://github.com/cds-snc/cds-superset/commit/79488e96eef859b3b1c3a84fb7879b23af5bf14d))
+
 ## [2.9.3](https://github.com/cds-snc/cds-superset/compare/v2.9.2...v2.9.3) (2025-03-11)
 
 
