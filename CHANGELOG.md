@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.10.1](https://github.com/cds-snc/cds-superset/compare/v2.10.0...v2.10.1) (2025-03-25)
+
+
+### Bug Fixes
+
+* adjust load balancer response time alarm ([#350](https://github.com/cds-snc/cds-superset/issues/350)) ([b5f31ca](https://github.com/cds-snc/cds-superset/commit/b5f31ca57c397726d89c052e0083c1c71eb98e3c))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#348](https://github.com/cds-snc/cds-superset/issues/348)) ([da986f0](https://github.com/cds-snc/cds-superset/commit/da986f0324377a332841a916ff78c56ac04a8778))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 0b3c5ff ([#346](https://github.com/cds-snc/cds-superset/issues/346)) ([8efdf69](https://github.com/cds-snc/cds-superset/commit/8efdf69290097d67893a65f6574f9b33eb3e8c63))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.3.2 ([#347](https://github.com/cds-snc/cds-superset/issues/347)) ([c51b15d](https://github.com/cds-snc/cds-superset/commit/c51b15dabf3f43d00bf8e6d48a451bbaf3e24e6a))
+
 ## [2.10.0](https://github.com/cds-snc/cds-superset/compare/v2.9.3...v2.10.0) (2025-03-17)
 
 
