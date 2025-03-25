@@ -38,7 +38,7 @@ locals {
 
   threshold_ecs_high_cpu     = 80
   threshold_ecs_high_memory  = 80
-  threshold_lb_response_time = 2
+  threshold_lb_response_time = 3
 }
 
 #
@@ -145,10 +145,10 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
   alarm_name          = "load-balancer-response-time"
-  alarm_description   = "Response time for the Superset load balancer is greater than 2 seconds over 5 minutes."
+  alarm_description   = "Response time for the Superset load balancer is consistently over 3 seconds over 5 minutes."
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "5"
-  datapoints_to_alarm = "3"
+  datapoints_to_alarm = "4"
   threshold           = local.threshold_lb_response_time
   treat_missing_data  = "notBreaching"
 
