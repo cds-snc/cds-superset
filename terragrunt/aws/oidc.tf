@@ -10,7 +10,7 @@ locals {
 module "github_workflow_roles" {
   count = var.env == "prod" ? 1 : 0
 
-  source            = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v10.3.2"
+  source            = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v10.4.1"
   billing_tag_value = var.billing_code
   roles = [
     {
