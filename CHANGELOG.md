@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.10.3](https://github.com/cds-snc/cds-superset/compare/v2.10.2...v2.10.3) (2025-04-07)
+
+
+### Bug Fixes
+
+* skip integration test for the meta database ([#360](https://github.com/cds-snc/cds-superset/issues/360)) ([f48d694](https://github.com/cds-snc/cds-superset/commit/f48d694b164808b8c2ebdfe38eeb1b597d278d47))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#358](https://github.com/cds-snc/cds-superset/issues/358)) ([f48f742](https://github.com/cds-snc/cds-superset/commit/f48f742b2e4052a162056274f9eb52aa884d3099))
+* **deps:** update actions/create-github-app-token action to v2 ([#354](https://github.com/cds-snc/cds-superset/issues/354)) ([b38030b](https://github.com/cds-snc/cds-superset/commit/b38030b2866ccac5fde1d25905dbe0d38024971a))
+* **deps:** update all minor dependencies ([#357](https://github.com/cds-snc/cds-superset/issues/357)) ([c932a0d](https://github.com/cds-snc/cds-superset/commit/c932a0d5f28c9746798b35decdf006091b8878d5))
+* **deps:** update all non-major github action dependencies ([#356](https://github.com/cds-snc/cds-superset/issues/356)) ([0256824](https://github.com/cds-snc/cds-superset/commit/02568249baaa3a8467c67adff46e6ab54ac3beab))
+* **deps:** update apache/superset docker tag to v4.1.2 ([#355](https://github.com/cds-snc/cds-superset/issues/355)) ([a659101](https://github.com/cds-snc/cds-superset/commit/a6591010a721648bdfd360b9cd61da110ef518c7))
+
 ## [2.10.2](https://github.com/cds-snc/cds-superset/compare/v2.10.1...v2.10.2) (2025-04-01)
 
 
