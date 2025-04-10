@@ -144,8 +144,12 @@ SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
 
 FEATURE_FLAGS = {
+    "DASHBOARD_RBAC": True,
     "ENABLE_TEMPLATE_PROCESSING": True,
     "ENABLE_SUPERSET_META_DB": True,
+    "SQL_VALIDATORS_BY_ENGINE": {
+        "presto": "PrestoDBSQLValidator",
+    },
 }
 
 SUPERSET_META_DB_LIMIT = 1000
@@ -179,23 +183,16 @@ FAB_ROLES = {
         [".*", "can_list"],
         [".*", "can_read"],
         [".*", "can_show"],
-        ["all_database_access", "all_database_access"],
-        ["all_datasource_access", "all_datasource_access"],
         ["Api", "can_query"],
-        ["Charts", "can_menu_access"],
         ["Dashboard", "can_cache_dashboard_screenshot"],
         ["Dashboard", "can_drill"],
         ["Dashboard", "can_view_chart_as_table"],
-        ["Data", "can_menu_access"],
-        ["Databases", "can_menu_access"],
-        ["Dashboards", "can_menu_access"],
+        ["Dashboards", "menu_access"],
         ["FilterSets", "can_add"],
         ["FilterSets", "can_delete"],
         ["FilterSets", "can_edit"],
-        ["Home", "can_menu_access"],
-        ["Import Dashboards", "can_menu_access"],
+        ["Home", "menu_access"],
         ["Log", "can_recent_activity"],
-        ["Plugins", "can_menu_access"],
         ["ResetMyPasswordView", "can_this_form_get"],
         ["ResetMyPasswordView", "can_this_form_post"],
         ["SQLLab", "can_estimate_query_cost"],
@@ -212,6 +209,13 @@ FAB_ROLES = {
         ["Superset", "can_slice"],
         ["UserDBModelView", "can_userinfo"],
         ["UserOAuthModelView", "can_userinfo"],
+    ],
+    "WriteData": [
+        ["Chart", "can_write"],
+        ["Charts", "menu_access"],
+        ["Dashboard", "can_write"],
+        ["Dataset", "can_write"],
+        ["Datasets", "menu_access"],
     ],
     "CacheWarmer": [
         [".*", "can_warm_up_cache"],
