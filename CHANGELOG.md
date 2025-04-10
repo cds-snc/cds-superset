@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.5](https://github.com/cds-snc/cds-superset/compare/v2.10.4...v2.10.5) (2025-04-10)
+
+
+### Miscellaneous Chores
+
+* suppress user generated alarms ([#363](https://github.com/cds-snc/cds-superset/issues/363)) ([27198e7](https://github.com/cds-snc/cds-superset/commit/27198e7eb20ac3e08722e4c0a1ad1f5d14d958fe))
+
 ## [2.10.4](https://github.com/cds-snc/cds-superset/compare/v2.10.3...v2.10.4) (2025-04-10)
 
 
