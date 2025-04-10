@@ -19,12 +19,14 @@ locals {
     "Failed to execute query",
     "gsheets error: Unsupported format",
     "Insufficient permissions to execute the query",
+    "InvalidRequestException*GENERIC_DB_ENGINE_ERROR",
     "Only `SELECT` statements are allowed",
     "SQLError",
     "SYNTAX_ERROR",
     "Table does not exist",
     "TABLE_DOES_NOT_EXIST_ERROR",
     "TABLE_NOT_FOUND",
+    "TYPE_MISMATCH",
     "Unsupported format",
     "Unsupported table"
   ]
