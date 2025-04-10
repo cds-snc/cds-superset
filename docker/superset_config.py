@@ -149,7 +149,7 @@ FEATURE_FLAGS = {
     "ENABLE_SUPERSET_META_DB": True,
     "SQL_VALIDATORS_BY_ENGINE": {
         "presto": "PrestoDBSQLValidator",
-    }
+    },
 }
 
 SUPERSET_META_DB_LIMIT = 1000
