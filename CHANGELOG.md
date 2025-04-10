@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.4](https://github.com/cds-snc/cds-superset/compare/v2.10.3...v2.10.4) (2025-04-10)
+
+
+### Bug Fixes
+
+* Superset ReadOnly and WriteData roles ([#361](https://github.com/cds-snc/cds-superset/issues/361)) ([6f6d45d](https://github.com/cds-snc/cds-superset/commit/6f6d45d9bb207d2a71f88048db32ca9142de0de5))
+
 ## [2.10.3](https://github.com/cds-snc/cds-superset/compare/v2.10.2...v2.10.3) (2025-04-07)
 
 
