@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.11.0](https://github.com/cds-snc/cds-superset/compare/v2.10.4...v2.11.0) (2025-04-14)
+
+
+### Features
+
+* create the Notify Staging IAM role ([#367](https://github.com/cds-snc/cds-superset/issues/367)) ([5f3c3b7](https://github.com/cds-snc/cds-superset/commit/5f3c3b7f1bbff3ad2914ae41ea2482082594b473))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency authlib to v1.5.2 ([#366](https://github.com/cds-snc/cds-superset/issues/366)) ([24026d8](https://github.com/cds-snc/cds-superset/commit/24026d8ec007317ad847d033e34fe78ad7e38501))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to d67d4d2 ([#365](https://github.com/cds-snc/cds-superset/issues/365)) ([ff87e0b](https://github.com/cds-snc/cds-superset/commit/ff87e0bdf589932a72c4ac17524cad2ba853a354))
+* suppress user generated alarms ([#363](https://github.com/cds-snc/cds-superset/issues/363)) ([27198e7](https://github.com/cds-snc/cds-superset/commit/27198e7eb20ac3e08722e4c0a1ad1f5d14d958fe))
+
 ## [2.10.4](https://github.com/cds-snc/cds-superset/compare/v2.10.3...v2.10.4) (2025-04-10)
 
 
