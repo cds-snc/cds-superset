@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/cds-snc/cds-superset/compare/v2.11.0...v2.12.0) (2025-04-21)
+
+
+### Features
+
+* create GC Forms data IAM role ([#368](https://github.com/cds-snc/cds-superset/issues/368)) ([388aa26](https://github.com/cds-snc/cds-superset/commit/388aa2621ed691cff9b936adb7a4c3a1285ce005))
+
 ## [2.11.0](https://github.com/cds-snc/cds-superset/compare/v2.10.4...v2.11.0) (2025-04-14)
 
 
