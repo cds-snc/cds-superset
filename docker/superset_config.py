@@ -184,6 +184,7 @@ FAB_ROLES = {
         [".*", "can_read"],
         [".*", "can_show"],
         ["Api", "can_query"],
+        ["Api", "can_time_range"],
         ["Dashboard", "can_cache_dashboard_screenshot"],
         ["Dashboard", "can_drill"],
         ["Dashboard", "can_view_chart_as_table"],
