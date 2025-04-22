@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.13.0](https://github.com/cds-snc/cds-superset/compare/v2.12.2...v2.13.0) (2025-04-22)
+
+
+### Features
+
+* add `PlatformUser` role ([#375](https://github.com/cds-snc/cds-superset/issues/375)) ([19c85bc](https://github.com/cds-snc/cds-superset/commit/19c85bcfe83c0cfcfd794af76b035faa17bd88b3))
+
 ## [2.12.2](https://github.com/cds-snc/cds-superset/compare/v2.12.1...v2.12.2) (2025-04-22)
 
 
