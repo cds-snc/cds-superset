@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.12.1](https://github.com/cds-snc/cds-superset/compare/v2.12.0...v2.12.1) (2025-04-22)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#370](https://github.com/cds-snc/cds-superset/issues/370)) ([66085e9](https://github.com/cds-snc/cds-superset/commit/66085e9a39c6acded7260f95add78191684fa926))
+* **deps:** update all non-major github action dependencies ([#369](https://github.com/cds-snc/cds-superset/issues/369)) ([0863e78](https://github.com/cds-snc/cds-superset/commit/0863e788307bfe6239f1ec34ac00cf4103d60b93))
+
 ## [2.12.0](https://github.com/cds-snc/cds-superset/compare/v2.11.0...v2.12.0) (2025-04-21)
 
 
