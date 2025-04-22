@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.2](https://github.com/cds-snc/cds-superset/compare/v2.12.1...v2.12.2) (2025-04-22)
+
+
+### Bug Fixes
+
+* add missing API time range permission ([#373](https://github.com/cds-snc/cds-superset/issues/373)) ([d427c38](https://github.com/cds-snc/cds-superset/commit/d427c38cc0869fc412a0dd6fa923c3d68a30d994))
+
 ## [2.12.1](https://github.com/cds-snc/cds-superset/compare/v2.12.0...v2.12.1) (2025-04-22)
 
 
