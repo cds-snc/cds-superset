@@ -174,7 +174,10 @@ FLASK_APP_MUTATOR = app_mutator
 
 # Custom roles
 FAB_ROLES = {
-    # Read all data and includes default `Gamma` role permisions
+    "CacheWarmer": [
+        [".*", "can_warm_up_cache"],
+    ],
+    "PlatformUser": [],
     "ReadOnly": [
         [".*", "can_external_metadata"],
         [".*", "can_external_metadata_by_name"],
@@ -217,9 +220,6 @@ FAB_ROLES = {
         ["Dashboard", "can_write"],
         ["Dataset", "can_write"],
         ["Datasets", "menu_access"],
-    ],
-    "CacheWarmer": [
-        [".*", "can_warm_up_cache"],
     ],
 }
 
