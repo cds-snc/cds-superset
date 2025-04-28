@@ -176,6 +176,8 @@ FLASK_APP_MUTATOR = app_mutator
 FAB_ROLES = {
     "CacheWarmer": [
         [".*", "can_warm_up_cache"],
+        ["all_database_access", "all_database_access"],
+        ["all_datasource_access", "all_datasource_access"],
     ],
     "PlatformUser": [],
     "ReadOnly": [
