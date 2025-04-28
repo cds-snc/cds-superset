@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.14.0](https://github.com/cds-snc/cds-superset/compare/v2.13.0...v2.14.0) (2025-04-28)
+
+
+### Features
+
+* allow some 4XX responses through the IP blocklist ([#380](https://github.com/cds-snc/cds-superset/issues/380)) ([89ecedb](https://github.com/cds-snc/cds-superset/commit/89ecedb80a0e4f73162551f75516cbfe9e56fe36))
+
+
+### Miscellaneous Chores
+
+* **deps:** update cds-snc/terraform-plan action to v3.4.2 ([#379](https://github.com/cds-snc/cds-superset/issues/379)) ([1e4c9fb](https://github.com/cds-snc/cds-superset/commit/1e4c9fbf6a504de9344723c2fd9f973d94101333))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v7.4.3 ([#381](https://github.com/cds-snc/cds-superset/issues/381)) ([359b330](https://github.com/cds-snc/cds-superset/commit/359b330e75f99fbf8f6204704793d7b746a4ea92))
+* synced local '.github/workflows/backstage-catalog-helper.yml' with remote 'tools/sre_file_sync/backstage-catalog-helper.yml' ([#377](https://github.com/cds-snc/cds-superset/issues/377)) ([dae32a4](https://github.com/cds-snc/cds-superset/commit/dae32a4dfad4fa149130f2591a1a40cfda6f2f7e))
+
 ## [2.13.0](https://github.com/cds-snc/cds-superset/compare/v2.12.2...v2.13.0) (2025-04-22)
 
 
