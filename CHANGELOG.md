@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.1](https://github.com/cds-snc/cds-superset/compare/v2.14.0...v2.14.1) (2025-04-28)
+
+
+### Bug Fixes
+
+* allow CacheWarmer access to all data ([#382](https://github.com/cds-snc/cds-superset/issues/382)) ([7c8005a](https://github.com/cds-snc/cds-superset/commit/7c8005a9879b6a8d8508a3775116b2225a6637ed))
+
 ## [2.14.0](https://github.com/cds-snc/cds-superset/compare/v2.13.0...v2.14.0) (2025-04-28)
 
 
