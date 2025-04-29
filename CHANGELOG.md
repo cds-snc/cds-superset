@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.2](https://github.com/cds-snc/cds-superset/compare/v2.14.1...v2.14.2) (2025-04-29)
+
+
+### Miscellaneous Chores
+
+* switch to CDS Release Bot ([#384](https://github.com/cds-snc/cds-superset/issues/384)) ([953f6d7](https://github.com/cds-snc/cds-superset/commit/953f6d71a27c5a3f9dec58818c4ba671d4628acd))
+
 ## [2.14.1](https://github.com/cds-snc/cds-superset/compare/v2.14.0...v2.14.1) (2025-04-28)
 
 
