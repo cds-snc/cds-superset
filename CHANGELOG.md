@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.14.3](https://github.com/cds-snc/cds-superset/compare/v2.14.2...v2.14.3) (2025-05-05)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#389](https://github.com/cds-snc/cds-superset/issues/389)) ([f572803](https://github.com/cds-snc/cds-superset/commit/f572803f6e81791b4eeec005a964aa63f9a2202b))
+* **deps:** update all non-major github action dependencies ([#386](https://github.com/cds-snc/cds-superset/issues/386)) ([968af9b](https://github.com/cds-snc/cds-superset/commit/968af9b5571e889530cc8b8ba53f0dece6d87e50))
+* **deps:** update dependency pyathena to v3.13.0 ([#388](https://github.com/cds-snc/cds-superset/issues/388)) ([c20342e](https://github.com/cds-snc/cds-superset/commit/c20342ee29541d9873d40489242209112f21860a))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.4.2 ([#387](https://github.com/cds-snc/cds-superset/issues/387)) ([8f14dab](https://github.com/cds-snc/cds-superset/commit/8f14dabec7e51744e4f56ed29f5d37cb893b91e3))
+
 ## [2.14.2](https://github.com/cds-snc/cds-superset/compare/v2.14.1...v2.14.2) (2025-04-29)
 
 
