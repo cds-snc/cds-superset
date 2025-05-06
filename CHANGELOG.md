@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.4](https://github.com/cds-snc/cds-superset/compare/v2.14.3...v2.14.4) (2025-05-06)
+
+
+### Bug Fixes
+
+* permissions for `WriteData` role ([#391](https://github.com/cds-snc/cds-superset/issues/391)) ([eaea7ba](https://github.com/cds-snc/cds-superset/commit/eaea7ba73fc8fedb92ccc0ccc35ec3cabe3d23e4))
+
 ## [2.14.3](https://github.com/cds-snc/cds-superset/compare/v2.14.2...v2.14.3) (2025-05-05)
 
 
