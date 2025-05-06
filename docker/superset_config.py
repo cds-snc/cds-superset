@@ -222,6 +222,11 @@ FAB_ROLES = {
         ["Dashboard", "can_write"],
         ["Dataset", "can_write"],
         ["Datasets", "menu_access"],
+        ["TableSchemaView", "can_delete"],
+        ["TableSchemaView", "can_expanded"],
+        ["TableSchemaView", "can_post"],
+        ["TabStateView", "can_delete"],
+        ["TabStateView", "can_post"],
     ],
 }
 
