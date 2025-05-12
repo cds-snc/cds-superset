@@ -10,16 +10,15 @@ locals {
   ]
   superset_error_filters_skip = [
     "'Template' object has no attribute 'strip'",
-    "AccessDenied*GENERIC_DB_ENGINE_ERROR",
     "COLUMN_NOT_FOUND",
     "contains non-numeric values",
     "DML_NOT_ALLOWED_ERROR",
     "Error on OAuth authorize",
     "Error warming up cache",
     "Failed to execute query",
+    "GENERIC_DB_ENGINE_ERROR",
     "gsheets error: Unsupported format",
     "Insufficient permissions to execute the query",
-    "InvalidRequestException*GENERIC_DB_ENGINE_ERROR",
     "Only `SELECT` statements are allowed",
     "SQLError",
     "SYNTAX_ERROR",
