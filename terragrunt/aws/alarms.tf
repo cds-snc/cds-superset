@@ -16,6 +16,7 @@ locals {
     "Error on OAuth authorize",
     "Error warming up cache",
     "Failed to execute query",
+    "flask_appbuilder.api:dict is not a sequence",
     "GENERIC_DB_ENGINE_ERROR",
     "gsheets error: Unsupported format",
     "Insufficient permissions to execute the query",
