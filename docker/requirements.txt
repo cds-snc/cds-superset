@@ -1,5 +1,6 @@
 authlib==1.5.2
 Flask-Session==0.8.0
+prophet==1.1.6
 psycopg2-binary==2.9.10
 pyathena[pandas]==3.13.0
 redis==5.3.0
