@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.6](https://github.com/cds-snc/cds-superset/compare/v2.14.5...v2.14.6) (2025-05-13)
+
+
+### Bug Fixes
+
+* add more missing permissions to our custom roles ([#400](https://github.com/cds-snc/cds-superset/issues/400)) ([9efddb8](https://github.com/cds-snc/cds-superset/commit/9efddb8aa2e936c52c10cf3b416c71acdebe9277))
+
 ## [2.14.5](https://github.com/cds-snc/cds-superset/compare/v2.14.4...v2.14.5) (2025-05-13)
 
 
