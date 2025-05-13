@@ -286,7 +286,7 @@ resource "aws_wafv2_web_acl" "superset" {
     priority = 60
 
     action {
-      block {}
+      count {}
     }
 
     statement {
