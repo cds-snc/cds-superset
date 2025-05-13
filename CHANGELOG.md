@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.14.5](https://github.com/cds-snc/cds-superset/compare/v2.14.4...v2.14.5) (2025-05-13)
+
+
+### Bug Fixes
+
+* add prophet dependency for predictive analytics ([#399](https://github.com/cds-snc/cds-superset/issues/399)) ([5acd40f](https://github.com/cds-snc/cds-superset/commit/5acd40f4389004c4f77c36d0c5c428132bf95857))
+
+
+### Miscellaneous Chores
+
+* cleanup unused folder ([#396](https://github.com/cds-snc/cds-superset/issues/396)) ([9a4cfbc](https://github.com/cds-snc/cds-superset/commit/9a4cfbc1633f5b7649ac73ed8e11e2c36d230c88))
+* **deps:** update all non-major github action dependencies ([#394](https://github.com/cds-snc/cds-superset/issues/394)) ([8be5b54](https://github.com/cds-snc/cds-superset/commit/8be5b5498ff438cd344ef217ac9b283b564f1869))
+* **deps:** update dependency redis to v5.3.0 ([#395](https://github.com/cds-snc/cds-superset/issues/395)) ([1d60450](https://github.com/cds-snc/cds-superset/commit/1d60450ced5c37b1f13fd5485e1583a98d647fae))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 76a2d99 ([#393](https://github.com/cds-snc/cds-superset/issues/393)) ([e63e007](https://github.com/cds-snc/cds-superset/commit/e63e00733b3a2f4de9c1c2f374c4cf09a1878bd6))
+* suppress generic PostgresSQL errors ([#398](https://github.com/cds-snc/cds-superset/issues/398)) ([489fb8f](https://github.com/cds-snc/cds-superset/commit/489fb8f2842302f3f0b5ff044b1020c6d365f2e9))
+
 ## [2.14.4](https://github.com/cds-snc/cds-superset/compare/v2.14.3...v2.14.4) (2025-05-06)
 
 
