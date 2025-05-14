@@ -1,10 +1,7 @@
 locals {
-  data_lake_account_id = "739275439843"
-  data_lake_region     = "ca-central-1"
-
-  data_lake_athena_bucket_arn      = "arn:aws:s3:::cds-data-lake-athena-production"
-  data_lake_curated_bucket_arn     = "arn:aws:s3:::cds-data-lake-curated-production"
-  data_lake_transformed_bucket_arn = "arn:aws:s3:::cds-data-lake-transformed-production"
+  data_lake_athena_bucket_arn_prefix      = "arn:aws:s3:::cds-data-lake-athena"
+  data_lake_curated_bucket_arn_prefix     = "arn:aws:s3:::cds-data-lake-curated"
+  data_lake_transformed_bucket_arn_prefix = "arn:aws:s3:::cds-data-lake-transformed"
 }
 
 resource "aws_iam_role" "superset_athena_read" {
@@ -56,7 +53,8 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "athena:GetDataCatalog"
     ]
     resources = [
-      aws_athena_data_catalog.data_lake.arn
+      for account in var.data_lake_account_access :
+      aws_athena_data_catalog.data_lake[account.env_name].arn
     ]
   }
 
@@ -96,12 +94,14 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "s3:ListBucket",
       "s3:GetBucketLocation"
     ]
-    resources = [
-      local.data_lake_curated_bucket_arn,
-      "${local.data_lake_curated_bucket_arn}/*",
-      local.data_lake_transformed_bucket_arn,
-      "${local.data_lake_transformed_bucket_arn}/*",
-    ]
+    resources = flatten([
+      for account in var.data_lake_account_access : [
+        "${local.data_lake_curated_bucket_arn_prefix}-${account.env_name}",
+        "${local.data_lake_curated_bucket_arn_prefix}-${account.env_name}/*",
+        "${local.data_lake_transformed_bucket_arn_prefix}-${account.env_name}",
+        "${local.data_lake_transformed_bucket_arn_prefix}-${account.env_name}/*",
+      ]
+    ])
   }
 
   statement {
@@ -114,10 +114,12 @@ data "aws_iam_policy_document" "superset_athena_read" {
       "s3:ListBucket",
       "s3:GetBucketLocation"
     ]
-    resources = [
-      local.data_lake_athena_bucket_arn,
-      "${local.data_lake_athena_bucket_arn}/*"
-    ]
+    resources = flatten([
+      for account in var.data_lake_account_access : [
+        "${local.data_lake_athena_bucket_arn_prefix}-${account.env_name}",
+        "${local.data_lake_athena_bucket_arn_prefix}-${account.env_name}/*",
+      ]
+    ])
   }
 }
 
@@ -138,16 +140,14 @@ data "aws_iam_policy_document" "glue_database" {
       "glue:GetTableVersion",
       "glue:GetTableVersions"
     ]
-    resources = concat(
-      [
-        aws_athena_data_catalog.data_lake.arn,
-        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:catalog",
-      ],
-      [
-        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:database/${each.key == "all" ? "*" : each.key}",
-        "arn:aws:glue:${local.data_lake_region}:${local.data_lake_account_id}:table/${each.key == "all" ? "*" : each.key}/*"
+    resources = flatten([
+      for account in var.data_lake_account_access : [
+        aws_athena_data_catalog.data_lake[account.env_name].arn,
+        "arn:aws:glue:${var.region}:${account.account_id}:catalog",
+        "arn:aws:glue:${var.region}:${account.account_id}:database/${each.key == "all" ? "*" : each.key}",
+        "arn:aws:glue:${var.region}:${account.account_id}:table/${each.key == "all" ? "*" : each.key}/*"
       ]
-    )
+    ])
   }
 }
 
