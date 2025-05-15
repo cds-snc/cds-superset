@@ -40,7 +40,7 @@ resource "aws_athena_data_catalog" "data_lake" {
   }
 
   name        = "data-lake-${each.key}"
-  description = "Data catalog for access to the CDS Data Lake ${each.key} environment"
+  description = "Data catalog for access to the CDS data lake"
   type        = "GLUE"
 
   parameters = {
