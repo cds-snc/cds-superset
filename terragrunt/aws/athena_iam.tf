@@ -141,12 +141,14 @@ data "aws_iam_policy_document" "glue_database" {
       "glue:GetTableVersions"
     ]
     resources = flatten([
-      for account in var.data_lake_account_access : [
+      for account in var.data_lake_account_access :
+      # Only include the Glue database resources if they are part of the same account environment
+      each.key == "all" || endswith(each.key, account.env_name) ? [
         aws_athena_data_catalog.data_lake[account.env_name].arn,
         "arn:aws:glue:${var.region}:${account.account_id}:catalog",
         "arn:aws:glue:${var.region}:${account.account_id}:database/${each.key == "all" ? "*" : each.key}",
         "arn:aws:glue:${var.region}:${account.account_id}:table/${each.key == "all" ? "*" : each.key}/*"
-      ]
+      ] : []
     ])
   }
 }
