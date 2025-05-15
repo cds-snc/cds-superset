@@ -34,11 +34,23 @@ module "athena_bucket" {
 }
 
 resource "aws_athena_data_catalog" "data_lake" {
-  name        = "data-lake-production"
-  description = "Data catalog for access to the CDS data lake"
+  for_each = {
+    for account in var.data_lake_account_access :
+    account.env_name => account.account_id
+  }
+
+  name        = "data-lake-${each.key}"
+  description = "Data catalog for access to the CDS Data Lake ${each.key} environment"
   type        = "GLUE"
 
   parameters = {
-    "catalog-id" = local.data_lake_account_id
+    "catalog-id" = each.value
   }
+}
+
+# Migrate the data lake catalog resource to its new location in the TF state.
+# This can be removed once the change has been applied in prod.
+moved {
+  from = aws_athena_data_catalog.data_lake
+  to   = aws_athena_data_catalog.data_lake["production"]
 }

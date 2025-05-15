@@ -4,6 +4,14 @@ variable "cloudwatch_alert_slack_webhook" {
   sensitive   = true
 }
 
+variable "data_lake_account_access" {
+  description = "List of data lake accounts that Superset has access to."
+  type = list(object({
+    env_name   = string
+    account_id = string
+  }))
+}
+
 variable "glue_databases" {
   description = "List of Glue databases to grant access to."
   type        = list(string)
