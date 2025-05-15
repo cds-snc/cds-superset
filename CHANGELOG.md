@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.8](https://github.com/cds-snc/cds-superset/compare/v2.14.7...v2.14.8) (2025-05-15)
+
+
+### Bug Fixes
+
+* route failed workflow notifications to correct channel ([#406](https://github.com/cds-snc/cds-superset/issues/406)) ([7cbeee0](https://github.com/cds-snc/cds-superset/commit/7cbeee002bbb1da61e8d0c909c83c196d350c96c))
+
 ## [2.14.7](https://github.com/cds-snc/cds-superset/compare/v2.14.6...v2.14.7) (2025-05-15)
 
 
