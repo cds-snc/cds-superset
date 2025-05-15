@@ -47,10 +47,3 @@ resource "aws_athena_data_catalog" "data_lake" {
     "catalog-id" = each.value
   }
 }
-
-# Migrate the data lake catalog resource to its new location in the TF state.
-# This can be removed once the change has been applied in prod.
-moved {
-  from = aws_athena_data_catalog.data_lake
-  to   = aws_athena_data_catalog.data_lake["production"]
-}
