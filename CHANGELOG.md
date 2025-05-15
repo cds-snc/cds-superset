@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.14.7](https://github.com/cds-snc/cds-superset/compare/v2.14.6...v2.14.7) (2025-05-15)
+
+
+### Bug Fixes
+
+* add Staging Data Lake IAM roles ([#402](https://github.com/cds-snc/cds-superset/issues/402)) ([889afd1](https://github.com/cds-snc/cds-superset/commit/889afd1d1b0b722d0f175341bd2b4129d55c8119))
+* revert the description change for the data catalog ([#405](https://github.com/cds-snc/cds-superset/issues/405)) ([621c668](https://github.com/cds-snc/cds-superset/commit/621c668aa42a6f263b7fea610c0fd974bf9f9ed8))
+* Superset IAM roles used to access the Data Lake ([#404](https://github.com/cds-snc/cds-superset/issues/404)) ([a4bc8e4](https://github.com/cds-snc/cds-superset/commit/a4bc8e4c0170fa3eb27b25cbd700a6caf2f871ce))
+
 ## [2.14.6](https://github.com/cds-snc/cds-superset/compare/v2.14.5...v2.14.6) (2025-05-13)
 
 
