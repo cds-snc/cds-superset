@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.14.9](https://github.com/cds-snc/cds-superset/compare/v2.14.8...v2.14.9) (2025-05-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all non-major github action dependencies ([#409](https://github.com/cds-snc/cds-superset/issues/409)) ([86b0561](https://github.com/cds-snc/cds-superset/commit/86b05617a044ec5abd9da86964b77f2e2d8a5b9e))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.4.5 ([#408](https://github.com/cds-snc/cds-superset/issues/408)) ([4ff244d](https://github.com/cds-snc/cds-superset/commit/4ff244dcc26142bbd720c7ea5bbd97b6464b38f8))
+
 ## [2.14.8](https://github.com/cds-snc/cds-superset/compare/v2.14.7...v2.14.8) (2025-05-15)
 
 
