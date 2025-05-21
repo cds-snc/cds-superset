@@ -17,8 +17,4 @@ COPY superset_config.py /app/superset_config.py
 COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py
 
-# Code overrides
-# BUG in v4.1.1 for cache warming.  Remove when the fix is released.
-COPY superset/tasks/utils.py /app/superset/tasks/utils.py
-
 USER superset

@@ -53,7 +53,7 @@ def test_access(app):
                         )
                         logger.info(tables[random_table_index].fetch_metadata())
                     else:
-                        logger.error(
+                        logger.info(
                             f"No tables registered for database '{database.database_name}'"
                         )
 
