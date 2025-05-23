@@ -2,6 +2,7 @@ import logging
 import os
 
 from celery.schedules import crontab
+from flask import session
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
@@ -164,9 +165,61 @@ FAVICONS = [{"href": "/static/assets/images/logo.png"}]
 
 
 def app_mutator(app):
-    "Run integration tests on app startup"
+    """
+    Run integration tests on app startup and fix menu translations
+    when language changes.
+    """
+
+    # Run integration tests if needed
     if os.getenv("SUPERSET_APP") == "true":
         database.test_access(app)
+
+    # Workaround bug in Superset not updating the main menu translations
+    @app.before_request
+    def fix_menu_translations():
+        """
+        Retrieve the current locale and check if it has changed.  If it has,
+        rebuild the top level menu labels for the new locale.
+        """
+        menu_translations = {
+            "en": {
+                "Dashboards": "Dashboards",
+                "Charts": "Charts",
+                "Datasets": "Datasets",
+                "SQL Lab": "SQL",
+                "SQL Editor": "SQL Lab",
+                "Saved Queries": "Saved Queries",
+                "Query Search": "Query History",
+            },
+            "fr": {
+                "Dashboards": "Tableaux de bords",
+                "Charts": "Graphiques",
+                "Datasets": "Ensembles de données",
+                "SQL Lab": "SQL",
+                "SQL Editor": "Laboratoire SQL",
+                "Saved Queries": "Requêtes enregistrées",
+                "Query Search": "Historique des requêtes",
+            },
+        }
+        locale = session.get("locale")
+        locale_previous = session.get("locale_previous")
+        if locale != locale_previous:
+            session["locale_previous"] = locale
+            menu = (
+                app.appbuilder.menu
+                if hasattr(app, "appbuilder") and hasattr(app.appbuilder, "menu")
+                else None
+            )
+            if locale and menu:
+                for item in menu.get_list():
+                    item.label = menu_translations.get(locale, {}).get(
+                        item.name, item.label
+                    )
+                    for child in item.childs:
+                        child.label = menu_translations.get(locale, {}).get(
+                            child.name, child.label
+                        )
+
     return app
 
 
