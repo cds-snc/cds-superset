@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.14.10](https://github.com/cds-snc/cds-superset/compare/v2.14.9...v2.14.10) (2025-05-23)
+
+
+### Bug Fixes
+
+* do not consider no tables as an error ([#411](https://github.com/cds-snc/cds-superset/issues/411)) ([cc8d4de](https://github.com/cds-snc/cds-superset/commit/cc8d4de2a1933ce776f36d726a15c863b558a737))
+* force translation of top level menu items ([#413](https://github.com/cds-snc/cds-superset/issues/413)) ([7ee10a2](https://github.com/cds-snc/cds-superset/commit/7ee10a25adff07881a133b4d51859cde6ddef843))
+
 ## [2.14.9](https://github.com/cds-snc/cds-superset/compare/v2.14.8...v2.14.9) (2025-05-20)
 
 
