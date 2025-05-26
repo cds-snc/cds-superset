@@ -10,7 +10,7 @@ env:
   AWS_REGION: ca-central-1
   ECS_CLUSTER: superset
   REGISTRY: ${{ vars.STAGING_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
-  GITHUB_SHA: ${{ github.sha }}
+  GITHUB_SHA: ${{ github.event.workflow_run.head_sha }}
 
 permissions:
   id-token: write
