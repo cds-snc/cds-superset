@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.14.11](https://github.com/cds-snc/cds-superset/compare/v2.14.10...v2.14.11) (2025-05-26)
+
+
+### Bug Fixes
+
+* race condition to retrieve commit SHA ([#419](https://github.com/cds-snc/cds-superset/issues/419)) ([c289834](https://github.com/cds-snc/cds-superset/commit/c289834f666e2a57111b6d6f3830fde7207fa903))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#417](https://github.com/cds-snc/cds-superset/issues/417)) ([ec3c4c4](https://github.com/cds-snc/cds-superset/commit/ec3c4c44476f00f8a6664865a1df73ce3c4e23a6))
+* **deps:** update all non-major github action dependencies ([#414](https://github.com/cds-snc/cds-superset/issues/414)) ([0f306d8](https://github.com/cds-snc/cds-superset/commit/0f306d83f0e1409f6c2bb0a420b2531f340f7ceb))
+* **deps:** update dependency pyathena to v3.14.0 ([#416](https://github.com/cds-snc/cds-superset/issues/416)) ([d4a09af](https://github.com/cds-snc/cds-superset/commit/d4a09afa30d2bd37eb57d3f0e13999c957481733))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.4.6 ([#415](https://github.com/cds-snc/cds-superset/issues/415)) ([0e046a8](https://github.com/cds-snc/cds-superset/commit/0e046a8beff03974c83161a275aebe9a3584e844))
+
 ## [2.14.10](https://github.com/cds-snc/cds-superset/compare/v2.14.9...v2.14.10) (2025-05-23)
 
 
