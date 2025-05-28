@@ -4,7 +4,7 @@ x-superset-build:
     dockerfile: Dockerfile
 x-superset-depends-on: &superset-depends-on
   - db
-  - redis
+  - valkey
 x-superset-env: 
   &superset-env
   - path: docker/.env.local
@@ -15,12 +15,12 @@ x-superset-volumes:
   - superset_home:/app/superset_home
 
 services:
-  redis:
-    image: redis:7
+  valkey:
+    image: valkey/valkey:7
     container_name: superset_cache
     restart: unless-stopped
     volumes:
-      - redis:/data
+      - valkey:/data
 
   db:
     env_file: *superset-env
@@ -86,5 +86,5 @@ volumes:
     external: false
   db_home:
     external: false
-  redis:
+  valkey:
     external: false
