@@ -18,9 +18,12 @@ DATABASE_USER = os.getenv("SUPERSET_DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("SUPERSET_DATABASE_PASSWORD")
 DATABASE_HOST = os.getenv("SUPERSET_DATABASE_HOST")
 DATABASE_DB = os.getenv("SUPERSET_DATABASE_DB")
+DATABASE_SSL_MODE = (
+    "disable" if os.getenv("SUPERSET_ENV") == "development" else "require"
+)
 SQLALCHEMY_DATABASE_URI = (
     f"postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}@"
-    f"{DATABASE_HOST}/{DATABASE_DB}"
+    f"{DATABASE_HOST}/{DATABASE_DB}?sslmode={DATABASE_SSL_MODE}"
 )
 
 # Caching: https://superset.apache.org/docs/installation/cache
