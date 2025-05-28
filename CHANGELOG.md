@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.0](https://github.com/cds-snc/cds-superset/compare/v2.14.11...v2.15.0) (2025-05-28)
+
+
+### Features
+
+* require SSL for database connection ([#420](https://github.com/cds-snc/cds-superset/issues/420)) ([4d0ffd4](https://github.com/cds-snc/cds-superset/commit/4d0ffd444539b091ad2b3b165dea9e159fb95ce8))
+
 ## [2.14.11](https://github.com/cds-snc/cds-superset/compare/v2.14.10...v2.14.11) (2025-05-26)
 
 
