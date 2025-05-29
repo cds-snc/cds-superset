@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.18.0](https://github.com/cds-snc/cds-superset/compare/v2.17.0...v2.18.0) (2025-05-29)
+
+
+### Features
+
+* enable pgAudit query logging ([#422](https://github.com/cds-snc/cds-superset/issues/422)) ([0e74b2c](https://github.com/cds-snc/cds-superset/commit/0e74b2c43ab7339e238ff4ff9fc7affb98b5bd18))
+
+
+### Miscellaneous Chores
+
+* remove the old Redis cache ([#428](https://github.com/cds-snc/cds-superset/issues/428)) ([a2c9cdf](https://github.com/cds-snc/cds-superset/commit/a2c9cdf5fe16f580487cd4fda249c9497fa020cd))
+
 ## [2.17.0](https://github.com/cds-snc/cds-superset/compare/v2.16.0...v2.17.0) (2025-05-29)
 
 
