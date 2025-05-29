@@ -10,11 +10,11 @@ locals {
     },
     {
       "name"  = "REDIS_HOST"
-      "value" = aws_elasticache_cluster.superset.cache_nodes[0]["address"]
+      "value" = split(":", aws_elasticache_replication_group.superset_cache.primary_endpoint_address)[0]
     },
     {
       "name"  = "REDIS_PORT"
-      "value" = tostring(aws_elasticache_cluster.superset.port)
+      "value" = tostring(aws_elasticache_replication_group.superset_cache.port)
     },
     {
       "name"  = "THUMBNAIL_SELENIUM_USER"
