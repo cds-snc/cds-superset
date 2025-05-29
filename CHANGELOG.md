@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.16.0](https://github.com/cds-snc/cds-superset/compare/v2.15.0...v2.16.0) (2025-05-29)
+
+
+### Features
+
+* switch to Valkey caching engine ([#423](https://github.com/cds-snc/cds-superset/issues/423)) ([7a7537d](https://github.com/cds-snc/cds-superset/commit/7a7537d98e1cfb83a7753633ab02901b0c661a64))
+
+
+### Bug Fixes
+
+* creation of the Valkey memcache cluster ([#425](https://github.com/cds-snc/cds-superset/issues/425)) ([6e92391](https://github.com/cds-snc/cds-superset/commit/6e92391b26d3f1b43cc6f3cb5e47d00a02075ee4))
+
 ## [2.15.0](https://github.com/cds-snc/cds-superset/compare/v2.14.11...v2.15.0) (2025-05-28)
 
 
