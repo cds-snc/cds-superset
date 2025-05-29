@@ -17,6 +17,11 @@ module "superset_db" {
   preferred_backup_window      = "02:00-04:00"
   performance_insights_enabled = true
 
+  # Enable audit logging to CloudWatch
+  db_cluster_parameter_group_name          = aws_rds_cluster_parameter_group.superset_db.name
+  enabled_cloudwatch_logs_exports          = ["postgresql"]
+  cloudwatch_log_exports_retention_in_days = 30
+
   serverless_min_capacity = var.superset_database_min_capacity
   serverless_max_capacity = var.superset_database_max_capacity
 
@@ -25,6 +30,26 @@ module "superset_db" {
   security_group_ids = [aws_security_group.superset_db.id]
 
   billing_tag_value = var.billing_code
+}
+
+resource "aws_rds_cluster_parameter_group" "superset_db" {
+  name        = "superset-db-pg-audit"
+  family      = "aurora-postgresql15"
+  description = "RDS parameter group that enables pgAudit"
+
+  parameter {
+    name         = "shared_preload_libraries"
+    value        = "pgaudit,pg_stat_statements"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "pgaudit.log"
+    value        = "role,write,ddl"
+    apply_method = "pending-reboot"
+  }
+
+  tags = local.common_tags
 }
 
 resource "aws_ssm_parameter" "superset_database_host" {
