@@ -10,7 +10,7 @@ locals {
     },
     {
       "name"  = "REDIS_HOST"
-      "value" = split(".", aws_elasticache_replication_group.superset_cache.primary_endpoint_address)[0]
+      "value" = split(":", aws_elasticache_replication_group.superset_cache.primary_endpoint_address)[0]
     },
     {
       "name"  = "REDIS_PORT"
