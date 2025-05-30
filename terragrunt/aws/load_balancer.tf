@@ -59,7 +59,7 @@ resource "aws_lb_listener" "superset" {
   load_balancer_arn = aws_lb.superset.arn
   port              = "443"
   protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-FIPS-2023-04"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-3-FIPS-2023-04"
   certificate_arn   = aws_acm_certificate.superset.arn
 
   default_action {
