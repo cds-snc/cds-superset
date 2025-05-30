@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.18.1](https://github.com/cds-snc/cds-superset/compare/v2.18.0...v2.18.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* remove port 80 load balancer listener ([#430](https://github.com/cds-snc/cds-superset/issues/430)) ([73d87c7](https://github.com/cds-snc/cds-superset/commit/73d87c76aa3a06b9ee81b89bd24f5c5beecfdaab))
+
 ## [2.18.0](https://github.com/cds-snc/cds-superset/compare/v2.17.0...v2.18.0) (2025-05-29)
 
 
