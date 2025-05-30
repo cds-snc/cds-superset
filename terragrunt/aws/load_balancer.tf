@@ -74,21 +74,3 @@ resource "aws_lb_listener" "superset" {
 
   tags = local.common_tags
 }
-
-resource "aws_lb_listener" "superset_http_redirect" {
-  load_balancer_arn = aws_lb.superset.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type = "redirect"
-
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-
-  tags = local.common_tags
-}

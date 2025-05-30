@@ -68,16 +68,6 @@ resource "aws_security_group" "superset_lb" {
   tags        = local.common_tags
 }
 
-resource "aws_security_group_rule" "superset_lb_ingress_internet_http" {
-  description       = "Ingress from internet to load balancer (HTTP)"
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  security_group_id = aws_security_group.superset_lb.id
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
 resource "aws_security_group_rule" "superset_lb_ingress_internet_https" {
   description       = "Ingress from internet to load balancer (HTTPS)"
   type              = "ingress"
