@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.18.2](https://github.com/cds-snc/cds-superset/compare/v2.18.1...v2.18.2) (2025-05-30)
+
+
+### Bug Fixes
+
+* drop support for TLS 1.2 connections ([#432](https://github.com/cds-snc/cds-superset/issues/432)) ([f84ead9](https://github.com/cds-snc/cds-superset/commit/f84ead9a24fa335e7c35777a44674b8d2fa3d31f))
+
 ## [2.18.1](https://github.com/cds-snc/cds-superset/compare/v2.18.0...v2.18.1) (2025-05-30)
 
 
