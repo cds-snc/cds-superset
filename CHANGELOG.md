@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.18.2](https://github.com/cds-snc/cds-superset/compare/v2.18.1...v2.18.2) (2025-06-02)
+
+
+### Bug Fixes
+
+* drop support for TLS 1.2 connections ([#432](https://github.com/cds-snc/cds-superset/issues/432)) ([f84ead9](https://github.com/cds-snc/cds-superset/commit/f84ead9a24fa335e7c35777a44674b8d2fa3d31f))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency authlib to v1.6.0 ([#435](https://github.com/cds-snc/cds-superset/issues/435)) ([04443be](https://github.com/cds-snc/cds-superset/commit/04443be497ffb797a6d826a8c2c824cd6456c2f9))
+* **deps:** update dependency pyathena to v3.14.1 ([#436](https://github.com/cds-snc/cds-superset/issues/436)) ([e75a3e8](https://github.com/cds-snc/cds-superset/commit/e75a3e8e16cf3d827ed18169dcbf24c859e1f529))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to c283798 ([#434](https://github.com/cds-snc/cds-superset/issues/434)) ([60be36a](https://github.com/cds-snc/cds-superset/commit/60be36a5ec47d4b3265373612c5ab55dffed09d6))
+
 ## [2.18.1](https://github.com/cds-snc/cds-superset/compare/v2.18.0...v2.18.1) (2025-05-30)
 
 
