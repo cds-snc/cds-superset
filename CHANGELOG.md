@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.18.3](https://github.com/cds-snc/cds-superset/compare/v2.18.2...v2.18.3) (2025-06-09)
+
+
+### Documentation
+
+* add architectural diagram ([#442](https://github.com/cds-snc/cds-superset/issues/442)) ([5f8a79e](https://github.com/cds-snc/cds-superset/commit/5f8a79efd6b8ae03956568474707cdbe251aff40))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#439](https://github.com/cds-snc/cds-superset/issues/439)) ([06e66d2](https://github.com/cds-snc/cds-superset/commit/06e66d2f6855f0b3763fa82130174cb79caf9ce1))
+* **deps:** update all patch dependencies ([#437](https://github.com/cds-snc/cds-superset/issues/437)) ([62ab349](https://github.com/cds-snc/cds-superset/commit/62ab349c3af6948f8d8cb13d20d2212b6aeda27a))
+* **deps:** update aws-actions/amazon-ecs-render-task-definition action to v1.7.3 ([#438](https://github.com/cds-snc/cds-superset/issues/438)) ([84f38de](https://github.com/cds-snc/cds-superset/commit/84f38de3c933d244be4394e6d605bd2b75b6519e))
+* lower min capacity scaling of database ([#441](https://github.com/cds-snc/cds-superset/issues/441)) ([0ecc81e](https://github.com/cds-snc/cds-superset/commit/0ecc81e5e25f58c9bd525187583edb9e7f619019))
+
 ## [2.18.2](https://github.com/cds-snc/cds-superset/compare/v2.18.1...v2.18.2) (2025-06-02)
 
 
