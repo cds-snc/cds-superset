@@ -1,2 +1,2 @@
-# Users that are allowed to approve a release PR
-.release-please-manifest.json @cds-snc/platform-core-services
+# Users that are allowed to approve PRs
+* @cds-snc/platform-core-services
