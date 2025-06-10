@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.19.0](https://github.com/cds-snc/cds-superset/compare/v2.18.3...v2.19.0) (2025-06-10)
+
+
+### Features
+
+* create Notify Prod data IAM role ([#445](https://github.com/cds-snc/cds-superset/issues/445)) ([c8025c7](https://github.com/cds-snc/cds-superset/commit/c8025c72a6281768e3c8c73eb7e4b9a30978b1c7))
+
+
+### Bug Fixes
+
+* architecture diagram account label ([#443](https://github.com/cds-snc/cds-superset/issues/443)) ([6da9920](https://github.com/cds-snc/cds-superset/commit/6da9920376d9506188435b0df5b35914c89e3ab5))
+
 ## [2.18.3](https://github.com/cds-snc/cds-superset/compare/v2.18.2...v2.18.3) (2025-06-09)
 
 
