@@ -23,7 +23,7 @@ jobs:
                   \"type\": \"section\",
                   \"text\": {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"🔒 Security dependency update PR opened for `Superset`:\n<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>\"
+                    \"text\": \"🔒 Security dependency PR opened for Superset:\n<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>\"
                   }
                 }
               ]
