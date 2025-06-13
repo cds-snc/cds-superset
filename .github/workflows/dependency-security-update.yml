@@ -10,7 +10,7 @@ permissions:
 jobs:
   dependency-security-update:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.title, '[security]')
+    if: contains(github.event.pull_request.title, '[security]') && github.actor == 'renovate[bot]'
     steps:
       - name: Send Slack notification
         run: |
