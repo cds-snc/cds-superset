@@ -507,6 +507,6 @@ resource "aws_shield_protection" "superset_alb" {
 
 resource "aws_shield_protection" "superset_route53" {
   name         = "superset-route53"
-  resource_arn = aws_route53_zone.superset.zone_id
+  resource_arn = aws_route53_zone.superset.arn
   tags         = local.common_tags
 }
