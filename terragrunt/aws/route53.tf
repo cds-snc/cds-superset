@@ -14,8 +14,3 @@ resource "aws_route53_record" "superset_A" {
     evaluate_target_health = false
   }
 }
-
-moved {
-  from = aws_route53_zone.superset_cds_snc[0]
-  to   = aws_route53_zone.superset
-}

@@ -495,3 +495,18 @@ module "waf_ip_blocklist" {
 
   billing_tag_value = var.billing_code
 }
+
+#
+# AWS Shield Advanced
+#
+resource "aws_shield_protection" "superset_alb" {
+  name         = "superset-alb"
+  resource_arn = aws_lb.superset.arn
+  tags         = local.common_tags
+}
+
+resource "aws_shield_protection" "superset_route53" {
+  name         = "superset-route53"
+  resource_arn = aws_route53_zone.superset.arn
+  tags         = local.common_tags
+}
