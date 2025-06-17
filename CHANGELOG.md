@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.20.0](https://github.com/cds-snc/cds-superset/compare/v2.19.0...v2.20.0) (2025-06-17)
+
+
+### Features
+
+* add Slack notification for Security PRs ([#448](https://github.com/cds-snc/cds-superset/issues/448)) ([b7dc4d4](https://github.com/cds-snc/cds-superset/commit/b7dc4d43136b0e3e6ca1271ec401f2e9c7324ad9))
+* enable AWS Shield Advanced ([#451](https://github.com/cds-snc/cds-superset/issues/451)) ([bbd2e0a](https://github.com/cds-snc/cds-superset/commit/bbd2e0afd8494d488ad0b00f2b666e51f473984b))
+
+
+### Bug Fixes
+
+* add automatic block rule for Shield Advanced ([#452](https://github.com/cds-snc/cds-superset/issues/452)) ([aeafa49](https://github.com/cds-snc/cds-superset/commit/aeafa491ba8f9ad7e83d53df7478489e0152a1ac))
+* update CODEOWNERS for our team ([#446](https://github.com/cds-snc/cds-superset/issues/446)) ([b0e0da2](https://github.com/cds-snc/cds-superset/commit/b0e0da2a469a6e00beff38d160542c68743fb2d4))
+
+
+### Miscellaneous Chores
+
+* **deps:** update github/codeql-action action to v3.28.19 ([#449](https://github.com/cds-snc/cds-superset/issues/449)) ([ec86906](https://github.com/cds-snc/cds-superset/commit/ec86906c1a48651ff665aa35b393c2d9243a8b66))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.5.0 ([#450](https://github.com/cds-snc/cds-superset/issues/450)) ([9b2b3ad](https://github.com/cds-snc/cds-superset/commit/9b2b3adb10d628ccffa1e85dd62e4e5a34829922))
+
 ## [2.19.0](https://github.com/cds-snc/cds-superset/compare/v2.18.3...v2.19.0) (2025-06-10)
 
 
