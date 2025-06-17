@@ -128,23 +128,58 @@ resource "aws_wafv2_web_acl" "superset" {
   }
 
   rule {
-    name     = "RateLimitersRuleGroup"
+    name     = "RateLimitAllRequests"
     priority = 20
 
-    override_action {
-      none {}
+    action {
+      block {}
     }
 
     statement {
-      rule_group_reference_statement {
-        arn = aws_wafv2_rule_group.rate_limiters_group.arn
+      rate_based_statement {
+        limit              = 1500
+        aggregate_key_type = "IP"
       }
     }
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "rate_limiters_rule_group"
-      sampled_requests_enabled   = false
+      metric_name                = "RateLimitAllRequests"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "RateLimitMutatingRequests"
+    priority = 25
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = 200
+        aggregate_key_type = "IP"
+        scope_down_statement {
+          regex_match_statement {
+            field_to_match {
+              method {}
+            }
+            regex_string = "^(delete|patch|post|put)$"
+            text_transformation {
+              priority = 1
+              type     = "LOWERCASE"
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitMutatingRequests"
+      sampled_requests_enabled   = true
     }
   }
 
@@ -311,76 +346,6 @@ resource "aws_wafv2_web_acl" "superset" {
   tags = local.common_tags
 }
 
-resource "aws_wafv2_rule_group" "rate_limiters_group" {
-  capacity = 32
-  name     = "RateLimitersGroup"
-  scope    = "REGIONAL"
-
-  rule {
-    name     = "BlanketRequestLimit"
-    priority = 1
-
-    action {
-      block {}
-    }
-
-    statement {
-      rate_based_statement {
-        limit              = 2000
-        aggregate_key_type = "IP"
-
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "BlanketRequestLimit"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
-    name     = "PostRequestLimit"
-    priority = 2
-
-    action {
-      block {}
-    }
-
-    statement {
-      rate_based_statement {
-        limit              = 200
-        aggregate_key_type = "IP"
-        scope_down_statement {
-          regex_match_statement {
-            field_to_match {
-              method {}
-            }
-            regex_string = "^(put|post)$"
-            text_transformation {
-              priority = 1
-              type     = "LOWERCASE"
-            }
-          }
-        }
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "PostRequestRateLimit"
-      sampled_requests_enabled   = true
-    }
-  }
-  visibility_config {
-    cloudwatch_metrics_enabled = true
-    metric_name                = "RateLimitersGroup"
-    sampled_requests_enabled   = false
-  }
-
-  tags = local.common_tags
-}
-
 resource "aws_wafv2_web_acl_association" "superset" {
   resource_arn = aws_lb.superset.arn
   web_acl_arn  = aws_wafv2_web_acl.superset.arn
@@ -499,6 +464,10 @@ module "waf_ip_blocklist" {
 #
 # AWS Shield Advanced
 #
+resource "aws_shield_subscription" "superset" {
+  auto_renew = "ENABLED"
+}
+
 resource "aws_shield_protection" "superset_alb" {
   name         = "superset-alb"
   resource_arn = aws_lb.superset.arn
@@ -509,4 +478,14 @@ resource "aws_shield_protection" "superset_route53" {
   name         = "superset-route53"
   resource_arn = aws_route53_zone.superset.arn
   tags         = local.common_tags
+}
+
+resource "aws_shield_application_layer_automatic_response" "superset_alb" {
+  resource_arn = aws_lb.superset.arn
+  action       = "BLOCK"
+}
+
+import {
+  to = aws_shield_subscription.superset
+  id = var.account_id
 }
