@@ -151,7 +151,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "RateLimitMutatingRequests"
-    priority = 24
+    priority = 25
 
     action {
       block {}
@@ -483,4 +483,9 @@ resource "aws_shield_protection" "superset_route53" {
 resource "aws_shield_application_layer_automatic_response" "superset_alb" {
   resource_arn = aws_lb.superset.arn
   action       = "BLOCK"
+}
+
+import {
+  to = aws_shield_subscription.superset
+  id = var.account_id
 }
