@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.20.1](https://github.com/cds-snc/cds-superset/compare/v2.20.0...v2.20.1) (2025-06-17)
+
+
+### Bug Fixes
+
+* pin GitHub actions to commit SHAs ([#453](https://github.com/cds-snc/cds-superset/issues/453)) ([f936a34](https://github.com/cds-snc/cds-superset/commit/f936a34d9eba01ad1e9aace2efca74b200cbfb10))
+
 ## [2.20.0](https://github.com/cds-snc/cds-superset/compare/v2.19.0...v2.20.0) (2025-06-17)
 
 
