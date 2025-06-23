@@ -252,6 +252,40 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_errors" {
 }
 
 #
+# Privileged role granted to user
+#
+resource "aws_cloudwatch_log_metric_filter" "superset_privileged_role_grant" {
+  name           = "privileged-role-grant"
+  pattern        = "[(w1=\"*INSERT INTO ab_user_role.*[${join("|", var.superset_privileged_role_ids)}]\\) RETURNING*\")]"
+  log_group_name = "/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"
+
+  metric_transformation {
+    name          = "privileged-role-grant"
+    namespace     = "superset"
+    value         = "1"
+    default_value = "0"
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "superset_privileged_role_grant" {
+  alarm_name          = "privileged-role-grant"
+  alarm_description   = "Privileged role was granted in Superset."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "1"
+  metric_name         = aws_cloudwatch_log_metric_filter.superset_privileged_role_grant.metric_transformation[0].name
+  namespace           = aws_cloudwatch_log_metric_filter.superset_privileged_role_grant.metric_transformation[0].namespace
+  period              = "60"
+  statistic           = "Sum"
+  threshold           = "0"
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+
+  tags = local.common_tags
+}
+
+#
 # Log Insight queries
 #
 resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
@@ -262,6 +296,19 @@ resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
   query_string = <<-QUERY
     fields @timestamp, @message, @logStream
     | filter @message like /${join("|", local.superset_error_filters)}/
+    | sort @timestamp desc
+    | limit 100
+  QUERY
+}
+
+resource "aws_cloudwatch_query_definition" "superset_privileged_role_grant" {
+  name = "Superset - privileged role grant"
+
+  log_group_names = ["/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"]
+
+  query_string = <<-QUERY
+    fields @timestamp, @message, @logStream
+    | filter @message like /INSERT INTO ab_user_role.*[${join("|", var.superset_privileged_role_ids)}]\) RETURNING/
     | sort @timestamp desc
     | limit 100
   QUERY

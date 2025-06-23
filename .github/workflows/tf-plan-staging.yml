@@ -15,9 +15,10 @@ env:
   TF_SUMMARIZE_VERSION: 0.3.5
   TF_VAR_cloudwatch_alert_slack_webhook: ${{ secrets.STAGING_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}
   TF_VAR_google_oauth_client_id: ${{ secrets.STAGING_GOOGLE_OAUTH_CLIENT_ID }}
-  TF_VAR_google_oauth_client_secret: ${{ secrets.STAGING_GOOGLE_OAUTH_CLIENT_SECRET }}  
+  TF_VAR_google_oauth_client_secret: ${{ secrets.STAGING_GOOGLE_OAUTH_CLIENT_SECRET }}
   TF_VAR_superset_database_username: ${{ secrets.STAGING_SUPERSET_DATABASE_USERNAME }}
   TF_VAR_superset_database_password: ${{ secrets.STAGING_SUPERSET_DATABASE_PASSWORD }}
+  TF_VAR_superset_privileged_role_ids: ${{ secrets.STAGING_SUPERSET_PRIVILEGED_ROLE_IDS }}
   TF_VAR_superset_secret_key: ${{ secrets.STAGING_SUPERSET_SECRET_KEY }}
   TF_VAR_upptime_status_header: ${{ secrets.STAGING_UPPTIME_STATUS_HEADER }}
 
