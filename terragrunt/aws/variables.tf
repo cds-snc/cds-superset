@@ -61,6 +61,12 @@ variable "superset_database_password" {
   sensitive   = true
 }
 
+variable "superset_privileged_role_ids" {
+  description = "List of role IDs that have privileged access to data."
+  type        = list(number)
+  sensitive   = true
+}
+
 variable "superset_secret_key" {
   description = "Superset's secret key"
   type        = string
