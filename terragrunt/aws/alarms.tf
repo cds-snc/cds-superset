@@ -256,7 +256,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_errors" {
 #
 resource "aws_cloudwatch_log_metric_filter" "superset_privileged_role_grant" {
   name           = "privileged-role-grant"
-  pattern        = "[(w1=\"*INSERT INTO ab_user_role.*[${join("|", var.superset_privileged_role_ids)}]\\) RETURNING*\")]"
+  pattern        = "%.*INSERT INTO ab_user_role.*[${join("|", var.superset_privileged_role_ids)}]. RETURNING ab_user_role.id...not logged.$%"
   log_group_name = "/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"
 
   metric_transformation {
