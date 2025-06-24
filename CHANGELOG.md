@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.21.0](https://github.com/cds-snc/cds-superset/compare/v2.20.0...v2.21.0) (2025-06-23)
+
+
+### Features
+
+* add alarm for privileged role grants ([#460](https://github.com/cds-snc/cds-superset/issues/460)) ([a79498e](https://github.com/cds-snc/cds-superset/commit/a79498ec770a55d353775b85b40e25926413a6c2))
+
+
+### Bug Fixes
+
+* pin GitHub actions to commit SHAs ([#453](https://github.com/cds-snc/cds-superset/issues/453)) ([f936a34](https://github.com/cds-snc/cds-superset/commit/f936a34d9eba01ad1e9aace2efca74b200cbfb10))
+* privileged role grant regular expression ([#461](https://github.com/cds-snc/cds-superset/issues/461)) ([d0394d0](https://github.com/cds-snc/cds-superset/commit/d0394d0a940848c97d1a405b855c373e61c5d079))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#458](https://github.com/cds-snc/cds-superset/issues/458)) ([c8060b2](https://github.com/cds-snc/cds-superset/commit/c8060b292c6d26f3866efdab467bf75900a7712c))
+* **deps:** update all non-major github action dependencies ([#456](https://github.com/cds-snc/cds-superset/issues/456)) ([3e7f33a](https://github.com/cds-snc/cds-superset/commit/3e7f33aba7e3e6f2ce1e237742f5f321d956b7ab))
+* **deps:** update terraform aws to v6 ([#459](https://github.com/cds-snc/cds-superset/issues/459)) ([5911aa0](https://github.com/cds-snc/cds-superset/commit/5911aa0d9431676b6cc34af5295c7c8f43e63ccf))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.5.1 ([#457](https://github.com/cds-snc/cds-superset/issues/457)) ([9c7b31f](https://github.com/cds-snc/cds-superset/commit/9c7b31fb206b0691ef15abb6d7475282d8824993))
+* synced local '.github/workflows/backstage-catalog-helper.yml' with remote 'tools/sre_file_sync/backstage-catalog-helper.yml' ([#455](https://github.com/cds-snc/cds-superset/issues/455)) ([f90ebfe](https://github.com/cds-snc/cds-superset/commit/f90ebfe397ee6d3179d800dca7fdc7a2dd87ece3))
+
 ## [2.20.0](https://github.com/cds-snc/cds-superset/compare/v2.19.0...v2.20.0) (2025-06-17)
 
 
