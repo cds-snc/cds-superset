@@ -283,6 +283,8 @@ module "sentinel_forwarder" {
   cloudwatch_log_arns = [
     "arn:aws:logs:${var.region}:${var.account_id}:log-group:${local.rds_cluster_postgresql_log_group_name}"
   ]
+
+  billing_tag_value = var.billing_code
 }
 
 resource "aws_cloudwatch_log_subscription_filter" "superset_role_grant" {
