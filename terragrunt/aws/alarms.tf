@@ -5,6 +5,8 @@ locals {
     module.celery_worker_ecs
   ])
 
+  rds_cluster_postgresql_log_group_name = "/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"
+
   superset_error_filters = [
     "CRITICAL", "ERROR"
   ]
@@ -252,40 +254,6 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_errors" {
 }
 
 #
-# Privileged role granted to user
-#
-resource "aws_cloudwatch_log_metric_filter" "superset_privileged_role_grant" {
-  name           = "privileged-role-grant"
-  pattern        = "%.*INSERT INTO ab_user_role.*[${join("|", var.superset_privileged_role_ids)}]. RETURNING ab_user_role.id...not logged.$%"
-  log_group_name = "/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"
-
-  metric_transformation {
-    name          = "privileged-role-grant"
-    namespace     = "superset"
-    value         = "1"
-    default_value = "0"
-  }
-}
-
-resource "aws_cloudwatch_metric_alarm" "superset_privileged_role_grant" {
-  alarm_name          = "privileged-role-grant"
-  alarm_description   = "Privileged role was granted in Superset."
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = "1"
-  metric_name         = aws_cloudwatch_log_metric_filter.superset_privileged_role_grant.metric_transformation[0].name
-  namespace           = aws_cloudwatch_log_metric_filter.superset_privileged_role_grant.metric_transformation[0].namespace
-  period              = "60"
-  statistic           = "Sum"
-  threshold           = "0"
-  treat_missing_data  = "notBreaching"
-
-  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
-  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
-
-  tags = local.common_tags
-}
-
-#
 # Log Insight queries
 #
 resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
@@ -301,15 +269,28 @@ resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
   QUERY
 }
 
-resource "aws_cloudwatch_query_definition" "superset_privileged_role_grant" {
-  name = "Superset - privileged role grant"
+#
+# Sentinel Forwarder
+#
+module "sentinel_forwarder" {
+  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v10.6.0"
 
-  log_group_names = ["/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"]
+  function_name = "sentinel-forwarder"
+  layer_arn     = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:216"
+  customer_id   = var.sentinel_workspace_id
+  shared_key    = var.sentinel_workspace_key
 
-  query_string = <<-QUERY
-    fields @timestamp, @message, @logStream
-    | filter @message like /INSERT INTO ab_user_role.*[${join("|", var.superset_privileged_role_ids)}]\) RETURNING/
-    | sort @timestamp desc
-    | limit 100
-  QUERY
+  cloudwatch_log_arns = [
+    "arn:aws:logs:${var.region}:${var.account_id}:log-group:${local.rds_cluster_postgresql_log_group_name}"
+  ]
+
+  billing_tag_value = var.billing_code
+}
+
+resource "aws_cloudwatch_log_subscription_filter" "superset_role_grant" {
+  name            = "Superset role grant"
+  log_group_name  = local.rds_cluster_postgresql_log_group_name
+  filter_pattern  = "INSERT INTO ab_user_role"
+  destination_arn = module.sentinel_forwarder.lambda_arn
+  distribution    = "Random"
 }

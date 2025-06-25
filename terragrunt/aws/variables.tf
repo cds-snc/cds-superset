@@ -29,6 +29,18 @@ variable "google_oauth_client_secret" {
   sensitive   = true
 }
 
+variable "sentinel_workspace_id" {
+  description = "Workspace ID for Sentinel Forwarder."
+  type        = string
+  sensitive   = true
+}
+
+variable "sentinel_workspace_key" {
+  description = "Workspace key for Sentinel Forwarder."
+  type        = string
+  sensitive   = true
+}
+
 variable "superset_database_instances_count" {
   description = "The number of instances in the database cluster."
   type        = number
@@ -58,12 +70,6 @@ variable "superset_database_username" {
 variable "superset_database_password" {
   description = "The password to use for the database."
   type        = string
-  sensitive   = true
-}
-
-variable "superset_privileged_role_ids" {
-  description = "List of role IDs that have privileged access to data."
-  type        = list(number)
   sensitive   = true
 }
 
