@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.21.1](https://github.com/cds-snc/cds-superset/compare/v2.21.0...v2.21.1) (2025-06-25)
+
+
+### Bug Fixes
+
+* switch to Sentinel forwarder to capture role grants ([#462](https://github.com/cds-snc/cds-superset/issues/462)) ([3efd88b](https://github.com/cds-snc/cds-superset/commit/3efd88bec77aae3a87b341835d705f0810197fa6))
+
 ## [2.21.0](https://github.com/cds-snc/cds-superset/compare/v2.20.0...v2.21.0) (2025-06-23)
 
 
