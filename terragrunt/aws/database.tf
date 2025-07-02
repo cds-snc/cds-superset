@@ -2,7 +2,7 @@
 # RDS Postgress cluster
 #
 module "superset_db" {
-  source = "github.com/cds-snc/terraform-modules//rds?ref=v10.6.0"
+  source = "github.com/cds-snc/terraform-modules//rds?ref=v10.6.2"
   name   = "superset-${var.env}"
 
   database_name  = "superset"
