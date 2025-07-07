@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.21.2](https://github.com/cds-snc/cds-superset/compare/v2.21.1...v2.21.2) (2025-07-07)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all minor dependencies ([#466](https://github.com/cds-snc/cds-superset/issues/466)) ([830aca4](https://github.com/cds-snc/cds-superset/commit/830aca41d009f329d9aee7c4f7912bf65e07176e))
+* **deps:** update all non-major github action dependencies ([#464](https://github.com/cds-snc/cds-superset/issues/464)) ([708eb83](https://github.com/cds-snc/cds-superset/commit/708eb832e7bd9a7cef306bb39dbf5561e5eeea62))
+* **deps:** update all non-major github action dependencies ([#468](https://github.com/cds-snc/cds-superset/issues/468)) ([c9548fb](https://github.com/cds-snc/cds-superset/commit/c9548fb42738363761381fc1810ada6631eefe62))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.6.2 ([#465](https://github.com/cds-snc/cds-superset/issues/465)) ([52d799a](https://github.com/cds-snc/cds-superset/commit/52d799a63ce8d62eb90b9d76f36ab01990e57359))
+
 ## [2.21.1](https://github.com/cds-snc/cds-superset/compare/v2.21.0...v2.21.1) (2025-06-25)
 
 
