@@ -333,6 +333,9 @@ resource "aws_wafv2_web_acl" "superset" {
               challenge {
                 sensitivity     = "HIGH"
                 usage_of_action = "ENABLED"
+                exempt_uri_regular_expression {
+                  regex_string = "/api/|.(acc|avi|css|gif|jpe?g|js|pdf|png|tiff?|ttf|webm|webp|woff2?)$"
+                }
               }
             }
           }
