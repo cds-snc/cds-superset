@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.22.0](https://github.com/cds-snc/cds-superset/compare/v2.21.2...v2.22.0) (2025-07-09)
+
+
+### Features
+
+* enable Anti DDoS WAF ACL rule ([#469](https://github.com/cds-snc/cds-superset/issues/469)) ([b59c77b](https://github.com/cds-snc/cds-superset/commit/b59c77be0d8e094ee9c055791cb067e930ba3a14))
+
+
+### Bug Fixes
+
+* WAF anti-DDoS manage rule config ([#471](https://github.com/cds-snc/cds-superset/issues/471)) ([ee9fac4](https://github.com/cds-snc/cds-superset/commit/ee9fac429a3c98ea63d752d85a0b1ec2bec8fcce))
+
 ## [2.21.2](https://github.com/cds-snc/cds-superset/compare/v2.21.1...v2.21.2) (2025-07-07)
 
 
