@@ -5,6 +5,7 @@ USER root
 RUN apt-get update && \
     apt-get purge linux-libc-dev libc6-dev libldap-dev libldap2-dev libssl-dev -y && \
     apt-get autoremove -y && \
+    apt-get install libecpg-dev -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Add required database driver packages
