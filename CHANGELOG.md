@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.22.2](https://github.com/cds-snc/cds-superset/compare/v2.22.1...v2.22.2) (2025-07-10)
+
+
+### Bug Fixes
+
+* upgrade to latest version of gunicorn ([#475](https://github.com/cds-snc/cds-superset/issues/475)) ([7f90e4a](https://github.com/cds-snc/cds-superset/commit/7f90e4a4bc8fe94aa03ab35bd2a18db8efc7c7f8))
+
 ## [2.22.1](https://github.com/cds-snc/cds-superset/compare/v2.22.0...v2.22.1) (2025-07-10)
 
 
