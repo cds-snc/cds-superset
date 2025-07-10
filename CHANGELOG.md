@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.22.1](https://github.com/cds-snc/cds-superset/compare/v2.22.0...v2.22.1) (2025-07-10)
+
+
+### Bug Fixes
+
+* add `ecpg` to validate SQL syntax ([#474](https://github.com/cds-snc/cds-superset/issues/474)) ([ee56237](https://github.com/cds-snc/cds-superset/commit/ee562378ee014c8e05759a8f34cfc2bec8b47641))
+* remove dev dependencies from base image ([#472](https://github.com/cds-snc/cds-superset/issues/472)) ([07107e2](https://github.com/cds-snc/cds-superset/commit/07107e2fccff55f103175cd68bb20c7889c54719))
+
 ## [2.22.0](https://github.com/cds-snc/cds-superset/compare/v2.21.2...v2.22.0) (2025-07-09)
 
 
