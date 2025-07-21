@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.22.3](https://github.com/cds-snc/cds-superset/compare/v2.22.2...v2.22.3) (2025-07-21)
+
+
+### Miscellaneous Chores
+
+* **deps:** update apache/superset docker tag to v4.1.3 ([#479](https://github.com/cds-snc/cds-superset/issues/479)) ([12b48d6](https://github.com/cds-snc/cds-superset/commit/12b48d61956e10f0e4c55627e8ee14345016c6b2))
+* **deps:** update github/codeql-action action to v3.29.2 ([#478](https://github.com/cds-snc/cds-superset/issues/478)) ([a6e79ea](https://github.com/cds-snc/cds-superset/commit/a6e79ea7142496c948dd2b8f944c7653ea6c26ab))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 5d19b08 ([#477](https://github.com/cds-snc/cds-superset/issues/477)) ([2be166e](https://github.com/cds-snc/cds-superset/commit/2be166ee86c31c37770bc17134082ff2c5ab070b))
+
 ## [2.22.2](https://github.com/cds-snc/cds-superset/compare/v2.22.1...v2.22.2) (2025-07-10)
 
 
