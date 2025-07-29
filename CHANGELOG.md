@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.22.4](https://github.com/cds-snc/cds-superset/compare/v2.22.3...v2.22.4) (2025-07-28)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency authlib to v1.6.1 ([#482](https://github.com/cds-snc/cds-superset/issues/482)) ([e7f31fd](https://github.com/cds-snc/cds-superset/commit/e7f31fdf99821bb4734bee35d19aea98adbe2e82))
+* **deps:** update dependency pyathena to v3.15.0 ([#481](https://github.com/cds-snc/cds-superset/issues/481)) ([a286b3d](https://github.com/cds-snc/cds-superset/commit/a286b3dd3d5ce27acc1921ac14f3b15a441db6a2))
+
 ## [2.22.3](https://github.com/cds-snc/cds-superset/compare/v2.22.2...v2.22.3) (2025-07-21)
 
 
