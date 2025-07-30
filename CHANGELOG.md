@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.22.5](https://github.com/cds-snc/cds-superset/compare/v2.22.4...v2.22.5) (2025-07-30)
+
+
+### Bug Fixes
+
+* remove the dashboard cache warmup scheduled task ([#484](https://github.com/cds-snc/cds-superset/issues/484)) ([e705aaf](https://github.com/cds-snc/cds-superset/commit/e705aaff3833b297feb622e18d666a0d08f08775))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#486](https://github.com/cds-snc/cds-superset/issues/486)) ([a9a33da](https://github.com/cds-snc/cds-superset/commit/a9a33dab79b7dedd8aabc5115b1414aa590cedbf))
+
 ## [2.22.4](https://github.com/cds-snc/cds-superset/compare/v2.22.3...v2.22.4) (2025-07-28)
 
 
