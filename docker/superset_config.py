@@ -8,6 +8,7 @@ from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
 from superset.integration_tests import database
+from superset.tasks.types import FixedExecutor
 
 logger = logging.getLogger()
 
@@ -34,7 +35,7 @@ REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
 WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
-THUMBNAIL_SELENIUM_USER = os.getenv("THUMBNAIL_SELENIUM_USER")
+CACHE_WARMUP_EXECUTORS = [FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS"))]
 
 
 def redis_cache(key, timeout):
