@@ -8,7 +8,7 @@ from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
 from superset.integration_tests import database
-from superset.tasks.types import ExecutorType, FixedExecutor
+from superset.tasks.types import FixedExecutor
 
 logger = logging.getLogger()
 
