@@ -7,7 +7,6 @@ from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
-from superset.integration_tests import database
 from superset.tasks.types import FixedExecutor
 
 logger = logging.getLogger()
@@ -167,6 +166,7 @@ def app_mutator(app):
 
     # Run integration tests if needed
     if os.getenv("SUPERSET_APP") == "true":
+        from superset.integration_tests import database
         database.test_access(app)
 
     # Workaround bug in Superset not updating the main menu translations
