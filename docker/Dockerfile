@@ -1,4 +1,4 @@
-FROM apache/superset:4.1.3@sha256:31d965435b462361d2b8207595eff28f54492778d0afd53768da5e763cc16ce7
+FROM apache/superset:5.0.0@sha256:270e7ee9577bf35579549ba80b5f8cb1bb9abd42109c0a161a2361e6134843a3
 USER root
 
 # Remove dev dependencies
@@ -11,7 +11,7 @@ RUN apt-get update && \
 # Add required database driver packages
 # https://superset.apache.org/installation.html#database-dependencies
 COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN uv pip install --no-cache-dir -r /app/requirements.txt
 ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 
 # Custom bootstrap script

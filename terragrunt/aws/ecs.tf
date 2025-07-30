@@ -17,7 +17,7 @@ locals {
       "value" = tostring(aws_elasticache_replication_group.superset_cache.port)
     },
     {
-      "name"  = "THUMBNAIL_SELENIUM_USER"
+      "name"  = "CACHE_WARMUP_EXECUTORS"
       "value" = "cache-warmer"
     },
     {
