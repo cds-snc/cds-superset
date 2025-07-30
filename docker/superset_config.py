@@ -167,6 +167,7 @@ def app_mutator(app):
     # Run integration tests if needed
     if os.getenv("SUPERSET_APP") == "true":
         from superset.integration_tests import database
+
         database.test_access(app)
 
     # Workaround bug in Superset not updating the main menu translations
