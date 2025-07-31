@@ -17,6 +17,9 @@ ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 # Custom bootstrap script
 COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 
+# Add translations
+COPY superset/translations/ /app/superset/translations/
+
 # Add custom configuration
 # https://superset.apache.org/docs/installation/configuring-superset/#configuring-superset
 COPY superset/integration_tests/ /app/superset/integration_tests/
