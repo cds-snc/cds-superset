@@ -64,12 +64,14 @@ jobs:
         wait-for-service-stability: true
         propagate-tags: SERVICE
 
+    - name: Checkout
+      if: ${{ matrix.service == 'superset' }}
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
     - name: Run Superset database upgrade
       if: ${{ matrix.service == 'superset' }}
       run: |
-        aws ecs run-task \
-          --cluster ${{ env.ECS_CLUSTER }} \
-          --task-definition superset-upgrade \
-          --launch-type FARGATE \
-          --count 1 \
-          --network-configuration "awsvpcConfiguration={subnets=[${{ secrets.STAGING_SUPERSET_PRIVATE_SUBNET_IDS }}],securityGroups=[${{ secrets.STAGING_SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}],assignPublicIp=DISABLED}"
+        .github/workflows/scripts/run-superset-upgrade.sh \
+          "${{ env.ECS_CLUSTER }}" \
+          "${{ secrets.STAGING_SUPERSET_PRIVATE_SUBNET_IDS }}" \
+          "${{ secrets.STAGING_SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}"
