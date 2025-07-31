@@ -22,6 +22,10 @@ locals {
     },
     {
       "name"  = "WEBDRIVER_BASEURL"
+      "value" = "http://superset.superset.ecs.local:8088"
+    },
+    {
+      "name"  = "WEBDRIVER_BASEURL_USER_FRIENDLY"
       "value" = "https://${var.domain}"
     }
   ]

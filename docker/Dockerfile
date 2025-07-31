@@ -14,17 +14,17 @@ COPY requirements.txt /app/requirements.txt
 RUN uv pip install --no-cache-dir -r /app/requirements.txt
 ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 
-# Custom bootstrap script
-COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
-
-# Add translations
-COPY superset/translations/ /app/superset/translations/
+# Install Chromium
+RUN --mount=type=cache,target=/app/superset_home/.cache/uv \
+    playwright install --with-deps chromium
 
 # Add custom configuration
-# https://superset.apache.org/docs/installation/configuring-superset/#configuring-superset
-COPY superset/integration_tests/ /app/superset/integration_tests/
-COPY superset_config.py /app/superset_config.py
+COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png
+COPY superset/integration_tests/ /app/superset/integration_tests/
+COPY superset/translations/ /app/superset/translations/
+COPY superset_config.py /app/superset_config.py
+
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py
 
 USER superset
