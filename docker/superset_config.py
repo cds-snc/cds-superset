@@ -1,13 +1,14 @@
 import logging
 import os
 
+from datetime import timedelta
 from celery.schedules import crontab
 from flask import session
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
-from superset.tasks.types import FixedExecutor
+from superset.tasks.types import ExecutorType, FixedExecutor
 
 logger = logging.getLogger()
 
@@ -34,12 +35,10 @@ REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
 CACHE_WARMUP_EXECUTORS = [FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS"))]
-THUMBNAIL_EXECUTORS = [FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS"))]
-
-# Screenshots
-WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
-WEBDRIVER_BASEURL_USER_FRIENDLY = os.getenv("WEBDRIVER_BASEURL_USER_FRIENDLY")
-WEBDRIVER_TYPE = "chrome"
+THUMBNAIL_EXECUTORS = [
+    ExecutorType.CURRENT_USER,
+    FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS")),
+]
 
 
 def redis_cache(key, timeout):
@@ -51,13 +50,10 @@ def redis_cache(key, timeout):
     }
 
 
-# Cache configurations
-DAYS_1 = 60 * 60 * 24
-DAYS_7 = 7 * DAYS_1
+DAYS_1 = int(timedelta(days=1).total_seconds())
+DAYS_7 = int(timedelta(days=7).total_seconds())
 FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", DAYS_1)
-EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache(
-    "superset_explore_form_data_cache_", DAYS_1
-)
+EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache("superset_explore_cache_", DAYS_1)
 DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", DAYS_1)
 CACHE_CONFIG = redis_cache("superset_cache_", DAYS_1)
 THUMBNAIL_CACHE_CONFIG = redis_cache("superset_thumbnail_cache_", DAYS_7)
@@ -70,11 +66,17 @@ class CeleryConfig(object):
         "superset.sql_lab",
         "superset.tasks.cache",
         "superset.tasks.scheduler",
+        "superset.tasks.slack",
         "superset.tasks.thumbnails",
     )
     result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}"
     worker_prefetch_multiplier = 10
     task_acks_late = True
+    task_annotations = {
+        "sql_lab.get_sql_results": {
+            "rate_limit": "100/s",
+        },
+    }
     beat_schedule = {
         "reports.scheduler": {
             "task": "reports.scheduler",
@@ -89,6 +91,10 @@ class CeleryConfig(object):
             "schedule": crontab(minute=0, hour="*/12"),
             "kwargs": {"strategy_name": "dummy"},
         },
+        "slack.cache_channels": {
+            "task": "slack.cache_channels",
+            "schedule": crontab(minute="0", hour="*"),
+        },
     }
 
 
@@ -96,6 +102,21 @@ CELERY_CONFIG = CeleryConfig
 RESULTS_BACKEND = RedisCache(
     host=REDIS_HOST, port=REDIS_PORT, key_prefix="superset_results"
 )
+
+# Screenshots
+WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
+WEBDRIVER_BASEURL_USER_FRIENDLY = os.getenv("WEBDRIVER_BASEURL_USER_FRIENDLY")
+WEBDRIVER_TYPE = "chrome"
+WEBDRIVER_OPTION_ARGS = [
+    "--force-device-scale-factor=2.0",
+    "--high-dpi-support=2.0",
+    "--headless",
+    "--disable-gpu",
+    "--disable-dev-shm-usage",
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-extensions",
+]
 
 # Session management: https://superset.apache.org/docs/security/#user-sessions
 SESSION_COOKIE_HTTPONLY = True
