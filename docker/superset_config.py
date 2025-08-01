@@ -33,8 +33,13 @@ REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
 REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
-WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
 CACHE_WARMUP_EXECUTORS = [FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS"))]
+THUMBNAIL_EXECUTORS = [FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS"))]
+
+# Screenshots
+WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
+WEBDRIVER_BASEURL_USER_FRIENDLY = os.getenv("WEBDRIVER_BASEURL_USER_FRIENDLY")
+WEBDRIVER_TYPE = "chrome"
 
 
 def redis_cache(key, timeout):
@@ -46,13 +51,16 @@ def redis_cache(key, timeout):
     }
 
 
-# Cache for 1 day
-FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", 60 * 60 * 24)
+# Cache configurations
+DAYS_1 = 60 * 60 * 24
+DAYS_7 = 7 * DAYS_1
+FILTER_STATE_CACHE_CONFIG = redis_cache("superset_filter_cache_", DAYS_1)
 EXPLORE_FORM_DATA_CACHE_CONFIG = redis_cache(
-    "superset_explore_form_data_cache_", 60 * 60 * 24
-)  # noqa: E501
-DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", 60 * 60 * 24)
-CACHE_CONFIG = redis_cache("superset_cache_", 60 * 60 * 24)
+    "superset_explore_form_data_cache_", DAYS_1
+)
+DATA_CACHE_CONFIG = redis_cache("superset_data_cache_", DAYS_1)
+CACHE_CONFIG = redis_cache("superset_cache_", DAYS_1)
+THUMBNAIL_CACHE_CONFIG = redis_cache("superset_thumbnail_cache_", DAYS_7)
 
 
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
@@ -62,6 +70,7 @@ class CeleryConfig(object):
         "superset.sql_lab",
         "superset.tasks.cache",
         "superset.tasks.scheduler",
+        "superset.tasks.thumbnails",
     )
     result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}"
     worker_prefetch_multiplier = 10
@@ -124,6 +133,8 @@ OAUTH_PROVIDERS = [
     }
 ]
 
+# Slack reports
+SLACK_API_TOKEN = os.getenv("SLACK_API_TOKEN")
 
 RATELIMIT_STORAGE_URI = REDIS_URL
 WTF_CSRF_ENABLED = True
@@ -139,12 +150,18 @@ SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
 
 FEATURE_FLAGS = {
+    "ALERT_REPORTS": True,
+    "ALERT_REPORT_SLACK_V2": True,
     "DASHBOARD_RBAC": True,
+    "ENABLE_DASHBOARD_SCREENSHOT_ENDPOINTS": True,
     "ENABLE_TEMPLATE_PROCESSING": True,
     "ENABLE_SUPERSET_META_DB": True,
+    "PLAYWRIGHT_REPORTS_AND_THUMBNAILS": True,
     "SQL_VALIDATORS_BY_ENGINE": {
         "presto": "PrestoDBSQLValidator",
     },
+    "THUMBNAILS": True,
+    "THUMBNAILS_SQLA_LISTENERS": True,
 }
 
 SUPERSET_META_DB_LIMIT = 1000

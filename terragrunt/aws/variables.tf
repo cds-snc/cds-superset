@@ -29,6 +29,12 @@ variable "google_oauth_client_secret" {
   sensitive   = true
 }
 
+variable "slack_api_token" {
+  description = "Slack API token for sending alerts and reports."
+  type        = string
+  sensitive   = true
+}
+
 variable "sentinel_workspace_id" {
   description = "Workspace ID for Sentinel Forwarder."
   type        = string
