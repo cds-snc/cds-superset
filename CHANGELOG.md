@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.0.0](https://github.com/cds-snc/cds-superset/compare/v2.22.5...v3.0.0) (2025-08-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to Superset v5 ([#487](https://github.com/cds-snc/cds-superset/issues/487))
+
+### Features
+
+* enable alerts and thumbnails ([#493](https://github.com/cds-snc/cds-superset/issues/493)) ([726680f](https://github.com/cds-snc/cds-superset/commit/726680f61ccee547005a2f7b4efd22aa5e514d03))
+* upgrade to Superset v5 ([#487](https://github.com/cds-snc/cds-superset/issues/487)) ([6f532ae](https://github.com/cds-snc/cds-superset/commit/6f532ae989791361a615f5408d9f15392344b2d1))
+
+
+### Bug Fixes
+
+* add missing translations files ([#492](https://github.com/cds-snc/cds-superset/issues/492)) ([3753585](https://github.com/cds-snc/cds-superset/commit/3753585e4583852c1c412c4ae2223a2eec31947a))
+* database upgrade task CPU architecture ([#489](https://github.com/cds-snc/cds-superset/issues/489)) ([94e143e](https://github.com/cds-snc/cds-superset/commit/94e143e0e703d00190486bbdb75370931487deaa))
+* import database integration tests only for app config ([#490](https://github.com/cds-snc/cds-superset/issues/490)) ([84c8945](https://github.com/cds-snc/cds-superset/commit/84c894503a807bf8a3d79868277c9510756fc78c))
+* wait for database upgrade to complete ([#491](https://github.com/cds-snc/cds-superset/issues/491)) ([5eedf3e](https://github.com/cds-snc/cds-superset/commit/5eedf3ef8523a9a9c8f1e9f53b23017e802c6a70))
+
 ## [2.22.5](https://github.com/cds-snc/cds-superset/compare/v2.22.4...v2.22.5) (2025-07-30)
 
 
