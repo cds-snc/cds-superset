@@ -45,6 +45,10 @@ locals {
   ]
   container_secrets_all = [
     {
+      "name"      = "SLACK_API_TOKEN"
+      "valueFrom" = aws_ssm_parameter.slack_api_token.arn
+    },
+    {
       "name"      = "SUPERSET_DATABASE_HOST"
       "valueFrom" = aws_ssm_parameter.superset_database_host.arn
     },
@@ -263,6 +267,7 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
     resources = [
       aws_ssm_parameter.google_oauth_client_id.arn,
       aws_ssm_parameter.google_oauth_client_secret.arn,
+      aws_ssm_parameter.slack_api_token.arn,
       aws_ssm_parameter.superset_secret_key.arn,
       aws_ssm_parameter.superset_database_host.arn,
       aws_ssm_parameter.superset_database_username.arn,
@@ -312,6 +317,13 @@ resource "aws_ssm_parameter" "google_oauth_client_secret" {
   name  = "google_oauth_client_secret"
   type  = "SecureString"
   value = var.google_oauth_client_secret
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "slack_api_token" {
+  name  = "slack_api_token"
+  type  = "SecureString"
+  value = var.slack_api_token
   tags  = local.common_tags
 }
 
