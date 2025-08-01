@@ -70,16 +70,6 @@ resource "aws_security_group_rule" "superset_ecs_ingress_self" {
   self              = true
 }
 
-resource "aws_security_group_rule" "superset_ecs_egress_self" {
-  description       = "Egress from Superset ECS task to itself"
-  type              = "egress"
-  from_port         = 8088
-  to_port           = 8088
-  protocol          = "tcp"
-  security_group_id = aws_security_group.superset_ecs.id
-  self              = true
-}
-
 # Load balancer
 resource "aws_security_group" "superset_lb" {
   name        = "superset_lb"
