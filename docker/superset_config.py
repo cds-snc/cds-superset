@@ -66,7 +66,6 @@ class CeleryConfig(object):
         "superset.sql_lab",
         "superset.tasks.cache",
         "superset.tasks.scheduler",
-        "superset.tasks.slack",
         "superset.tasks.thumbnails",
     )
     result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}"
@@ -90,10 +89,6 @@ class CeleryConfig(object):
             "task": "cache-warmup",
             "schedule": crontab(minute=0, hour="*/12"),
             "kwargs": {"strategy_name": "dummy"},
-        },
-        "slack.cache_channels": {
-            "task": "slack.cache_channels",
-            "schedule": crontab(minute="0", hour="*"),
         },
     }
 
