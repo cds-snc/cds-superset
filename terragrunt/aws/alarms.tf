@@ -29,6 +29,7 @@ locals {
     "Table does not exist",
     "TABLE_DOES_NOT_EXIST_ERROR",
     "TABLE_NOT_FOUND",
+    "Timed out requesting url http://superset.superset.ecs.local*",
     "TYPE_MISMATCH",
     "Unsupported format",
     "Unsupported table"
