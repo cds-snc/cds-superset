@@ -1,3 +1,18 @@
+variable "account_id" {
+  description = "(Required) The account ID to perform actions on."
+  type        = string
+}
+
+variable "billing_code" {
+  description = "The billing code to tag our resources with"
+  type        = string
+}
+
+variable "cbs_satellite_bucket_name" {
+  description = "The name of the Cloud Based Sensor satellite bucket"
+  type        = string
+}
+
 variable "cloudwatch_alert_slack_webhook" {
   description = "Slack webhook URL used by the CloudWatch alarm SNS topics."
   type        = string
@@ -10,6 +25,16 @@ variable "data_lake_account_access" {
     env_name   = string
     account_id = string
   }))
+}
+
+variable "domain" {
+  description = "The domain to use for the service."
+  type        = string
+}
+
+variable "env" {
+  description = "The current running environment"
+  type        = string
 }
 
 variable "glue_databases" {
@@ -27,6 +52,16 @@ variable "google_oauth_client_secret" {
   description = "Google OAuth client secret to enable logging in with Google."
   type        = string
   sensitive   = true
+}
+
+variable "product_name" {
+  description = "(Required) The name of the product you are deploying."
+  type        = string
+}
+
+variable "region" {
+  description = "The current AWS region"
+  type        = string
 }
 
 variable "slack_api_token" {
