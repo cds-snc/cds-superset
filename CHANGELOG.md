@@ -1,5 +1,37 @@
 # Changelog
 
+## [3.0.0](https://github.com/cds-snc/cds-superset/compare/v2.22.5...v3.0.0) (2025-08-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to Superset v5 ([#487](https://github.com/cds-snc/cds-superset/issues/487))
+
+### Features
+
+* add SES for SMTP server ([#497](https://github.com/cds-snc/cds-superset/issues/497)) ([40c8eb4](https://github.com/cds-snc/cds-superset/commit/40c8eb4ba316646f09c0f907b4cad24155b8e929))
+* enable alerts and thumbnails ([#493](https://github.com/cds-snc/cds-superset/issues/493)) ([726680f](https://github.com/cds-snc/cds-superset/commit/726680f61ccee547005a2f7b4efd22aa5e514d03))
+* upgrade to Superset v5 ([#487](https://github.com/cds-snc/cds-superset/issues/487)) ([6f532ae](https://github.com/cds-snc/cds-superset/commit/6f532ae989791361a615f5408d9f15392344b2d1))
+
+
+### Bug Fixes
+
+* add missing translations files ([#492](https://github.com/cds-snc/cds-superset/issues/492)) ([3753585](https://github.com/cds-snc/cds-superset/commit/3753585e4583852c1c412c4ae2223a2eec31947a))
+* database upgrade task CPU architecture ([#489](https://github.com/cds-snc/cds-superset/issues/489)) ([94e143e](https://github.com/cds-snc/cds-superset/commit/94e143e0e703d00190486bbdb75370931487deaa))
+* import database integration tests only for app config ([#490](https://github.com/cds-snc/cds-superset/issues/490)) ([84c8945](https://github.com/cds-snc/cds-superset/commit/84c894503a807bf8a3d79868277c9510756fc78c))
+* move common variables into main vars file ([#498](https://github.com/cds-snc/cds-superset/issues/498)) ([d26dd2c](https://github.com/cds-snc/cds-superset/commit/d26dd2c2442ec1ba5a7273757f05b085ceeb1bd0))
+* suppress thumbnail generate time out ([#501](https://github.com/cds-snc/cds-superset/issues/501)) ([c016920](https://github.com/cds-snc/cds-superset/commit/c016920a8cd67f03af9cee196ef3dd0d0fe6364c))
+* thumbnail generation and increase screenshot resolution ([#494](https://github.com/cds-snc/cds-superset/issues/494)) ([bfb64f7](https://github.com/cds-snc/cds-superset/commit/bfb64f749e4a139e3e08aa46e0f130618d362216))
+* wait for database upgrade to complete ([#491](https://github.com/cds-snc/cds-superset/issues/491)) ([5eedf3e](https://github.com/cds-snc/cds-superset/commit/5eedf3ef8523a9a9c8f1e9f53b23017e802c6a70))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#500](https://github.com/cds-snc/cds-superset/issues/500)) ([45b9d43](https://github.com/cds-snc/cds-superset/commit/45b9d43152e2c704aec1b689241328c035fe698c))
+* **deps:** update all non-major github action dependencies ([#495](https://github.com/cds-snc/cds-superset/issues/495)) ([36edbf2](https://github.com/cds-snc/cds-superset/commit/36edbf244b4220f94b28230fafcaf1964ea5db83))
+* **deps:** update dependency redis to v5.3.1 ([#496](https://github.com/cds-snc/cds-superset/issues/496)) ([7a22d3f](https://github.com/cds-snc/cds-superset/commit/7a22d3f31efa5987ef50b9f6e8e0410263d8fad9))
+* suppress thumbnail retrieval error ([#499](https://github.com/cds-snc/cds-superset/issues/499)) ([8505064](https://github.com/cds-snc/cds-superset/commit/850506429f8d6a29204f4da1a3c30061392cfdf6))
+
 ## [2.22.5](https://github.com/cds-snc/cds-superset/compare/v2.22.4...v2.22.5) (2025-07-30)
 
 
