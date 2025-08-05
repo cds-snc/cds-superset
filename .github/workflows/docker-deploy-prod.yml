@@ -27,7 +27,7 @@ jobs:
           - celery-beat
     steps:
     - name: Audit DNS requests
-      uses: cds-snc/dns-proxy-action@fbe67c964333a5066967c1a135fb3f02fbe7cc10
+      uses: cds-snc/dns-proxy-action@50d3033adea55c246f2e314920759cd81ecae522
       env:
         DNS_PROXY_FORWARDTOSENTINEL: "true"
         DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
@@ -56,7 +56,7 @@ jobs:
         image: ${{ env.REGISTRY }}:${{ github.event.workflow_run.head_branch }}
 
     - name: Deploy updated ECS task
-      uses: aws-actions/amazon-ecs-deploy-task-definition@f7b2b96b7fe1b20b452641919c0559bcc19ab8f9 # v2.3.3
+      uses: aws-actions/amazon-ecs-deploy-task-definition@4b08990e8909cf36bc2ca95f994312f090c41865 # v2.3.4
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ${{ matrix.service }}
