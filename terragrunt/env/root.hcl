@@ -36,9 +36,3 @@ generate "provider" {
   if_exists = "overwrite"
   contents  = file("./common/provider.tf")
 }
-
-generate "common_variables" {
-  path      = "common_variables.tf"
-  if_exists = "overwrite"
-  contents  = file("./common/common_variables.tf")
-}
