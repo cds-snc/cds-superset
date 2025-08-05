@@ -15,6 +15,7 @@ locals {
     "COLUMN_NOT_FOUND",
     "contains non-numeric values",
     "DML_NOT_ALLOWED_ERROR",
+    "Error handling request /api/v1/*/thumbnail/",
     "Error on OAuth authorize",
     "Error warming up cache",
     "Failed to execute query",
