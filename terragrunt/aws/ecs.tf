@@ -27,6 +27,10 @@ locals {
     {
       "name"  = "WEBDRIVER_BASEURL_USER_FRIENDLY"
       "value" = "https://${var.domain}"
+    },
+    {
+      "name"  = "FLASK_DEBUG"
+      "value" = var.env == "staging" ? "true" : "false"
     }
   ]
   container_env_google_auth = [
