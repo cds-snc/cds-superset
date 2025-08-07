@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0](https://github.com/cds-snc/cds-superset/compare/v3.0.0...v3.1.0) (2025-08-07)
+
+
+### Features
+
+* add SMTP config for email reports ([#502](https://github.com/cds-snc/cds-superset/issues/502)) ([239da41](https://github.com/cds-snc/cds-superset/commit/239da4125c75d5e85d4f29c16ded13f5d2082187))
+
+
+### Bug Fixes
+
+* SMTP config and allow port 465 ([#504](https://github.com/cds-snc/cds-superset/issues/504)) ([365ef92](https://github.com/cds-snc/cds-superset/commit/365ef921738b31d568610eda22dc4506758a1c78))
+
 ## [3.0.0](https://github.com/cds-snc/cds-superset/compare/v2.22.5...v3.0.0) (2025-08-05)
 
 
