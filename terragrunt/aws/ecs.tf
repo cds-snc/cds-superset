@@ -5,6 +5,14 @@ locals {
       "value" = "120"
     },
     {
+      "name"  = "SMTP_HOST"
+      "value" = "email-smtp.${var.region}.amazonaws.com"
+    },
+    {
+      "name"  = "SMTP_MAIL_FROM"
+      "value" = "no-reply@${var.domain}"
+    },
+    {
       "name"  = "SUPERSET_DATABASE_DB"
       "value" = "superset"
     },
@@ -51,6 +59,14 @@ locals {
     {
       "name"      = "SLACK_API_TOKEN"
       "valueFrom" = aws_ssm_parameter.slack_api_token.arn
+    },
+    {
+      "name"      = "SMTP_USER"
+      "valueFrom" = aws_ssm_parameter.smtp_user.arn
+    },
+    {
+      "name"      = "SMTP_PASSWORD"
+      "valueFrom" = aws_ssm_parameter.smtp_password.arn
     },
     {
       "name"      = "SUPERSET_DATABASE_HOST"
@@ -272,6 +288,8 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
       aws_ssm_parameter.google_oauth_client_id.arn,
       aws_ssm_parameter.google_oauth_client_secret.arn,
       aws_ssm_parameter.slack_api_token.arn,
+      aws_ssm_parameter.smtp_password.arn,
+      aws_ssm_parameter.smtp_user.arn,
       aws_ssm_parameter.superset_secret_key.arn,
       aws_ssm_parameter.superset_database_host.arn,
       aws_ssm_parameter.superset_database_username.arn,
@@ -328,6 +346,20 @@ resource "aws_ssm_parameter" "slack_api_token" {
   name  = "slack_api_token"
   type  = "SecureString"
   value = var.slack_api_token
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "smtp_password" {
+  name  = "smtp_password"
+  type  = "SecureString"
+  value = var.smtp_password
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "smtp_user" {
+  name  = "smtp_user"
+  type  = "SecureString"
+  value = var.smtp_user
   tags  = local.common_tags
 }
 

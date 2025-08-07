@@ -99,6 +99,8 @@ RESULTS_BACKEND = RedisCache(
 )
 
 # Screenshots
+SCREENSHOT_LOCATE_WAIT = int(timedelta(minutes=2).total_seconds())
+SCREENSHOT_LOAD_WAIT = int(timedelta(minutes=2).total_seconds())
 WEBDRIVER_BASEURL = os.getenv("WEBDRIVER_BASEURL")
 WEBDRIVER_BASEURL_USER_FRIENDLY = os.getenv("WEBDRIVER_BASEURL_USER_FRIENDLY")
 WEBDRIVER_TYPE = "chrome"
@@ -149,8 +151,18 @@ OAUTH_PROVIDERS = [
     }
 ]
 
-# Slack reports
+# Slack and email reports
 SLACK_API_TOKEN = os.getenv("SLACK_API_TOKEN")
+
+SMTP_HOST = os.getenv("SMTP_HOST")
+SMTP_PORT = 465
+SMTP_STARTTLS = True
+SMTP_SSL_SERVER_AUTH = True
+SMTP_SSL = True
+SMTP_USER = os.getenv("SMTP_USER")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+SMTP_MAIL_FROM = os.getenv("SMTP_MAIL_FROM")
+EMAIL_REPORTS_SUBJECT_PREFIX = "[CDS Superset] "
 
 RATELIMIT_STORAGE_URI = REDIS_URL
 WTF_CSRF_ENABLED = True
