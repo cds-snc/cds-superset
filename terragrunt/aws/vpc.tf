@@ -29,6 +29,28 @@ resource "aws_service_discovery_private_dns_namespace" "superset" {
   tags        = local.common_tags
 }
 
+resource "aws_network_acl_rule" "smtp_ssl_ingress" {
+  network_acl_id = module.vpc.main_nacl_id
+  rule_number    = 100
+  egress         = false
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 465
+  to_port        = 465
+}
+
+resource "aws_network_acl_rule" "smtp_ssl_egress" {
+  network_acl_id = module.vpc.main_nacl_id
+  rule_number    = 110
+  egress         = true
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 465
+  to_port        = 465
+}
+
 #
 # Security groups
 #
