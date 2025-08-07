@@ -19,6 +19,8 @@ env:
   TF_VAR_sentinel_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
   TF_VAR_sentinel_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
   TF_VAR_slack_api_token: ${{ secrets.STAGING_SLACK_API_TOKEN }}
+  TF_VAR_smtp_password: ${{ secrets.STAGING_SMTP_PASSWORD }}
+  TF_VAR_smtp_user: ${{ secrets.STAGING_SMTP_USER }}
   TF_VAR_superset_database_username: ${{ secrets.STAGING_SUPERSET_DATABASE_USERNAME }}
   TF_VAR_superset_database_password: ${{ secrets.STAGING_SUPERSET_DATABASE_PASSWORD }}
   TF_VAR_superset_secret_key: ${{ secrets.STAGING_SUPERSET_SECRET_KEY }}

@@ -82,6 +82,18 @@ variable "sentinel_workspace_key" {
   sensitive   = true
 }
 
+variable "smtp_password" {
+  description = "The SMTP password for sending emails."
+  type        = string
+  sensitive   = true
+}
+
+variable "smtp_user" {
+  description = "The SMTP user for sending emails."
+  type        = string
+  sensitive   = true
+}
+
 variable "superset_database_instances_count" {
   description = "The number of instances in the database cluster."
   type        = number
