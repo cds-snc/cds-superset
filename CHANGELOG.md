@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.2](https://github.com/cds-snc/cds-superset/compare/v3.1.1...v3.1.2) (2025-08-08)
+
+
+### Bug Fixes
+
+* increase app and celery memory ([#507](https://github.com/cds-snc/cds-superset/issues/507)) ([9d93fe6](https://github.com/cds-snc/cds-superset/commit/9d93fe637765d01f841933adf4990d46d4457fd5))
+
 ## [3.1.1](https://github.com/cds-snc/cds-superset/compare/v3.1.0...v3.1.1) (2025-08-08)
 
 
