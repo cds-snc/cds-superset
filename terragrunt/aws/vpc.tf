@@ -36,8 +36,8 @@ resource "aws_network_acl_rule" "smtp_ssl_ingress" {
   protocol       = "tcp"
   rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
-  from_port      = 465
-  to_port        = 465
+  from_port      = 587
+  to_port        = 587
 }
 
 resource "aws_network_acl_rule" "smtp_ssl_egress" {
@@ -47,8 +47,8 @@ resource "aws_network_acl_rule" "smtp_ssl_egress" {
   protocol       = "tcp"
   rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
-  from_port      = 465
-  to_port        = 465
+  from_port      = 587
+  to_port        = 587
 }
 
 #

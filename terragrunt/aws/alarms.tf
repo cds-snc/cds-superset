@@ -296,3 +296,38 @@ resource "aws_cloudwatch_log_subscription_filter" "superset_role_grant" {
   destination_arn = module.sentinel_forwarder.lambda_arn
   distribution    = "Random"
 }
+
+#
+# SES bounces and complaints
+#
+resource "aws_cloudwatch_metric_alarm" "ses_bounce_rate_high" {
+  alarm_name          = "ses-bounce-rate-high"
+  alarm_description   = "SES Warning - bounce rate >=7% over the last 12 hours"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "Reputation.BounceRate"
+  namespace           = "AWS/SES"
+  period              = 60 * 60 * 12
+  statistic           = "Average"
+  threshold           = 7 / 100
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+}
+
+resource "aws_cloudwatch_metric_alarm" "ses_complaint_rate_high" {
+  alarm_name          = "ses-complaint-rate-high"
+  alarm_description   = "SES Warning - complaint rate >=0.4% over the last 12 hours"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "Reputation.ComplaintRate"
+  namespace           = "AWS/SES"
+  period              = 60 * 60 * 12
+  statistic           = "Average"
+  threshold           = 0.4 / 100
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+}
