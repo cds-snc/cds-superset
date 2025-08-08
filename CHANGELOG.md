@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/cds-snc/cds-superset/compare/v3.1.0...v3.1.1) (2025-08-08)
+
+
+### Bug Fixes
+
+* add SES complain/bounce alarms ([#505](https://github.com/cds-snc/cds-superset/issues/505)) ([1a7c749](https://github.com/cds-snc/cds-superset/commit/1a7c7498df0e4363de6f02a9c21610b7dc855033))
+
 ## [3.1.0](https://github.com/cds-snc/cds-superset/compare/v3.0.0...v3.1.0) (2025-08-07)
 
 
