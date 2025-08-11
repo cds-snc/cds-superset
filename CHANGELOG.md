@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.1.3](https://github.com/cds-snc/cds-superset/compare/v3.1.2...v3.1.3) (2025-08-11)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#511](https://github.com/cds-snc/cds-superset/issues/511)) ([09489d1](https://github.com/cds-snc/cds-superset/commit/09489d10ac3e84080a1dc6ff4b64c44237a934d1))
+* **deps:** update dependency pyathena to v3.16.0 ([#510](https://github.com/cds-snc/cds-superset/issues/510)) ([584a7ff](https://github.com/cds-snc/cds-superset/commit/584a7ffc907f2ec275514b0334b48f8d7d8292b9))
+* **deps:** update github/codeql-action action to v3.29.7 ([#509](https://github.com/cds-snc/cds-superset/issues/509)) ([92ad7f6](https://github.com/cds-snc/cds-superset/commit/92ad7f6d140d2b0f986221894adc8b0518db2dce))
+
 ## [3.1.2](https://github.com/cds-snc/cds-superset/compare/v3.1.1...v3.1.2) (2025-08-08)
 
 
