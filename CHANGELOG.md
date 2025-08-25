@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.1.4](https://github.com/cds-snc/cds-superset/compare/v3.1.3...v3.1.4) (2025-08-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#515](https://github.com/cds-snc/cds-superset/issues/515)) ([4c14666](https://github.com/cds-snc/cds-superset/commit/4c14666ab6588dccfba4088d92499ba00e74d78e))
+* **deps:** lock file maintenance ([#520](https://github.com/cds-snc/cds-superset/issues/520)) ([7fd6247](https://github.com/cds-snc/cds-superset/commit/7fd6247164febab84e7cca3f5202dcefbf6f435c))
+* **deps:** update all non-major github action dependencies ([#513](https://github.com/cds-snc/cds-superset/issues/513)) ([055e560](https://github.com/cds-snc/cds-superset/commit/055e5601eacdd512835d3acc6d3b425270aa422a))
+* **deps:** update all non-major github action dependencies ([#518](https://github.com/cds-snc/cds-superset/issues/518)) ([75797c2](https://github.com/cds-snc/cds-superset/commit/75797c272096ef9e622eb82af0507477dd66b4df))
+* **deps:** update apache/superset:5.0.0 docker digest to ac98e93 ([#517](https://github.com/cds-snc/cds-superset/issues/517)) ([9cec3fb](https://github.com/cds-snc/cds-superset/commit/9cec3fbb80c64d8b11ae1625899ba18e8a9bcd6e))
+* **deps:** update dependency pyathena to v3.17.0 ([#514](https://github.com/cds-snc/cds-superset/issues/514)) ([b5275e0](https://github.com/cds-snc/cds-superset/commit/b5275e0817e411ed0cdf815ebff267a12dcc19e5))
+* **deps:** update dependency pyathena to v3.17.1 ([#519](https://github.com/cds-snc/cds-superset/issues/519)) ([3fe0e6a](https://github.com/cds-snc/cds-superset/commit/3fe0e6a74db5dc9d196b7b92a0868caacba6c68f))
+
 ## [3.1.3](https://github.com/cds-snc/cds-superset/compare/v3.1.2...v3.1.3) (2025-08-11)
 
 
