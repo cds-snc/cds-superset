@@ -1,4 +1,4 @@
-FROM apache/superset:5.0.0@sha256:270e7ee9577bf35579549ba80b5f8cb1bb9abd42109c0a161a2361e6134843a3
+FROM apache/superset:5.0.0@sha256:ac98e93f50129f4acf234860cdd6b252fd512496017c3c0044ce06528642fa6a
 USER root
 
 # Remove dev dependencies
