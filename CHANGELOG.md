@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.5](https://github.com/cds-snc/cds-superset/compare/v3.1.4...v3.1.5) (2025-08-27)
+
+
+### Bug Fixes
+
+* suppress thumbnail cache alarms ([#521](https://github.com/cds-snc/cds-superset/issues/521)) ([7f6bd32](https://github.com/cds-snc/cds-superset/commit/7f6bd32dd4ce433b49c22d3244d40135bda82571))
+
 ## [3.1.4](https://github.com/cds-snc/cds-superset/compare/v3.1.3...v3.1.4) (2025-08-25)
 
 
