@@ -42,7 +42,8 @@ resource "aws_lb_target_group" "superset" {
   }
 
   stickiness {
-    type = "lb_cookie"
+    type            = "lb_cookie"
+    cookie_duration = 43200 # 12 hours
   }
 
   tags = local.common_tags
