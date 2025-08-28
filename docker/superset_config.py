@@ -164,6 +164,7 @@ EMAIL_REPORTS_SUBJECT_PREFIX = "[CDS Superset] "
 
 RATELIMIT_STORAGE_URI = REDIS_URL
 WTF_CSRF_ENABLED = True
+WTF_CSRF_TIME_LIMIT = int(timedelta(hours=12).total_seconds())
 WTF_CSRF_EXEMPT_LIST = [
     "superset.views.core.log",
     "superset.views.core.explore_json",
