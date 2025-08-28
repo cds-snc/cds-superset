@@ -23,6 +23,8 @@ inputs = {
     "platform_gc_forms_staging",
     "platform_gc_notify_production",
     "platform_gc_notify_staging",
+    "platform_gc_design_system_production",
+    "platform_gc_design_system_staging",
     "platform_support_production",
     "platform_support_staging",
     "operations_aws_production",

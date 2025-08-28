@@ -18,6 +18,7 @@ inputs = {
     "operations_aws_production",
     "platform_gc_forms_production",
     "platform_gc_notify_production",
+    "platform_gc_design_system_production",
     "platform_support_production",
   ]
 
