@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/cds-snc/cds-superset/compare/v3.1.5...v3.2.0) (2025-08-28)
+
+
+### Features
+
+* add GCDS tables ([#523](https://github.com/cds-snc/cds-superset/issues/523)) ([a7a2b60](https://github.com/cds-snc/cds-superset/commit/a7a2b60b04f0d5e3049c2cc77667a28f39573b8a))
+
 ## [3.1.5](https://github.com/cds-snc/cds-superset/compare/v3.1.4...v3.1.5) (2025-08-27)
 
 
