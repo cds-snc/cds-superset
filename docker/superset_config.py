@@ -214,6 +214,28 @@ def app_mutator(app):
 
         database.test_access(app)
 
+    # Add security headers
+    @app.after_request
+    def add_security_headers(response):
+        """Add Content Security Policy and other security headers"""
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; "
+            "script-src 'self' 'strict-dynamic'; "
+            "style-src 'self' 'unsafe-inline'; "
+            "worker-src 'self' blob:; "
+            "img-src 'self' data: blob:; "
+            "connect-src 'self'; "
+            "frame-ancestors 'none'; "
+            "base-uri 'self'; "
+            "form-action 'self'; "
+            "object-src 'none'; "
+            "upgrade-insecure-requests"
+        )
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        return response
+
     # Workaround bug in Superset not updating the main menu translations
     @app.before_request
     def fix_menu_translations():
