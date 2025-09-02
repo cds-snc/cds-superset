@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.3.0](https://github.com/cds-snc/cds-superset/compare/v3.2.0...v3.3.0) (2025-09-02)
+
+
+### Features
+
+* add security headers ([#527](https://github.com/cds-snc/cds-superset/issues/527)) ([74cef48](https://github.com/cds-snc/cds-superset/commit/74cef482183c7839b456e4fb48aa98e4d2045f03))
+* improve session authenticity protection ([#525](https://github.com/cds-snc/cds-superset/issues/525)) ([a2d601f](https://github.com/cds-snc/cds-superset/commit/a2d601f4e782a5ff9b2551eb77f47fdded544a3c))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout action to v5 ([#530](https://github.com/cds-snc/cds-superset/issues/530)) ([ebbee33](https://github.com/cds-snc/cds-superset/commit/ebbee33f4704d4135eb515e4601e59dec8b8a3f2))
+* **deps:** update all non-major github action dependencies ([#528](https://github.com/cds-snc/cds-superset/issues/528)) ([6efeb5d](https://github.com/cds-snc/cds-superset/commit/6efeb5dce1e03878688ea46b9af6de713c321e45))
+* **deps:** update dependency authlib to v1.6.2 ([#529](https://github.com/cds-snc/cds-superset/issues/529)) ([0c6adea](https://github.com/cds-snc/cds-superset/commit/0c6adea8d4fabd8fba3b546161e97dfd678ea171))
+
 ## [3.2.0](https://github.com/cds-snc/cds-superset/compare/v3.1.5...v3.2.0) (2025-08-28)
 
 
