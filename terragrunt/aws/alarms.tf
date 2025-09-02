@@ -23,6 +23,7 @@ locals {
     "GENERIC_DB_ENGINE_ERROR",
     "gsheets error: Unsupported format",
     "Insufficient permissions to execute the query",
+    "INVALID_SQL_ERROR",
     "Only `SELECT` statements are allowed",
     "SQLError",
     "SYNTAX_ERROR",
