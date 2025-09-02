@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/cds-snc/cds-superset/compare/v3.3.0...v3.3.1) (2025-09-02)
+
+
+### Miscellaneous Chores
+
+* suppress invalid SQL query error ([#531](https://github.com/cds-snc/cds-superset/issues/531)) ([509cbbe](https://github.com/cds-snc/cds-superset/commit/509cbbe1306f3584798f384fca07b769afb75f3c))
+
 ## [3.3.0](https://github.com/cds-snc/cds-superset/compare/v3.2.0...v3.3.0) (2025-09-02)
 
 
