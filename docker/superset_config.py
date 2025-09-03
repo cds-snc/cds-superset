@@ -16,7 +16,7 @@ logger.info("Setting up custom config for Superset")
 
 # Log config
 LOG_FORMAT = "%(asctime)s:%(levelname)s:%(name)s:%(message)s"
-LOG_LEVEL = logging.DEBUG if DEBUG else logging.INFO
+LOG_LEVEL = logging.INFO
 
 # Database
 DATABASE_USER = os.getenv("SUPERSET_DATABASE_USER")
