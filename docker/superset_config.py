@@ -14,6 +14,9 @@ logger = logging.getLogger()
 
 logger.info("Setting up custom config for Superset")
 
+# Enable Jinja in markdown cells
+ENABLE_TEMPLATE_PROCESSING = True
+
 # Database
 DATABASE_USER = os.getenv("SUPERSET_DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("SUPERSET_DATABASE_PASSWORD")
