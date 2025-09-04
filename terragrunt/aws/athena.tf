@@ -22,6 +22,10 @@ module "athena_bucket" {
   bucket_name       = "${var.product_name}-${var.env}-athena"
   billing_tag_value = var.billing_code
 
+  versioning = {
+    enabled = true
+  }
+
   lifecycle_rule = [
     {
       id      = "expire-objects"

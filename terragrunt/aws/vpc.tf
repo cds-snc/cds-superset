@@ -64,6 +64,7 @@ resource "aws_security_group" "superset_ecs" {
 }
 
 resource "aws_security_group_rule" "superset_ecs_egress_all" {
+  description       = "Egress from Superset ECS task to the internet"
   type              = "egress"
   protocol          = "-1"
   to_port           = 0
