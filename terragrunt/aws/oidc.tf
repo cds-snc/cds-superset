@@ -36,6 +36,5 @@ resource "aws_iam_role_policy_attachment" "cds_superset_release" {
 }
 
 data "aws_iam_policy" "admin" {
-  # checkov:skip=CKV_AWS_275:This policy is required for the Terraform apply
   name = "AdministratorAccess"
 }

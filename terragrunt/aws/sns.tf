@@ -89,8 +89,6 @@ resource "aws_sns_topic_policy" "cloudwatch_alert_ok_us_east_1" {
 
 data "aws_iam_policy_document" "cloudwatch_events_sns_topic" {
   statement {
-    # checkov:skip=CKV_AWS_111: False-positive, `resources = ["*"]` refers to the SNS topic the policy applies to 
-    # checkov:skip=CKV_AWS_356: False-positive, `resources = ["*"]` refers to the SNS topic the policy applies to 
     sid    = "SNS_Default_Policy"
     effect = "Allow"
     actions = [

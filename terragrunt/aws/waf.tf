@@ -373,7 +373,6 @@ resource "aws_wafv2_web_acl_logging_configuration" "superset_waf_logs" {
 }
 
 resource "aws_kinesis_firehose_delivery_stream" "superset_waf_logs" {
-  # checkov:skip=CKV_AWS_241: Encryption using CMK not required
   name        = "aws-waf-logs-superset"
   destination = "extended_s3"
 
