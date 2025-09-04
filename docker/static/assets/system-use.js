@@ -118,5 +118,9 @@
         }
     }
 
-    initSystemUseNotification();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSystemUseNotification);
+    } else {
+        initSystemUseNotification();
+    }
 })();
