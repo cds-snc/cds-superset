@@ -102,11 +102,11 @@ class CeleryConfig(object):
 
 CELERY_CONFIG = CeleryConfig
 RESULTS_BACKEND = RedisCache(
-    host=REDIS_HOST, 
-    port=REDIS_PORT, 
-    key_prefix="superset_results", 
-    ssl=REDIS_SSL, 
-    ssl_cert_reqs="required"
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    key_prefix="superset_results",
+    ssl=REDIS_SSL,
+    ssl_cert_reqs="required",
 )
 
 # Screenshots
