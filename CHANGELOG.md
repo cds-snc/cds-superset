@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.0](https://github.com/cds-snc/cds-superset/compare/v3.3.1...v3.4.0) (2025-09-04)
+
+
+### Features
+
+* add system use notification ([#536](https://github.com/cds-snc/cds-superset/issues/536)) ([07bd3ae](https://github.com/cds-snc/cds-superset/commit/07bd3ae36efbe8ef1a8ad9b012dc9a7ba03435f8))
+* set the Superset log format and level ([#534](https://github.com/cds-snc/cds-superset/issues/534)) ([f2d7af0](https://github.com/cds-snc/cds-superset/commit/f2d7af04ce34d1701a5ab7114e36107e4e2ae605))
+
 ## [3.3.1](https://github.com/cds-snc/cds-superset/compare/v3.3.0...v3.3.1) (2025-09-02)
 
 
