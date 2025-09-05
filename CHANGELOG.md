@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.5.0](https://github.com/cds-snc/cds-superset/compare/v3.4.0...v3.5.0) (2025-09-05)
+
+
+### Features
+
+* add Terraform static analysis and drift check workflows ([#537](https://github.com/cds-snc/cds-superset/issues/537)) ([4ddd315](https://github.com/cds-snc/cds-superset/commit/4ddd315819079c3de18d200180681e9f9a718e72))
+
+
+### Bug Fixes
+
+* apply cache changes immediately ([#539](https://github.com/cds-snc/cds-superset/issues/539)) ([4fa75e6](https://github.com/cds-snc/cds-superset/commit/4fa75e69854f253049e6c7f2454b2aed7ff08dbf))
+* set encryption mode of cache ([#540](https://github.com/cds-snc/cds-superset/issues/540)) ([3a673af](https://github.com/cds-snc/cds-superset/commit/3a673af80956511b60c855f0a414a7b176890840))
+
 ## [3.4.0](https://github.com/cds-snc/cds-superset/compare/v3.3.1...v3.4.0) (2025-09-04)
 
 
