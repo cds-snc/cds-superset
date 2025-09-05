@@ -16,6 +16,7 @@ resource "aws_elasticache_replication_group" "superset_cache" {
 
   at_rest_encryption_enabled = true
   transit_encryption_enabled = true
+  apply_immediately          = true
 
   tags = local.common_tags
 }
