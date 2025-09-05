@@ -10,6 +10,8 @@ on:
       - "Release Please"
       - "Terraform Apply Production"
       - "Terraform Apply Staging"
+      - "Terraform Drift Check Production"
+      - "Terraform Drift Check Staging"
     types:
       - completed
 
