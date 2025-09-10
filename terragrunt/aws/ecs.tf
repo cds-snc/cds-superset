@@ -136,6 +136,9 @@ module "superset_ecs" {
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
+  # Logging
+  cloudwatch_log_group_retention_in_days = 365
+
   # Allow executing commands on the task
   enable_execute_command = false
 
@@ -181,6 +184,9 @@ module "celery_worker_ecs" {
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
+  # Logging
+  cloudwatch_log_group_retention_in_days = 365
+
   billing_tag_value = var.billing_code
 }
 
@@ -219,6 +225,9 @@ module "celery_beat_ecs" {
   security_group_ids             = [aws_security_group.superset_ecs.id]
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
+
+  # Logging
+  cloudwatch_log_group_retention_in_days = 365
 
   billing_tag_value = var.billing_code
 }
