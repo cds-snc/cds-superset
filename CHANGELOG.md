@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.5.1](https://github.com/cds-snc/cds-superset/compare/v3.5.0...v3.5.1) (2025-09-10)
+
+
+### Bug Fixes
+
+* increase CloudWatch log retention to 365 days ([#547](https://github.com/cds-snc/cds-superset/issues/547)) ([a2bcd65](https://github.com/cds-snc/cds-superset/commit/a2bcd65ff05877813a682e61aa2c28ff2bf75401))
+* set permanent session lifetime ([#545](https://github.com/cds-snc/cds-superset/issues/545)) ([01b6e43](https://github.com/cds-snc/cds-superset/commit/01b6e4356cb7ebe17ff162478e03284eaf0e74d1))
+
 ## [3.5.0](https://github.com/cds-snc/cds-superset/compare/v3.4.0...v3.5.0) (2025-09-08)
 
 
