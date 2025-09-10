@@ -133,6 +133,8 @@ SESSION_COOKIE_SAMESITE = "Strict"
 SESSION_SERVER_SIDE = True
 SESSION_TYPE = "redis"
 SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+SESSION_PERMANENT = True
+PERMANENT_SESSION_LIFETIME = int(timedelta(hours=12).total_seconds())
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
