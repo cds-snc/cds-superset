@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.5.0](https://github.com/cds-snc/cds-superset/compare/v3.4.0...v3.5.0) (2025-09-08)
+
+
+### Features
+
+* add Terraform static analysis and drift check workflows ([#537](https://github.com/cds-snc/cds-superset/issues/537)) ([4ddd315](https://github.com/cds-snc/cds-superset/commit/4ddd315819079c3de18d200180681e9f9a718e72))
+
+
+### Bug Fixes
+
+* apply cache changes immediately ([#539](https://github.com/cds-snc/cds-superset/issues/539)) ([4fa75e6](https://github.com/cds-snc/cds-superset/commit/4fa75e69854f253049e6c7f2454b2aed7ff08dbf))
+* set encryption mode of cache ([#540](https://github.com/cds-snc/cds-superset/issues/540)) ([3a673af](https://github.com/cds-snc/cds-superset/commit/3a673af80956511b60c855f0a414a7b176890840))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.7.3 ([#542](https://github.com/cds-snc/cds-superset/issues/542)) ([cc9f704](https://github.com/cds-snc/cds-superset/commit/cc9f704c28e3f053f16371064bece3ef118f6820))
+* **deps:** update dependency authlib to v1.6.3 ([#543](https://github.com/cds-snc/cds-superset/issues/543)) ([ad1345c](https://github.com/cds-snc/cds-superset/commit/ad1345cf2ddb84baf611067a9519a86431da1870))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to b387f79 ([#541](https://github.com/cds-snc/cds-superset/issues/541)) ([b33f8c7](https://github.com/cds-snc/cds-superset/commit/b33f8c74b6de634567435ffcd1a62fae49ca4e88))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.7.0 ([#544](https://github.com/cds-snc/cds-superset/issues/544)) ([382cfa6](https://github.com/cds-snc/cds-superset/commit/382cfa6e807db0a8c769d4e984982aaf5201cc11))
+
 ## [3.4.0](https://github.com/cds-snc/cds-superset/compare/v3.3.1...v3.4.0) (2025-09-04)
 
 
