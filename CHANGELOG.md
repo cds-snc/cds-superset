@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.2](https://github.com/cds-snc/cds-superset/compare/v3.5.1...v3.5.2) (2025-09-11)
+
+
+### Bug Fixes
+
+* upgrade VPC to add SSH/RDP NACL block ([#548](https://github.com/cds-snc/cds-superset/issues/548)) ([609de00](https://github.com/cds-snc/cds-superset/commit/609de0004ec9ff4f9f111d4da6c17ed71c1a3016))
+
 ## [3.5.1](https://github.com/cds-snc/cds-superset/compare/v3.5.0...v3.5.1) (2025-09-10)
 
 
