@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.5.4](https://github.com/cds-snc/cds-superset/compare/v3.5.3...v3.5.4) (2025-09-23)
+
+
+### Bug Fixes
+
+* add workflow security fixes ([#555](https://github.com/cds-snc/cds-superset/issues/555)) ([8cc6899](https://github.com/cds-snc/cds-superset/commit/8cc68995b62a25c824ebc28c548ad44da23db8cd))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#558](https://github.com/cds-snc/cds-superset/issues/558)) ([5df86b9](https://github.com/cds-snc/cds-superset/commit/5df86b967d4991dda25ef2efee2bb47323f665c8))
+* **deps:** update all non-major github action dependencies ([#556](https://github.com/cds-snc/cds-superset/issues/556)) ([a99c672](https://github.com/cds-snc/cds-superset/commit/a99c672e6009e4526700dec5218633148b4a34e9))
+* **deps:** update dependency authlib to v1.6.4 [security] ([#561](https://github.com/cds-snc/cds-superset/issues/561)) ([0d701b2](https://github.com/cds-snc/cds-superset/commit/0d701b2a0001dd143a9f759a12daa2a795ce9099))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.7.1 ([#557](https://github.com/cds-snc/cds-superset/issues/557)) ([fce09d1](https://github.com/cds-snc/cds-superset/commit/fce09d13bf5a244e1876175ddf7b6ac24bb0c339))
+
 ## [3.5.3](https://github.com/cds-snc/cds-superset/compare/v3.5.2...v3.5.3) (2025-09-15)
 
 
