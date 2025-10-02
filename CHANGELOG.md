@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.6.0](https://github.com/cds-snc/cds-superset/compare/v3.5.4...v3.6.0) (2025-10-02)
+
+
+### Features
+
+* export gh metadata to s3 ([#565](https://github.com/cds-snc/cds-superset/issues/565)) ([346d6d0](https://github.com/cds-snc/cds-superset/commit/346d6d0dc697ae61d53be2a8f7d342b717c37cce))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#563](https://github.com/cds-snc/cds-superset/issues/563)) ([63f5684](https://github.com/cds-snc/cds-superset/commit/63f5684cad7dee4a4d44d29aa4c1d49b5e2feb05))
+* **deps:** update all minor dependencies ([#562](https://github.com/cds-snc/cds-superset/issues/562)) ([19c127f](https://github.com/cds-snc/cds-superset/commit/19c127f8ecc4ca176519750f556fc157f2088ef5))
+
 ## [3.5.4](https://github.com/cds-snc/cds-superset/compare/v3.5.3...v3.5.4) (2025-09-23)
 
 
