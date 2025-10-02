@@ -1,5 +1,74 @@
 # Changelog
 
+## [3.5.4](https://github.com/cds-snc/cds-superset/compare/v3.5.3...v3.5.4) (2025-09-23)
+
+
+### Bug Fixes
+
+* add workflow security fixes ([#555](https://github.com/cds-snc/cds-superset/issues/555)) ([8cc6899](https://github.com/cds-snc/cds-superset/commit/8cc68995b62a25c824ebc28c548ad44da23db8cd))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#558](https://github.com/cds-snc/cds-superset/issues/558)) ([5df86b9](https://github.com/cds-snc/cds-superset/commit/5df86b967d4991dda25ef2efee2bb47323f665c8))
+* **deps:** update all non-major github action dependencies ([#556](https://github.com/cds-snc/cds-superset/issues/556)) ([a99c672](https://github.com/cds-snc/cds-superset/commit/a99c672e6009e4526700dec5218633148b4a34e9))
+* **deps:** update dependency authlib to v1.6.4 [security] ([#561](https://github.com/cds-snc/cds-superset/issues/561)) ([0d701b2](https://github.com/cds-snc/cds-superset/commit/0d701b2a0001dd143a9f759a12daa2a795ce9099))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.7.1 ([#557](https://github.com/cds-snc/cds-superset/issues/557)) ([fce09d1](https://github.com/cds-snc/cds-superset/commit/fce09d13bf5a244e1876175ddf7b6ac24bb0c339))
+
+## [3.5.3](https://github.com/cds-snc/cds-superset/compare/v3.5.2...v3.5.3) (2025-09-15)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#553](https://github.com/cds-snc/cds-superset/issues/553)) ([f2d13ea](https://github.com/cds-snc/cds-superset/commit/f2d13ea8f5f5486eba77b99a0b5d5feacc001c28))
+* **deps:** update all non-major github action dependencies ([#551](https://github.com/cds-snc/cds-superset/issues/551)) ([ae98d8b](https://github.com/cds-snc/cds-superset/commit/ae98d8bc388b6d9667874a7ae870210b40021482))
+* **deps:** update apache/superset:5.0.0 docker digest to 09735ad ([#550](https://github.com/cds-snc/cds-superset/issues/550)) ([ed4140f](https://github.com/cds-snc/cds-superset/commit/ed4140f71ee3b159667dee06c96502ef6e9c8127))
+* **deps:** update dependency pyathena to v3.18.0 ([#552](https://github.com/cds-snc/cds-superset/issues/552)) ([84a9569](https://github.com/cds-snc/cds-superset/commit/84a9569a8b9bc42b00a807f741e8220efdf53c7e))
+
+## [3.5.2](https://github.com/cds-snc/cds-superset/compare/v3.5.1...v3.5.2) (2025-09-11)
+
+
+### Bug Fixes
+
+* upgrade VPC to add SSH/RDP NACL block ([#548](https://github.com/cds-snc/cds-superset/issues/548)) ([609de00](https://github.com/cds-snc/cds-superset/commit/609de0004ec9ff4f9f111d4da6c17ed71c1a3016))
+
+## [3.5.1](https://github.com/cds-snc/cds-superset/compare/v3.5.0...v3.5.1) (2025-09-10)
+
+
+### Bug Fixes
+
+* increase CloudWatch log retention to 365 days ([#547](https://github.com/cds-snc/cds-superset/issues/547)) ([a2bcd65](https://github.com/cds-snc/cds-superset/commit/a2bcd65ff05877813a682e61aa2c28ff2bf75401))
+* set permanent session lifetime ([#545](https://github.com/cds-snc/cds-superset/issues/545)) ([01b6e43](https://github.com/cds-snc/cds-superset/commit/01b6e4356cb7ebe17ff162478e03284eaf0e74d1))
+
+## [3.5.0](https://github.com/cds-snc/cds-superset/compare/v3.4.0...v3.5.0) (2025-09-08)
+
+
+### Features
+
+* add Terraform static analysis and drift check workflows ([#537](https://github.com/cds-snc/cds-superset/issues/537)) ([4ddd315](https://github.com/cds-snc/cds-superset/commit/4ddd315819079c3de18d200180681e9f9a718e72))
+
+
+### Bug Fixes
+
+* apply cache changes immediately ([#539](https://github.com/cds-snc/cds-superset/issues/539)) ([4fa75e6](https://github.com/cds-snc/cds-superset/commit/4fa75e69854f253049e6c7f2454b2aed7ff08dbf))
+* set encryption mode of cache ([#540](https://github.com/cds-snc/cds-superset/issues/540)) ([3a673af](https://github.com/cds-snc/cds-superset/commit/3a673af80956511b60c855f0a414a7b176890840))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.7.3 ([#542](https://github.com/cds-snc/cds-superset/issues/542)) ([cc9f704](https://github.com/cds-snc/cds-superset/commit/cc9f704c28e3f053f16371064bece3ef118f6820))
+* **deps:** update dependency authlib to v1.6.3 ([#543](https://github.com/cds-snc/cds-superset/issues/543)) ([ad1345c](https://github.com/cds-snc/cds-superset/commit/ad1345cf2ddb84baf611067a9519a86431da1870))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to b387f79 ([#541](https://github.com/cds-snc/cds-superset/issues/541)) ([b33f8c7](https://github.com/cds-snc/cds-superset/commit/b33f8c74b6de634567435ffcd1a62fae49ca4e88))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.7.0 ([#544](https://github.com/cds-snc/cds-superset/issues/544)) ([382cfa6](https://github.com/cds-snc/cds-superset/commit/382cfa6e807db0a8c769d4e984982aaf5201cc11))
+
+## [3.4.0](https://github.com/cds-snc/cds-superset/compare/v3.3.1...v3.4.0) (2025-09-04)
+
+
+### Features
+
+* add system use notification ([#536](https://github.com/cds-snc/cds-superset/issues/536)) ([07bd3ae](https://github.com/cds-snc/cds-superset/commit/07bd3ae36efbe8ef1a8ad9b012dc9a7ba03435f8))
+* set the Superset log format and level ([#534](https://github.com/cds-snc/cds-superset/issues/534)) ([f2d7af0](https://github.com/cds-snc/cds-superset/commit/f2d7af04ce34d1701a5ab7114e36107e4e2ae605))
+
 ## [3.3.1](https://github.com/cds-snc/cds-superset/compare/v3.3.0...v3.3.1) (2025-09-02)
 
 

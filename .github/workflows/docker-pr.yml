@@ -7,6 +7,9 @@ on:
       - "docker/**"
       - ".github/workflows/docker-pr.yml"
 
+permissions:
+  contents: read
+
 jobs:
   docker-hadolint:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
     steps:
 
       - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@50d3033adea55c246f2e314920759cd81ecae522
+        uses: cds-snc/dns-proxy-action@abae14dc37311af3a9bf8e6838dba2c1d873d06e
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
@@ -26,10 +29,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - name: Hadolint
         id: hadolint
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf # v3.1.0
+        uses: hadolint/hadolint-action@3fc49fb50d59c6ab7917a2e4195dba633e515b29 # v3.2.0
         with:
           dockerfile: ./docker/Dockerfile
           format: sarif
@@ -37,7 +42,7 @@ jobs:
           no-fail: true
       
       - name: Upload Hadolint to github
-        uses: github/codeql-action/upload-sarif@3c3833e0f8c1c83d449a7478aa59c036a9165498 # v3.29.11
+        uses: github/codeql-action/upload-sarif@192325c86100d080feab897ff886c34abd4c83a3 # v3.30.3
         with:
           sarif_file: hadolint-results.sarif
           wait-for-processing: true
@@ -46,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@50d3033adea55c246f2e314920759cd81ecae522
+        uses: cds-snc/dns-proxy-action@abae14dc37311af3a9bf8e6838dba2c1d873d06e
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
@@ -54,6 +59,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
       - name: Lint and format check
         run: |
@@ -67,7 +74,7 @@ jobs:
     steps: 
 
       - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@50d3033adea55c246f2e314920759cd81ecae522
+        uses: cds-snc/dns-proxy-action@abae14dc37311af3a9bf8e6838dba2c1d873d06e
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
@@ -75,6 +82,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0 
+        with:
+          persist-credentials: false
 
       - name: Build Docker image
         run: |

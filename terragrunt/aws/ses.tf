@@ -15,7 +15,6 @@ resource "aws_ses_domain_identity_verification" "superset" {
 }
 
 resource "aws_iam_user" "superset_send_email" {
-  # checkov:skip=CKV_AWS_273: SES IAM user is required to confirgure SMTP credentials
   name = "superset_send_email"
 }
 

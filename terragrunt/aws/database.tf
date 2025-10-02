@@ -2,7 +2,7 @@
 # RDS Postgress cluster
 #
 module "superset_db" {
-  source = "github.com/cds-snc/terraform-modules//rds?ref=v10.6.2"
+  source = "github.com/cds-snc/terraform-modules//rds?ref=v10.8.1"
   name   = "superset-${var.env}"
 
   database_name  = "superset"
@@ -20,7 +20,7 @@ module "superset_db" {
   # Enable audit logging to CloudWatch
   db_cluster_parameter_group_name          = aws_rds_cluster_parameter_group.superset_db.name
   enabled_cloudwatch_logs_exports          = ["postgresql"]
-  cloudwatch_log_exports_retention_in_days = 30
+  cloudwatch_log_exports_retention_in_days = 365
 
   serverless_min_capacity = var.superset_database_min_capacity
   serverless_max_capacity = var.superset_database_max_capacity

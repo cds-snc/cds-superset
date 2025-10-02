@@ -1,4 +1,4 @@
-FROM apache/superset:5.0.0@sha256:ac98e93f50129f4acf234860cdd6b252fd512496017c3c0044ce06528642fa6a
+FROM apache/superset:5.0.0@sha256:09735adaae3945c5a8fabbeca31a7954c8c74de195702ba61622aee8604d5c55
 USER root
 
 # Remove dev dependencies
@@ -21,8 +21,10 @@ RUN --mount=type=cache,target=/app/superset_home/.cache/uv \
 # Add custom configuration
 COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png
+COPY static/assets/system-use.js /app/superset/static/assets/system-use.js
 COPY superset/integration_tests/ /app/superset/integration_tests/
 COPY superset/translations/ /app/superset/translations/
+COPY superset/templates/tail_js_custom_extra.html /app/superset/templates/tail_js_custom_extra.html
 COPY superset_config.py /app/superset_config.py
 
 ENV SUPERSET_CONFIG_PATH=/app/superset_config.py

@@ -7,7 +7,7 @@ locals {
 }
 
 module "vpc" {
-  source = "github.com/cds-snc/terraform-modules//vpc?ref=v10.6.2"
+  source = "github.com/cds-snc/terraform-modules//vpc?ref=v10.8.1"
   name   = "superspace-${var.env}"
 
   enable_flow_log                  = true
@@ -64,6 +64,7 @@ resource "aws_security_group" "superset_ecs" {
 }
 
 resource "aws_security_group_rule" "superset_ecs_egress_all" {
+  description       = "Egress from Superset ECS task to the internet"
   type              = "egress"
   protocol          = "-1"
   to_port           = 0

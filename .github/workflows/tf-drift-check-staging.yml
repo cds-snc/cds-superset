@@ -1,18 +1,14 @@
-name: Terraform Plan Staging
+name: Terraform Drift Check Staging
+
 on:
-  pull_request:
-    paths:
-      - "terragrunt/aws/**"
-      - "terragrunt/env/staging/**"
-      - "terragrunt/env/common/**"
-      - "terragrunt/env/root.hcl"
-      - ".github/workflows/tf-plan-staging.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * *" # At 04:00 UTC every day
 
 env:
   AWS_REGION: ca-central-1
   TERRAFORM_VERSION: 1.10.3
   TERRAGRUNT_VERSION: 0.58.3
-  TF_SUMMARIZE_VERSION: 0.3.5
   TF_VAR_cloudwatch_alert_slack_webhook: ${{ secrets.STAGING_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}
   TF_VAR_google_oauth_client_id: ${{ secrets.STAGING_GOOGLE_OAUTH_CLIENT_ID }}
   TF_VAR_google_oauth_client_secret: ${{ secrets.STAGING_GOOGLE_OAUTH_CLIENT_SECRET }}
@@ -29,40 +25,28 @@ env:
 permissions:
   id-token: write
   contents: read
-  pull-requests: write
 
 jobs:
-  terraform-plan:
-
+  terraform-drift:
     runs-on: ubuntu-latest
     steps:
-      - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@abae14dc37311af3a9bf8e6838dba2c1d873d06e
-        env:
-          DNS_PROXY_FORWARDTOSENTINEL: "true"
-          DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
-          DNS_PROXY_LOGANALYTICSSHAREDKEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
-
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           persist-credentials: false
 
-      - name: setup terraform tools
-        uses: cds-snc/terraform-tools-setup@cc15ce9039f6c37c592fb9930b70466b229d2e9b # v1
-
-      - name: configure aws credentials using OIDC
-        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4.3.1
+      - name: Configure aws credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@5fd3084fc36e372ff1fff382a39b10d03659f355 # v2.2.0
         with:
-          role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-plan 
+          role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-plan
           role-session-name: TFPlan
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Terraform plan
-        uses: cds-snc/terraform-plan@e710cb1446e5dfe69a0182603fb06b5282d7eb07 # v3.4.3
-        with:
-          comment-delete: true
-          comment-title: "Staging"
-          directory: "terragrunt/env/staging"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          terragrunt: true
+      - name: Setup terraform tools
+        uses: cds-snc/terraform-tools-setup@cc15ce9039f6c37c592fb9930b70466b229d2e9b # v1
+
+      - name: Check for drift
+        working-directory: ./terragrunt/env/staging
+        run: |
+          terragrunt run-all init
+          terragrunt run-all plan -detailed-exitcode

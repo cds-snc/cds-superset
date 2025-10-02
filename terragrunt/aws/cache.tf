@@ -14,6 +14,12 @@ resource "aws_elasticache_replication_group" "superset_cache" {
     aws_security_group.superset_redis.id,
   ]
 
+  at_rest_encryption_enabled = true
+  transit_encryption_enabled = true
+  transit_encryption_mode    = "preferred"
+
+  apply_immediately = true
+
   tags = local.common_tags
 }
 

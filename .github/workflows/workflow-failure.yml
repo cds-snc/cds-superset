@@ -10,24 +10,33 @@ on:
       - "Release Please"
       - "Terraform Apply Production"
       - "Terraform Apply Staging"
+      - "Terraform Drift Check Production"
+      - "Terraform Drift Check Staging"
     types:
       - completed
+
+permissions:
+  contents: none
 
 jobs:
   on-failure:
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'failure'
+    env:
+      WORKFLOW_NAME: '${{ github.event.workflow_run.name }}'
+      WORKFLOW_URL: '${{ github.event.workflow_run.html_url }}'
     steps:
       - name: Determine target ops channel
+        id: webhook
         run: |
-          WORKFLOW_NAME_LOWER="$(echo ${{ github.event.workflow_run.name }} | tr '[:upper:]' '[:lower:]')"
+          WORKFLOW_NAME_LOWER="$(echo ${WORKFLOW_NAME} | tr '[:upper:]' '[:lower:]')"
           if [[ "$WORKFLOW_NAME_LOWER" == *"staging"* ]]; then
-            echo "SLACK_WEBHOOK_URL=${{ secrets.STAGING_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}" >> $GITHUB_ENV
+            echo "SLACK_WEBHOOK_URL=${{ secrets.STAGING_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}" >> $GITHUB_OUTPUT
           else
-            echo "SLACK_WEBHOOK_URL=${{ secrets.PROD_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}" >> $GITHUB_ENV
+            echo "SLACK_WEBHOOK_URL=${{ secrets.PROD_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Notify Slack
         run: |
-          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${{ github.event.workflow_run.html_url }}|${{ github.event.workflow.name }}>"}}]}'
-          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ env.SLACK_WEBHOOK_URL }}
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${WORKFLOW_URL}|${WORKFLOW_NAME}>"}}]}'
+          curl -X POST -H 'Content-type: application/json' --data "$json" ${{ steps.webhook.outputs.SLACK_WEBHOOK_URL }}

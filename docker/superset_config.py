@@ -14,6 +14,10 @@ logger = logging.getLogger()
 
 logger.info("Setting up custom config for Superset")
 
+# Log config
+LOG_FORMAT = "%(asctime)s:%(levelname)s:%(name)s:%(message)s"
+LOG_LEVEL = logging.INFO
+
 # Database
 DATABASE_USER = os.getenv("SUPERSET_DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("SUPERSET_DATABASE_PASSWORD")
@@ -28,9 +32,12 @@ SQLALCHEMY_DATABASE_URI = (
 )
 
 # Caching: https://superset.apache.org/docs/installation/cache
+REDIS_SSL = os.getenv("SUPERSET_ENV") != "development"
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", "6379")
-REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
+REDIS_PROTOCOL = "rediss" if REDIS_SSL else "redis"
+REDIS_ARGS = "?ssl_cert_reqs=required" if REDIS_SSL else ""
+REDIS_URL = f"{REDIS_PROTOCOL}://{REDIS_HOST}:{REDIS_PORT}"
 REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
 
@@ -61,14 +68,14 @@ THUMBNAIL_CACHE_CONFIG = redis_cache("superset_thumbnail_cache_", DAYS_7)
 
 # Workers: https://superset.apache.org/docs/installation/async-queries-celery/
 class CeleryConfig(object):
-    broker_url = f"{REDIS_URL}/{REDIS_CELERY_DB}"
+    broker_url = f"{REDIS_URL}/{REDIS_CELERY_DB}{REDIS_ARGS}"
     imports = (
         "superset.sql_lab",
         "superset.tasks.cache",
         "superset.tasks.scheduler",
         "superset.tasks.thumbnails",
     )
-    result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}"
+    result_backend = f"{REDIS_URL}/{REDIS_RESULTS_DB}{REDIS_ARGS}"
     worker_prefetch_multiplier = 10
     task_acks_late = True
     task_annotations = {
@@ -95,7 +102,11 @@ class CeleryConfig(object):
 
 CELERY_CONFIG = CeleryConfig
 RESULTS_BACKEND = RedisCache(
-    host=REDIS_HOST, port=REDIS_PORT, key_prefix="superset_results"
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    key_prefix="superset_results",
+    ssl=REDIS_SSL,
+    ssl_cert_reqs="required",
 )
 
 # Screenshots
@@ -122,6 +133,8 @@ SESSION_COOKIE_SAMESITE = "Strict"
 SESSION_SERVER_SIDE = True
 SESSION_TYPE = "redis"
 SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+SESSION_PERMANENT = True
+PERMANENT_SESSION_LIFETIME = int(timedelta(hours=12).total_seconds())
 
 # Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
 GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")

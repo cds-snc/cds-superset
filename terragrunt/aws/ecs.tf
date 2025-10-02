@@ -98,7 +98,7 @@ locals {
 }
 
 module "superset_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.6.2"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.8.1"
 
   cluster_name     = "superset"
   service_name     = "superset"
@@ -136,6 +136,9 @@ module "superset_ecs" {
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
+  # Logging
+  cloudwatch_log_group_retention_in_days = 365
+
   # Allow executing commands on the task
   enable_execute_command = false
 
@@ -143,7 +146,7 @@ module "superset_ecs" {
 }
 
 module "celery_worker_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.6.2"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.8.1"
 
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
@@ -181,11 +184,14 @@ module "celery_worker_ecs" {
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
 
+  # Logging
+  cloudwatch_log_group_retention_in_days = 365
+
   billing_tag_value = var.billing_code
 }
 
 module "celery_beat_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.6.2"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.8.1"
 
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
@@ -219,6 +225,9 @@ module "celery_beat_ecs" {
   security_group_ids             = [aws_security_group.superset_ecs.id]
   service_discovery_enabled      = true
   service_discovery_namespace_id = aws_service_discovery_private_dns_namespace.superset.id
+
+  # Logging
+  cloudwatch_log_group_retention_in_days = 365
 
   billing_tag_value = var.billing_code
 }
