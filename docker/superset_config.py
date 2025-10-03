@@ -196,6 +196,7 @@ FEATURE_FLAGS = {
     "ENABLE_DASHBOARD_SCREENSHOT_ENDPOINTS": True,
     "ENABLE_TEMPLATE_PROCESSING": True,
     "ENABLE_SUPERSET_META_DB": True,
+    "EXTRA_CATEGORICAL_COLOR_SCHEMES": True,
     "PLAYWRIGHT_REPORTS_AND_THUMBNAILS": True,
     "SQL_VALIDATORS_BY_ENGINE": {
         "presto": "PrestoDBSQLValidator",
@@ -213,6 +214,70 @@ LANGUAGES = {
 
 APP_ICON = "/static/assets/images/logo.png"
 FAVICONS = [{"href": "/static/assets/images/logo.png"}]
+
+# Custom color palettes for charts based on official CDS Design System
+EXTRA_CATEGORICAL_COLOR_SCHEMES = [
+    {
+        "id": "cds_platform",
+        "description": "CDS Platform Brand Colors",
+        "label": "CDS Platform",
+        "colors": [
+            "#3A4455",  # Platform Dark
+            "#B5C0CB",  # Platform Medium
+            "#CFD6DD",  # Platform Light
+            "#000000",  # Black
+            "#666666",  # Medium Gray
+            "#999999",  # Light Gray
+            "#B7B7B7",  # Lighter Gray
+            "#EFEFEF",  # White
+        ],
+    },
+    {
+        "id": "cds_notify",
+        "description": "GC Notify Brand Colors",
+        "label": "GC Notify",
+        "colors": [
+            "#294162",  # Notify Dark Blue
+            "#5BAAD7",  # Notify Medium Blue
+            "#8CD0F2",  # Notify Light Blue
+            "#000000",  # Black
+            "#666666",  # Medium Gray
+            "#999999",  # Light Gray
+            "#B7B7B7",  # Lighter Gray
+            "#EFEFEF",  # White
+        ],
+    },
+    {
+        "id": "cds_forms",
+        "description": "GC Forms Brand Colors",
+        "label": "GC Forms",
+        "colors": [
+            "#4B4085",  # Forms Dark Purple
+            "#9D8CF2",  # Forms Medium Purple
+            "#CEC5F8",  # Forms Light Purple
+            "#000000",  # Black
+            "#666666",  # Medium Gray
+            "#999999",  # Light Gray
+            "#B7B7B7",  # Lighter Gray
+            "#EFEFEF",  # White
+        ],
+    },
+    {
+        "id": "cds_design_system",
+        "description": "GC Design System Colors",
+        "label": "GC Design System",
+        "colors": [
+            "#03662A",  # Design System Dark Green
+            "#58C180",  # Design System Medium Green
+            "#9FDFBA",  # Design System Light Green
+            "#000000",  # Black
+            "#666666",  # Medium Gray
+            "#999999",  # Light Gray
+            "#B7B7B7",  # Lighter Gray
+            "#EFEFEF",  # White
+        ],
+    },
+]
 
 
 def app_mutator(app):
