@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.0](https://github.com/cds-snc/cds-superset/compare/v3.6.0...v3.7.0) (2025-10-03)
+
+
+### Features
+
+* add custom colors ([#566](https://github.com/cds-snc/cds-superset/issues/566)) ([a6773d6](https://github.com/cds-snc/cds-superset/commit/a6773d696f1eee035b2beae13b7360f83ace6b66))
+
 ## [3.6.0](https://github.com/cds-snc/cds-superset/compare/v3.5.4...v3.6.0) (2025-10-02)
 
 
