@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.7.0](https://github.com/cds-snc/cds-superset/compare/v3.6.0...v3.7.0) (2025-10-06)
+
+
+### Features
+
+* add custom colors ([#566](https://github.com/cds-snc/cds-superset/issues/566)) ([a6773d6](https://github.com/cds-snc/cds-superset/commit/a6773d696f1eee035b2beae13b7360f83ace6b66))
+
+
+### Bug Fixes
+
+* sync Terraform with RDS version ([#570](https://github.com/cds-snc/cds-superset/issues/570)) ([5f51916](https://github.com/cds-snc/cds-superset/commit/5f519163c80b35e6e76496fe335005ea78585218))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#569](https://github.com/cds-snc/cds-superset/issues/569)) ([2de8eab](https://github.com/cds-snc/cds-superset/commit/2de8eab5a12c21424621e6ecfc3b09085be8eb75))
+* **deps:** update all non-major github action dependencies ([#568](https://github.com/cds-snc/cds-superset/issues/568)) ([9fa08db](https://github.com/cds-snc/cds-superset/commit/9fa08db22fe24ee662d11806beac2c9f3dd979a5))
+* synced file(s) with cds-snc/site-reliability-engineering ([#560](https://github.com/cds-snc/cds-superset/issues/560)) ([0f87e92](https://github.com/cds-snc/cds-superset/commit/0f87e92202ec245f9c2856d7caed4e22ec8b8900))
+
 ## [3.6.0](https://github.com/cds-snc/cds-superset/compare/v3.5.4...v3.6.0) (2025-10-02)
 
 
