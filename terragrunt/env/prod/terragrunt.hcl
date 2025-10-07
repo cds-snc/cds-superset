@@ -16,6 +16,7 @@ inputs = {
 
   glue_databases = [
     "operations_aws_production",
+    "operations_github_production",
     "platform_gc_forms_production",
     "platform_gc_notify_production",
     "platform_gc_design_system_production",
