@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.8.0](https://github.com/cds-snc/cds-superset/compare/v3.7.1...v3.8.0) (2025-10-07)
+
+
+### Features
+
+* add github metadata tables ([#576](https://github.com/cds-snc/cds-superset/issues/576)) ([fde62ce](https://github.com/cds-snc/cds-superset/commit/fde62ce6c74cca36a16d4fd68b9db30aed45b802))
+
+
+### Miscellaneous Chores
+
+* **deps:** update aws-actions/configure-aws-credentials action to v5 ([#573](https://github.com/cds-snc/cds-superset/issues/573)) ([e624311](https://github.com/cds-snc/cds-superset/commit/e624311c822660f06d1d3b0c97c2f794a806257c))
+* synced local '.github/workflows/export_github_data.yml' with remote 'tools/sre_file_sync/export_github_data.yml' ([#575](https://github.com/cds-snc/cds-superset/issues/575)) ([048f9c5](https://github.com/cds-snc/cds-superset/commit/048f9c5122f2400e0e7c1a5bd07c9d4f1aefd515))
+
 ## [3.7.1](https://github.com/cds-snc/cds-superset/compare/v3.7.0...v3.7.1) (2025-10-07)
 
 
