@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.1](https://github.com/cds-snc/cds-superset/compare/v3.7.0...v3.7.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* adjust alarm filter patterns ([#571](https://github.com/cds-snc/cds-superset/issues/571)) ([d8b871c](https://github.com/cds-snc/cds-superset/commit/d8b871ceaedf725c0b7fd36880b0ef64cb8031ff))
+
 ## [3.7.0](https://github.com/cds-snc/cds-superset/compare/v3.6.0...v3.7.0) (2025-10-06)
 
 
