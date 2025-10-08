@@ -18,13 +18,14 @@ locals {
     "OAuth authorize",
     "warming up cache",
     "Failed to execute query",
-    "dict is not a sequence",
+    "fetch_url",
     "GENERIC_DB_ENGINE_ERROR",
-    "Insufficient permissions",
+    "Insufficient",
     "INVALID_SQL_ERROR",
     "no attribute 'strip'",
     "non-numeric values",
-    "Only `SELECT` statements",
+    "not a sequence",
+    "Only `SELECT`",
     "session.no_autoflush",
     "superset.ecs.local",
     "SQLError",
@@ -33,8 +34,7 @@ locals {
     "TABLE_DOES_NOT_EXIST",
     "TABLE_NOT_FOUND",
     "TYPE_MISMATCH",
-    "Unsupported format",
-    "Unsupported table"
+    "Unsupported"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
 
