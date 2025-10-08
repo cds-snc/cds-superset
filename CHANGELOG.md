@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.8.1](https://github.com/cds-snc/cds-superset/compare/v3.8.0...v3.8.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* adjust alarms and suppress fetch_url errors ([#577](https://github.com/cds-snc/cds-superset/issues/577)) ([a0a66fe](https://github.com/cds-snc/cds-superset/commit/a0a66fe073a020d8370154de20790a3ff87c3dfe))
+
 ## [3.8.0](https://github.com/cds-snc/cds-superset/compare/v3.7.1...v3.8.0) (2025-10-07)
 
 
