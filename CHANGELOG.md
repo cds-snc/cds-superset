@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.8.2](https://github.com/cds-snc/cds-superset/compare/v3.8.1...v3.8.2) (2025-10-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#581](https://github.com/cds-snc/cds-superset/issues/581)) ([7521761](https://github.com/cds-snc/cds-superset/commit/7521761b9fc9284c681d4effa25311e0e922c6b8))
+* **deps:** update all non-major github action dependencies ([#580](https://github.com/cds-snc/cds-superset/issues/580)) ([0b3b07e](https://github.com/cds-snc/cds-superset/commit/0b3b07e8aebd8f6980703d6f9231e2bd1d96d485))
+* **deps:** update dependency authlib to v1.6.5 [security] ([#579](https://github.com/cds-snc/cds-superset/issues/579)) ([57c43e4](https://github.com/cds-snc/cds-superset/commit/57c43e436a8397983073fcff2f9f478da3432f2a))
+
 ## [3.8.1](https://github.com/cds-snc/cds-superset/compare/v3.8.0...v3.8.1) (2025-10-08)
 
 
