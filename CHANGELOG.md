@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.8.3](https://github.com/cds-snc/cds-superset/compare/v3.8.2...v3.8.3) (2025-10-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#588](https://github.com/cds-snc/cds-superset/issues/588)) ([454631c](https://github.com/cds-snc/cds-superset/commit/454631cde0bff3d40119754153cfa09cd4bf0cc5))
+* **deps:** update actions/dependency-review-action action to v4.8.1 ([#585](https://github.com/cds-snc/cds-superset/issues/585)) ([94c84e3](https://github.com/cds-snc/cds-superset/commit/94c84e3160765dc7c6848812a547fdc23a460163))
+* **deps:** update all patch dependencies ([#586](https://github.com/cds-snc/cds-superset/issues/586)) ([e9d1cc2](https://github.com/cds-snc/cds-superset/commit/e9d1cc2aec16f5a79844d5a7d9e1313f04476b61))
+* **deps:** update dependency python to v3.14.0 ([#587](https://github.com/cds-snc/cds-superset/issues/587)) ([b4682b4](https://github.com/cds-snc/cds-superset/commit/b4682b40b16a949eff3fdaa0b2bdf5eb5f8e078b))
+* **deps:** update github/codeql-action action to v4 ([#583](https://github.com/cds-snc/cds-superset/issues/583)) ([6432f2b](https://github.com/cds-snc/cds-superset/commit/6432f2b9e0a83f4be67bdccf6957bdb86500af5c))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 1f1835d ([#584](https://github.com/cds-snc/cds-superset/issues/584)) ([3e9fe5f](https://github.com/cds-snc/cds-superset/commit/3e9fe5f0b9b759dd01b6237e8ecc3eeb678c3e86))
+
 ## [3.8.2](https://github.com/cds-snc/cds-superset/compare/v3.8.1...v3.8.2) (2025-10-14)
 
 
