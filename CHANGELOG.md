@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.9.0](https://github.com/cds-snc/cds-superset/compare/v3.8.3...v3.9.0) (2025-10-24)
+
+
+### Features
+
+* allow `ReadOnly` role to schedule email reports ([#592](https://github.com/cds-snc/cds-superset/issues/592)) ([5a042c0](https://github.com/cds-snc/cds-superset/commit/5a042c0351efa4b1523eb2edddbfe7724a6aa692))
+
+
+### Bug Fixes
+
+* add Manage menu access to `ReadOnly` ([#593](https://github.com/cds-snc/cds-superset/issues/593)) ([fb46f42](https://github.com/cds-snc/cds-superset/commit/fb46f4237a1d3f95202899251433e7200930e155))
+
+
+### Miscellaneous Chores
+
+* synced local '.github/workflows/export_github_data.yml' with remote 'tools/sre_file_sync/export_github_data.yml' ([#590](https://github.com/cds-snc/cds-superset/issues/590)) ([51a0991](https://github.com/cds-snc/cds-superset/commit/51a09917ec692b3def67d29a0ab1d4eaa9b706ad))
+
 ## [3.8.3](https://github.com/cds-snc/cds-superset/compare/v3.8.2...v3.8.3) (2025-10-20)
 
 
