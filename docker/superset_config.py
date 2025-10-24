@@ -396,6 +396,7 @@ FAB_ROLES = {
         ["FilterSets", "can_edit"],
         ["Home", "menu_access"],
         ["Log", "can_recent_activity"],
+        ["Manage", "menu_access"],
         ["ReportSchedule", "can_read"],
         ["ReportSchedule", "can_write"],
         ["ResetMyPasswordView", "can_this_form_get"],
