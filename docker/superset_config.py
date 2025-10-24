@@ -396,6 +396,8 @@ FAB_ROLES = {
         ["FilterSets", "can_edit"],
         ["Home", "menu_access"],
         ["Log", "can_recent_activity"],
+        ["ReportSchedule", "can_read"],
+        ["ReportSchedule", "can_write"],
         ["ResetMyPasswordView", "can_this_form_get"],
         ["ResetMyPasswordView", "can_this_form_post"],
         ["SQLLab", "can_estimate_query_cost"],
