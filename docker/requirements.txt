@@ -1,7 +1,7 @@
 authlib==1.6.5
 gunicorn==23.0.0
 Flask-Session==0.8.0
-prophet==1.1.7
+prophet==1.2.0
 psycopg2-binary==2.9.11
-pyathena[pandas]==3.18.0
+pyathena[pandas]==3.19.0
 redis==5.3.1
