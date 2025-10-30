@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.10.0](https://github.com/cds-snc/cds-superset/compare/v3.9.0...v3.10.0) (2025-10-30)
+
+
+### Features
+
+* enable Flask App Builder security API endpoints ([#597](https://github.com/cds-snc/cds-superset/issues/597)) ([7c00836](https://github.com/cds-snc/cds-superset/commit/7c008367086da51d931f6225a06a2ddc2bb7c0aa))
+
+
+### Bug Fixes
+
+* database integration test physical tables only ([#599](https://github.com/cds-snc/cds-superset/issues/599)) ([f97f53c](https://github.com/cds-snc/cds-superset/commit/f97f53c068d8eedea4ab77382f5185164b0db605))
+
 ## [3.9.0](https://github.com/cds-snc/cds-superset/compare/v3.8.3...v3.9.0) (2025-10-27)
 
 
