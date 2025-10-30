@@ -1,6 +1,3 @@
-import random
-
-
 def test_access(app):
     """
     Retrieve all database connections and loop over each one.
