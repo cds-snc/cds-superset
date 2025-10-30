@@ -44,14 +44,20 @@ def test_access(app):
                         .all()
                     )
                     if tables:
-                        random_table_index = random.randint(0, len(tables) - 1)
                         logger.info(
                             f"Database '{database.database_name}' has {len(tables)} tables"
                         )
-                        logger.info(
-                            f"Fetching metadata for table '{database.database_name}'.'{tables[random_table_index].table_name}'"
-                        )
-                        logger.info(tables[random_table_index].fetch_metadata())
+
+                        # Find the first physical table to test metadata fetching.  We omit
+                        # virtual tables as they are user defined and can have queries that are
+                        # long running, leading to ECS task load balancer healthcheck timeouts.
+                        for table in tables:
+                            if not table.data.get("sql"):
+                                logger.info(
+                                    f"Fetching metadata for table '{database.database_name}'.'{table.table_name}'"
+                                )
+                                logger.info(table.fetch_metadata())
+                                break
                     else:
                         logger.info(
                             f"No tables registered for database '{database.database_name}'"
