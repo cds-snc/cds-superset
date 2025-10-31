@@ -373,6 +373,11 @@ FAB_ROLES = {
         ["all_database_access", "all_database_access"],
         ["all_datasource_access", "all_datasource_access"],
     ],
+    "ManageUserRoles": [
+        ["Role", "can_get"],
+        ["User", "can_get"],
+        ["User", "can_put"],
+    ],
     "PlatformUser": [],
     "ReadOnly": [
         [".*", "can_external_metadata"],
