@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.11.0](https://github.com/cds-snc/cds-superset/compare/v3.10.0...v3.11.0) (2025-10-31)
+
+
+### Features
+
+* add `ManageUserRoles` role ([#600](https://github.com/cds-snc/cds-superset/issues/600)) ([603a4ac](https://github.com/cds-snc/cds-superset/commit/603a4ac7fa1fb23168e18513ef255698f7393893))
+
 ## [3.10.0](https://github.com/cds-snc/cds-superset/compare/v3.9.0...v3.10.0) (2025-10-30)
 
 
