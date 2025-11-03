@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.11.1](https://github.com/cds-snc/cds-superset/compare/v3.11.0...v3.11.1) (2025-11-03)
+
+
+### Bug Fixes
+
+* workflow failure Slack message ([#606](https://github.com/cds-snc/cds-superset/issues/606)) ([0291d44](https://github.com/cds-snc/cds-superset/commit/0291d4478d273f45e9260a7f715a0be137af02a6))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#604](https://github.com/cds-snc/cds-superset/issues/604)) ([06d7fea](https://github.com/cds-snc/cds-superset/commit/06d7fea6b955e20e2d99e220abb77f11ae116840))
+* **deps:** update all non-major github action dependencies ([#603](https://github.com/cds-snc/cds-superset/issues/603)) ([d625324](https://github.com/cds-snc/cds-superset/commit/d6253243932723b0444792c7d28bd5d66265f037))
+* **deps:** update all patch dependencies ([#602](https://github.com/cds-snc/cds-superset/issues/602)) ([150b3a2](https://github.com/cds-snc/cds-superset/commit/150b3a20a8ed19b889ceddf970431ede40a78c31))
+
 ## [3.11.0](https://github.com/cds-snc/cds-superset/compare/v3.10.0...v3.11.0) (2025-10-31)
 
 
