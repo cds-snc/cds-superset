@@ -188,7 +188,6 @@ WTF_CSRF_EXEMPT_LIST = [
 
 SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
-FAB_ADD_SECURITY_API = True
 
 FEATURE_FLAGS = {
     "ALERT_REPORTS": True,
@@ -372,11 +371,6 @@ FAB_ROLES = {
         [".*", "can_warm_up_cache"],
         ["all_database_access", "all_database_access"],
         ["all_datasource_access", "all_datasource_access"],
-    ],
-    "ManageUserRoles": [
-        ["Role", "can_get"],
-        ["User", "can_get"],
-        ["User", "can_put"],
     ],
     "PlatformUser": [],
     "ReadOnly": [

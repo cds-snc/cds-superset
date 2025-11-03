@@ -37,9 +37,6 @@ jobs:
           fi
 
       - name: Notify Slack
-        env:
-          WORKFLOW_NAME: '${{ github.event.workflow_run.name }}'
-          WORKFLOW_URL: '${{ github.event.workflow_run.html_url }}'
         run: |
-          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${WORKFLOW_URL}|${WORKFLOW_NAME}>"}}]}'
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${{ github.event.workflow_run.html_url }}|${{ github.event.workflow_run.name }}>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" ${{ steps.webhook.outputs.SLACK_WEBHOOK_URL }}
