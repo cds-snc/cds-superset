@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.12.0](https://github.com/cds-snc/cds-superset/compare/v3.11.1...v3.12.0) (2025-11-17)
+
+
+### Features
+
+* add secret scanning to TF plan ([#607](https://github.com/cds-snc/cds-superset/issues/607)) ([25b1c76](https://github.com/cds-snc/cds-superset/commit/25b1c765099bc27c1c6da2d85624a7f5a694b901))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#611](https://github.com/cds-snc/cds-superset/issues/611)) ([1d21574](https://github.com/cds-snc/cds-superset/commit/1d21574e217e2bc007c637aaedde257c36207c31))
+* **deps:** lock file maintenance ([#616](https://github.com/cds-snc/cds-superset/issues/616)) ([76c6304](https://github.com/cds-snc/cds-superset/commit/76c6304a742280e57bcd2ee88d7865a8b6a6741a))
+* **deps:** update all minor dependencies ([#615](https://github.com/cds-snc/cds-superset/issues/615)) ([2cd6c3f](https://github.com/cds-snc/cds-superset/commit/2cd6c3fa80b55cf1ca690887d99ce7ee8c0dd249))
+* **deps:** update all non-major github action dependencies ([#609](https://github.com/cds-snc/cds-superset/issues/609)) ([0d85d3c](https://github.com/cds-snc/cds-superset/commit/0d85d3ce9581ccec256f19a957d7fe6ef0d9b46e))
+* **deps:** update docker/setup-qemu-action action to v3.7.0 ([#614](https://github.com/cds-snc/cds-superset/issues/614)) ([98707ed](https://github.com/cds-snc/cds-superset/commit/98707ed898654224aa1e9b40b0c6f0bc9570c537))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.8.4 ([#610](https://github.com/cds-snc/cds-superset/issues/610)) ([b9e2ae3](https://github.com/cds-snc/cds-superset/commit/b9e2ae3c65fe4cd0526a6bbdf5a4e8068565e969))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.8.6 ([#613](https://github.com/cds-snc/cds-superset/issues/613)) ([69e2eb9](https://github.com/cds-snc/cds-superset/commit/69e2eb9837a473b261d5abfb12a3a826e700af48))
+* test new IAM S3 backup role ([#612](https://github.com/cds-snc/cds-superset/issues/612)) ([34bb549](https://github.com/cds-snc/cds-superset/commit/34bb5497f78a7011030acb0a72f8ece5e304de20))
+
 ## [3.11.1](https://github.com/cds-snc/cds-superset/compare/v3.11.0...v3.11.1) (2025-11-03)
 
 
