@@ -12,16 +12,15 @@ locals {
   ]
   superset_error_filters_skip = [
     "all_datasource_access",
-    "COLUMN_NOT_FOUND",
     "cache_dashboard_thumbnail",
     "/api/v1/*/thumbnail/",
     "OAuth authorize",
     "warming up cache",
+    "Exception while exporting",
     "Failed to execute query",
     "fetch_url",
     "GENERIC_DB_ENGINE_ERROR",
     "Insufficient",
-    "INVALID_SQL_ERROR",
     "no attribute 'strip'",
     "non-numeric values",
     "not a sequence",
@@ -29,11 +28,7 @@ locals {
     "session.no_autoflush",
     "superset.ecs.local",
     "SQLError",
-    "SYNTAX_ERROR",
     "Table does not exist",
-    "TABLE_DOES_NOT_EXIST",
-    "TABLE_NOT_FOUND",
-    "TYPE_MISMATCH",
     "Unsupported"
   ]
   superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
