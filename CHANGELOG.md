@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.13.0](https://github.com/cds-snc/cds-superset/compare/v3.12.0...v3.13.0) (2025-11-24)
+
+
+### Features
+
+* setup OpenTelemetry instrumentation ([#617](https://github.com/cds-snc/cds-superset/issues/617)) ([99927b4](https://github.com/cds-snc/cds-superset/commit/99927b463e8cd5ddeac68e9158cd2877bc3015d4))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#621](https://github.com/cds-snc/cds-superset/issues/621)) ([6cce7c6](https://github.com/cds-snc/cds-superset/commit/6cce7c605d762fba0f68bea463f0295c02a16cb9))
+* **deps:** update all non-major github action dependencies ([#619](https://github.com/cds-snc/cds-superset/issues/619)) ([972a075](https://github.com/cds-snc/cds-superset/commit/972a0758235e51e3f4e4fc7bcddeac1707287cc4))
+* **deps:** update dependency pyathena to v3.21.1 ([#620](https://github.com/cds-snc/cds-superset/issues/620)) ([3689e5f](https://github.com/cds-snc/cds-superset/commit/3689e5f7027e295e484d0d588a3419c5e08fc057))
+* suppress OpenTelementry export errors during task restart ([#623](https://github.com/cds-snc/cds-superset/issues/623)) ([b889494](https://github.com/cds-snc/cds-superset/commit/b889494e502e3e435a5796b25fac62c03ae624a7))
+
 ## [3.12.0](https://github.com/cds-snc/cds-superset/compare/v3.11.1...v3.12.0) (2025-11-17)
 
 
