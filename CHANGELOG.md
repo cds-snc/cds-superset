@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.13.1](https://github.com/cds-snc/cds-superset/compare/v3.13.0...v3.13.1) (2025-12-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all minor dependencies ([#628](https://github.com/cds-snc/cds-superset/issues/628)) ([1dd3485](https://github.com/cds-snc/cds-superset/commit/1dd348529043165c60cdc79d7e60ac5e240ea37d))
+* **deps:** update all non-major github action dependencies ([#629](https://github.com/cds-snc/cds-superset/issues/629)) ([e85ec8f](https://github.com/cds-snc/cds-superset/commit/e85ec8ff825e401c8c40ad9551c79355392a3c20))
+* enable Renovate OSV and GitHub vulnerability alert PRs ([#626](https://github.com/cds-snc/cds-superset/issues/626)) ([48e71b2](https://github.com/cds-snc/cds-superset/commit/48e71b28d27972f8a43671a54e2e60ca97767864))
+* synced local '.github/workflows/export_github_data.yml' with remote 'tools/sre_file_sync/export_github_data.yml' ([#624](https://github.com/cds-snc/cds-superset/issues/624)) ([f264bcd](https://github.com/cds-snc/cds-superset/commit/f264bcd63f3d4d6ec3ea7dbd305f9d5947317986))
+
 ## [3.13.0](https://github.com/cds-snc/cds-superset/compare/v3.12.0...v3.13.0) (2025-11-24)
 
 
