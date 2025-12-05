@@ -121,6 +121,10 @@ locals {
   ]
   container_secrets_all = [
     {
+      "name"      = "GUEST_TOKEN_JWT_SECRET"
+      "valueFrom" = aws_ssm_parameter.guest_token_jwt_secret.arn
+    },
+    {
       "name"      = "SLACK_API_TOKEN"
       "valueFrom" = aws_ssm_parameter.slack_api_token.arn
     },
@@ -442,6 +446,7 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
       aws_ssm_parameter.ecs_cwagent_config.arn,
       aws_ssm_parameter.google_oauth_client_id.arn,
       aws_ssm_parameter.google_oauth_client_secret.arn,
+      aws_ssm_parameter.guest_token_jwt_secret.arn,
       aws_ssm_parameter.slack_api_token.arn,
       aws_ssm_parameter.smtp_password.arn,
       aws_ssm_parameter.smtp_user.arn,
@@ -498,6 +503,13 @@ resource "aws_ssm_parameter" "google_oauth_client_secret" {
   name  = "google_oauth_client_secret"
   type  = "SecureString"
   value = var.google_oauth_client_secret
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "guest_token_jwt_secret" {
+  name  = "guest_token_jwt_secret"
+  type  = "SecureString"
+  value = var.guest_token_jwt_secret
   tags  = local.common_tags
 }
 

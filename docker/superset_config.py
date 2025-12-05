@@ -186,6 +186,12 @@ WTF_CSRF_EXEMPT_LIST = [
     "superset.dashboards.api.cache_dashboard_screenshot",
 ]
 
+# Embedded dashboard authentication
+GUEST_ROLE_NAME= 'ReadOnlyGuest'
+GUEST_TOKEN_JWT_SECRET = os.getenv("GUEST_TOKEN_JWT_SECRET")
+GUEST_TOKEN_JWT_AUDIENCE = "superset"
+GUEST_TOKEN_JWT_EXP_SECONDS = int(timedelta(minutes=5).total_seconds())
+
 SQLLAB_CTAS_NO_LIMIT = True
 SIP_15_ENABLED = True
 
@@ -193,6 +199,7 @@ FEATURE_FLAGS = {
     "ALERT_REPORTS": True,
     "ALERT_REPORT_SLACK_V2": True,
     "DASHBOARD_RBAC": True,
+    "EMBEDDED_SUPERSET": True,
     "ENABLE_DASHBOARD_SCREENSHOT_ENDPOINTS": True,
     "ENABLE_TEMPLATE_PROCESSING": True,
     "ENABLE_SUPERSET_META_DB": True,
