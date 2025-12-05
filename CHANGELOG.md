@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.13.2](https://github.com/cds-snc/cds-superset/compare/v3.13.1...v3.13.2) (2025-12-05)
+
+
+### Miscellaneous Chores
+
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 7916038 ([#627](https://github.com/cds-snc/cds-superset/issues/627)) ([50ea849](https://github.com/cds-snc/cds-superset/commit/50ea849216836a79948e2bf2aaf23c0161bec3be))
+* remove default Renovate config ([#631](https://github.com/cds-snc/cds-superset/issues/631)) ([fb57b00](https://github.com/cds-snc/cds-superset/commit/fb57b00289a4e98b4f9e3cfdba46f8eff3d90f5b))
+
 ## [3.13.1](https://github.com/cds-snc/cds-superset/compare/v3.13.0...v3.13.1) (2025-12-01)
 
 
