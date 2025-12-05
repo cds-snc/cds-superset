@@ -54,6 +54,12 @@ variable "google_oauth_client_secret" {
   sensitive   = true
 }
 
+variable "guest_token_jwt_secret" {
+  description = "The secret for guest embedded dashboard JWT tokens."
+  type        = string
+  sensitive   = true
+}
+
 variable "product_name" {
   description = "(Required) The name of the product you are deploying."
   type        = string
