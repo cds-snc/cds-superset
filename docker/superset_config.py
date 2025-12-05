@@ -187,7 +187,7 @@ WTF_CSRF_EXEMPT_LIST = [
 ]
 
 # Embedded dashboard authentication
-GUEST_ROLE_NAME= 'ReadOnlyGuest'
+GUEST_ROLE_NAME = 'ReadOnlyGuest'
 GUEST_TOKEN_JWT_SECRET = os.getenv("GUEST_TOKEN_JWT_SECRET")
 GUEST_TOKEN_JWT_AUDIENCE = "superset"
 GUEST_TOKEN_JWT_EXP_SECONDS = int(timedelta(minutes=5).total_seconds())
