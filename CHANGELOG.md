@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.14.0](https://github.com/cds-snc/cds-superset/compare/v3.13.1...v3.14.0) (2025-12-08)
+
+
+### Features
+
+* Superset embedded dashboard config ([#633](https://github.com/cds-snc/cds-superset/issues/633)) ([3fd30fd](https://github.com/cds-snc/cds-superset/commit/3fd30fd8813a69142a4ed1a2505354f526fcca8d))
+
+
+### Bug Fixes
+
+* surpress unactionable user caused alarms ([#632](https://github.com/cds-snc/cds-superset/issues/632)) ([379b72a](https://github.com/cds-snc/cds-superset/commit/379b72ae58a5793c19ad30a19c95dd28fb200138))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#636](https://github.com/cds-snc/cds-superset/issues/636)) ([afc77db](https://github.com/cds-snc/cds-superset/commit/afc77dbce58fccc18a155baa87037e73633183e7))
+* **deps:** update all non-major github action dependencies ([#635](https://github.com/cds-snc/cds-superset/issues/635)) ([d22dd93](https://github.com/cds-snc/cds-superset/commit/d22dd93e9594e536f4fac3dcf68daa96af09cd0f))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 7916038 ([#627](https://github.com/cds-snc/cds-superset/issues/627)) ([50ea849](https://github.com/cds-snc/cds-superset/commit/50ea849216836a79948e2bf2aaf23c0161bec3be))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.9.1 ([#634](https://github.com/cds-snc/cds-superset/issues/634)) ([54bf477](https://github.com/cds-snc/cds-superset/commit/54bf477c1a4475155ffb261a7c065aa6934839ba))
+* remove default Renovate config ([#631](https://github.com/cds-snc/cds-superset/issues/631)) ([fb57b00](https://github.com/cds-snc/cds-superset/commit/fb57b00289a4e98b4f9e3cfdba46f8eff3d90f5b))
+
 ## [3.13.1](https://github.com/cds-snc/cds-superset/compare/v3.13.0...v3.13.1) (2025-12-01)
 
 
