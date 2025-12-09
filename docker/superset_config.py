@@ -299,28 +299,6 @@ def app_mutator(app):
 
         database.test_access(app)
 
-    # Add security headers
-    @app.after_request
-    def add_security_headers(response):
-        """Add Content Security Policy and other security headers"""
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; "
-            "script-src 'self' 'strict-dynamic'; "
-            "style-src 'self' 'unsafe-inline'; "
-            "worker-src 'self' blob:; "
-            "img-src 'self' data: blob:; "
-            "connect-src 'self'; "
-            "frame-ancestors 'none'; "
-            "base-uri 'self'; "
-            "form-action 'self'; "
-            "object-src 'none'; "
-            "upgrade-insecure-requests"
-        )
-        response.headers["X-Content-Type-Options"] = "nosniff"
-        response.headers["X-Frame-Options"] = "DENY"
-        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        return response
-
     # Workaround bug in Superset not updating the main menu translations
     @app.before_request
     def fix_menu_translations():
@@ -370,6 +348,43 @@ def app_mutator(app):
     return app
 
 
+TALISMAN_ENABLED = True
+TALISMAN_CONFIG = {
+    "content_security_policy": {
+        "base-uri": ["'self'"],
+        "default-src": ["'self'"],
+        "img-src": [
+            "'self'",
+            "blob:",
+            "data:",
+        ],
+        "worker-src": ["'self'", "blob:"],
+        "connect-src": [
+            "'self'",
+        ],
+        "object-src": "'none'",
+        "style-src": [
+            "'self'",
+            "'unsafe-inline'",
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+        ],
+        "font-src": [
+            "'self'",
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+        ],
+        "frame-ancestors": [
+            "'self'",
+            "http://localhost:3000",
+            "https://https://backstage.cdssandbox.xyz",
+        ],
+        "script-src": ["'self'", "'strict-dynamic'"],
+    },
+    "content_security_policy_nonce_in": ["script-src"],
+}
+
+
 FLASK_APP_MUTATOR = app_mutator
 
 # Custom roles
@@ -380,6 +395,7 @@ FAB_ROLES = {
         ["all_datasource_access", "all_datasource_access"],
     ],
     "PlatformUser": [],
+    "ReadOnlyGuest": [],
     "ReadOnly": [
         [".*", "can_external_metadata"],
         [".*", "can_external_metadata_by_name"],
