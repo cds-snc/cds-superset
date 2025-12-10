@@ -8,6 +8,7 @@ from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
+from superset.config import TALISMAN_CONFIG
 from superset.tasks.types import ExecutorType, FixedExecutor
 
 logger = logging.getLogger()
@@ -349,40 +350,11 @@ def app_mutator(app):
 
 
 TALISMAN_ENABLED = True
-TALISMAN_CONFIG = {
-    "content_security_policy": {
-        "base-uri": ["'self'"],
-        "default-src": ["'self'"],
-        "img-src": [
-            "'self'",
-            "blob:",
-            "data:",
-        ],
-        "worker-src": ["'self'", "blob:"],
-        "connect-src": [
-            "'self'",
-        ],
-        "object-src": "'none'",
-        "style-src": [
-            "'self'",
-            "'unsafe-inline'",
-            "fonts.googleapis.com",
-            "fonts.gstatic.com",
-        ],
-        "font-src": [
-            "'self'",
-            "fonts.googleapis.com",
-            "fonts.gstatic.com",
-        ],
-        "frame-ancestors": [
-            "'self'",
-            "http://localhost:3000",
-            "https://https://backstage.cdssandbox.xyz",
-        ],
-        "script-src": ["'self'", "'strict-dynamic'"],
-    },
-    "content_security_policy_nonce_in": ["script-src"],
-}
+TALISMAN_CONFIG["content_security_policy"]["frame-ancestors"] = [
+    "'self'",
+    "http://localhost:3000",
+    "https://https://backstage.cdssandbox.xyz",
+]
 
 
 FLASK_APP_MUTATOR = app_mutator
