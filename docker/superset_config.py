@@ -8,7 +8,6 @@ from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
-from superset.config import TALISMAN_CONFIG
 from superset.tasks.types import ExecutorType, FixedExecutor
 
 logger = logging.getLogger()
@@ -188,7 +187,7 @@ WTF_CSRF_EXEMPT_LIST = [
 ]
 
 # Embedded dashboard authentication
-GUEST_ROLE_NAME = "ReadOnlyGuest"
+GUEST_ROLE_NAME = "ReadOnly"
 GUEST_TOKEN_JWT_SECRET = os.getenv("GUEST_TOKEN_JWT_SECRET")
 GUEST_TOKEN_JWT_AUDIENCE = "superset"
 GUEST_TOKEN_JWT_EXP_SECONDS = int(timedelta(minutes=5).total_seconds())
@@ -350,12 +349,40 @@ def app_mutator(app):
 
 
 TALISMAN_ENABLED = True
-TALISMAN_CONFIG["content_security_policy"]["frame-ancestors"] = [
-    "'self'",
-    "http://localhost:3000",
-    "https://backstage.cdssandbox.xyz",
-]
-
+TALISMAN_CONFIG = {
+    "content_security_policy": {
+        "base-uri": ["'self'"],
+        "default-src": ["'self'"],
+        "img-src": [
+            "'self'",
+            "blob:",
+            "data:",
+        ],
+        "worker-src": ["'self'", "blob:"],
+        "connect-src": ["'self'"],
+        "object-src": "'none'",
+        "style-src": [
+            "'self'",
+            "'unsafe-inline'",
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+        ],
+        "font-src": [
+            "'self'",
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+        ],
+        "frame-ancestors": [
+            "'self'",
+            "https://backstage.cdssandbox.xyz",
+        ],
+        "script-src": ["'self'", "'strict-dynamic'"],
+    },
+    "content_security_policy_nonce_in": ["script-src"],
+    "force_https": False,
+    "session_cookie_secure": True,
+}
+TALISMAN_DEV_CONFIG = TALISMAN_CONFIG
 
 FLASK_APP_MUTATOR = app_mutator
 
@@ -367,7 +394,6 @@ FAB_ROLES = {
         ["all_datasource_access", "all_datasource_access"],
     ],
     "PlatformUser": [],
-    "ReadOnlyGuest": [],
     "ReadOnly": [
         [".*", "can_external_metadata"],
         [".*", "can_external_metadata_by_name"],
