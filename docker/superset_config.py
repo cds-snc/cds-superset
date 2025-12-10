@@ -8,6 +8,7 @@ from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
+from superset.config import TALISMAN_CONFIG
 from superset.tasks.types import ExecutorType, FixedExecutor
 
 logger = logging.getLogger()
@@ -299,28 +300,6 @@ def app_mutator(app):
 
         database.test_access(app)
 
-    # Add security headers
-    @app.after_request
-    def add_security_headers(response):
-        """Add Content Security Policy and other security headers"""
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; "
-            "script-src 'self' 'strict-dynamic'; "
-            "style-src 'self' 'unsafe-inline'; "
-            "worker-src 'self' blob:; "
-            "img-src 'self' data: blob:; "
-            "connect-src 'self'; "
-            "frame-ancestors 'none'; "
-            "base-uri 'self'; "
-            "form-action 'self'; "
-            "object-src 'none'; "
-            "upgrade-insecure-requests"
-        )
-        response.headers["X-Content-Type-Options"] = "nosniff"
-        response.headers["X-Frame-Options"] = "DENY"
-        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        return response
-
     # Workaround bug in Superset not updating the main menu translations
     @app.before_request
     def fix_menu_translations():
@@ -370,6 +349,14 @@ def app_mutator(app):
     return app
 
 
+TALISMAN_ENABLED = True
+TALISMAN_CONFIG["content_security_policy"]["frame-ancestors"] = [
+    "'self'",
+    "http://localhost:3000",
+    "https://https://backstage.cdssandbox.xyz",
+]
+
+
 FLASK_APP_MUTATOR = app_mutator
 
 # Custom roles
@@ -380,6 +367,7 @@ FAB_ROLES = {
         ["all_datasource_access", "all_datasource_access"],
     ],
     "PlatformUser": [],
+    "ReadOnlyGuest": [],
     "ReadOnly": [
         [".*", "can_external_metadata"],
         [".*", "can_external_metadata_by_name"],
