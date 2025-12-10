@@ -353,7 +353,7 @@ TALISMAN_ENABLED = True
 TALISMAN_CONFIG["content_security_policy"]["frame-ancestors"] = [
     "'self'",
     "http://localhost:3000",
-    "https://https://backstage.cdssandbox.xyz",
+    "https://backstage.cdssandbox.xyz",
 ]
 
 
