@@ -8,7 +8,7 @@ locals {
   rds_cluster_postgresql_log_group_name = "/aws/rds/cluster/${module.superset_db.rds_cluster_id}/postgresql"
 
   superset_error_filters = [
-    "CRITICAL", "ERROR"
+    "ERROR"
   ]
   superset_error_filters_skip = [
     "all_datasource_access",
@@ -21,6 +21,7 @@ locals {
     "Failed to execute query",
     "fetch_url",
     "GENERIC_DB_ENGINE_ERROR",
+    "GetSamplingRules",
     "Insufficient",
     "INVALID_SQL_ERROR",
     "no attribute 'strip'",
@@ -33,13 +34,13 @@ locals {
     "Table does not exist",
     "Unsupported"
   ]
-  superset_error_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_error_filters)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.superset_error_filters_skip)}*\"]"
+  superset_error_metric_pattern = "[(w=\"*${join("*\" || w=\"*", local.superset_error_filters)}*\") && w!=\"*${join("*\" && w!=\"*", local.superset_error_filters_skip)}*\"]"
 
 
   superset_warning_filters = [
     "Error warming up cache"
   ]
-  superset_warning_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.superset_warning_filters)}*\")]"
+  superset_warning_metric_pattern = "[(w=\"*${join("*\" || w=\"*", local.superset_warning_filters)}*\")]"
 
   threshold_ecs_high_cpu     = 80
   threshold_ecs_high_memory  = 80
