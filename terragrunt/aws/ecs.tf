@@ -199,7 +199,7 @@ locals {
 }
 
 module "superset_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.9.1"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.10.0"
 
   cluster_name     = "superset"
   service_name     = "superset"
@@ -207,7 +207,8 @@ module "superset_ecs" {
   task_memory      = 6144
   cpu_architecture = "ARM64"
 
-  service_use_latest_task_def = true
+  service_use_latest_task_def    = true
+  container_image_track_deployed = true
 
   # Scaling
   enable_autoscaling       = true
@@ -263,7 +264,7 @@ module "superset_ecs" {
 }
 
 module "celery_worker_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.9.1"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.10.0"
 
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
@@ -272,7 +273,8 @@ module "celery_worker_ecs" {
   task_memory      = 6144
   cpu_architecture = "ARM64"
 
-  service_use_latest_task_def = true
+  service_use_latest_task_def    = true
+  container_image_track_deployed = true
 
   # Scaling
   enable_autoscaling       = true
@@ -324,7 +326,7 @@ module "celery_worker_ecs" {
 }
 
 module "celery_beat_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.9.1"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.10.0"
 
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
@@ -333,7 +335,8 @@ module "celery_beat_ecs" {
   task_memory      = 1024
   cpu_architecture = "ARM64"
 
-  service_use_latest_task_def = true
+  service_use_latest_task_def    = true
+  container_image_track_deployed = true
 
   # Scaling: this must always be 1 or scheduling errors will occur
   desired_count = 1

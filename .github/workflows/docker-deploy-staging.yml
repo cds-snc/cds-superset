@@ -64,6 +64,14 @@ jobs:
         wait-for-service-stability: true
         propagate-tags: SERVICE
 
+    - name: Update SSM parameter for deployed image
+      run: |
+        aws ssm put-parameter \
+          --name "/ecs/${{ env.ECS_CLUSTER }}/${{ matrix.service }}/container-image" \
+          --value "${{ env.REGISTRY }}:sha-${{ env.GITHUB_SHA }}" \
+          --type "String" \
+          --overwrite
+
     - name: Checkout
       if: ${{ matrix.service == 'superset' }}
       uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
