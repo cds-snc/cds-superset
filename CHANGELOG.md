@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.14.1](https://github.com/cds-snc/cds-superset/compare/v3.14.0...v3.14.1) (2025-12-12)
+
+
+### Bug Fixes
+
+* add new JWT token secret to workflow ([#637](https://github.com/cds-snc/cds-superset/issues/637)) ([dbe30e1](https://github.com/cds-snc/cds-superset/commit/dbe30e1965e9329a61c61c0816caed4b0cd1149c))
+* Content Security Policy configs ([#640](https://github.com/cds-snc/cds-superset/issues/640)) ([ce4b5bd](https://github.com/cds-snc/cds-superset/commit/ce4b5bd5f3781d22ff4599db195b97e297a4b199))
+* error alarm pattern and suppress OpenTelemetry errors ([#641](https://github.com/cds-snc/cds-superset/issues/641)) ([e19f126](https://github.com/cds-snc/cds-superset/commit/e19f126e161aa272b985323f272c16c44c184c82))
+* track the deployed ECS task's deployed image ([#642](https://github.com/cds-snc/cds-superset/issues/642)) ([7d17bc8](https://github.com/cds-snc/cds-superset/commit/7d17bc8f8f02ef0a529b5ef3c3e46c30881832c8))
+* update Superset's default Content Security Policy ([#639](https://github.com/cds-snc/cds-superset/issues/639)) ([bf6e4a6](https://github.com/cds-snc/cds-superset/commit/bf6e4a6f59a0772630621522a456143805f5e628))
+
 ## [3.14.0](https://github.com/cds-snc/cds-superset/compare/v3.13.1...v3.14.0) (2025-12-08)
 
 
