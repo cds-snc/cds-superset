@@ -38,4 +38,4 @@ fmt: install_dev
 	black ./docker $(ARGS)
 
 lint: install_dev
-	flake8 --ignore=E501 ./docker
+	flake8 --ignore=E501,W503 ./docker
