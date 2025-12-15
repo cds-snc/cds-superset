@@ -21,7 +21,7 @@ jobs:
     steps:
 
       - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@b63a989befc20506036aab86a7d66c4159272637
+        uses: cds-snc/dns-proxy-action@efd50395ec485b6ba290418d0f9fb79e7c83b6c4
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
@@ -42,7 +42,7 @@ jobs:
           no-fail: true
       
       - name: Upload Hadolint to github
-        uses: github/codeql-action/upload-sarif@fe4161a26a8629af62121b670040955b330f9af2 # v4.31.6
+        uses: github/codeql-action/upload-sarif@cf1bb45a277cb3c205638b2cd5c984db1c46a412 # v4.31.7
         with:
           sarif_file: hadolint-results.sarif
           wait-for-processing: true
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@b63a989befc20506036aab86a7d66c4159272637
+        uses: cds-snc/dns-proxy-action@efd50395ec485b6ba290418d0f9fb79e7c83b6c4
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
@@ -74,7 +74,7 @@ jobs:
     steps: 
 
       - name: Audit DNS requests
-        uses: cds-snc/dns-proxy-action@b63a989befc20506036aab86a7d66c4159272637
+        uses: cds-snc/dns-proxy-action@efd50395ec485b6ba290418d0f9fb79e7c83b6c4
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
           DNS_PROXY_LOGANALYTICSWORKSPACEID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
