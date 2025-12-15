@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.14.2](https://github.com/cds-snc/cds-superset/compare/v3.14.1...v3.14.2) (2025-12-15)
+
+
+### Bug Fixes
+
+* set localhost as a CSP frame-ancestor for debug envs ([#645](https://github.com/cds-snc/cds-superset/issues/645)) ([3fc05a1](https://github.com/cds-snc/cds-superset/commit/3fc05a1173e67654db5d9954e2a2fbbb8a4218d3))
+* update how ECS task definition is retrieved ([#643](https://github.com/cds-snc/cds-superset/issues/643)) ([988911f](https://github.com/cds-snc/cds-superset/commit/988911ffc4c4fd74627eaf0e5bd921705ad63d8b))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#647](https://github.com/cds-snc/cds-superset/issues/647)) ([3a2caf3](https://github.com/cds-snc/cds-superset/commit/3a2caf3329de6d3ce0f22ffbb625ab5f9b1f68c5))
+* **deps:** update all non-major github action dependencies ([#644](https://github.com/cds-snc/cds-superset/issues/644)) ([f378833](https://github.com/cds-snc/cds-superset/commit/f378833b95de5a8963ecf8c04f75acb5d6033e17))
+* **deps:** update dependency black to v25.12.0 ([#646](https://github.com/cds-snc/cds-superset/issues/646)) ([07b1492](https://github.com/cds-snc/cds-superset/commit/07b1492a8fd5f16bcf729dd483fc850fa62a57d2))
+
 ## [3.14.1](https://github.com/cds-snc/cds-superset/compare/v3.14.0...v3.14.1) (2025-12-12)
 
 
