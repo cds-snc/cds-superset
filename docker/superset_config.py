@@ -375,7 +375,8 @@ TALISMAN_CONFIG = {
         "frame-ancestors": [
             "'self'",
             "https://backstage.cdssandbox.xyz",
-        ],
+        ]
+        + (["http://localhost:*"] if os.getenv("FLASK_DEBUG") == "true" else []),
         "script-src": ["'self'", "'strict-dynamic'"],
     },
     "content_security_policy_nonce_in": ["script-src"],
