@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.14.3](https://github.com/cds-snc/cds-superset/compare/v3.14.2...v3.14.3) (2025-12-16)
+
+
+### Bug Fixes
+
+* bump to layer version with Python 3.13 support ([#651](https://github.com/cds-snc/cds-superset/issues/651)) ([2c98c88](https://github.com/cds-snc/cds-superset/commit/2c98c885319d346e2a80951f26d7c67bf94feda6))
+
+
+### Miscellaneous Chores
+
+* upgrade sentinel_forwarder to latest release ([#649](https://github.com/cds-snc/cds-superset/issues/649)) ([3c5cf62](https://github.com/cds-snc/cds-superset/commit/3c5cf6272019203634676279ad3fbb9ec0067516))
+
 ## [3.14.2](https://github.com/cds-snc/cds-superset/compare/v3.14.1...v3.14.2) (2025-12-15)
 
 
