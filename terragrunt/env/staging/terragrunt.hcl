@@ -29,6 +29,7 @@ inputs = {
     "platform_support_staging",
     "operations_aws_production",
     "operations_github_production",
+    "operations_google_analytics_production",
     "bes_crm_salesforce_production",
   ]
 
