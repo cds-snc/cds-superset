@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.15.0](https://github.com/cds-snc/cds-superset/compare/v3.14.3...v3.15.0) (2025-12-18)
+
+
+### Features
+
+* add GA tables ([#652](https://github.com/cds-snc/cds-superset/issues/652)) ([0951a62](https://github.com/cds-snc/cds-superset/commit/0951a6287f5e8ed6df0ec1cbb33ab0ab319907b9))
+
 ## [3.14.3](https://github.com/cds-snc/cds-superset/compare/v3.14.2...v3.14.3) (2025-12-16)
 
 
