@@ -5,3 +5,11 @@ prophet==1.2.1
 psycopg2-binary==2.9.11
 pyathena[pandas]==3.22.0
 redis==5.3.1
+
+# Security updates
+urllib3>=2.6.0
+werkzeug>=3.1.4
+brotli>=1.2.0
+uv>=0.9.6
+pip>=25.3
+setuptools>=78.1.1
