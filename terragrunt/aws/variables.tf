@@ -100,6 +100,11 @@ variable "smtp_user" {
   sensitive   = true
 }
 
+variable "superset_cluster_capacity_provider" {
+  description = "The capacity provider to use for the ECS cluster."
+  type        = string
+}
+
 variable "superset_database_instances_count" {
   description = "The number of instances in the database cluster."
   type        = number
