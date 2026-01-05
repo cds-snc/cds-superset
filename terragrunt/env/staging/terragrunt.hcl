@@ -33,8 +33,9 @@ inputs = {
     "bes_crm_salesforce_production",
   ]
 
-  superset_database_instance_class  = "db.serverless"
-  superset_database_instances_count = 1
-  superset_database_min_capacity    = 0
-  superset_database_max_capacity    = 4
+  superset_cluster_capacity_provider = "FARGATE_SPOT"
+  superset_database_instance_class   = "db.serverless"
+  superset_database_instances_count  = 1
+  superset_database_min_capacity     = 0
+  superset_database_max_capacity     = 4
 }

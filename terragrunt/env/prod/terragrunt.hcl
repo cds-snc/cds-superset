@@ -24,8 +24,9 @@ inputs = {
     "platform_support_production",
   ]
 
-  superset_database_instance_class  = "db.serverless"
-  superset_database_instances_count = 1
-  superset_database_min_capacity    = 0.5
-  superset_database_max_capacity    = 4
+  superset_cluster_capacity_provider = "FARGATE"
+  superset_database_instance_class   = "db.serverless"
+  superset_database_instances_count  = 1
+  superset_database_min_capacity     = 0.5
+  superset_database_max_capacity     = 4
 }

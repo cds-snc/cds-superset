@@ -207,6 +207,7 @@ module "superset_ecs" {
   task_memory      = 6144
   cpu_architecture = "ARM64"
 
+  cluster_capacity_provider      = var.superset_cluster_capacity_provider
   service_use_latest_task_def    = true
   container_image_track_deployed = true
 
