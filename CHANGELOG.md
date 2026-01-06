@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.15.1](https://github.com/cds-snc/cds-superset/compare/v3.15.0...v3.15.1) (2026-01-05)
+
+
+### Bug Fixes
+
+* Dependabot alert fixes ([#662](https://github.com/cds-snc/cds-superset/issues/662)) ([b52eb36](https://github.com/cds-snc/cds-superset/commit/b52eb3612a941b10c86bb3a14d709fec2dc55afb))
+* use FARGATE_SPOT in Staging ([#663](https://github.com/cds-snc/cds-superset/issues/663)) ([c9d2b45](https://github.com/cds-snc/cds-superset/commit/c9d2b453b3078e083397cc0faff345906168799f))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#658](https://github.com/cds-snc/cds-superset/issues/658)) ([740c6b9](https://github.com/cds-snc/cds-superset/commit/740c6b98d8f1313243704d1de37a209ce812cf78))
+* **deps:** update all non-major github action dependencies ([#660](https://github.com/cds-snc/cds-superset/issues/660)) ([0a8ac68](https://github.com/cds-snc/cds-superset/commit/0a8ac683f3e3ba93f17e7c0e7d1e6218bff46855))
+* **deps:** update dependency authlib to v1.6.6 ([#655](https://github.com/cds-snc/cds-superset/issues/655)) ([2e4e6b6](https://github.com/cds-snc/cds-superset/commit/2e4e6b6af326dfcaada846c2580c0f5a6473bace))
+* **deps:** update github/codeql-action action to v4.31.8 ([#656](https://github.com/cds-snc/cds-superset/issues/656)) ([fe65723](https://github.com/cds-snc/cds-superset/commit/fe6572314e20d9499eccd13b11380054dbbc2332))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 03e618a ([#654](https://github.com/cds-snc/cds-superset/issues/654)) ([ffa4f5c](https://github.com/cds-snc/cds-superset/commit/ffa4f5c2d788595e9bfdac1fe9f295421e6d97b2))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.10.1 ([#657](https://github.com/cds-snc/cds-superset/issues/657)) ([e9f6178](https://github.com/cds-snc/cds-superset/commit/e9f61784ff94c56f503787643b3e99d63a85b255))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.10.2 ([#661](https://github.com/cds-snc/cds-superset/issues/661)) ([15ac485](https://github.com/cds-snc/cds-superset/commit/15ac48590fd27968c7ed364a81ebdc13db2b5636))
+
 ## [3.15.0](https://github.com/cds-snc/cds-superset/compare/v3.14.3...v3.15.0) (2025-12-18)
 
 
