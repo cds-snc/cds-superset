@@ -5,6 +5,7 @@ prophet==1.2.1
 psycopg2-binary==2.9.11
 pyathena[pandas]==3.22.0
 redis==5.3.1
+playwright==1.57.0
 
 # Security updates
 urllib3>=2.6.0
