@@ -16,12 +16,8 @@ ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 
 # Install Chromium
 RUN --mount=type=cache,target=/app/superset_home/.cache/uv \
-    uv pip install --no-cache-dir playwright
+    playwright install --with-deps chromium
 
-ENV PLAYWRIGHT_BROWSERS_PATH=/usr/local/share/pw-browsers
-RUN python -m playwright install --with-deps chromium \
- && chmod -R a+rX /usr/local/share/pw-browsers
- 
 # Add custom configuration
 COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png
