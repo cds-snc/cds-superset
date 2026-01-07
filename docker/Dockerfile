@@ -1,4 +1,4 @@
-FROM apache/superset:5.0.0@sha256:09735adaae3945c5a8fabbeca31a7954c8c74de195702ba61622aee8604d5c55
+FROM apache/superset:6.0.0@sha256:6f6c9982bd64d81797bd4f33834f2ce4a4653c8ac8322f1e5f9df9b0332d092a
 USER root
 
 # Remove dev dependencies
@@ -16,8 +16,12 @@ ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 
 # Install Chromium
 RUN --mount=type=cache,target=/app/superset_home/.cache/uv \
-    playwright install --with-deps chromium
+    uv pip install --no-cache-dir playwright
 
+ENV PLAYWRIGHT_BROWSERS_PATH=/usr/local/share/pw-browsers
+RUN python -m playwright install --with-deps chromium \
+ && chmod -R a+rX /usr/local/share/pw-browsers
+ 
 # Add custom configuration
 COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png

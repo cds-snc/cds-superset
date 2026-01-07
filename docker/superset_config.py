@@ -457,4 +457,7 @@ FAB_ROLES = {
     ],
 }
 
+RECAPTCHA_PUBLIC_KEY = ""
+RECAPTCHA_PRIVATE_KEY = ""
+
 logger.info("Finished setting up custom config for Superset")
