@@ -81,7 +81,8 @@
             }
 
             .system-use-modal {
-                background: white;
+                color: #333;
+                background: #fff;
                 padding: 1rem 2rem 2rem 2rem;
                 border-radius: 4px;
                 max-width: 600px;
@@ -124,10 +125,10 @@
                         ${SYSTEM_USE_CONFIG.message}
                     </div>
                     <div class="system-use-modal-footer">
-                        <button type="button" class="ant-btn css-pudwsq ant-btn-variant-dashed" id="system-use-decline">
+                        <button type="button" class="ant-btn css-pudwsq css-i87kjs ant-btn-variant-dashed" id="system-use-decline">
                             ${SYSTEM_USE_CONFIG.declineButtonText}
                         </button>
-                        <button type="button" class="ant-btn css-pudwsq ant-btn-variant-solid" id="system-use-accept">
+                        <button type="button" class="ant-btn css-pudwsq css-i87kjs ant-btn-variant-solid" id="system-use-accept">
                             ${SYSTEM_USE_CONFIG.acceptButtonText}
                         </button>
                     </div>
