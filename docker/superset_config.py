@@ -219,8 +219,16 @@ LANGUAGES = {
     "fr": {"flag": "ca", "name": "Français"},
 }
 
-APP_ICON = "/static/assets/images/logo.png"
 FAVICONS = [{"href": "/static/assets/images/logo.png"}]
+THEME_LOGO = {
+    "brandLogoUrl": "/static/assets/images/logo.png",
+    "brandLogoAlt": "CDS-SNC",
+    "brandLogoMargin": "12px 0",
+    "brandLogoHref": "/",
+    "brandLogoHeight": "42px",
+}
+THEME_DEFAULT = {"token": THEME_LOGO}
+THEME_DARK = {"algorithm": "dark", "token": THEME_LOGO}
 
 # Custom color palettes for charts based on official CDS Design System
 EXTRA_CATEGORICAL_COLOR_SCHEMES = [
