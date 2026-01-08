@@ -227,13 +227,8 @@ THEME_LOGO = {
     "brandLogoHref": "/",
     "brandLogoHeight": "42px",
 }
-THEME_DEFAULT = {
-    "token": THEME_LOGO
-}
-THEME_DARK = {
-    "algorithm": "dark",
-    "token": THEME_LOGO
-}
+THEME_DEFAULT = {"token": THEME_LOGO}
+THEME_DARK = {"algorithm": "dark", "token": THEME_LOGO}
 
 # Custom color palettes for charts based on official CDS Design System
 EXTRA_CATEGORICAL_COLOR_SCHEMES = [
