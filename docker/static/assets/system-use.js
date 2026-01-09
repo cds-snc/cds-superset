@@ -207,7 +207,8 @@
     }
 
     async function initSystemUseNotification() {
-        if (!hasAcceptedSystemUse()) {
+        const isLoginPage = window.location.pathname.includes('/login/');
+        if (isLoginPage && !hasAcceptedSystemUse()) {
             await showSystemUseNotification();
         }
     }
