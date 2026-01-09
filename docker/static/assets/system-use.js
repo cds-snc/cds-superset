@@ -57,6 +57,32 @@
         }
     }
 
+    /**
+     * Retrieves Ant Design button CSS classes by polling the DOM.
+     * These classes are auto-generated with each Superset build and are necessary for consistent styling.
+     * @returns 
+     */
+    async function getAntButtonClasses() {
+        const maxAttempts = 8;
+        const pollInterval = 250;
+        
+        for (let attempt = 0; attempt < maxAttempts; attempt++) {
+            const antLayout = document.querySelector('.ant-layout');
+            if (antLayout) {
+                const classes = Array.from(antLayout.classList)
+                    .filter(cls => cls.startsWith('css-'))
+                    .join(' ');
+                return classes;
+            }
+            
+            if (attempt < maxAttempts - 1) {
+                await new Promise(resolve => setTimeout(resolve, pollInterval));
+            }
+        }
+        
+        return '';
+    }
+
     function createModalStyles() {
         const styleId = 'system-use-modal-styles';
         if (document.getElementById(styleId)) {
@@ -108,13 +134,21 @@
                     opacity: 1;
                 }
             }
+
+            .system-use-modal-footer {
+                display: flex;
+                gap: 8px;
+                justify-content: flex-end;
+                margin-top: 24px;
+            }
         `;
         document.head.appendChild(style);
     }
 
-    function showSystemUseNotification() {
+    async function showSystemUseNotification() {
         createModalStyles();
 
+        const antCssClasses = await getAntButtonClasses();
         const modalHTML = `
             <div class="system-use-overlay" id="systemUseOverlay" role="dialog" aria-modal="true" aria-labelledby="systemUseModalTitle">
                 <div class="system-use-modal">
@@ -125,10 +159,10 @@
                         ${SYSTEM_USE_CONFIG.message}
                     </div>
                     <div class="system-use-modal-footer">
-                        <button type="button" class="ant-btn css-pudwsq css-i87kjs ant-btn-variant-dashed" id="system-use-decline">
+                        <button type="button" class="ant-btn ${antCssClasses} ant-btn-variant-dashed" id="system-use-decline">
                             ${SYSTEM_USE_CONFIG.declineButtonText}
                         </button>
-                        <button type="button" class="ant-btn css-pudwsq css-i87kjs ant-btn-variant-solid" id="system-use-accept">
+                        <button type="button" class="ant-btn ${antCssClasses} ant-btn-variant-solid" id="system-use-accept">
                             ${SYSTEM_USE_CONFIG.acceptButtonText}
                         </button>
                     </div>
@@ -172,9 +206,9 @@
         }
     }
 
-    function initSystemUseNotification() {
+    async function initSystemUseNotification() {
         if (!hasAcceptedSystemUse()) {
-            showSystemUseNotification();
+            await showSystemUseNotification();
         }
     }
 
