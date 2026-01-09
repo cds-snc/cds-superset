@@ -59,10 +59,12 @@ jobs:
         propagate-tags: SERVICE
 
     - name: Update SSM parameter for deployed image
+      env:
+        TAG_NAME: ${{ github.event.workflow_run.head_branch }}
       run: |
         aws ssm put-parameter \
           --name "/ecs/${{ env.ECS_CLUSTER }}/${{ matrix.service }}/container-image" \
-          --value "${{ env.REGISTRY }}:${{ github.event.workflow_run.head_branch }}" \
+          --value "${{ env.REGISTRY }}:$TAG_NAME" \
           --type "String" \
           --overwrite
 
