@@ -32,7 +32,7 @@ locals {
     "superset.ecs.local",
     "SQLError",
     "Table does not exist",
-    "Unsupported"
+    "nsupported"
   ]
   superset_error_metric_pattern = "[(w=\"*${join("*\" || w=\"*", local.superset_error_filters)}*\") && w!=\"*${join("*\" && w!=\"*", local.superset_error_filters_skip)}*\"]"
 
