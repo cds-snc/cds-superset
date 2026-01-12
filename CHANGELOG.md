@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.15.2](https://github.com/cds-snc/cds-superset/compare/v3.15.1...v3.15.2) (2026-01-12)
+
+
+### Bug Fixes
+
+* CDS log and system use notification ([#666](https://github.com/cds-snc/cds-superset/issues/666)) ([5f56b5f](https://github.com/cds-snc/cds-superset/commit/5f56b5f8f7e3425fcc0acc8edaf2ff901b72503b))
+* dark mode system use notification ([#667](https://github.com/cds-snc/cds-superset/issues/667)) ([bcf5820](https://github.com/cds-snc/cds-superset/commit/bcf582045026452a1741cc543b047ee92cf9945b))
+* only display system use on login page ([#668](https://github.com/cds-snc/cds-superset/issues/668)) ([32844eb](https://github.com/cds-snc/cds-superset/commit/32844ebf07a644dc949c935dd6c2b50d7a6c94f5))
+* remove risk of code injection ([#669](https://github.com/cds-snc/cds-superset/issues/669)) ([787e14c](https://github.com/cds-snc/cds-superset/commit/787e14c571801abeba54582cfddf18cc2dbb60b9))
+* suppress `unsupported` errors as well ([#670](https://github.com/cds-snc/cds-superset/issues/670)) ([dc4e5ca](https://github.com/cds-snc/cds-superset/commit/dc4e5cabe0b6a6c1af2922778e751f1f858ff1bf))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#673](https://github.com/cds-snc/cds-superset/issues/673)) ([571f520](https://github.com/cds-snc/cds-superset/commit/571f5203e4538d29c74e70993f69b41467e852b6))
+* **deps:** update cds-snc/dns-proxy-action digest to b9ffe8d ([#671](https://github.com/cds-snc/cds-superset/issues/671)) ([4d3b151](https://github.com/cds-snc/cds-superset/commit/4d3b151c8ed92e0775ad4aaab23d5c571c07c2b5))
+* **deps:** update dependency pyathena to v3.24.0 ([#672](https://github.com/cds-snc/cds-superset/issues/672)) ([b5adf26](https://github.com/cds-snc/cds-superset/commit/b5adf26a1f346fa6b506ae3b2fb0be33034324e7))
+* update to v6 ([#664](https://github.com/cds-snc/cds-superset/issues/664)) ([cd5ff76](https://github.com/cds-snc/cds-superset/commit/cd5ff76646d6589fcfa9623f925c4bfcc2a5ba51))
+
 ## [3.15.1](https://github.com/cds-snc/cds-superset/compare/v3.15.0...v3.15.1) (2026-01-05)
 
 
