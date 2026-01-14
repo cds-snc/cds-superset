@@ -1,11 +1,21 @@
 FROM apache/superset:6.0.0@sha256:6f6c9982bd64d81797bd4f33834f2ce4a4653c8ac8322f1e5f9df9b0332d092a
 USER root
 
-# Remove dev dependencies
+# Remove unnecessary dependencies
 RUN apt-get update && \
-    apt-get purge linux-libc-dev libc6-dev libldap-dev libldap2-dev libssl-dev -y && \
+    apt-get purge -y \
+        libc6-dev \
+        libecpg6 \
+        libecpg-compat3 \
+        libldap-2.5-0 \
+        libldap-dev \
+        libldap2-dev \
+        libpq5 \
+        libssl-dev \
+        linux-libc-dev \
+        xserver-common \
+        xvfb && \
     apt-get autoremove -y && \
-    apt-get install libecpg-dev -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Add required database driver packages
@@ -15,8 +25,7 @@ RUN uv pip install --no-cache-dir -r /app/requirements.txt
 ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 
 # Install Chromium
-RUN --mount=type=cache,target=/app/superset_home/.cache/uv \
-    playwright install --with-deps chromium
+RUN python -m playwright install --with-deps chromium
 
 # Add custom configuration
 COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
