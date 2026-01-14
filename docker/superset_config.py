@@ -109,6 +109,14 @@ RESULTS_BACKEND = RedisCache(
     ssl_cert_reqs="required",
 )
 
+# Database pool size increase based on:
+# https://github.com/apache/superset/issues/30286
+SQLALCHEMY_ENGINE_OPTIONS = {
+    "pool_size": 20,
+    "max_overflow": 30,
+    "pool_timeout": 60,
+}
+
 # Screenshots
 SCREENSHOT_LOCATE_WAIT = int(timedelta(minutes=2).total_seconds())
 SCREENSHOT_LOAD_WAIT = int(timedelta(minutes=2).total_seconds())
