@@ -331,3 +331,54 @@ resource "aws_cloudwatch_metric_alarm" "ses_complaint_rate_high" {
   alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
 }
+
+#
+# Athena long running queries
+#
+resource "aws_cloudwatch_metric_alarm" "athena_long_query_succeeded" {
+  alarm_name          = "athena-long-query-succeeded"
+  alarm_description   = "Athena query succeeded but took >=3 minutes to complete"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "TotalExecutionTime"
+  namespace           = "AWS/Athena"
+  period              = 60
+  statistic           = "Maximum"
+  threshold           = 180000 # 3 minutes in milliseconds
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+
+  dimensions = {
+    WorkGroup  = "primary"
+    QueryState = "SUCCEEDED"
+    QueryType  = "DML"
+  }
+
+  tags = local.common_tags
+}
+
+resource "aws_cloudwatch_metric_alarm" "athena_long_query_failed" {
+  alarm_name          = "athena-long-query-failed"
+  alarm_description   = "Athena query failed after running for >=3 minutes"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  metric_name         = "TotalExecutionTime"
+  namespace           = "AWS/Athena"
+  period              = 60
+  statistic           = "Maximum"
+  threshold           = 180000 # 3 minutes in milliseconds
+  treat_missing_data  = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+
+  dimensions = {
+    WorkGroup  = "primary"
+    QueryState = "FAILED"
+    QueryType  = "DML"
+  }
+
+  tags = local.common_tags
+}
