@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.17.0](https://github.com/cds-snc/cds-superset/compare/v3.16.0...v3.17.0) (2026-01-15)
+
+
+### Features
+
+* enable tagging system and cache warmup based on tags ([#679](https://github.com/cds-snc/cds-superset/issues/679)) ([486b7ad](https://github.com/cds-snc/cds-superset/commit/486b7ad30c371caeee2f04786e7462cb6943ca2b))
+
+
+### Bug Fixes
+
+* remove unnecessary dependencies ([#676](https://github.com/cds-snc/cds-superset/issues/676)) ([b9ad38f](https://github.com/cds-snc/cds-superset/commit/b9ad38fc6f86c4fc3147535a17508a703aa68ee5))
+
 ## [3.16.0](https://github.com/cds-snc/cds-superset/compare/v3.15.2...v3.16.0) (2026-01-15)
 
 
