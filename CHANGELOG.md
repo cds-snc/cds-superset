@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.16.0](https://github.com/cds-snc/cds-superset/compare/v3.15.2...v3.16.0) (2026-01-15)
+
+
+### Features
+
+* add CloudWatch alarms for long running queries ([#677](https://github.com/cds-snc/cds-superset/issues/677)) ([e2c9290](https://github.com/cds-snc/cds-superset/commit/e2c92909c5512d53634cd121ae2da9e81c6ed83e))
+
+
+### Bug Fixes
+
+* increase database pool size ([#674](https://github.com/cds-snc/cds-superset/issues/674)) ([ff84393](https://github.com/cds-snc/cds-superset/commit/ff843930ad21fe74a96debd868085b7f4c97262f))
+
 ## [3.15.2](https://github.com/cds-snc/cds-superset/compare/v3.15.1...v3.15.2) (2026-01-12)
 
 
