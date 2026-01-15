@@ -95,7 +95,10 @@ class CeleryConfig(object):
         "cache-warmup-charts": {
             "task": "cache-warmup",
             "schedule": crontab(minute=0, hour="*/12"),
-            "kwargs": {"strategy_name": "dummy"},
+            "kwargs": {
+                "strategy_name": "dashboard_tags",
+                "tags": ["cache-warmup"],
+            },
         },
     }
 
@@ -216,6 +219,7 @@ FEATURE_FLAGS = {
     "SQL_VALIDATORS_BY_ENGINE": {
         "presto": "PrestoDBSQLValidator",
     },
+    "TAGGING_SYSTEM": True,
     "THUMBNAILS": True,
     "THUMBNAILS_SQLA_LISTENERS": True,
 }
