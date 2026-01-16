@@ -72,14 +72,13 @@ def authenticate(session: requests.Session, superset_url: str, username: str, pa
         
         if not access_token:
             print("Error: Failed to authenticate. Check credentials.")
-            print(f"Response: {login_response.text}")
             sys.exit(1)
             
         print("Authentication successful")
         return access_token
         
     except requests.RequestException as e:
-        print(f"Error: Failed to authenticate: {e}")
+        print("Error: Failed to authenticate")
         sys.exit(1)
 
 
@@ -116,7 +115,7 @@ def get_csrf_token(session: requests.Session, superset_url: str, access_token: s
         return csrf_token
         
     except requests.RequestException as e:
-        print(f"Error: Failed to retrieve CSRF token: {e}")
+        print("Error: Failed to retrieve CSRF token")
         sys.exit(1)
 
 
@@ -154,7 +153,7 @@ def get_all_dashboards(session: requests.Session, superset_url: str, access_toke
         return dashboards_data.get("result", [])
         
     except requests.RequestException as e:
-        print(f"Error: Failed to retrieve dashboards: {e}")
+        print("Error: Failed to retrieve dashboards")
         sys.exit(1)
 
 
@@ -188,7 +187,7 @@ def get_dashboard_details(
         return dashboard_detail_response.json().get("result", {})
         
     except requests.RequestException as e:
-        print(f"⚠ Warning: Failed to retrieve dashboard details for ID {dashboard_id}: {e}")
+        print(f"⚠ Warning: Failed to retrieve dashboard details for ID {dashboard_id}")
         return None
 
 
@@ -251,13 +250,10 @@ def add_tag(
             return True
         else:
             print("⚠ Warning: Failed to add tag")
-            print(f"Response: {add_response.text}")
             return False
             
     except requests.RequestException as e:
-        print(f"⚠ Warning: Failed to add tag: {e}")
-        if hasattr(e, 'response') and e.response is not None:
-            print(f"Error response: {e.response.text}")
+        print("⚠ Warning: Failed to add tag")
         return False
 
 
@@ -305,11 +301,10 @@ def remove_tag(
             return True
         else:
             print("⚠ Warning: Failed to remove tag")
-            print(f"Response: {response_text}")
             return False
             
     except requests.RequestException as e:
-        print(f"⚠ Warning: Failed to remove tag: {e}")
+        print("⚠ Warning: Failed to remove tag")
         return False
 
 
