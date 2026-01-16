@@ -24,6 +24,7 @@ locals {
     "GetSamplingRules",
     "Insufficient",
     "INVALID_SQL_ERROR",
+    "mismatching_state",
     "no attribute 'strip'",
     "non-numeric values",
     "not a sequence",
@@ -31,7 +32,7 @@ locals {
     "session.no_autoflush",
     "superset.ecs.local",
     "SQLError",
-    "Table does not exist",
+    "does not exist",
     "nsupported"
   ]
   superset_error_metric_pattern = "[(w=\"*${join("*\" || w=\"*", local.superset_error_filters)}*\") && w!=\"*${join("*\" && w!=\"*", local.superset_error_filters_skip)}*\"]"

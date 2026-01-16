@@ -1,0 +1,38 @@
+name: Manage Cache Warmup Tags
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  manage-tags:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        
+      - name: Set up Python
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
+          python-version: '3.14'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests==2.32.5
+          
+      - name: Run cache warmup tag management
+        env:
+          SUPERSET_SERVICE_USERNAME: ${{ secrets.SUPERSET_SERVICE_USERNAME }}
+          SUPERSET_SERVICE_PASSWORD: ${{ secrets.SUPERSET_SERVICE_PASSWORD }}
+          SUPERSET_URL: "https://superset.cds-snc.ca"
+        run: |
+          python .github/workflows/scripts/manage-cache-warmup-tags.py \
+            "$SUPERSET_URL" \
+            "$SUPERSET_SERVICE_USERNAME" \
+            "$SUPERSET_SERVICE_PASSWORD"
