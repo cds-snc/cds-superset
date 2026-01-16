@@ -31,10 +31,10 @@ jobs:
           SUPERSET_USERNAME: ${{ secrets.PROD_SUPERSET_SERVICE_USER_USERNAME }}
           SUPERSET_PASSWORD: ${{ secrets.PROD_SUPERSET_SERVICE_USER_PASSWORD }}
           SUPERSET_URL: https://superset.cds-snc.ca
-          UPPTIME_VALUE: ${{ secrets.PROD_SUPERSET_UPPTIME_HEADER_VALUE }}
+          UPPTIME_HEADER: ${{ secrets.PROD_UPPTIME_STATUS_HEADER }}
         run: |
           python .github/workflows/scripts/manage-cache-warmup-tags.py \
             "$SUPERSET_URL" \
             "$SUPERSET_USERNAME" \
             "$SUPERSET_PASSWORD" \
-            "$UPPTIME_VALUE"
+            "$UPPTIME_HEADER"
