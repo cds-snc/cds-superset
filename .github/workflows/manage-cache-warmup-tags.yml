@@ -28,11 +28,11 @@ jobs:
           
       - name: Run cache warmup tag management
         env:
-          SUPERSET_SERVICE_USERNAME: ${{ secrets.SUPERSET_SERVICE_USERNAME }}
-          SUPERSET_SERVICE_PASSWORD: ${{ secrets.SUPERSET_SERVICE_PASSWORD }}
+          SUPERSET_USERNAME: ${{ secrets.PROD_SUPERSET_SERVICE_USER_USERNAME }}
+          SUPERSET_PASSWORD: ${{ secrets.PROD_SUPERSET_SERVICE_USER_PASSWORD }}
           SUPERSET_URL: "https://superset.cds-snc.ca"
         run: |
           python .github/workflows/scripts/manage-cache-warmup-tags.py \
             "$SUPERSET_URL" \
-            "$SUPERSET_SERVICE_USERNAME" \
-            "$SUPERSET_SERVICE_PASSWORD"
+            "$SUPERSET_USERNAME" \
+            "$SUPERSET_PASSWORD"
