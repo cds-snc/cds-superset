@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.18.0](https://github.com/cds-snc/cds-superset/compare/v3.17.0...v3.18.0) (2026-01-16)
+
+
+### Features
+
+* manage dashboard cache warmup tags ([#680](https://github.com/cds-snc/cds-superset/issues/680)) ([5c87300](https://github.com/cds-snc/cds-superset/commit/5c873009680bae5988a9a1bfd978c78816c2bcb9))
+
 ## [3.17.0](https://github.com/cds-snc/cds-superset/compare/v3.16.0...v3.17.0) (2026-01-15)
 
 
