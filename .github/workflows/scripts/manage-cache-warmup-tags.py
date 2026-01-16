@@ -5,7 +5,7 @@ Script to manage cache-warmup tags on Superset dashboards
 - Published dashboards get the cache-warmup tag added
 - Draft dashboards get the cache-warmup tag removed
 
-Usage: python manage-cache-warmup-tags.py <base_url> <username> <password>
+Usage: python manage-cache-warmup-tags.py <base_url> <username> <password> <upptime>
 """
 
 import sys
@@ -14,28 +14,30 @@ import json
 from typing import Dict, List, Optional, Tuple
 
 
-def parse_arguments() -> Tuple[str, str, str]:
+def parse_arguments() -> Tuple[str, str, str, str]:
     """
     Parse command line arguments.
     
     Returns:
-        Tuple of (superset_url, username, password)
+        Tuple of (superset_url, username, password, upptime_value)
     
     Raises:
         SystemExit: If required arguments are missing
     """
-    if len(sys.argv) != 4:
-        print("Usage: python manage-cache-warmup-tags.py <base_url> <username> <password>")
+    if len(sys.argv) != 5:
+        print("Usage: python manage-cache-warmup-tags.py <base_url> <username> <password> <upptime>")
         print("  base_url: Superset base URL")
         print("  username: Database username")
         print("  password: Database password")
+        print("  upptime: Value for upptime header")
         sys.exit(1)
 
     superset_url = sys.argv[1].rstrip('/')
     username = sys.argv[2]
     password = sys.argv[3]
+    upptime_value = sys.argv[4]
     
-    return superset_url, username, password
+    return superset_url, username, password, upptime_value
 
 
 def authenticate(session: requests.Session, superset_url: str, username: str, password: str) -> str:
@@ -67,6 +69,7 @@ def authenticate(session: requests.Session, superset_url: str, username: str, pa
                 "refresh": True
             }
         )
+
         login_response.raise_for_status()
         access_token = login_response.json().get("access_token")
         
@@ -257,57 +260,6 @@ def add_tag(
         return False
 
 
-def remove_tag(
-    session: requests.Session,
-    superset_url: str,
-    access_token: str,
-    csrf_token: str,
-    dashboard_id: int,
-    tag_name: str,
-    dashboard_object_type: str
-) -> bool:
-    """
-    Remove cache-warmup tag from a dashboard.
-    
-    Args:
-        session: Requests session object
-        superset_url: Base URL of Superset instance
-        access_token: Access token from authentication
-        csrf_token: CSRF token
-        dashboard_id: ID of the dashboard
-        tag_name: Name of the tag to remove
-        dashboard_object_type: Type of dashboard object
-    
-    Returns:
-        True if successful, False otherwise
-    """
-    print("Action: Removing cache-warmup tag...")
-    
-    try:
-        remove_response = session.delete(
-            f"{superset_url}/api/v1/tag/{dashboard_object_type}/{dashboard_id}/{tag_name}",
-            headers={
-                "Authorization": f"Bearer {access_token}",
-                "X-CSRFToken": csrf_token,
-                "Content-Type": "application/json",
-                "Referer": superset_url
-            }
-        )
-        remove_response.raise_for_status()
-        
-        response_text = remove_response.text
-        if (response_text and json.loads(response_text).get("message") == "OK") or not response_text:
-            print("✓ Tag removed successfully")
-            return True
-        else:
-            print("⚠ Warning: Failed to remove tag")
-            return False
-            
-    except requests.RequestException as e:
-        print("⚠ Warning: Failed to remove tag")
-        return False
-
-
 def process_dashboard(
     session: requests.Session,
     superset_url: str,
@@ -345,19 +297,12 @@ def process_dashboard(
     print(f"Dashboard ID: {dashboard_id}")
     print(f"Published: {is_published}")
     print(f"Has cache-warmup tag: {has_tag}")
-    
-    # Determine action needed
+
     if is_published:
         if not has_tag:
             add_tag(session, superset_url, access_token, csrf_token, dashboard_id, tag_name, dashboard_object_type)
         else:
             print("Action: None (tag already present)")
-    else:
-        # Draft dashboard
-        if has_tag:
-            remove_tag(session, superset_url, access_token, csrf_token, dashboard_id, tag_name, dashboard_object_type)
-        else:
-            print("Action: None (tag not present)")
 
 
 def main():
@@ -365,7 +310,7 @@ def main():
     Main function to orchestrate cache-warmup tag management.
     """
     # Parse command line arguments
-    superset_url, username, password = parse_arguments()
+    superset_url, username, password, upptime_value = parse_arguments()
     
     # Constants
     tag_name = "cache-warmup"
@@ -373,6 +318,10 @@ def main():
     
     # Create a session to maintain cookies
     session = requests.Session()
+    
+    # Add upptime header to all requests
+    # This allows the request through the WAF Canada-only geolocation rule
+    session.headers.update({"upptime": upptime_value})
     
     # Authenticate and get tokens
     access_token = authenticate(session, superset_url, username, password)

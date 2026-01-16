@@ -413,6 +413,8 @@ FAB_ROLES = {
         [".*", "can_warm_up_cache"],
         ["all_database_access", "all_database_access"],
         ["all_datasource_access", "all_datasource_access"],
+        ["Dashboard", "can_tag"],
+        ["Tag", "can_write"],
     ],
     "PlatformUser": [],
     "ReadOnly": [
