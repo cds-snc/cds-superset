@@ -5,7 +5,7 @@ Script to manage cache-warmup tags on Superset dashboards
 - Published dashboards get the cache-warmup tag added
 - Draft dashboards get the cache-warmup tag removed
 
-Usage: python manage-cache-warmup-tags.py <base_url> <username> <password>
+Usage: python manage-cache-warmup-tags.py <base_url> <username> <password> <upptime>
 """
 
 import sys
@@ -14,28 +14,30 @@ import json
 from typing import Dict, List, Optional, Tuple
 
 
-def parse_arguments() -> Tuple[str, str, str]:
+def parse_arguments() -> Tuple[str, str, str, str]:
     """
     Parse command line arguments.
     
     Returns:
-        Tuple of (superset_url, username, password)
+        Tuple of (superset_url, username, password, upptime_value)
     
     Raises:
         SystemExit: If required arguments are missing
     """
-    if len(sys.argv) != 4:
-        print("Usage: python manage-cache-warmup-tags.py <base_url> <username> <password>")
+    if len(sys.argv) != 5:
+        print("Usage: python manage-cache-warmup-tags.py <base_url> <username> <password> <upptime>")
         print("  base_url: Superset base URL")
         print("  username: Database username")
         print("  password: Database password")
+        print("  upptime: Value for upptime header")
         sys.exit(1)
 
     superset_url = sys.argv[1].rstrip('/')
     username = sys.argv[2]
     password = sys.argv[3]
+    upptime_value = sys.argv[4]
     
-    return superset_url, username, password
+    return superset_url, username, password, upptime_value
 
 
 def authenticate(session: requests.Session, superset_url: str, username: str, password: str) -> str:
@@ -67,6 +69,7 @@ def authenticate(session: requests.Session, superset_url: str, username: str, pa
                 "refresh": True
             }
         )
+
         login_response.raise_for_status()
         access_token = login_response.json().get("access_token")
         
@@ -365,7 +368,7 @@ def main():
     Main function to orchestrate cache-warmup tag management.
     """
     # Parse command line arguments
-    superset_url, username, password = parse_arguments()
+    superset_url, username, password, upptime_value = parse_arguments()
     
     # Constants
     tag_name = "cache-warmup"
@@ -373,6 +376,10 @@ def main():
     
     # Create a session to maintain cookies
     session = requests.Session()
+    
+    # Add upptime header to all requests
+    # This allows the request through the WAF Canada-only geolocation rule
+    session.headers.update({"upptime": upptime_value})
     
     # Authenticate and get tokens
     access_token = authenticate(session, superset_url, username, password)
