@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.18.0](https://github.com/cds-snc/cds-superset/compare/v3.17.0...v3.18.0) (2026-01-19)
+
+
+### Features
+
+* manage dashboard cache warmup tags ([#680](https://github.com/cds-snc/cds-superset/issues/680)) ([5c87300](https://github.com/cds-snc/cds-superset/commit/5c873009680bae5988a9a1bfd978c78816c2bcb9))
+
+
+### Bug Fixes
+
+* add bypass header for the firewall's Canada-only geolocation rule ([#682](https://github.com/cds-snc/cds-superset/issues/682)) ([aeea3d5](https://github.com/cds-snc/cds-superset/commit/aeea3d5c8b1064ea6f200dac57ed8236dce71cc7))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#685](https://github.com/cds-snc/cds-superset/issues/685)) ([9fc5204](https://github.com/cds-snc/cds-superset/commit/9fc5204fe626b850009633adde19f43740dc0451))
+* **deps:** update all non-major github action dependencies ([#684](https://github.com/cds-snc/cds-superset/issues/684)) ([8046127](https://github.com/cds-snc/cds-superset/commit/8046127802439ee860faf4233a813e0a072f82dd))
+* **deps:** update dependency pyathena to v3.24.1 ([#683](https://github.com/cds-snc/cds-superset/issues/683)) ([6beda7d](https://github.com/cds-snc/cds-superset/commit/6beda7db82800fc367c51bc66934ef5fd9aa2ea9))
+
 ## [3.17.0](https://github.com/cds-snc/cds-superset/compare/v3.16.0...v3.17.0) (2026-01-15)
 
 
