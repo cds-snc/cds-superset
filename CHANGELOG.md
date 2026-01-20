@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.19.0](https://github.com/cds-snc/cds-superset/compare/v3.18.0...v3.19.0) (2026-01-20)
+
+
+### Features
+
+* add qualtrics data ([#686](https://github.com/cds-snc/cds-superset/issues/686)) ([d4833f7](https://github.com/cds-snc/cds-superset/commit/d4833f76670d43e062196a103e1868dd78c483ec))
+
 ## [3.18.0](https://github.com/cds-snc/cds-superset/compare/v3.17.0...v3.18.0) (2026-01-19)
 
 
