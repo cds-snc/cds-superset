@@ -30,6 +30,7 @@ inputs = {
     "operations_aws_production",
     "operations_github_production",
     "operations_google_analytics_production",
+    "operations_qualtrics_production",
     "bes_crm_salesforce_production",
   ]
 
