@@ -18,6 +18,7 @@ inputs = {
     "operations_aws_production",
     "operations_github_production",
     "operations_google_analytics_production",
+    "operations_qualtrics_production",
     "platform_gc_forms_production",
     "platform_gc_notify_production",
     "platform_gc_design_system_production",
