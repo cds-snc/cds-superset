@@ -1,7 +1,8 @@
 FROM apache/superset:6.0.0@sha256:6f6c9982bd64d81797bd4f33834f2ce4a4653c8ac8322f1e5f9df9b0332d092a
 USER root
 
-# Remove unnecessary packages
+# Adjust system packages.
+# Removals are done to reduce image size and security vulnerabilities.
 RUN apt-get update && \
     apt-get purge -y \
         libc6-dev \
