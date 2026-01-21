@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths:
-      - "terraform/**"
+      - "terragrunt/**"
       - ".github/workflows/tf-static-scan.yml"
   pull_request:
     paths:
-      - "terraform/**"
+      - "terragrunt/**"
       - ".github/workflows/tf-static-scan.yml"
 
 permissions:
