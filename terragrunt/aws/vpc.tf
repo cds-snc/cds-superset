@@ -10,7 +10,7 @@ module "vpc" {
   source = "github.com/cds-snc/terraform-modules//vpc?ref=v10.10.2"
   name   = "superspace-${var.env}"
 
-  enable_flow_log                  = true
+  enable_flow_log                  = false
   availability_zones               = 2
   cidrsubnet_newbits               = 8
   single_nat_gateway               = true
@@ -20,6 +20,15 @@ module "vpc" {
   allow_https_request_in_response  = true
 
   billing_tag_value = var.billing_code
+}
+
+resource "aws_flow_log" "cloud_based_sensor" {
+  log_destination      = "arn:aws:s3:::${var.cbs_satellite_bucket_name}/vpc_flow_logs/"
+  log_destination_type = "s3"
+  traffic_type         = "ALL"
+  vpc_id               = module.vpc.vpc_id
+  log_format           = "$${vpc-id} $${version} $${account-id} $${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport} $${protocol} $${packets} $${bytes} $${start} $${end} $${action} $${log-status} $${subnet-id} $${instance-id}"
+  tags                 = local.common_tags
 }
 
 resource "aws_service_discovery_private_dns_namespace" "superset" {
