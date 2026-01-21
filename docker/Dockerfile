@@ -1,7 +1,7 @@
 FROM apache/superset:6.0.0@sha256:6f6c9982bd64d81797bd4f33834f2ce4a4653c8ac8322f1e5f9df9b0332d092a
 USER root
 
-# Remove unnecessary dependencies
+# Remove unnecessary packages
 RUN apt-get update && \
     apt-get purge -y \
         libc6-dev \
@@ -16,6 +16,8 @@ RUN apt-get update && \
         xserver-common \
         xvfb && \
     apt-get autoremove -y && \
+    apt-get install -y --no-install-recommends \
+        libecpg-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Add required database driver packages
