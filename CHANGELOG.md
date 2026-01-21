@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.19.1](https://github.com/cds-snc/cds-superset/compare/v3.19.0...v3.19.1) (2026-01-21)
+
+
+### Bug Fixes
+
+* add the ecpg binary ([#689](https://github.com/cds-snc/cds-superset/issues/689)) ([c097948](https://github.com/cds-snc/cds-superset/commit/c097948320b1c8e413058606d21f6bc81e13815e))
+* path triggers for Terraform static scan ([#691](https://github.com/cds-snc/cds-superset/issues/691)) ([32d3891](https://github.com/cds-snc/cds-superset/commit/32d3891d94204d1f9d328f8286e14fc2bb5dedf5))
+* send VPC flow logs to Cloud Based Sensor ([#692](https://github.com/cds-snc/cds-superset/issues/692)) ([3a68958](https://github.com/cds-snc/cds-superset/commit/3a689582e90aefe360e63dce67070d81a46051ea))
+
+
+### Miscellaneous Chores
+
+* synced local '.github/workflows/backstage-catalog-helper.yml' with remote 'tools/sre_file_sync/backstage-catalog-helper.yml' ([#688](https://github.com/cds-snc/cds-superset/issues/688)) ([3d4f1be](https://github.com/cds-snc/cds-superset/commit/3d4f1be55983af942980382f2a0f5ebdb1406ade))
+
 ## [3.19.0](https://github.com/cds-snc/cds-superset/compare/v3.18.0...v3.19.0) (2026-01-20)
 
 
