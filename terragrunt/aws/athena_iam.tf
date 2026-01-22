@@ -1,6 +1,7 @@
 locals {
   data_lake_athena_bucket_arn_prefix      = "arn:aws:s3:::cds-data-lake-athena"
   data_lake_curated_bucket_arn_prefix     = "arn:aws:s3:::cds-data-lake-curated"
+  data_lake_raw_bucket_arn_prefix         = "arn:aws:s3:::cds-data-lake-raw"
   data_lake_transformed_bucket_arn_prefix = "arn:aws:s3:::cds-data-lake-transformed"
 }
 
@@ -39,10 +40,13 @@ resource "aws_iam_policy" "superset_athena_read" {
 data "aws_iam_policy_document" "superset_athena_read_combined" {
   for_each = toset(var.glue_databases)
 
-  source_policy_documents = [
-    data.aws_iam_policy_document.superset_athena_read.json,
-    data.aws_iam_policy_document.glue_database[each.key].json
-  ]
+  source_policy_documents = concat(
+    [
+      data.aws_iam_policy_document.superset_athena_read.json,
+      data.aws_iam_policy_document.glue_database[each.key].json
+    ],
+    each.key == "operations_qualtrics_production" ? [data.aws_iam_policy_document.superset_athena_read_raw.json] : []
+  )
 }
 
 data "aws_iam_policy_document" "superset_athena_read" {
@@ -118,6 +122,24 @@ data "aws_iam_policy_document" "superset_athena_read" {
       for account in var.data_lake_account_access : [
         "${local.data_lake_athena_bucket_arn_prefix}-${account.env_name}",
         "${local.data_lake_athena_bucket_arn_prefix}-${account.env_name}/*",
+      ]
+    ])
+  }
+}
+
+data "aws_iam_policy_document" "superset_athena_read_raw" {
+  statement {
+    sid    = "S3AthenaSourceBucketReadRaw"
+    effect = "Allow"
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket",
+      "s3:GetBucketLocation"
+    ]
+    resources = flatten([
+      for account in var.data_lake_account_access : [
+        "${local.data_lake_raw_bucket_arn_prefix}-${account.env_name}",
+        "${local.data_lake_raw_bucket_arn_prefix}-${account.env_name}/*",
       ]
     ])
   }
