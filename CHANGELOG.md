@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.20.0](https://github.com/cds-snc/cds-superset/compare/v3.19.1...v3.20.0) (2026-01-22)
+
+
+### Features
+
+* add raw bucket read permission for qualtrics ([#693](https://github.com/cds-snc/cds-superset/issues/693)) ([2abc8fd](https://github.com/cds-snc/cds-superset/commit/2abc8fdb849e1019f8f89af8c079fcd7904f4241))
+
 ## [3.19.1](https://github.com/cds-snc/cds-superset/compare/v3.19.0...v3.19.1) (2026-01-21)
 
 
