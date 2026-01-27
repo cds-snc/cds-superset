@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.20.1](https://github.com/cds-snc/cds-superset/compare/v3.20.0...v3.20.1) (2026-01-27)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all non-major github action dependencies ([#695](https://github.com/cds-snc/cds-superset/issues/695)) ([98e5ae5](https://github.com/cds-snc/cds-superset/commit/98e5ae535b661a4cc553f6c79482a41eb844edc9))
+* **deps:** update dependency pyathena to v3.25.0 ([#696](https://github.com/cds-snc/cds-superset/issues/696)) ([664cae1](https://github.com/cds-snc/cds-superset/commit/664cae15799a03d83b366a29e4f4261d5b9c645d))
+
 ## [3.20.0](https://github.com/cds-snc/cds-superset/compare/v3.19.1...v3.20.0) (2026-01-22)
 
 
