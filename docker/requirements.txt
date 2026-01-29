@@ -14,4 +14,5 @@ brotli>=1.2.0
 jaraco.context>=6.1.0
 uv>=0.9.6
 pip>=25.3
-setuptools>=78.1.1
+pyasn1>=0.6.2
+setuptools>=80.10.2
