@@ -1,9 +1,6 @@
 name: Test Access Denied
 
 on:
-  push:
-    branches:
-      - feat--test-access-workflow
   workflow_dispatch:
   schedule:
     - cron: "0 3 * * *"
