@@ -17,5 +17,5 @@ module "schedule_shutdown" {
   schedule_shutdown = "cron(0 22 * * ? *)"       # 10pm UTC, every day
   schedule_startup  = "cron(0 10 ? * MON-FRI *)" # 10am UTC, Monday-Friday
 
-  billing_tag_value = var.billing_tag_value
+  billing_tag_value = var.billing_code
 }
