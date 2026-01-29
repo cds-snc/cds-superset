@@ -19,12 +19,14 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     apt-get install -y --no-install-recommends \
         libecpg-dev && \
+    apt-get upgrade -y && \
+        openssl && \
     rm -rf /var/lib/apt/lists/*
 
 # Add required database driver packages
 # https://superset.apache.org/installation.html#database-dependencies
 COPY requirements.txt /app/requirements.txt
-RUN uv pip install --no-cache-dir -r /app/requirements.txt
+RUN uv pip install --no-cache-dir --upgrade -r /app/requirements.txt
 ENV REQUIREMENTS_LOCAL=/app/requirements.txt
 
 # Install Chromium
