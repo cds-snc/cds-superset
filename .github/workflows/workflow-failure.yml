@@ -13,6 +13,7 @@ on:
       - "Terraform Apply Staging"
       - "Terraform Drift Check Production"
       - "Terraform Drift Check Staging"
+      - "Test Access Denied"
     types:
       - completed
 
