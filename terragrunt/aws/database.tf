@@ -12,6 +12,7 @@ module "superset_db" {
   instance_class = var.superset_database_instance_class
   username       = var.superset_database_username
   password       = var.superset_database_password
+  use_proxy      = false
 
   backup_retention_period      = 14
   preferred_backup_window      = "02:00-04:00"
