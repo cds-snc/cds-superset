@@ -138,7 +138,7 @@ def test_dashboard_access(superset_url: str, dashboard_id: int, dashboard_slug: 
     
     try:
         # Test without credentials
-        response = requests.get(dashboard_url, timeout=10, allow_redirects=False)
+        response = requests.get(dashboard_url, timeout=10, allow_redirects=False, headers={"upptime": upptime_value})
         http_code = str(response.status_code)
         
         # Expected: any non-2xx status code (access denied)
