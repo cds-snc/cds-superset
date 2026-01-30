@@ -1,5 +1,28 @@
 # Changelog
 
+## [3.21.0](https://github.com/cds-snc/cds-superset/compare/v3.20.1...v3.21.0) (2026-01-30)
+
+
+### Features
+
+* shutdown Staging overnight ([#698](https://github.com/cds-snc/cds-superset/issues/698)) ([bfddeb0](https://github.com/cds-snc/cds-superset/commit/bfddeb0464d82f2cb0f829438940838bc6dab45c))
+* test access workflow ([#699](https://github.com/cds-snc/cds-superset/issues/699)) ([89459b0](https://github.com/cds-snc/cds-superset/commit/89459b074b0f53c0b8d73265a301385b73891f5d))
+
+
+### Bug Fixes
+
+* remove package upgrade ([#701](https://github.com/cds-snc/cds-superset/issues/701)) ([423094f](https://github.com/cds-snc/cds-superset/commit/423094f88f4bd58387bb1b09f148cc9c4736287e))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout action to v6 ([#703](https://github.com/cds-snc/cds-superset/issues/703)) ([336b928](https://github.com/cds-snc/cds-superset/commit/336b9281fbadca093fe8279e351f13dd0db68fef))
+* **deps:** update actions/setup-python action to v6 ([#704](https://github.com/cds-snc/cds-superset/issues/704)) ([6ae66f1](https://github.com/cds-snc/cds-superset/commit/6ae66f1ec593bb9590d896b9430d6ed62e0bc5e3))
+* **deps:** update cds-snc/terraform-plan action to v4 ([#705](https://github.com/cds-snc/cds-superset/issues/705)) ([0c433f8](https://github.com/cds-snc/cds-superset/commit/0c433f8b851477c9b6712d4665d9e44a064daac4))
+* **deps:** update dependency black to v26 ([#706](https://github.com/cds-snc/cds-superset/issues/706)) ([e5b676f](https://github.com/cds-snc/cds-superset/commit/e5b676fbca657d8ef61e87e308dceecef79f1f21))
+* **deps:** update dependency gunicorn to v24 ([#707](https://github.com/cds-snc/cds-superset/issues/707)) ([c5f6020](https://github.com/cds-snc/cds-superset/commit/c5f60206a09b61a9eb3599604f3bfb95c0188226))
+* run shutdown between 11pm-11am UTC ([#702](https://github.com/cds-snc/cds-superset/issues/702)) ([fbad999](https://github.com/cds-snc/cds-superset/commit/fbad99942dbe1804aa625890de427af716ae5b6f))
+
 ## [3.20.1](https://github.com/cds-snc/cds-superset/compare/v3.20.0...v3.20.1) (2026-01-27)
 
 
