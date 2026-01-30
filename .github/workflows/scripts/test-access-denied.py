@@ -10,8 +10,6 @@ Usage: python test-access-denied.py <base_url> <username> <password> <upptime>
 
 import sys
 import requests
-import subprocess
-import json
 from typing import Dict, List, Tuple
 
 
@@ -139,15 +137,9 @@ def test_dashboard_access(superset_url: str, dashboard_id: int, dashboard_slug: 
     dashboard_url = f"{superset_url}/d/{dashboard_slug}/{dashboard_id}/"
     
     try:
-        # Use curl to test without credentials
-        result = subprocess.run(
-            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", dashboard_url],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        
-        http_code = result.stdout.strip()
+        # Test without credentials
+        response = requests.get(dashboard_url, timeout=10, allow_redirects=False)
+        http_code = str(response.status_code)
         
         # Expected: any non-2xx status code (access denied)
         if not http_code.startswith("2"):
@@ -157,7 +149,7 @@ def test_dashboard_access(superset_url: str, dashboard_id: int, dashboard_slug: 
             print(f"✗ Dashboard {dashboard_id} returned {http_code} (expected non-2xx status code)")
             return False
             
-    except subprocess.TimeoutExpired:
+    except requests.Timeout:
         print(f"✗ Dashboard {dashboard_id} request timed out")
         return False
     except Exception as e:
