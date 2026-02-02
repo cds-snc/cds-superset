@@ -122,7 +122,7 @@ def get_all_dashboards(session: requests.Session, superset_url: str, access_toke
         sys.exit(1)
 
 
-def test_dashboard_access(superset_url: str, dashboard_id: int, dashboard_slug: str) -> bool:
+def test_dashboard_access(superset_url: str, dashboard_id: int, dashboard_slug: str, upptime_value: str) -> bool:
     """
     Test that a dashboard URL returns 403 or similar access denied response without credentials.
     
@@ -130,6 +130,7 @@ def test_dashboard_access(superset_url: str, dashboard_id: int, dashboard_slug: 
         superset_url: Base URL of Superset instance
         dashboard_id: ID of the dashboard
         dashboard_slug: Slug of the dashboard
+        upptime_value: Value for upptime header
     
     Returns:
         True if access is denied (expected), False if access is allowed (unexpected)
@@ -192,7 +193,7 @@ def main():
         dashboard_id = dashboard.get("id")
         dashboard_slug = dashboard.get("slug", "dashboard")
         
-        if not test_dashboard_access(superset_url, dashboard_id, dashboard_slug):
+        if not test_dashboard_access(superset_url, dashboard_id, dashboard_slug, upptime_value):
             failed.append(dashboard_id)
     
     print()
