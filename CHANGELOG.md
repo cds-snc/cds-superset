@@ -1,5 +1,35 @@
 # Changelog
 
+## [3.21.0](https://github.com/cds-snc/cds-superset/compare/v3.20.1...v3.21.0) (2026-02-02)
+
+
+### Features
+
+* shutdown Staging overnight ([#698](https://github.com/cds-snc/cds-superset/issues/698)) ([bfddeb0](https://github.com/cds-snc/cds-superset/commit/bfddeb0464d82f2cb0f829438940838bc6dab45c))
+* test access workflow ([#699](https://github.com/cds-snc/cds-superset/issues/699)) ([89459b0](https://github.com/cds-snc/cds-superset/commit/89459b074b0f53c0b8d73265a301385b73891f5d))
+
+
+### Bug Fixes
+
+* add missing parameter ([#717](https://github.com/cds-snc/cds-superset/issues/717)) ([e9b0181](https://github.com/cds-snc/cds-superset/commit/e9b01816db22b213b4807e5a1e61a403d1e3713f))
+* alert when the `Test access denied` workflow fails ([#709](https://github.com/cds-snc/cds-superset/issues/709)) ([e8d5394](https://github.com/cds-snc/cds-superset/commit/e8d5394a10f9fb64f12239c5fc91f4ff1fa9f69a))
+* remove package upgrade ([#701](https://github.com/cds-snc/cds-superset/issues/701)) ([423094f](https://github.com/cds-snc/cds-superset/commit/423094f88f4bd58387bb1b09f148cc9c4736287e))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#716](https://github.com/cds-snc/cds-superset/issues/716)) ([624797c](https://github.com/cds-snc/cds-superset/commit/624797c16532233e331abf175bd21765d3dbdd8b))
+* **deps:** update actions/checkout action to v6 ([#703](https://github.com/cds-snc/cds-superset/issues/703)) ([336b928](https://github.com/cds-snc/cds-superset/commit/336b9281fbadca093fe8279e351f13dd0db68fef))
+* **deps:** update actions/setup-python action to v6 ([#704](https://github.com/cds-snc/cds-superset/issues/704)) ([6ae66f1](https://github.com/cds-snc/cds-superset/commit/6ae66f1ec593bb9590d896b9430d6ed62e0bc5e3))
+* **deps:** update cds-snc/terraform-plan action to v4 ([#705](https://github.com/cds-snc/cds-superset/issues/705)) ([0c433f8](https://github.com/cds-snc/cds-superset/commit/0c433f8b851477c9b6712d4665d9e44a064daac4))
+* **deps:** update dependency black to v26 ([#706](https://github.com/cds-snc/cds-superset/issues/706)) ([e5b676f](https://github.com/cds-snc/cds-superset/commit/e5b676fbca657d8ef61e87e308dceecef79f1f21))
+* **deps:** update dependency gunicorn to v24 ([#707](https://github.com/cds-snc/cds-superset/issues/707)) ([c5f6020](https://github.com/cds-snc/cds-superset/commit/c5f60206a09b61a9eb3599604f3bfb95c0188226))
+* **deps:** update dependency prophet to v1.2.2 ([#714](https://github.com/cds-snc/cds-superset/issues/714)) ([5903866](https://github.com/cds-snc/cds-superset/commit/5903866d15e5294b25c069f444f14a87c9189a21))
+* **deps:** update github/codeql-action action to v4.31.11 ([#712](https://github.com/cds-snc/cds-superset/issues/712)) ([d2952fb](https://github.com/cds-snc/cds-superset/commit/d2952fb847627dd7735ca6dbe53a26ad91846929))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to fb17cc9 ([#711](https://github.com/cds-snc/cds-superset/issues/711)) ([e32683d](https://github.com/cds-snc/cds-superset/commit/e32683d8490c93e0b0024338de937a4c59fefa3f))
+* run shutdown between 11pm-11am UTC ([#702](https://github.com/cds-snc/cds-superset/issues/702)) ([fbad999](https://github.com/cds-snc/cds-superset/commit/fbad99942dbe1804aa625890de427af716ae5b6f))
+* switch to RDS cluster endpoint ([#715](https://github.com/cds-snc/cds-superset/issues/715)) ([6985e70](https://github.com/cds-snc/cds-superset/commit/6985e70815c8c503ae326c1e32683b0d26dfb8c4))
+
 ## [3.20.1](https://github.com/cds-snc/cds-superset/compare/v3.20.0...v3.20.1) (2026-01-27)
 
 
