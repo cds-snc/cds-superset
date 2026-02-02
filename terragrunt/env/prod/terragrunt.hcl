@@ -25,6 +25,13 @@ inputs = {
     "platform_support_production",
   ]
 
+  ecs_task_superset_cpu         = 2048
+  ecs_task_superset_memory      = 6144
+  ecs_task_celery_worker_cpu    = 2048
+  ecs_task_celery_worker_memory = 6144
+  ecs_task_celery_beat_cpu      = 512
+  ecs_task_celery_beat_memory   = 1024
+
   superset_cluster_capacity_provider = "FARGATE"
   superset_database_instance_class   = "db.serverless"
   superset_database_instances_count  = 1
