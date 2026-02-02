@@ -55,7 +55,7 @@ resource "aws_rds_cluster_parameter_group" "superset_db" {
 resource "aws_ssm_parameter" "superset_database_host" {
   name  = "superset_database_host"
   type  = "SecureString"
-  value = module.superset_db.proxy_endpoint
+  value = module.superset_db.rds_cluster_endpoint
   tags  = local.common_tags
 }
 
