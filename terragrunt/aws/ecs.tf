@@ -203,8 +203,8 @@ module "superset_ecs" {
 
   cluster_name     = "superset"
   service_name     = "superset"
-  task_cpu         = 2048
-  task_memory      = 6144
+  task_cpu         = var.ecs_task_superset_cpu
+  task_memory      = var.ecs_task_superset_memory
   cpu_architecture = "ARM64"
 
   cluster_capacity_provider      = var.superset_cluster_capacity_provider
@@ -270,8 +270,8 @@ module "celery_worker_ecs" {
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
   service_name     = "celery-worker"
-  task_cpu         = 2048
-  task_memory      = 6144
+  task_cpu         = var.ecs_task_celery_worker_cpu
+  task_memory      = var.ecs_task_celery_worker_memory
   cpu_architecture = "ARM64"
 
   service_use_latest_task_def    = true
@@ -332,8 +332,8 @@ module "celery_beat_ecs" {
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
   service_name     = "celery-beat"
-  task_cpu         = 512
-  task_memory      = 1024
+  task_cpu         = var.ecs_task_celery_beat_cpu
+  task_memory      = var.ecs_task_celery_beat_memory
   cpu_architecture = "ARM64"
 
   service_use_latest_task_def    = true

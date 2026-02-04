@@ -60,6 +60,36 @@ variable "guest_token_jwt_secret" {
   sensitive   = true
 }
 
+variable "ecs_task_superset_cpu" {
+  description = "The amount of CPU units to allocate to the Superset ECS task."
+  type        = number
+}
+
+variable "ecs_task_superset_memory" {
+  description = "The amount of memory (in MiB) to allocate to the Superset ECS task."
+  type        = number
+}
+
+variable "ecs_task_celery_worker_cpu" {
+  description = "The amount of CPU units to allocate to the Celery Worker ECS task."
+  type        = number
+}
+
+variable "ecs_task_celery_worker_memory" {
+  description = "The amount of memory (in MiB) to allocate to the Celery Worker ECS task."
+  type        = number
+}
+
+variable "ecs_task_celery_beat_cpu" {
+  description = "The amount of CPU units to allocate to the Celery Beat ECS task."
+  type        = number
+}
+
+variable "ecs_task_celery_beat_memory" {
+  description = "The amount of memory (in MiB) to allocate to the Celery Beat ECS task."
+  type        = number
+}
+
 variable "product_name" {
   description = "(Required) The name of the product you are deploying."
   type        = string
