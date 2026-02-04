@@ -36,7 +36,7 @@ module "superset_db" {
 resource "aws_rds_cluster_parameter_group" "superset_db" {
   name        = "superset-db-pg-audit"
   family      = "aurora-postgresql15"
-  description = "RDS parameter group that enables pgAudit"
+  description = "RDS parameter group that enables pgAudit and logical replication"
 
   parameter {
     name         = "shared_preload_libraries"
@@ -47,6 +47,76 @@ resource "aws_rds_cluster_parameter_group" "superset_db" {
   parameter {
     name         = "pgaudit.log"
     value        = "role,write,ddl"
+    apply_method = "pending-reboot"
+  }
+
+  # Enable logical replication for Blue/Green deployment
+  parameter {
+    name         = "rds.logical_replication"
+    value        = "1"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_wal_senders"
+    value        = "10"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_replication_slots"
+    value        = "10"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_logical_replication_workers"
+    value        = "10"
+    apply_method = "pending-reboot"
+  }
+
+  tags = local.common_tags
+}
+
+resource "aws_rds_cluster_parameter_group" "superset_db_pg16" {
+  name        = "superset-db-pg16-audit"
+  family      = "aurora-postgresql16"
+  description = "RDS parameter group for PostgreSQL 16 that enables pgAudit and logical replication"
+
+  parameter {
+    name         = "shared_preload_libraries"
+    value        = "pgaudit,pg_stat_statements"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "pgaudit.log"
+    value        = "role,write,ddl"
+    apply_method = "pending-reboot"
+  }
+
+  # Enable logical replication for Blue/Green deployment
+  parameter {
+    name         = "rds.logical_replication"
+    value        = "1"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_wal_senders"
+    value        = "10"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_replication_slots"
+    value        = "10"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_logical_replication_workers"
+    value        = "10"
     apply_method = "pending-reboot"
   }
 
