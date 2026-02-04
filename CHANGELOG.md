@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.22.0](https://github.com/cds-snc/cds-superset/compare/v3.21.1...v3.22.0) (2026-02-04)
+
+
+### Features
+
+* update PG parameter group to support replication ([#721](https://github.com/cds-snc/cds-superset/issues/721)) ([660d315](https://github.com/cds-snc/cds-superset/commit/660d3154d9b9ded65a46476446a1b08358609998))
+
+
+### Bug Fixes
+
+* adjust max_worker_processes ([#723](https://github.com/cds-snc/cds-superset/issues/723)) ([48831a9](https://github.com/cds-snc/cds-superset/commit/48831a9adcec6794fe4f0113c26885d7f440703c))
+* revert parameter group desc name change ([#722](https://github.com/cds-snc/cds-superset/issues/722)) ([ea9487e](https://github.com/cds-snc/cds-superset/commit/ea9487e8130ce430573f186f70348a44eb5228f5))
+
+
+### Miscellaneous Chores
+
+* remove RDS proxy ([#710](https://github.com/cds-snc/cds-superset/issues/710)) ([dc03535](https://github.com/cds-snc/cds-superset/commit/dc0353529c3a718e58d018b177af9d03ebc87d9c))
+
 ## [3.21.1](https://github.com/cds-snc/cds-superset/compare/v3.21.0...v3.21.1) (2026-02-04)
 
 
