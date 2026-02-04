@@ -58,6 +58,12 @@ resource "aws_rds_cluster_parameter_group" "superset_db" {
   }
 
   parameter {
+    name         = "max_worker_processes"
+    value        = "22"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
     name         = "max_wal_senders"
     value        = "10"
     apply_method = "pending-reboot"
@@ -99,6 +105,12 @@ resource "aws_rds_cluster_parameter_group" "superset_db_pg16" {
   parameter {
     name         = "rds.logical_replication"
     value        = "1"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "max_worker_processes"
+    value        = "22"
     apply_method = "pending-reboot"
   }
 
