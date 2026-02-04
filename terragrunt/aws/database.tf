@@ -36,7 +36,7 @@ module "superset_db" {
 resource "aws_rds_cluster_parameter_group" "superset_db" {
   name        = "superset-db-pg-audit"
   family      = "aurora-postgresql15"
-  description = "RDS parameter group that enables pgAudit and logical replication"
+  description = "RDS parameter group that enables pgAudit"
 
   parameter {
     name         = "shared_preload_libraries"
