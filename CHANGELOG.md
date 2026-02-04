@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.21.1](https://github.com/cds-snc/cds-superset/compare/v3.21.0...v3.21.1) (2026-02-04)
+
+
+### Miscellaneous Chores
+
+* tune ECS task CPU/memory resources ([#718](https://github.com/cds-snc/cds-superset/issues/718)) ([52d608e](https://github.com/cds-snc/cds-superset/commit/52d608e3827f73939ce9d552d976a0feae0e1bec))
+
 ## [3.21.0](https://github.com/cds-snc/cds-superset/compare/v3.20.1...v3.21.0) (2026-02-02)
 
 
