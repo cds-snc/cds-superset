@@ -7,7 +7,7 @@ module "superset_db" {
 
   database_name  = "superset"
   engine         = "aurora-postgresql"
-  engine_version = "15.12"
+  engine_version = "16.11"
   instances      = var.superset_database_instances_count
   instance_class = var.superset_database_instance_class
   username       = var.superset_database_username
@@ -19,7 +19,7 @@ module "superset_db" {
   performance_insights_enabled = true
 
   # Enable audit logging to CloudWatch
-  db_cluster_parameter_group_name          = aws_rds_cluster_parameter_group.superset_db.name
+  db_cluster_parameter_group_name          = aws_rds_cluster_parameter_group.superset_db_pg16.name
   enabled_cloudwatch_logs_exports          = ["postgresql"]
   cloudwatch_log_exports_retention_in_days = 365
 
