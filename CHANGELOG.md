@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.22.1](https://github.com/cds-snc/cds-superset/compare/v3.22.0...v3.22.1) (2026-02-05)
+
+
+### Miscellaneous Chores
+
+* sync Terrafrom with updated database settings ([#724](https://github.com/cds-snc/cds-superset/issues/724)) ([ecbb2c0](https://github.com/cds-snc/cds-superset/commit/ecbb2c09b81800249a7f7e013f1a95652543bed9))
+
 ## [3.22.0](https://github.com/cds-snc/cds-superset/compare/v3.21.1...v3.22.0) (2026-02-04)
 
 
