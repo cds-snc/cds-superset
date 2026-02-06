@@ -2,10 +2,13 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: cds-superset
-  description: AWS infrastructure and custom config used to run CDS's instance of Superset.
-  labels:
-    license: MIT
+  title: CDS Superset
+  description: AWS infrastructure and custom config used to run CDS's instance of Apache Superset
+  annotations:
+    github.com/project-slug: cds-snc/cds-superset
 spec:
-  type: website
-  lifecycle: experimental
-  owner: cds-snc
+  type: service
+  lifecycle: production
+  owner: group:cds-snc/platform-core
+  system: business-intelligence
+
