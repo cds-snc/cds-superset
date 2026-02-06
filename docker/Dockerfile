@@ -36,6 +36,7 @@ COPY docker-bootstrap.sh /app/docker/docker-bootstrap.sh
 COPY static/assets/images/logo.png /app/superset/static/assets/images/logo.png
 COPY static/assets/system-use.js /app/superset/static/assets/system-use.js
 COPY superset/integration_tests/ /app/superset/integration_tests/
+COPY superset/security/ /app/superset/security/
 COPY superset/translations/ /app/superset/translations/
 COPY superset/templates/tail_js_custom_extra.html /app/superset/templates/tail_js_custom_extra.html
 COPY superset_config.py /app/superset_config.py

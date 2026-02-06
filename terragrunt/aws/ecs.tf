@@ -43,16 +43,8 @@ locals {
   ]
   container_env_google_auth = [
     {
-      "name"  = "GOOGLE_AUTH_DOMAIN"
-      "value" = var.domain
-    },
-    {
       "name"  = "GOOGLE_OAUTH_EMAIL_DOMAIN"
       "value" = "cds-snc.ca"
-    },
-    {
-      "name"  = "GOOGLE_OAUTH_LOGIN"
-      "value" = "true"
     }
   ]
   container_env_opentelemetry = [
