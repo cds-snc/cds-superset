@@ -8,6 +8,7 @@ from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
 from flask_caching.backends.rediscache import RedisCache
 from redis import Redis
 
+from superset.security.sso_security_manager import SsoSecurityManager
 from superset.tasks.types import ExecutorType, FixedExecutor
 
 logger = logging.getLogger()
@@ -147,33 +148,67 @@ SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
 SESSION_PERMANENT = True
 PERMANENT_SESSION_LIFETIME = int(timedelta(hours=12).total_seconds())
 
-# Google OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
-GOOGLE_OAUTH_LOGIN = os.getenv("GOOGLE_OAUTH_LOGIN")
-GOOGLE_AUTH_DOMAIN = os.getenv("GOOGLE_AUTH_DOMAIN")
+# OAuth: https://superset.apache.org/docs/installation/configuring-superset/#custom-oauth2-configuration # noqa: E501
 GOOGLE_OAUTH_CLIENT_ID = os.getenv("GOOGLE_OAUTH_CLIENT_ID")
 GOOGLE_OAUTH_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH_CLIENT_SECRET")
 GOOGLE_OAUTH_EMAIL_DOMAIN = os.getenv("GOOGLE_OAUTH_EMAIL_DOMAIN")
-AUTH_TYPE = AUTH_OAUTH if GOOGLE_OAUTH_LOGIN == "true" else AUTH_DB
+GOOGLE_OAUTH_LOGIN = (
+    GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET and GOOGLE_OAUTH_EMAIL_DOMAIN
+)
+
+ZITADEL_OAUTH_CLIENT_ID = os.getenv("ZITADEL_OAUTH_CLIENT_ID")
+ZITADEL_OAUTH_CLIENT_SECRET = os.getenv("ZITADEL_OAUTH_CLIENT_SECRET")
+ZITADEL_DOMAIN = os.getenv("ZITADEL_DOMAIN")
+ZITADEL_OAUTH_EMAIL_DOMAIN = os.getenv("ZITADEL_OAUTH_EMAIL_DOMAIN")
+ZITADEL_OAUTH_LOGIN = (
+    ZITADEL_OAUTH_CLIENT_ID
+    and ZITADEL_OAUTH_CLIENT_SECRET
+    and ZITADEL_DOMAIN
+    and ZITADEL_OAUTH_EMAIL_DOMAIN
+)
+
+AUTH_TYPE = AUTH_OAUTH if GOOGLE_OAUTH_LOGIN or ZITADEL_OAUTH_LOGIN else AUTH_DB
 AUTH_USER_REGISTRATION = True
 AUTH_USER_REGISTRATION_ROLE = "ReadOnly"
 ENABLE_PROXY_FIX = True
-OAUTH_PROVIDERS = [
-    {
-        "name": "google",
-        "icon": "fa-google",
-        "token_key": "access_token",
-        "remote_app": {
-            "api_base_url": "https://www.googleapis.com/oauth2/v2/",
-            "client_kwargs": {"scope": "email profile"},
-            "request_token_url": None,
-            "access_token_url": "https://accounts.google.com/o/oauth2/token",
-            "authorize_url": "https://accounts.google.com/o/oauth2/auth",
-            "client_id": GOOGLE_OAUTH_CLIENT_ID,
-            "client_secret": GOOGLE_OAUTH_CLIENT_SECRET,
-        },
-        "whitelist": [GOOGLE_OAUTH_EMAIL_DOMAIN],
-    }
-]
+CUSTOM_SECURITY_MANAGER = SsoSecurityManager
+OAUTH_PROVIDERS = []
+if GOOGLE_OAUTH_LOGIN:
+    OAUTH_PROVIDERS.append(
+        {
+            "name": "google",
+            "icon": "fa-google",
+            "token_key": "access_token",
+            "remote_app": {
+                "api_base_url": "https://www.googleapis.com/oauth2/v2/",
+                "client_kwargs": {"scope": "email profile"},
+                "request_token_url": None,
+                "access_token_url": "https://accounts.google.com/o/oauth2/token",
+                "authorize_url": "https://accounts.google.com/o/oauth2/auth",
+                "client_id": GOOGLE_OAUTH_CLIENT_ID,
+                "client_secret": GOOGLE_OAUTH_CLIENT_SECRET,
+            },
+            "whitelist": [GOOGLE_OAUTH_EMAIL_DOMAIN],
+        }
+    )
+if ZITADEL_OAUTH_LOGIN:
+    OAUTH_PROVIDERS.append(
+        {
+            "name": "zitadel",
+            "token_key": "access_token",
+            "icon": "fa-key",
+            "remote_app": {
+                "api_base_url": f"https://{ZITADEL_DOMAIN}",
+                "server_metadata_url": f"https://{ZITADEL_DOMAIN}/.well-known/openid-configuration",
+                "client_kwargs": {
+                    "scope": "openid profile email",
+                },
+                "client_id": ZITADEL_OAUTH_CLIENT_ID,
+                "client_secret": ZITADEL_OAUTH_CLIENT_SECRET,
+            },
+            "whitelist": [ZITADEL_OAUTH_EMAIL_DOMAIN],
+        }
+    )
 
 # Slack and email reports
 SLACK_API_TOKEN = os.getenv("SLACK_API_TOKEN")
