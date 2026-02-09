@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.23.0](https://github.com/cds-snc/cds-superset/compare/v3.22.1...v3.23.0) (2026-02-09)
+
+
+### Features
+
+* add Zitadel OAuth support ([#727](https://github.com/cds-snc/cds-superset/issues/727)) ([3f1d2ba](https://github.com/cds-snc/cds-superset/commit/3f1d2ba43ae571207989816e51e5b513f0f3eaec))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#730](https://github.com/cds-snc/cds-superset/issues/730)) ([a7fb24b](https://github.com/cds-snc/cds-superset/commit/a7fb24b08d290df0adba7cc031f621b8f5e60ace))
+* **deps:** update all minor dependencies ([#729](https://github.com/cds-snc/cds-superset/issues/729)) ([beb8927](https://github.com/cds-snc/cds-superset/commit/beb892736d2c0766822b6157e12e0bd39b2b2520))
+* **deps:** update all non-major github action dependencies ([#728](https://github.com/cds-snc/cds-superset/issues/728)) ([b614e42](https://github.com/cds-snc/cds-superset/commit/b614e423969e9a73b55618a4bf7b50be698575ad))
+
 ## [3.22.1](https://github.com/cds-snc/cds-superset/compare/v3.22.0...v3.22.1) (2026-02-05)
 
 
