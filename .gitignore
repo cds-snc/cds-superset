@@ -1,3 +1,5 @@
+.env
+
 # Terraform
 *.tfstate
 *.tfstate.backup

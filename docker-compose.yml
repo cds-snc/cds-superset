@@ -7,7 +7,7 @@ x-superset-depends-on: &superset-depends-on
   - valkey
 x-superset-env: 
   &superset-env
-  - path: docker/.env.local
+  - path: docker/.env
     required: true
 x-superset-volumes:
   &superset-volumes

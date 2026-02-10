@@ -54,6 +54,23 @@ variable "google_oauth_client_secret" {
   sensitive   = true
 }
 
+variable "zitadel_domain" {
+  description = "The domain of the Zitadel instance to use for authentication."
+  type        = string
+}
+
+variable "zitadel_oauth_client_id" {
+  description = "Zitadel OAuth client ID to enable logging in with Zitadel."
+  type        = string
+  sensitive   = true
+}
+
+variable "zitadel_oauth_client_secret" {
+  description = "Zitadel OAuth client secret to enable logging in with Zitadel."
+  type        = string
+  sensitive   = true
+}
+
 variable "guest_token_jwt_secret" {
   description = "The secret for guest embedded dashboard JWT tokens."
   type        = string
