@@ -46,4 +46,6 @@ inputs = {
   superset_database_instances_count  = 1
   superset_database_min_capacity     = 0
   superset_database_max_capacity     = 4
+
+  zitadel_domain = "idp.cdssandbox.xyz"
 }

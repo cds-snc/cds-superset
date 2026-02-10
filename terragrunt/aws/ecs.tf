@@ -47,6 +47,16 @@ locals {
       "value" = "cds-snc.ca"
     }
   ]
+  container_env_zitadel_auth = [
+    {
+      "name"  = "ZITADEL_OAUTH_EMAIL_DOMAIN"
+      "value" = "cds-snc.ca"
+    },
+    {
+      "name"  = "ZITADEL_DOMAIN"
+      "value" = var.zitadel_domain
+    }
+  ]
   container_env_opentelemetry = [
     {
       "name"  = "PYTHONPATH",
@@ -155,6 +165,29 @@ locals {
       "valueFrom" = aws_ssm_parameter.google_oauth_client_secret.arn
     },
   ]
+  container_secrets_zitadel_auth = [
+    {
+      "name"      = "ZITADEL_OAUTH_CLIENT_ID"
+      "valueFrom" = aws_ssm_parameter.zitadel_oauth_client_id.arn
+    },
+    {
+      "name"      = "ZITADEL_OAUTH_CLIENT_SECRET"
+      "valueFrom" = aws_ssm_parameter.zitadel_oauth_client_secret.arn
+    },
+  ]
+  # Enable Zitadel auth for Staging only
+  container_env_superset = setunion(
+    local.container_env_all,
+    local.container_env_google_auth,
+    local.container_env_opentelemetry,
+    local.container_env_opentelemetry_superset,
+    var.env == "staging" ? local.container_env_zitadel_auth : [],
+  )
+  container_secrets_superset = setunion(
+    local.container_secrets_all,
+    local.container_secrets_google_auth,
+    var.env == "staging" ? local.container_secrets_zitadel_auth : []
+  )
   cloudwatch_agent_container = jsonencode({
     name      = "ecs-cwagent"
     essential = true
@@ -214,8 +247,8 @@ module "superset_ecs" {
   container_command                   = ["/app/docker/docker-bootstrap.sh", "app"]
   container_host_port                 = 8088
   container_port                      = 8088
-  container_environment               = setunion(local.container_env_all, local.container_env_google_auth, local.container_env_opentelemetry, local.container_env_opentelemetry_superset)
-  container_secrets                   = setunion(local.container_secrets_all, local.container_secrets_google_auth)
+  container_environment               = local.container_env_superset
+  container_secrets                   = local.container_secrets_superset
   container_read_only_root_filesystem = false
   container_definitions               = [local.cloudwatch_agent_container, local.opentelemetry_init_container]
   container_depends_on = [{
@@ -442,6 +475,8 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
       aws_ssm_parameter.ecs_cwagent_config.arn,
       aws_ssm_parameter.google_oauth_client_id.arn,
       aws_ssm_parameter.google_oauth_client_secret.arn,
+      aws_ssm_parameter.zitadel_oauth_client_id.arn,
+      aws_ssm_parameter.zitadel_oauth_client_secret.arn,
       aws_ssm_parameter.guest_token_jwt_secret.arn,
       aws_ssm_parameter.slack_api_token.arn,
       aws_ssm_parameter.smtp_password.arn,
@@ -499,6 +534,20 @@ resource "aws_ssm_parameter" "google_oauth_client_secret" {
   name  = "google_oauth_client_secret"
   type  = "SecureString"
   value = var.google_oauth_client_secret
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "zitadel_oauth_client_id" {
+  name  = "zitadel_oauth_client_id"
+  type  = "SecureString"
+  value = var.zitadel_oauth_client_id
+  tags  = local.common_tags
+}
+
+resource "aws_ssm_parameter" "zitadel_oauth_client_secret" {
+  name  = "zitadel_oauth_client_secret"
+  type  = "SecureString"
+  value = var.zitadel_oauth_client_secret
   tags  = local.common_tags
 }
 

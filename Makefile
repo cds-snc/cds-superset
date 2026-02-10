@@ -14,7 +14,8 @@ build:
         --tag superset:latest ./docker
 
 localhost:
-	@docker compose up
+	@test -f docker/.env || cp docker/.env.local docker/.env
+	@docker-compose up
 
 localhost_reset:
 	@docker compose down
