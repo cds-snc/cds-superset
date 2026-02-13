@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.24.0](https://github.com/cds-snc/cds-superset/compare/v3.23.0...v3.24.0) (2026-02-13)
+
+
+### Features
+
+* add `/.well-known/security.txt` response ([#734](https://github.com/cds-snc/cds-superset/issues/734)) ([4569d92](https://github.com/cds-snc/cds-superset/commit/4569d92d5b5be0545de7a029caec81a7a5554c96))
+* enable Zitadel OAuth for Staging ([#732](https://github.com/cds-snc/cds-superset/issues/732)) ([3f85251](https://github.com/cds-snc/cds-superset/commit/3f85251a2c7c591d04cd242d5acf30f26d8a6926))
+
 ## [3.23.0](https://github.com/cds-snc/cds-superset/compare/v3.22.1...v3.23.0) (2026-02-09)
 
 
