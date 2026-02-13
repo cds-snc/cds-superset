@@ -123,6 +123,11 @@ variable "slack_api_token" {
   sensitive   = true
 }
 
+variable "security_txt_content" {
+  description = "The content of the /.well-known/security.txt response."
+  type        = string
+}
+
 variable "sentinel_workspace_id" {
   description = "Workspace ID for Sentinel Forwarder."
   type        = string

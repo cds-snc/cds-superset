@@ -1,5 +1,9 @@
 name: Terraform Plan Production
 
+concurrency:
+  group: terraform-production
+  cancel-in-progress: false
+
 on:
   pull_request:
     branches:
@@ -19,6 +23,7 @@ env:
   TF_VAR_zitadel_oauth_client_id: ${{ secrets.PROD_ZITADEL_OAUTH_CLIENT_ID }}
   TF_VAR_zitadel_oauth_client_secret: ${{ secrets.PROD_ZITADEL_OAUTH_CLIENT_SECRET }}
   TF_VAR_guest_token_jwt_secret: ${{ secrets.PROD_GUEST_TOKEN_JWT_SECRET }}
+  TF_VAR_security_txt_content: ${{ vars.SECURITY_TXT_CDS_SNC_CA }}
   TF_VAR_sentinel_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
   TF_VAR_sentinel_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
   TF_VAR_slack_api_token: ${{ secrets.PROD_SLACK_API_TOKEN }}

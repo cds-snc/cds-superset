@@ -69,7 +69,7 @@ jobs:
 
   docker-build:
     
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps: 
 
@@ -87,6 +87,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --file ./docker/Dockerfile \
+          docker build \
+            --platform linux/arm64 \
+            --file ./docker/Dockerfile \
             --tag ${{ github.repository }}:${{ github.sha }} \
             ./docker
