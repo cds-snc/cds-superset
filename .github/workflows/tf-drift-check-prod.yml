@@ -1,5 +1,9 @@
 name: Terraform Drift Check Production
 
+concurrency:
+  group: terraform-production
+  cancel-in-progress: false
+
 on:
   workflow_dispatch:
   schedule:
