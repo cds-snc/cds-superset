@@ -23,6 +23,7 @@ inputs = {
     "platform_gc_notify_production",
     "platform_gc_design_system_production",
     "platform_support_production",
+    "unified_production",
   ]
 
   ecs_task_superset_cpu         = 2048
