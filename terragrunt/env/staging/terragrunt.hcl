@@ -33,6 +33,7 @@ inputs = {
     "operations_qualtrics_production",
     "bes_crm_salesforce_production",
     "unified_production",
+    "unified_staging",
   ]
 
   ecs_task_superset_cpu         = 2048
