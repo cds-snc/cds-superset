@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.25.0](https://github.com/cds-snc/cds-superset/compare/v3.24.1...v3.25.0) (2026-02-23)
+
+
+### Features
+
+* add unified database ([#743](https://github.com/cds-snc/cds-superset/issues/743)) ([48d4fc6](https://github.com/cds-snc/cds-superset/commit/48d4fc6bea729ca30c8ac53760c70f47b7d65a08))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#746](https://github.com/cds-snc/cds-superset/issues/746)) ([ff3e672](https://github.com/cds-snc/cds-superset/commit/ff3e67218412751a76077a697af17b41c9301d4c))
+* **deps:** update all non-major github action dependencies ([#744](https://github.com/cds-snc/cds-superset/issues/744)) ([39b2cad](https://github.com/cds-snc/cds-superset/commit/39b2cad0a6976fcb38665ff16376f48e2a30ef95))
+* **deps:** update all patch dependencies ([#745](https://github.com/cds-snc/cds-superset/issues/745)) ([2abbe25](https://github.com/cds-snc/cds-superset/commit/2abbe25cf56ae7468c2e8c922fce3532f973b587))
+* synced local '.github/workflows/export_github_data.yml' with remote 'tools/sre_file_sync/export_github_data.yml' ([#740](https://github.com/cds-snc/cds-superset/issues/740)) ([08a0ba8](https://github.com/cds-snc/cds-superset/commit/08a0ba878783d0e4bffbbc7cce0d450a3d6c9c14))
+* upgrade `docker-scan` action ([#741](https://github.com/cds-snc/cds-superset/issues/741)) ([2520140](https://github.com/cds-snc/cds-superset/commit/2520140d229b3234db3f1dd6c9e55bed6731bc25))
+
 ## [3.24.1](https://github.com/cds-snc/cds-superset/compare/v3.24.0...v3.24.1) (2026-02-17)
 
 
