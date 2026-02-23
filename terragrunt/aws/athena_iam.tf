@@ -169,7 +169,7 @@ data "aws_iam_policy_document" "glue_database" {
         aws_athena_data_catalog.data_lake[account.env_name].arn,
         "arn:aws:glue:${var.region}:${account.account_id}:catalog",
         "arn:aws:glue:${var.region}:${account.account_id}:database/${each.value == "unified_${var.env}" ? "*" : each.value}",
-        "arn:aws:glue:${var.region}:${account.account_id}:table/${each.value == "unified_${var.env}" ? "*" : each.value}"
+        "arn:aws:glue:${var.region}:${account.account_id}:table/${each.value == "unified_${var.env}" ? "*" : each.value}/*"
       ] : []
     ])
   }
