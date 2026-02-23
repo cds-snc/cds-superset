@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.25.1](https://github.com/cds-snc/cds-superset/compare/v3.25.0...v3.25.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* Resolve Glue database matching inconsistency between prod and staging ([#747](https://github.com/cds-snc/cds-superset/issues/747)) ([1d3325e](https://github.com/cds-snc/cds-superset/commit/1d3325e62646235fcea6629a5e6439cbeb1a83eb))
+
 ## [3.25.0](https://github.com/cds-snc/cds-superset/compare/v3.24.1...v3.25.0) (2026-02-23)
 
 
