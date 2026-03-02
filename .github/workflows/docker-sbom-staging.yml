@@ -15,7 +15,7 @@ permissions:
 jobs:
   docker-sbom:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
     - name: Audit DNS requests
