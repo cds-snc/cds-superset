@@ -6,16 +6,18 @@ on:
     types:
     - completed
 
-env: 
+env:
+  AWS_REGION: ca-central-1
   REGISTRY: ${{ vars.STAGING_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
 
 permissions:
+  id-token: write
   contents: write
 
 jobs:
   docker-sbom:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
 
     steps:
     - name: Audit DNS requests
@@ -30,16 +32,19 @@ jobs:
       with:
         persist-credentials: false
 
-    - name: Build container
-      working-directory: ./
-      run: |
-        docker build \
-        --file ./docker/Dockerfile \
-        --tag $REGISTRY:latest ./docker \
-        --platform linux/arm64
+    - name: Configure AWS credentials using OIDC
+      uses: aws-actions/configure-aws-credentials@8df5847569e6427dd6c4fb1cf565c83acfa8afa7 # v6.0.0
+      with:
+        role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-plan 
+        role-session-name: PullImage
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@062b18b96a7aff071d4dc91bc00c4c1a7945b076 # v2.0.1 
 
     - name: Docker generate SBOM
-      uses: cds-snc/security-tools/.github/actions/generate-sbom@12a0cdea1c5a515dfcbe353693db804a1793c0ed # v4.0.1
+      uses: cds-snc/security-tools/.github/actions/generate-sbom@50aceef70baacb8b382e97e1ca7eaadc99ea94b6
       env:
         TRIVY_DB_REPOSITORY: ${{ vars.TRIVY_DB_REPOSITORY }}
       with:
