@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.25.2](https://github.com/cds-snc/cds-superset/compare/v3.25.1...v3.25.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* build Docker image on correct architecture ([#756](https://github.com/cds-snc/cds-superset/issues/756)) ([6c1ceb5](https://github.com/cds-snc/cds-superset/commit/6c1ceb5585a4c10a72f7bdb5b5e56a96992e1fa0))
+* split the Docker SBOM action into new workflow ([#754](https://github.com/cds-snc/cds-superset/issues/754)) ([7ae5182](https://github.com/cds-snc/cds-superset/commit/7ae5182a25baa5744101c7bd427119c8298ac451))
+
+
+### Miscellaneous Chores
+
+* **deps:** update all non-major github action dependencies ([#751](https://github.com/cds-snc/cds-superset/issues/751)) ([377669a](https://github.com/cds-snc/cds-superset/commit/377669a7a2aaf08a987447412ca43f4cf0f39189))
+* **deps:** update aws-actions/configure-aws-credentials action to v6 ([#749](https://github.com/cds-snc/cds-superset/issues/749)) ([8feaf5a](https://github.com/cds-snc/cds-superset/commit/8feaf5a8b6b5d047faa6407c422fc241c81124b1))
+* **deps:** update cds-snc/security-tools action to v4 ([#753](https://github.com/cds-snc/cds-superset/issues/753)) ([95b7020](https://github.com/cds-snc/cds-superset/commit/95b702099f048036c1bc5ece100857ac7f955325))
+* **deps:** update cds-snc/security-tools digest to 50aceef ([#757](https://github.com/cds-snc/cds-superset/issues/757)) ([473086a](https://github.com/cds-snc/cds-superset/commit/473086a4e5073dc6ae4b6123761b77230eb5646c))
+* **deps:** update dependency pyathena to v3.29.3 ([#752](https://github.com/cds-snc/cds-superset/issues/752)) ([41c9ec8](https://github.com/cds-snc/cds-superset/commit/41c9ec8fe1367106b4c791addf1204a738041d40))
+* trigger apply to update security.txt ([#758](https://github.com/cds-snc/cds-superset/issues/758)) ([486d7e1](https://github.com/cds-snc/cds-superset/commit/486d7e1099b4ed8bece8a9d2b70866502e65c411))
+
 ## [3.25.1](https://github.com/cds-snc/cds-superset/compare/v3.25.0...v3.25.1) (2026-02-23)
 
 
