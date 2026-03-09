@@ -40,9 +40,27 @@ permissions:
   pull-requests: write
 
 jobs:
-  terraform-plan:
-
+  get-version:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Get version to deploy
+        id: get-version
+        uses: ./.github/workflows/get-version
+        with:
+          is-tagged: ${{ !startsWith(github.head_ref, 'release-please--') }} # If not the release PR branch, assume it is a revert PR
+
+  terraform-plan:
+    runs-on: ubuntu-latest
+    needs: get-version
+    env:
+      VERSION: ${{ needs.get-version.outputs.version }}
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@f0796e7f3d6bec5d40aecb0321ed8012f5602f84
@@ -54,6 +72,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
+          ref: ${{ env.VERSION }}
           persist-credentials: false
 
       - name: Setup terraform tools
