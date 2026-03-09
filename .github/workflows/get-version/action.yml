@@ -26,7 +26,7 @@ runs:
 
     - name: Wait for ref to exist
       if: inputs.is-tagged == 'true'
-      run: ./.github/workflows/scripts/wait-for-ref.sh "${VERSION}"
+      run: ./.github/workflows/scripts/wait-for-ref.sh "${version}"
       shell: bash
 
     - name: Fail if no version set
@@ -36,5 +36,5 @@ runs:
 
     - name: Output version
       id: output-version
-      run: echo "version=${VERSION}" >> $GITHUB_OUTPUT
+      run: echo "version=${version}" >> $GITHUB_OUTPUT
       shell: bash
