@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.26.0](https://github.com/cds-snc/cds-superset/compare/v3.25.2...v3.26.0) (2026-03-09)
+
+
+### Features
+
+* support GitHub PR revert of prod deploys ([#761](https://github.com/cds-snc/cds-superset/issues/761)) ([f846e8e](https://github.com/cds-snc/cds-superset/commit/f846e8e7ef88f48fa62ee730eb182615fb27dcbb))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#762](https://github.com/cds-snc/cds-superset/issues/762)) ([481d923](https://github.com/cds-snc/cds-superset/commit/481d923e120dfa9243192c623c73c08ecabbb942))
+* **deps:** update all non-major github action dependencies ([#759](https://github.com/cds-snc/cds-superset/issues/759)) ([72cc9c7](https://github.com/cds-snc/cds-superset/commit/72cc9c7c59a3b4a00ed993e82c6848403ee62474))
+* **deps:** update dependency authlib to v1.6.9 ([#755](https://github.com/cds-snc/cds-superset/issues/755)) ([620504a](https://github.com/cds-snc/cds-superset/commit/620504a48d0823f2c75a6450decb3ecb94c99abe))
+* **deps:** update dependency pyathena to v3.30.0 ([#760](https://github.com/cds-snc/cds-superset/issues/760)) ([611cadf](https://github.com/cds-snc/cds-superset/commit/611cadfcbe5c0aab915420280acebd2c8328c16b))
+* remove the OIDC release role ([#764](https://github.com/cds-snc/cds-superset/issues/764)) ([11e829f](https://github.com/cds-snc/cds-superset/commit/11e829fa4d91c021480b5bf380cf061175a286d9))
+
 ## [3.25.2](https://github.com/cds-snc/cds-superset/compare/v3.25.1...v3.25.2) (2026-03-04)
 
 
