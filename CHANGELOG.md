@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.26.1](https://github.com/cds-snc/cds-superset/compare/v3.26.0...v3.26.1) (2026-03-09)
+
+
+### Bug Fixes
+
+* remove extra quote ([#765](https://github.com/cds-snc/cds-superset/issues/765)) ([14041b9](https://github.com/cds-snc/cds-superset/commit/14041b935838b7a3da72a0450884b01689fdc5de))
+
 ## [3.26.0](https://github.com/cds-snc/cds-superset/compare/v3.25.2...v3.26.0) (2026-03-09)
 
 
