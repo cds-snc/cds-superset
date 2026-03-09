@@ -1,5 +1,5 @@
 name: Get version to deploy
-
+description: "Read `version.txt` to determine the version to deploy."
 inputs:
   is-tagged:
     description: "Is this for the release of a tagged version?  This action will wait for the tag to exist if so."
