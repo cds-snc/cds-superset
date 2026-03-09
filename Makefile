@@ -1,4 +1,4 @@
-.PHONY: apply build localhost localhost_reset plan fmt install_dev lint
+.PHONY: apply build run localhost_reset plan fmt install_dev lint
 
 apply:
 	@terragrunt apply -var="google_oauth_client_id=$(TF_VAR_GOOGLE_OAUTH_CLIENT_ID)" \
@@ -13,7 +13,7 @@ build:
         --file ./docker/Dockerfile \
         --tag superset:latest ./docker
 
-localhost:
+run:
 	@test -f docker/.env || cp docker/.env.local docker/.env
 	@docker-compose up
 
