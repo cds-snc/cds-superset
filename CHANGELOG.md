@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.26.2](https://github.com/cds-snc/cds-superset/compare/v3.26.1...v3.26.2) (2026-03-13)
+
+
+### Bug Fixes
+
+* remove RDS proxy from architecture diagram ([#767](https://github.com/cds-snc/cds-superset/issues/767)) ([f5c272b](https://github.com/cds-snc/cds-superset/commit/f5c272b805ed95e27377d4ff393fa0ce978c382e))
+* strictly validate the contents of version.txt ([#769](https://github.com/cds-snc/cds-superset/issues/769)) ([8f84d84](https://github.com/cds-snc/cds-superset/commit/8f84d8498cd4bdcc1f0bb42b2b65b83482b588cc))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency black to v26.3.1 [security] ([#771](https://github.com/cds-snc/cds-superset/issues/771)) ([a5e84a9](https://github.com/cds-snc/cds-superset/commit/a5e84a98b6caf21ba683aa1113eab169ba10308a))
+* synced local '.github/workflows/export_github_data.yml' with remote 'tools/sre_file_sync/export_github_data.yml' ([#770](https://github.com/cds-snc/cds-superset/issues/770)) ([c4ca5a4](https://github.com/cds-snc/cds-superset/commit/c4ca5a4e1f055fa4596a9aa83187e75012fe2481))
+
 ## [3.26.1](https://github.com/cds-snc/cds-superset/compare/v3.26.0...v3.26.1) (2026-03-09)
 
 
