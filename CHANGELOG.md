@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.26.2](https://github.com/cds-snc/cds-superset/compare/v3.26.1...v3.26.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* remove RDS proxy from architecture diagram ([#767](https://github.com/cds-snc/cds-superset/issues/767)) ([f5c272b](https://github.com/cds-snc/cds-superset/commit/f5c272b805ed95e27377d4ff393fa0ce978c382e))
+* strictly validate the contents of version.txt ([#769](https://github.com/cds-snc/cds-superset/issues/769)) ([8f84d84](https://github.com/cds-snc/cds-superset/commit/8f84d8498cd4bdcc1f0bb42b2b65b83482b588cc))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#774](https://github.com/cds-snc/cds-superset/issues/774)) ([7c87234](https://github.com/cds-snc/cds-superset/commit/7c8723496286e2a47c4c98f855e373d920b81982))
+* **deps:** lock file maintenance ([#776](https://github.com/cds-snc/cds-superset/issues/776)) ([e74bd97](https://github.com/cds-snc/cds-superset/commit/e74bd977cc6278094a8851eef012a5efa1783058))
+* **deps:** update all non-major github action dependencies ([#773](https://github.com/cds-snc/cds-superset/issues/773)) ([5e00c67](https://github.com/cds-snc/cds-superset/commit/5e00c671d3d269edf0119a6ae415904bf59c1559))
+* **deps:** update all non-major github action dependencies ([#775](https://github.com/cds-snc/cds-superset/issues/775)) ([ef49e5d](https://github.com/cds-snc/cds-superset/commit/ef49e5d17083f442c2508898af04c4046e24906a))
+* **deps:** update dependency black to v26.3.1 [security] ([#771](https://github.com/cds-snc/cds-superset/issues/771)) ([a5e84a9](https://github.com/cds-snc/cds-superset/commit/a5e84a98b6caf21ba683aa1113eab169ba10308a))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to c4a714f ([#772](https://github.com/cds-snc/cds-superset/issues/772)) ([dd9c5d2](https://github.com/cds-snc/cds-superset/commit/dd9c5d253330a60d0edd1a064384e0e45369edfa))
+* synced local '.github/workflows/export_github_data.yml' with remote 'tools/sre_file_sync/export_github_data.yml' ([#770](https://github.com/cds-snc/cds-superset/issues/770)) ([c4ca5a4](https://github.com/cds-snc/cds-superset/commit/c4ca5a4e1f055fa4596a9aa83187e75012fe2481))
+
 ## [3.26.1](https://github.com/cds-snc/cds-superset/compare/v3.26.0...v3.26.1) (2026-03-09)
 
 
