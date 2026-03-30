@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.26.3](https://github.com/cds-snc/cds-superset/compare/v3.26.2...v3.26.3) (2026-03-30)
+
+
+### Bug Fixes
+
+* switch to scanning a locally built image ([#778](https://github.com/cds-snc/cds-superset/issues/778)) ([e67e576](https://github.com/cds-snc/cds-superset/commit/e67e57600c5724f3a7550bb318d4e272522b4c11))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#781](https://github.com/cds-snc/cds-superset/issues/781)) ([4e16a8b](https://github.com/cds-snc/cds-superset/commit/4e16a8b537ee49ea4bb0103363e941a289fbacb7))
+* **deps:** update all non-major github action dependencies ([#780](https://github.com/cds-snc/cds-superset/issues/780)) ([6a0a7be](https://github.com/cds-snc/cds-superset/commit/6a0a7be8bba02a3dfd7619574d29445f59e96a73))
+
 ## [3.26.2](https://github.com/cds-snc/cds-superset/compare/v3.26.1...v3.26.2) (2026-03-23)
 
 
