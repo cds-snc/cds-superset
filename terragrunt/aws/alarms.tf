@@ -276,10 +276,10 @@ resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
 # Sentinel Forwarder
 #
 module "sentinel_forwarder" {
-  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v10.11.0"
+  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v10.11.2"
 
   function_name = "sentinel-forwarder"
-  layer_arn     = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:244"
+  layer_arn     = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:253"
   customer_id   = var.sentinel_workspace_id
   shared_key    = var.sentinel_workspace_key
 
