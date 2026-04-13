@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.26.4](https://github.com/cds-snc/cds-superset/compare/v3.26.3...v3.26.4) (2026-04-13)
+
+
+### Bug Fixes
+
+* add DNS proxy action to workflows that were missed ([#791](https://github.com/cds-snc/cds-superset/issues/791)) ([bfa9da4](https://github.com/cds-snc/cds-superset/commit/bfa9da43b78c101cb338c5e69530ca9489363a9f))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#788](https://github.com/cds-snc/cds-superset/issues/788)) ([34f5877](https://github.com/cds-snc/cds-superset/commit/34f5877dde89151d06d358561b7257914d20788a))
+* **deps:** lock file maintenance ([#794](https://github.com/cds-snc/cds-superset/issues/794)) ([f1e80ec](https://github.com/cds-snc/cds-superset/commit/f1e80ec299b78a0f4d5fb7fac35e46f45f9d44a0))
+* **deps:** update all non-major github action dependencies ([#786](https://github.com/cds-snc/cds-superset/issues/786)) ([e56cdbc](https://github.com/cds-snc/cds-superset/commit/e56cdbc785d12667f167d724499c2f020ed628ff))
+* **deps:** update all patch dependencies ([#787](https://github.com/cds-snc/cds-superset/issues/787)) ([851d133](https://github.com/cds-snc/cds-superset/commit/851d13343877f74993f3b0959b069a5c315a2eea))
+* **deps:** update aws-actions/amazon-ecr-login action to v2.1.2 ([#792](https://github.com/cds-snc/cds-superset/issues/792)) ([460d765](https://github.com/cds-snc/cds-superset/commit/460d765c4abbeec2333be3cff397f251ffbedd3d))
+* **deps:** update cds-snc/dns-proxy-action digest to 9ad7931 ([#789](https://github.com/cds-snc/cds-superset/issues/789)) ([efd38fb](https://github.com/cds-snc/cds-superset/commit/efd38fb4255eba4facec6b569facd28e3db6ece8))
+* **deps:** update cds-snc/terraform-plan action to v5 ([#785](https://github.com/cds-snc/cds-superset/issues/785)) ([4d3801f](https://github.com/cds-snc/cds-superset/commit/4d3801fcbb1a6ef30df8f0250268d5489e518ddc))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v10.11.3 ([#793](https://github.com/cds-snc/cds-superset/issues/793)) ([ed5dafc](https://github.com/cds-snc/cds-superset/commit/ed5dafcc6bc7465f33f9ccf427df713014df68cf))
+* synced file(s) with cds-snc/site-reliability-engineering ([#783](https://github.com/cds-snc/cds-superset/issues/783)) ([20ca046](https://github.com/cds-snc/cds-superset/commit/20ca0469e82fb0610f2383a388f4d4aba103f84d))
+* upgrade terraform-tools-setup action ([#782](https://github.com/cds-snc/cds-superset/issues/782)) ([2ffeed1](https://github.com/cds-snc/cds-superset/commit/2ffeed1555b7419b421f6de55db57096afbde572))
+
 ## [3.26.3](https://github.com/cds-snc/cds-superset/compare/v3.26.2...v3.26.3) (2026-03-30)
 
 
