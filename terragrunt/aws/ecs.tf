@@ -224,7 +224,7 @@ locals {
 }
 
 module "superset_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.11.2"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.11.3"
 
   cluster_name     = "superset"
   service_name     = "superset"
@@ -290,7 +290,7 @@ module "superset_ecs" {
 }
 
 module "celery_worker_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.11.2"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.11.3"
 
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
@@ -352,7 +352,7 @@ module "celery_worker_ecs" {
 }
 
 module "celery_beat_ecs" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.11.2"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v10.11.3"
 
   create_cluster   = false
   cluster_name     = module.superset_ecs.cluster_name
