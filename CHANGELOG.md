@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.26.5](https://github.com/cds-snc/cds-superset/compare/v3.26.4...v3.26.5) (2026-04-17)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency authlib to v1.6.11 [security] ([#795](https://github.com/cds-snc/cds-superset/issues/795)) ([e262f05](https://github.com/cds-snc/cds-superset/commit/e262f05383eec405d428dbdef099e934360e5eda))
+
 ## [3.26.4](https://github.com/cds-snc/cds-superset/compare/v3.26.3...v3.26.4) (2026-04-13)
 
 
