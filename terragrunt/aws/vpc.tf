@@ -7,7 +7,7 @@ locals {
 }
 
 module "vpc" {
-  source = "github.com/cds-snc/terraform-modules//vpc?ref=v10.11.3"
+  source = "github.com/cds-snc/terraform-modules//vpc?ref=v10.11.4"
   name   = "superspace-${var.env}"
 
   enable_flow_log                  = false
