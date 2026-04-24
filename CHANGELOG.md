@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.26.7](https://github.com/cds-snc/cds-superset/compare/v3.26.6...v3.26.7) (2026-04-24)
+
+
+### Bug Fixes
+
+* allo WriteData to write Annotations ([#800](https://github.com/cds-snc/cds-superset/issues/800)) ([465aeef](https://github.com/cds-snc/cds-superset/commit/465aeefbc890b3c9c627f6e9b05b5a29c7ed5bb9))
+
 ## [3.26.6](https://github.com/cds-snc/cds-superset/compare/v3.26.5...v3.26.6) (2026-04-20)
 
 
