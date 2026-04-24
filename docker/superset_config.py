@@ -498,6 +498,7 @@ FAB_ROLES = {
         ["UserOAuthModelView", "can_userinfo"],
     ],
     "WriteData": [
+        ["Annotation", "can_write"],
         ["Chart", "can_write"],
         ["Charts", "menu_access"],
         ["Dashboard", "can_write"],
