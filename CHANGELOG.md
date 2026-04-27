@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.26.8](https://github.com/cds-snc/cds-superset/compare/v3.26.7...v3.26.8) (2026-04-27)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#806](https://github.com/cds-snc/cds-superset/issues/806)) ([6f0b8df](https://github.com/cds-snc/cds-superset/commit/6f0b8dff2084a3e6cd0d6f9abcbd129dbfa9276d))
+* **deps:** update all non-major github action dependencies ([#803](https://github.com/cds-snc/cds-superset/issues/803)) ([d89eb1f](https://github.com/cds-snc/cds-superset/commit/d89eb1f021d9abfb150f52fdab0553130abc35e7))
+* **deps:** update dependency authlib to v1.7.0 ([#804](https://github.com/cds-snc/cds-superset/issues/804)) ([e81a381](https://github.com/cds-snc/cds-superset/commit/e81a3812c0528a001a43e39b429d8a41920755ae))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 5139be2 ([#802](https://github.com/cds-snc/cds-superset/issues/802)) ([673fdb7](https://github.com/cds-snc/cds-superset/commit/673fdb716e18ce023ffda270d7ecfff4b21ffc92))
+
 ## [3.26.7](https://github.com/cds-snc/cds-superset/compare/v3.26.6...v3.26.7) (2026-04-24)
 
 
