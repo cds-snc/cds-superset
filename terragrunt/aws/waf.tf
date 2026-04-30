@@ -1,7 +1,7 @@
 locals {
-  common_excluded_rules     = ["SizeRestrictions_BODY"]
-  cbs_satellite_bucket_arn  = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
-  rate_limit_all_requests   = 1500
+  common_excluded_rules        = ["SizeRestrictions_BODY"]
+  cbs_satellite_bucket_arn     = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
+  rate_limit_all_requests      = 1500
   rate_limit_mutating_requests = 200
 }
 
