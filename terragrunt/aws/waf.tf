@@ -57,7 +57,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "CanadaOnlyGeoRestriction"
-    priority = 5
+    priority = 10
 
     action {
       block {
@@ -109,7 +109,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "AWSManagedRulesAmazonIpReputationList"
-    priority = 10
+    priority = 20
 
     override_action {
       none {}
@@ -131,7 +131,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "RateLimitAllRequestsIp"
-    priority = 20
+    priority = 30
 
     action {
       block {}
@@ -153,7 +153,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "RateLimitMutatingRequestsIp"
-    priority = 25
+    priority = 40
 
     action {
       block {}
@@ -187,7 +187,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "AWSManagedRulesKnownBadInputsRuleSet"
-    priority = 30
+    priority = 50
     override_action {
       none {}
     }
@@ -208,7 +208,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "AWSManagedRulesLinuxRuleSet"
-    priority = 40
+    priority = 60
     override_action {
       none {}
     }
@@ -228,7 +228,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "AWSManagedRulesCommonRuleSet"
-    priority = 50
+    priority = 70
 
     override_action {
       none {}
@@ -262,7 +262,7 @@ resource "aws_wafv2_web_acl" "superset" {
   # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
   rule {
     name     = "Custom_SizeRestrictions_BODY"
-    priority = 55
+    priority = 80
 
     action {
       block {}
@@ -320,7 +320,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   rule {
     name     = "AWSManagedRulesAntiDDoSRuleSet"
-    priority = 60
+    priority = 90
     override_action {
       none {}
     }
