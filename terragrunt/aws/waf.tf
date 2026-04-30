@@ -1,6 +1,8 @@
 locals {
-  excluded_common_rules    = ["SizeRestrictions_BODY"]
-  cbs_satellite_bucket_arn = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
+  common_excluded_rules     = ["SizeRestrictions_BODY"]
+  cbs_satellite_bucket_arn  = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
+  rate_limit_all_requests   = 1500
+  rate_limit_mutating_requests = 200
 }
 
 #
@@ -128,7 +130,7 @@ resource "aws_wafv2_web_acl" "superset" {
   }
 
   rule {
-    name     = "RateLimitAllRequests"
+    name     = "RateLimitAllRequestsIp"
     priority = 20
 
     action {
@@ -137,20 +139,20 @@ resource "aws_wafv2_web_acl" "superset" {
 
     statement {
       rate_based_statement {
-        limit              = 1500
+        limit              = local.rate_limit_all_requests
         aggregate_key_type = "IP"
       }
     }
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "RateLimitAllRequests"
+      metric_name                = "RateLimitAllRequestsIp"
       sampled_requests_enabled   = true
     }
   }
 
   rule {
-    name     = "RateLimitMutatingRequests"
+    name     = "RateLimitMutatingRequestsIp"
     priority = 25
 
     action {
@@ -159,7 +161,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
     statement {
       rate_based_statement {
-        limit              = 200
+        limit              = local.rate_limit_mutating_requests
         aggregate_key_type = "IP"
         scope_down_statement {
           regex_match_statement {
@@ -178,7 +180,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "RateLimitMutatingRequests"
+      metric_name                = "RateLimitMutatingRequestsIp"
       sampled_requests_enabled   = true
     }
   }
@@ -238,7 +240,7 @@ resource "aws_wafv2_web_acl" "superset" {
         vendor_name = "AWS"
 
         dynamic "rule_action_override" {
-          for_each = local.excluded_common_rules
+          for_each = local.common_excluded_rules
           content {
             name = rule_action_override.value
             action_to_use {
@@ -256,10 +258,10 @@ resource "aws_wafv2_web_acl" "superset" {
     }
   }
 
-  # Label match rule
+  # Custom label-match rule
   # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
   rule {
-    name     = "Label_SizeRestrictions_BODY"
+    name     = "Custom_SizeRestrictions_BODY"
     priority = 55
 
     action {
@@ -295,7 +297,7 @@ resource "aws_wafv2_web_acl" "superset" {
                     field_to_match {
                       uri_path {}
                     }
-                    arn = aws_wafv2_regex_pattern_set.label_sizerestrictions_body_excluded_paths.arn
+                    arn = aws_wafv2_regex_pattern_set.custom_sizerestrictions_body_excluded_paths.arn
                     text_transformation {
                       type     = "LOWERCASE"
                       priority = 0
@@ -311,7 +313,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "Label_SizeRestrictions_BODY"
+      metric_name                = "Custom_SizeRestrictions_BODY"
       sampled_requests_enabled   = true
     }
   }
@@ -388,8 +390,8 @@ resource "aws_kinesis_firehose_delivery_stream" "superset_waf_logs" {
   }
 }
 
-resource "aws_wafv2_regex_pattern_set" "label_sizerestrictions_body_excluded_paths" {
-  name        = "label_sizerestrictions_body_excluded_paths"
+resource "aws_wafv2_regex_pattern_set" "custom_sizerestrictions_body_excluded_paths" {
+  name        = "custom_sizerestrictions_body_excluded_paths"
   description = "Paths that should not be blocked by the SizeRestrictions_BODY rule"
   scope       = "REGIONAL"
 
