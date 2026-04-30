@@ -54,7 +54,6 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "CanadaOnlyGeoRestriction"
     priority = 10
@@ -106,32 +105,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
-  rule {
-    name     = "AWSManagedRulesAmazonIpReputationList"
-    priority = 20
-
-    override_action {
-      none {}
-    }
-
-    statement {
-      managed_rule_group_statement {
-        name        = "AWSManagedRulesAmazonIpReputationList"
-        vendor_name = "AWS"
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "AWSManagedRulesAmazonIpReputationList"
-      sampled_requests_enabled   = true
-    }
-  }
-
   rule {
     name     = "RateLimitAllRequestsIp"
-    priority = 30
+    priority = 20
 
     action {
       block {}
@@ -150,10 +126,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "RateLimitMutatingRequestsIp"
-    priority = 40
+    priority = 30
 
     action {
       block {}
@@ -184,10 +159,63 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
+  rule {
+    name     = "AWSManagedRulesAmazonIpReputationList"
+    priority = 40
 
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWSManagedRulesAmazonIpReputationList"
+      sampled_requests_enabled   = true
+    }
+  }
+  rule {
+    name     = "AWSManagedRulesAntiDDoSRuleSet"
+    priority = 50
+    override_action {
+      none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAntiDDoSRuleSet"
+        vendor_name = "AWS"
+
+        managed_rule_group_configs {
+          aws_managed_rules_anti_ddos_rule_set {
+            client_side_action_config {
+              challenge {
+                sensitivity     = "HIGH"
+                usage_of_action = "ENABLED"
+                exempt_uri_regular_expression {
+                  regex_string = "/api/|.(acc|avi|css|gif|jpe?g|js|pdf|png|tiff?|ttf|webm|webp|woff2?)$"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWSManagedRulesAntiDDoSRuleSet"
+      sampled_requests_enabled   = true
+    }
+  }
   rule {
     name     = "AWSManagedRulesKnownBadInputsRuleSet"
-    priority = 50
+    priority = 60
     override_action {
       none {}
     }
@@ -205,10 +233,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "AWSManagedRulesLinuxRuleSet"
-    priority = 60
+    priority = 70
     override_action {
       none {}
     }
@@ -225,10 +252,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "AWSManagedRulesCommonRuleSet"
-    priority = 70
+    priority = 80
 
     override_action {
       none {}
@@ -258,11 +284,10 @@ resource "aws_wafv2_web_acl" "superset" {
     }
   }
 
-  # Custom label-match rule
   # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
   rule {
     name     = "Custom_SizeRestrictions_BODY"
-    priority = 80
+    priority = 90
 
     action {
       block {}
@@ -314,40 +339,6 @@ resource "aws_wafv2_web_acl" "superset" {
     visibility_config {
       cloudwatch_metrics_enabled = true
       metric_name                = "Custom_SizeRestrictions_BODY"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
-    name     = "AWSManagedRulesAntiDDoSRuleSet"
-    priority = 90
-    override_action {
-      none {}
-    }
-    statement {
-      managed_rule_group_statement {
-        name        = "AWSManagedRulesAntiDDoSRuleSet"
-        vendor_name = "AWS"
-
-        managed_rule_group_configs {
-          aws_managed_rules_anti_ddos_rule_set {
-            client_side_action_config {
-              challenge {
-                sensitivity     = "HIGH"
-                usage_of_action = "ENABLED"
-                exempt_uri_regular_expression {
-                  regex_string = "/api/|.(acc|avi|css|gif|jpe?g|js|pdf|png|tiff?|ttf|webm|webp|woff2?)$"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "AWSManagedRulesAntiDDoSRuleSet"
       sampled_requests_enabled   = true
     }
   }
