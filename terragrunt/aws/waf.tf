@@ -356,7 +356,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
   # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
   rule {
-    name     = "Custom_SizeRestrictions_BODY"
+    name     = "Label_SizeRestrictions_BODY"
     priority = 110
 
     action {
@@ -392,7 +392,7 @@ resource "aws_wafv2_web_acl" "superset" {
                     field_to_match {
                       uri_path {}
                     }
-                    arn = aws_wafv2_regex_pattern_set.custom_sizerestrictions_body_excluded_paths.arn
+                    arn = aws_wafv2_regex_pattern_set.label_sizerestrictions_body_excluded_paths.arn
                     text_transformation {
                       type     = "LOWERCASE"
                       priority = 0
@@ -408,7 +408,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "Custom_SizeRestrictions_BODY"
+      metric_name                = "AWSManagedRulesAntiDDoSRuleSet"
       sampled_requests_enabled   = true
     }
   }
@@ -451,8 +451,8 @@ resource "aws_kinesis_firehose_delivery_stream" "superset_waf_logs" {
   }
 }
 
-resource "aws_wafv2_regex_pattern_set" "custom_sizerestrictions_body_excluded_paths" {
-  name        = "custom_sizerestrictions_body_excluded_paths"
+resource "aws_wafv2_regex_pattern_set" "label_sizerestrictions_body_excluded_paths" {
+  name        = "label_sizerestrictions_body_excluded_paths"
   description = "Paths that should not be blocked by the SizeRestrictions_BODY rule"
   scope       = "REGIONAL"
 
