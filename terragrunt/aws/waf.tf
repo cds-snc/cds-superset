@@ -159,9 +159,79 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
+
+  rule {
+    name     = "RateLimitAllRequestsJA4"
+    priority = 40
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = local.rate_limit_all_requests
+        aggregate_key_type = "CUSTOM_KEYS"
+
+        custom_key {
+          ja4_fingerprint {
+            fallback_behavior = "MATCH"
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitAllRequestsJA4"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "RateLimitMutatingRequestsJA4"
+    priority = 50
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = local.rate_limit_mutating_requests
+        aggregate_key_type = "CUSTOM_KEYS"
+
+        custom_key {
+          ja4_fingerprint {
+            fallback_behavior = "MATCH"
+          }
+        }
+
+        scope_down_statement {
+          regex_match_statement {
+            field_to_match {
+              method {}
+            }
+            regex_string = "^(delete|patch|post|put)$"
+            text_transformation {
+              priority = 1
+              type     = "LOWERCASE"
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitMutatingRequestsJA4"
+      sampled_requests_enabled   = true
+    }
+  }
+
   rule {
     name     = "AWSManagedRulesAmazonIpReputationList"
-    priority = 40
+    priority = 60
 
     override_action {
       none {}
@@ -182,7 +252,7 @@ resource "aws_wafv2_web_acl" "superset" {
   }
   rule {
     name     = "AWSManagedRulesAntiDDoSRuleSet"
-    priority = 50
+    priority = 70
     override_action {
       none {}
     }
@@ -215,7 +285,7 @@ resource "aws_wafv2_web_acl" "superset" {
   }
   rule {
     name     = "AWSManagedRulesKnownBadInputsRuleSet"
-    priority = 60
+    priority = 80
     override_action {
       none {}
     }
@@ -235,7 +305,7 @@ resource "aws_wafv2_web_acl" "superset" {
   }
   rule {
     name     = "AWSManagedRulesLinuxRuleSet"
-    priority = 70
+    priority = 90
     override_action {
       none {}
     }
@@ -254,7 +324,7 @@ resource "aws_wafv2_web_acl" "superset" {
   }
   rule {
     name     = "AWSManagedRulesCommonRuleSet"
-    priority = 80
+    priority = 100
 
     override_action {
       none {}
@@ -287,7 +357,7 @@ resource "aws_wafv2_web_acl" "superset" {
   # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
   rule {
     name     = "Custom_SizeRestrictions_BODY"
-    priority = 90
+    priority = 110
 
     action {
       block {}
