@@ -1,6 +1,8 @@
 locals {
-  excluded_common_rules    = ["SizeRestrictions_BODY"]
-  cbs_satellite_bucket_arn = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
+  common_excluded_rules        = ["SizeRestrictions_BODY"]
+  cbs_satellite_bucket_arn     = "arn:aws:s3:::${var.cbs_satellite_bucket_name}"
+  rate_limit_all_requests      = 1500
+  rate_limit_mutating_requests = 200
 }
 
 #
@@ -52,10 +54,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "CanadaOnlyGeoRestriction"
-    priority = 5
+    priority = 10
 
     action {
       block {
@@ -104,31 +105,8 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
-    name     = "AWSManagedRulesAmazonIpReputationList"
-    priority = 10
-
-    override_action {
-      none {}
-    }
-
-    statement {
-      managed_rule_group_statement {
-        name        = "AWSManagedRulesAmazonIpReputationList"
-        vendor_name = "AWS"
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "AWSManagedRulesAmazonIpReputationList"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
-    name     = "RateLimitAllRequests"
+    name     = "RateLimitAllRequestsIp"
     priority = 20
 
     action {
@@ -137,21 +115,20 @@ resource "aws_wafv2_web_acl" "superset" {
 
     statement {
       rate_based_statement {
-        limit              = 1500
+        limit              = local.rate_limit_all_requests
         aggregate_key_type = "IP"
       }
     }
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "RateLimitAllRequests"
+      metric_name                = "RateLimitAllRequestsIp"
       sampled_requests_enabled   = true
     }
   }
-
   rule {
-    name     = "RateLimitMutatingRequests"
-    priority = 25
+    name     = "RateLimitMutatingRequestsIp"
+    priority = 30
 
     action {
       block {}
@@ -159,7 +136,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
     statement {
       rate_based_statement {
-        limit              = 200
+        limit              = local.rate_limit_mutating_requests
         aggregate_key_type = "IP"
         scope_down_statement {
           regex_match_statement {
@@ -178,14 +155,137 @@ resource "aws_wafv2_web_acl" "superset" {
 
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name                = "RateLimitMutatingRequests"
+      metric_name                = "RateLimitMutatingRequestsIp"
       sampled_requests_enabled   = true
     }
   }
 
   rule {
+    name     = "RateLimitAllRequestsJA4"
+    priority = 40
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = local.rate_limit_all_requests
+        aggregate_key_type = "CUSTOM_KEYS"
+
+        custom_key {
+          ja4_fingerprint {
+            fallback_behavior = "MATCH"
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitAllRequestsJA4"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "RateLimitMutatingRequestsJA4"
+    priority = 50
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = local.rate_limit_mutating_requests
+        aggregate_key_type = "CUSTOM_KEYS"
+
+        custom_key {
+          ja4_fingerprint {
+            fallback_behavior = "MATCH"
+          }
+        }
+
+        scope_down_statement {
+          regex_match_statement {
+            field_to_match {
+              method {}
+            }
+            regex_string = "^(delete|patch|post|put)$"
+            text_transformation {
+              priority = 1
+              type     = "LOWERCASE"
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitMutatingRequestsJA4"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "AWSManagedRulesAmazonIpReputationList"
+    priority = 60
+
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWSManagedRulesAmazonIpReputationList"
+      sampled_requests_enabled   = true
+    }
+  }
+  rule {
+    name     = "AWSManagedRulesAntiDDoSRuleSet"
+    priority = 70
+    override_action {
+      none {}
+    }
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAntiDDoSRuleSet"
+        vendor_name = "AWS"
+
+        managed_rule_group_configs {
+          aws_managed_rules_anti_ddos_rule_set {
+            client_side_action_config {
+              challenge {
+                sensitivity     = "HIGH"
+                usage_of_action = "ENABLED"
+                exempt_uri_regular_expression {
+                  regex_string = "/api/|.(acc|avi|css|gif|jpe?g|js|pdf|png|tiff?|ttf|webm|webp|woff2?)$"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWSManagedRulesAntiDDoSRuleSet"
+      sampled_requests_enabled   = true
+    }
+  }
+  rule {
     name     = "AWSManagedRulesKnownBadInputsRuleSet"
-    priority = 30
+    priority = 80
     override_action {
       none {}
     }
@@ -203,10 +303,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "AWSManagedRulesLinuxRuleSet"
-    priority = 40
+    priority = 90
     override_action {
       none {}
     }
@@ -223,10 +322,9 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
-
   rule {
     name     = "AWSManagedRulesCommonRuleSet"
-    priority = 50
+    priority = 100
 
     override_action {
       none {}
@@ -238,7 +336,7 @@ resource "aws_wafv2_web_acl" "superset" {
         vendor_name = "AWS"
 
         dynamic "rule_action_override" {
-          for_each = local.excluded_common_rules
+          for_each = local.common_excluded_rules
           content {
             name = rule_action_override.value
             action_to_use {
@@ -256,11 +354,10 @@ resource "aws_wafv2_web_acl" "superset" {
     }
   }
 
-  # Label match rule
   # Blocks requests that trigger `AWSManagedRulesCommonRuleSet#SizeRestrictions_BODY` except those saving a dashboard
   rule {
     name     = "Label_SizeRestrictions_BODY"
-    priority = 55
+    priority = 110
 
     action {
       block {}
@@ -301,40 +398,6 @@ resource "aws_wafv2_web_acl" "superset" {
                       priority = 0
                     }
                   }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "Label_SizeRestrictions_BODY"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
-    name     = "AWSManagedRulesAntiDDoSRuleSet"
-    priority = 60
-    override_action {
-      none {}
-    }
-    statement {
-      managed_rule_group_statement {
-        name        = "AWSManagedRulesAntiDDoSRuleSet"
-        vendor_name = "AWS"
-
-        managed_rule_group_configs {
-          aws_managed_rules_anti_ddos_rule_set {
-            client_side_action_config {
-              challenge {
-                sensitivity     = "HIGH"
-                usage_of_action = "ENABLED"
-                exempt_uri_regular_expression {
-                  regex_string = "/api/|.(acc|avi|css|gif|jpe?g|js|pdf|png|tiff?|ttf|webm|webp|woff2?)$"
                 }
               }
             }
