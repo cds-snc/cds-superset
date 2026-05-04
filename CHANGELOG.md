@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.27.0](https://github.com/cds-snc/cds-superset/compare/v3.26.8...v3.27.0) (2026-05-04)
+
+
+### Features
+
+* update firewall rules ([#808](https://github.com/cds-snc/cds-superset/issues/808)) ([beee926](https://github.com/cds-snc/cds-superset/commit/beee926b469bcffd4fc9c5e4e6864d4573102d28))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#812](https://github.com/cds-snc/cds-superset/issues/812)) ([77a9c78](https://github.com/cds-snc/cds-superset/commit/77a9c78b5cc2a88dcd2ab49152b7e4ad8c99e5cb))
+* **deps:** update all non-major github action dependencies ([#811](https://github.com/cds-snc/cds-superset/issues/811)) ([dde880d](https://github.com/cds-snc/cds-superset/commit/dde880dfcca04aa82d29bd8d8ee899b5ebf280e5))
+* **deps:** update dependency psycopg2-binary to v2.9.12 ([#810](https://github.com/cds-snc/cds-superset/issues/810)) ([5dc01d7](https://github.com/cds-snc/cds-superset/commit/5dc01d7294e827cc33b67315227b00eb7f6a049c))
+
 ## [3.26.8](https://github.com/cds-snc/cds-superset/compare/v3.26.7...v3.26.8) (2026-04-27)
 
 
