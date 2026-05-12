@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.27.1](https://github.com/cds-snc/cds-superset/compare/v3.27.0...v3.27.1) (2026-05-11)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#815](https://github.com/cds-snc/cds-superset/issues/815)) ([c1215dc](https://github.com/cds-snc/cds-superset/commit/c1215dc952b1201d486821b1a258d9bf3f908af2))
+* **deps:** update all non-major github action dependencies ([#813](https://github.com/cds-snc/cds-superset/issues/813)) ([7a4be80](https://github.com/cds-snc/cds-superset/commit/7a4be80873aa50b3466643413f16ae697ca7fd63))
+* **deps:** update dependency playwright to v1.59.0 ([#814](https://github.com/cds-snc/cds-superset/issues/814)) ([57df390](https://github.com/cds-snc/cds-superset/commit/57df3903d4b51cc22da2049956e210e9132b09fe))
+
 ## [3.27.0](https://github.com/cds-snc/cds-superset/compare/v3.26.8...v3.27.0) (2026-05-04)
 
 
