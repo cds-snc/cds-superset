@@ -104,7 +104,8 @@ data "aws_iam_policy_document" "docker_deploy" {
       "iam:PassRole",
     ]
     resources = [
-      "arn:aws:iam::${var.account_id}:role/superset*",
+      "arn:aws:iam::${var.account_id}:role/superset_ecs_task_exec_role",
+      "arn:aws:iam::${var.account_id}:role/superset_ecs_task_role",
     ]
   }
 
@@ -114,7 +115,9 @@ data "aws_iam_policy_document" "docker_deploy" {
       "ssm:PutParameter",
     ]
     resources = [
-      "arn:aws:ssm:${var.region}:${var.account_id}:parameter/ecs/superset/*/container-image",
+      "arn:aws:ssm:${var.region}:${var.account_id}:parameter/ecs/superset/superset/container-image",
+      "arn:aws:ssm:${var.region}:${var.account_id}:parameter/ecs/superset/celery-worker/container-image",
+      "arn:aws:ssm:${var.region}:${var.account_id}:parameter/ecs/superset/celery-beat/container-image",
     ]
   }
 }
