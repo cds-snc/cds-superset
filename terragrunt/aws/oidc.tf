@@ -23,10 +23,6 @@ module "github_workflow_roles" {
   billing_tag_value = var.billing_code
 }
 
-#
-# Docker push role — used by docker-apply-staging and docker-apply-prod workflows
-#
-
 resource "aws_iam_role_policy_attachment" "docker_push" {
   role       = local.docker_push_role
   policy_arn = aws_iam_policy.docker_push.arn
@@ -62,10 +58,6 @@ data "aws_iam_policy_document" "docker_push" {
     resources = [aws_ecr_repository.superset-image.arn]
   }
 }
-
-#
-# Docker deploy role — used by docker-deploy-staging and docker-deploy-prod workflows
-#
 
 resource "aws_iam_role_policy_attachment" "docker_deploy" {
   role       = local.docker_deploy_role
