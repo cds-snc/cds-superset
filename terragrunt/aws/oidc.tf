@@ -80,8 +80,8 @@ resource "aws_iam_policy" "docker_deploy" {
   policy = data.aws_iam_policy_document.docker_deploy.json
 }
 
+#trivy:ignore:AVD-AWS-0342
 data "aws_iam_policy_document" "docker_deploy" {
-  #trivy:ignore:AVD-AWS-0342
   statement {
     effect = "Allow"
     actions = [
