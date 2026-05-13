@@ -79,6 +79,7 @@ data "aws_iam_policy_document" "docker_deploy" {
     actions = [
       "ecs:DescribeTaskDefinition",
       "ecs:RegisterTaskDefinition",
+      "ecs:TagResource",
     ]
     resources = ["*"]
   }
