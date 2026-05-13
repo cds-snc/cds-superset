@@ -35,11 +35,10 @@ jobs:
         DNS_PROXY_SAFELIST: "${{ vars.DNS_PROXY_SAFELIST }}"
         DNS_PROXY_WILDCARDGREEDY: "true"
 
-    # TODO: Replace with a locked down IAM role
     - name: configure aws credentials using OIDC
       uses: aws-actions/configure-aws-credentials@ec61189d14ec14c8efccab744f656cffd0e33f37 # v6.1.0
       with:
-        role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-apply 
+        role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-docker-deploy
         role-session-name: DeployContainer
         aws-region: ${{ env.AWS_REGION }}
 
