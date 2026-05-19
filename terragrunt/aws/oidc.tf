@@ -107,6 +107,10 @@ data "aws_iam_policy_document" "docker_deploy" {
     resources = [
       "arn:aws:iam::${var.account_id}:role/superset_ecs_task_exec_role",
       "arn:aws:iam::${var.account_id}:role/superset_ecs_task_role",
+      "arn:aws:iam::${var.account_id}:role/celery-worker_ecs_task_exec_role",
+      "arn:aws:iam::${var.account_id}:role/celery-worker_ecs_task_role",
+      "arn:aws:iam::${var.account_id}:role/celery-beat_ecs_task_exec_role",
+      "arn:aws:iam::${var.account_id}:role/celery-beat_ecs_task_role",
     ]
   }
 
