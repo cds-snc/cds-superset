@@ -89,13 +89,22 @@ data "aws_iam_policy_document" "docker_deploy" {
     actions = [
       "ecs:DescribeServices",
       "ecs:DescribeTasks",
-      "ecs:RunTask",
       "ecs:UpdateService",
     ]
     resources = [
       "arn:aws:ecs:${var.region}:${var.account_id}:cluster/superset",
       "arn:aws:ecs:${var.region}:${var.account_id}:service/superset/*",
       "arn:aws:ecs:${var.region}:${var.account_id}:task/superset/*",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "ecs:RunTask",
+    ]
+    resources = [
+      "arn:aws:ecs:${var.region}:${var.account_id}:task-definition/superset-upgrade:*",
     ]
   }
 
