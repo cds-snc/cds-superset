@@ -195,8 +195,9 @@ if ZITADEL_OAUTH_LOGIN:
     OAUTH_PROVIDERS.append(
         {
             "name": "zitadel",
+            "label": "GC Platform",
             "token_key": "access_token",
-            "icon": "fa-key",
+            "icon": "user",
             "remote_app": {
                 "api_base_url": f"https://{ZITADEL_DOMAIN}",
                 "server_metadata_url": f"https://{ZITADEL_DOMAIN}/.well-known/openid-configuration",
