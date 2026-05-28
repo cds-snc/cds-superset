@@ -86,3 +86,15 @@ jobs:
       run: |
         docker push $REGISTRY:${VERSION}
         docker push $REGISTRY:latest
+
+  docker-deploy:
+    needs: [docker-push, get-version]
+    uses: ./.github/workflows/docker-deploy.yml
+    with:
+      aws_account_id: ${{ vars.PROD_AWS_ACCOUNT_ID }}
+      image_tag: ${{ needs.get-version.outputs.version }}
+    secrets:
+      LOG_ANALYTICS_WORKSPACE_ID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+      LOG_ANALYTICS_WORKSPACE_KEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+      SUPERSET_PRIVATE_SUBNET_IDS: ${{ secrets.PROD_SUPERSET_PRIVATE_SUBNET_IDS }}
+      SUPERSET_ECS_TASK_SECURITY_GROUP_ID: ${{ secrets.PROD_SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}
