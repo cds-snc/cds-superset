@@ -1,23 +1,35 @@
-name: Docker deploy Staging
+name: Docker deploy
 
 on:
-  workflow_run:
-    workflows: ["Docker build and push Staging"]
-    types:
-    - completed
+  workflow_call:
+    inputs:
+      aws_account_id:
+        required: true
+        type: string
+      image_tag:
+        required: true
+        type: string
+    secrets:
+      LOG_ANALYTICS_WORKSPACE_ID:
+        required: true
+      LOG_ANALYTICS_WORKSPACE_KEY:
+        required: true
+      SUPERSET_PRIVATE_SUBNET_IDS:
+        required: true
+      SUPERSET_ECS_TASK_SECURITY_GROUP_ID:
+        required: true
 
 env: 
   AWS_REGION: ca-central-1
   ECS_CLUSTER: superset
-  REGISTRY: ${{ vars.STAGING_AWS_ACCOUNT_ID }}.dkr.ecr.ca-central-1.amazonaws.com/superset
-  GITHUB_SHA: ${{ github.event.workflow_run.head_sha }}
+  REGISTRY: ${{ inputs.aws_account_id }}.dkr.ecr.ca-central-1.amazonaws.com/superset
 
 permissions:
   id-token: write
+  contents: read
 
 jobs:
   docker-deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,7 +50,7 @@ jobs:
     - name: configure aws credentials using OIDC
       uses: aws-actions/configure-aws-credentials@d979d5b3a71173a29b74b5b88418bfda9437d885 # v6.1.1
       with:
-        role-to-assume: arn:aws:iam::${{ vars.STAGING_AWS_ACCOUNT_ID }}:role/cds-superset-docker-deploy
+        role-to-assume: arn:aws:iam::${{ inputs.aws_account_id }}:role/cds-superset-docker-deploy
         role-session-name: DeployContainer
         aws-region: ${{ env.AWS_REGION }}
 
@@ -48,7 +60,7 @@ jobs:
       with:
         task-definition-family: ${{ matrix.service }}
         container-name: ${{ matrix.service }}
-        image: ${{ env.REGISTRY }}:sha-${{ env.GITHUB_SHA }}
+        image: ${{ env.REGISTRY }}:${{ inputs.image_tag }}
 
     - name: Deploy updated ECS task
       uses: aws-actions/amazon-ecs-deploy-task-definition@a310a830f5c14e583e35d84e4e1ec7dd177c3c9c # v2.6.2
@@ -63,7 +75,7 @@ jobs:
       run: |
         aws ssm put-parameter \
           --name "/ecs/${{ env.ECS_CLUSTER }}/${{ matrix.service }}/container-image" \
-          --value "${{ env.REGISTRY }}:sha-${{ env.GITHUB_SHA }}" \
+          --value "${{ env.REGISTRY }}:${{ inputs.image_tag }}" \
           --type "String" \
           --overwrite
 
@@ -78,5 +90,5 @@ jobs:
       run: |
         .github/workflows/scripts/run-superset-upgrade.sh \
           "${{ env.ECS_CLUSTER }}" \
-          "${{ secrets.STAGING_SUPERSET_PRIVATE_SUBNET_IDS }}" \
-          "${{ secrets.STAGING_SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}"
+          "${{ secrets.SUPERSET_PRIVATE_SUBNET_IDS }}" \
+          "${{ secrets.SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}"
