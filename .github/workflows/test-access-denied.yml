@@ -47,3 +47,13 @@ jobs:
             "$SUPERSET_USERNAME" \
             "$SUPERSET_PASSWORD" \
             "$UPPTIME_HEADER"
+
+  workflow-failure:
+    needs: [test-access]
+    if: failure()
+    uses: ./.github/workflows/workflow-failure.yml
+    secrets:
+      LOG_ANALYTICS_WORKSPACE_ID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+      LOG_ANALYTICS_WORKSPACE_KEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+      STAGING_CLOUDWATCH_ALERT_SLACK_WEBHOOK: ${{ secrets.STAGING_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}
+      PROD_CLOUDWATCH_ALERT_SLACK_WEBHOOK: ${{ secrets.PROD_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}
