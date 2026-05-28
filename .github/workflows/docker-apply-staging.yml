@@ -60,3 +60,22 @@ jobs:
       run: |
         docker push $REGISTRY:sha-$GITHUB_SHA
         docker push $REGISTRY:latest
+
+  docker-deploy:
+    needs: docker-push
+    uses: ./.github/workflows/docker-deploy.yml
+    with:
+      aws_account_id: ${{ vars.STAGING_AWS_ACCOUNT_ID }}
+      image_tag: sha-${{ github.sha }}
+    secrets:
+      LOG_ANALYTICS_WORKSPACE_ID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+      LOG_ANALYTICS_WORKSPACE_KEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+      SUPERSET_PRIVATE_SUBNET_IDS: ${{ secrets.STAGING_SUPERSET_PRIVATE_SUBNET_IDS }}
+      SUPERSET_ECS_TASK_SECURITY_GROUP_ID: ${{ secrets.STAGING_SUPERSET_ECS_TASK_SECURITY_GROUP_ID }}
+
+  docker-sbom:
+    needs: docker-push
+    uses: ./.github/workflows/docker-sbom-staging.yml
+    secrets:
+      LOG_ANALYTICS_WORKSPACE_ID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+      LOG_ANALYTICS_WORKSPACE_KEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
