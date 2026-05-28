@@ -195,7 +195,6 @@ if ZITADEL_OAUTH_LOGIN:
     OAUTH_PROVIDERS.append(
         {
             "name": "zitadel",
-            "label": "GC Platform",
             "token_key": "access_token",
             "icon": "user",
             "remote_app": {
