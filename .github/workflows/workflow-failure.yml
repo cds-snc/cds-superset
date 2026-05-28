@@ -3,11 +3,8 @@ name: Workflow failure
 on:
   workflow_run:
     workflows:
-      - "Docker deploy Production"
-      - "Docker deploy Staging"
       - "Docker build and push Production"
       - "Docker build and push Staging"
-      - "Docker SBOM Staging"
       - "Manage Cache Warmup Tags"
       - "Release Please"
       - "Terraform Apply Production"
