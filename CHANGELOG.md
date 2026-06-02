@@ -1,5 +1,35 @@
 # Changelog
 
+## [3.28.0](https://github.com/cds-snc/cds-superset/compare/v3.27.1...v3.28.0) (2026-06-01)
+
+
+### Features
+
+* least privileged docker oidc roles ([#819](https://github.com/cds-snc/cds-superset/issues/819)) ([10e0751](https://github.com/cds-snc/cds-superset/commit/10e0751150609631ad7e8e6927cefdff85e9cd46))
+* replace workflow_run triggers with workflow_call ([#833](https://github.com/cds-snc/cds-superset/issues/833)) ([8e2c438](https://github.com/cds-snc/cds-superset/commit/8e2c438f425b85f100d3adeaefd470943cb2c517))
+
+
+### Bug Fixes
+
+* grant ecs:RunTask permission ([#826](https://github.com/cds-snc/cds-superset/issues/826)) ([99a6948](https://github.com/cds-snc/cds-superset/commit/99a694892e4a6ee60ae5410a03acb965f457f827))
+* remove OAUTH label ([#832](https://github.com/cds-snc/cds-superset/issues/832)) ([ead7333](https://github.com/cds-snc/cds-superset/commit/ead73330e2344c0ebb5a7bc29e0cd662f615ccd2))
+* SSO GC Platform URL ([#831](https://github.com/cds-snc/cds-superset/issues/831)) ([78eb0f7](https://github.com/cds-snc/cds-superset/commit/78eb0f78da8ce25b4c950ddd7bddd6689d552f2f))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#824](https://github.com/cds-snc/cds-superset/issues/824)) ([7d0110b](https://github.com/cds-snc/cds-superset/commit/7d0110b85b21aa1207f5ace9bc5eb2bb20e87793))
+* **deps:** lock file maintenance ([#830](https://github.com/cds-snc/cds-superset/issues/830)) ([81acec5](https://github.com/cds-snc/cds-superset/commit/81acec543d6d33cd3148e1882df3ac045991adc4))
+* **deps:** lock file maintenance ([#836](https://github.com/cds-snc/cds-superset/issues/836)) ([54d3dc1](https://github.com/cds-snc/cds-superset/commit/54d3dc12e19778a746b644e97687ee1038978f1d))
+* **deps:** update all minor dependencies ([#829](https://github.com/cds-snc/cds-superset/issues/829)) ([ae7ef56](https://github.com/cds-snc/cds-superset/commit/ae7ef568e89256f23e0fcf43d938ea17173c1a36))
+* **deps:** update all non-major github action dependencies ([#822](https://github.com/cds-snc/cds-superset/issues/822)) ([daa7829](https://github.com/cds-snc/cds-superset/commit/daa782939122b64824d05acb30d64bf9fc3526af))
+* **deps:** update dependency authlib to v1.7.1 [security] ([#817](https://github.com/cds-snc/cds-superset/issues/817)) ([c6a9817](https://github.com/cds-snc/cds-superset/commit/c6a9817448d83d54eb98302bd251857ad895a162))
+* **deps:** update dependency authlib to v1.7.2 ([#823](https://github.com/cds-snc/cds-superset/issues/823)) ([fea80ed](https://github.com/cds-snc/cds-superset/commit/fea80edfd805bab9d2ceae9ae6ade298dc7e5672))
+* **deps:** update dependency pyathena to v3.31.0 ([#835](https://github.com/cds-snc/cds-superset/issues/835)) ([6cbd725](https://github.com/cds-snc/cds-superset/commit/6cbd7254f98eed185837c3b1b68b75e3a4480f3b))
+* **deps:** update github/codeql-action action to v4.35.5 ([#828](https://github.com/cds-snc/cds-superset/issues/828)) ([aa1e66c](https://github.com/cds-snc/cds-superset/commit/aa1e66c2f6321a56f264ea068b906f1dd00c1b7e))
+* **deps:** update github/codeql-action action to v4.36.0 ([#834](https://github.com/cds-snc/cds-superset/issues/834)) ([9c3acd9](https://github.com/cds-snc/cds-superset/commit/9c3acd91af8aed5a19a192474ec52cef843bf352))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 931914d ([#827](https://github.com/cds-snc/cds-superset/issues/827)) ([9209866](https://github.com/cds-snc/cds-superset/commit/9209866f5cb77de942e67087a782f0e45138d612))
+
 ## [3.27.1](https://github.com/cds-snc/cds-superset/compare/v3.27.0...v3.27.1) (2026-05-11)
 
 
