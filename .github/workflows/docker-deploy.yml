@@ -72,10 +72,12 @@ jobs:
         propagate-tags: SERVICE
 
     - name: Update SSM parameter for deployed image
+      env:
+        IMAGE_TAG: ${{ inputs.image_tag }}
       run: |
         aws ssm put-parameter \
           --name "/ecs/${{ env.ECS_CLUSTER }}/${{ matrix.service }}/container-image" \
-          --value "${{ env.REGISTRY }}:${{ inputs.image_tag }}" \
+          --value "${{ env.REGISTRY }}:${IMAGE_TAG}" \
           --type "String" \
           --overwrite
 
