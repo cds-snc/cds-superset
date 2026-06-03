@@ -32,15 +32,16 @@ env:
   TF_VAR_superset_secret_key: ${{ secrets.STAGING_SUPERSET_SECRET_KEY }}
   TF_VAR_upptime_status_header: ${{ secrets.STAGING_UPPTIME_STATUS_HEADER }}
 
-permissions:
-  id-token: write
-  contents: read
-  pull-requests: write
+permissions: {}
 
 jobs:
   terraform-plan:
 
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@9ad793100229573be3f5ba78cc69ec523f2c8b7e # v1.1.0
