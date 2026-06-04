@@ -27,6 +27,8 @@ jobs:
           DNS_PROXY_WILDCARDGREEDY: "true"
 
       - name: Notify Slack
+        env:
+          GITHUB_WORKFLOW: ${{ github.workflow }}
         run: |
-          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.workflow }}>"}}]}'
+          json='{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":":red: Superset workflow failed: <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${GITHUB_WORKFLOW}>"}}]}'
           curl -X POST -H 'Content-type: application/json' --data "$json" "${{ secrets.SLACK_WEBHOOK_URL }}"
