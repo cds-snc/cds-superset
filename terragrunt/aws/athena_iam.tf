@@ -12,7 +12,7 @@ resource "aws_iam_role" "superset_athena_read" {
   description        = "This role allows the Superset ECS task and Celery workers to read from the ${each.key} Glue database"
   assume_role_policy = data.aws_iam_policy_document.superset_ecs_task_role.json
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 data "aws_iam_policy_document" "superset_ecs_task_role" {
@@ -34,7 +34,7 @@ resource "aws_iam_policy" "superset_athena_read" {
   name   = "SupersetAthenaRead-${each.key}"
   policy = data.aws_iam_policy_document.superset_athena_read_combined[each.key].json
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 data "aws_iam_policy_document" "superset_athena_read_combined" {

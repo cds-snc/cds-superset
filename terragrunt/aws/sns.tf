@@ -4,13 +4,13 @@
 resource "aws_sns_topic" "cloudwatch_alert_warning" {
   name              = "cloudwatch-alert-warning"
   kms_master_key_id = aws_kms_key.cloudwatch_alerts.arn
-  tags              = local.common_tags
+  tags              = local.core_tags
 }
 
 resource "aws_sns_topic" "cloudwatch_alert_ok" {
   name              = "cloudwatch-alert-ok"
   kms_master_key_id = aws_kms_key.cloudwatch_alerts.arn
-  tags              = local.common_tags
+  tags              = local.core_tags
 }
 
 resource "aws_sns_topic" "cloudwatch_alert_warning_us_east_1" {
@@ -18,7 +18,7 @@ resource "aws_sns_topic" "cloudwatch_alert_warning_us_east_1" {
 
   name              = "cloudwatch-alert-warning"
   kms_master_key_id = aws_kms_key.cloudwatch_alerts_us_east_1.arn
-  tags              = local.common_tags
+  tags              = local.core_tags
 }
 
 resource "aws_sns_topic" "cloudwatch_alert_ok_us_east_1" {
@@ -26,7 +26,7 @@ resource "aws_sns_topic" "cloudwatch_alert_ok_us_east_1" {
 
   name              = "cloudwatch-alert-ok"
   kms_master_key_id = aws_kms_key.cloudwatch_alerts_us_east_1.arn
-  tags              = local.common_tags
+  tags              = local.core_tags
 }
 
 #

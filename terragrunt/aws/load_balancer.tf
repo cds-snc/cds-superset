@@ -17,7 +17,7 @@ resource "aws_lb" "superset" {
   ]
   subnets = module.vpc.public_subnet_ids
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 resource "random_string" "alb_tg_suffix" {
@@ -46,7 +46,7 @@ resource "aws_lb_target_group" "superset" {
     cookie_duration = 43200 # 12 hours
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 
   lifecycle {
     create_before_destroy = true
@@ -73,7 +73,7 @@ resource "aws_lb_listener" "superset" {
     aws_route53_record.superset_validation,
   ]
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 # Serve security.txt as a fixed response from the ALB
@@ -97,5 +97,5 @@ resource "aws_alb_listener_rule" "security_txt" {
     }
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }

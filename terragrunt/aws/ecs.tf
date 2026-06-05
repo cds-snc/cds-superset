@@ -527,63 +527,63 @@ resource "aws_ssm_parameter" "google_oauth_client_id" {
   name  = "google_oauth_client_id"
   type  = "SecureString"
   value = var.google_oauth_client_id
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "google_oauth_client_secret" {
   name  = "google_oauth_client_secret"
   type  = "SecureString"
   value = var.google_oauth_client_secret
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "zitadel_oauth_client_id" {
   name  = "zitadel_oauth_client_id"
   type  = "SecureString"
   value = var.zitadel_oauth_client_id
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "zitadel_oauth_client_secret" {
   name  = "zitadel_oauth_client_secret"
   type  = "SecureString"
   value = var.zitadel_oauth_client_secret
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "guest_token_jwt_secret" {
   name  = "guest_token_jwt_secret"
   type  = "SecureString"
   value = var.guest_token_jwt_secret
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "slack_api_token" {
   name  = "slack_api_token"
   type  = "SecureString"
   value = var.slack_api_token
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "smtp_password" {
   name  = "smtp_password"
   type  = "SecureString"
   value = var.smtp_password
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "smtp_user" {
   name  = "smtp_user"
   type  = "SecureString"
   value = var.smtp_user
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "superset_secret_key" {
   name  = "superset_secret_key"
   type  = "SecureString"
   value = var.superset_secret_key
-  tags  = local.common_tags
+  tags  = local.core_tags
 }
 
 resource "aws_ssm_parameter" "ecs_cwagent_config" {
@@ -603,5 +603,5 @@ resource "aws_ssm_parameter" "ecs_cwagent_config" {
       }
     }
   EOT
-  tags  = local.common_tags
+  tags  = local.core_tags
 }

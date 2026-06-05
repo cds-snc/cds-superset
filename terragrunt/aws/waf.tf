@@ -419,7 +419,7 @@ resource "aws_wafv2_web_acl" "superset" {
     sampled_requests_enabled   = true
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 resource "aws_wafv2_web_acl_association" "superset" {
@@ -471,6 +471,7 @@ resource "aws_wafv2_regex_pattern_set" "label_sizerestrictions_body_excluded_pat
 resource "aws_iam_role" "superset_waf_logs" {
   name               = "superset-waf-logs"
   assume_role_policy = data.aws_iam_policy_document.superset_waf_logs_assume.json
+  tags               = local.core_tags
 }
 
 resource "aws_iam_role_policy" "superset_waf_logs" {
@@ -527,13 +528,13 @@ resource "aws_shield_subscription" "superset" {
 resource "aws_shield_protection" "superset_alb" {
   name         = "superset-alb"
   resource_arn = aws_lb.superset.arn
-  tags         = local.common_tags
+  tags         = local.core_tags
 }
 
 resource "aws_shield_protection" "superset_route53" {
   name         = "superset-route53"
   resource_arn = aws_route53_zone.superset.arn
-  tags         = local.common_tags
+  tags         = local.core_tags
 }
 
 resource "aws_shield_application_layer_automatic_response" "superset_alb" {

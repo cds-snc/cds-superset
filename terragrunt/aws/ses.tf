@@ -16,6 +16,7 @@ resource "aws_ses_domain_identity_verification" "superset" {
 
 resource "aws_iam_user" "superset_send_email" {
   name = "superset_send_email"
+  tags = local.core_tags
 }
 
 resource "aws_iam_group" "superset_send_email" {
@@ -50,6 +51,7 @@ data "aws_iam_policy_document" "superset_send_email" {
 resource "aws_iam_policy" "superset_send_email" {
   name   = "superset_send_email"
   policy = data.aws_iam_policy_document.superset_send_email.json
+  tags   = local.core_tags
 }
 
 resource "aws_iam_access_key" "superset_send_email" {
