@@ -165,7 +165,7 @@ resource "aws_wafv2_web_acl" "superset" {
     priority = 40
 
     action {
-      block {}
+      challenge {}
     }
 
     statement {
@@ -175,7 +175,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
         custom_key {
           ja4_fingerprint {
-            fallback_behavior = "MATCH"
+            fallback_behavior = "NO_MATCH"
           }
         }
       }
@@ -193,7 +193,7 @@ resource "aws_wafv2_web_acl" "superset" {
     priority = 50
 
     action {
-      block {}
+      challenge {}
     }
 
     statement {
@@ -203,7 +203,7 @@ resource "aws_wafv2_web_acl" "superset" {
 
         custom_key {
           ja4_fingerprint {
-            fallback_behavior = "MATCH"
+            fallback_behavior = "NO_MATCH"
           }
         }
 
