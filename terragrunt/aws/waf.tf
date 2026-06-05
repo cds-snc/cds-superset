@@ -21,7 +21,7 @@ resource "aws_wafv2_web_acl" "superset" {
     priority = 1
 
     action {
-      challenge {}
+      block {}
     }
 
     statement {
