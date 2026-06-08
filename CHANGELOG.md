@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.29.0](https://github.com/cds-snc/cds-superset/compare/v3.28.0...v3.29.0) (2026-06-08)
+
+
+### Features
+
+* github workflow static analysis ([#837](https://github.com/cds-snc/cds-superset/issues/837)) ([8bb0837](https://github.com/cds-snc/cds-superset/commit/8bb0837b257fc3a563284534e1920f62b2a9cc1c))
+
+
+### Bug Fixes
+
+* added missing permissions ([#839](https://github.com/cds-snc/cds-superset/issues/839)) ([926d225](https://github.com/cds-snc/cds-superset/commit/926d225d7bdd410b06d6f6cabc20d161646674d9))
+* updated ja4 rules ([#840](https://github.com/cds-snc/cds-superset/issues/840)) ([b59c9f1](https://github.com/cds-snc/cds-superset/commit/b59c9f1bf65413d1ab939048bbec90dce5e5b49b))
+
+
+### Miscellaneous Chores
+
+* add SSC CBR ID tags ([#841](https://github.com/cds-snc/cds-superset/issues/841)) ([1631f61](https://github.com/cds-snc/cds-superset/commit/1631f61be0f9017b15490f5827e782e0efc1e305))
+
 ## [3.28.0](https://github.com/cds-snc/cds-superset/compare/v3.27.1...v3.28.0) (2026-06-01)
 
 
