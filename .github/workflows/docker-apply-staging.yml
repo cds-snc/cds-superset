@@ -65,6 +65,9 @@ jobs:
 
   docker-deploy:
     needs: docker-push
+    permissions:
+      id-token: write
+      contents: read
     uses: ./.github/workflows/docker-deploy.yml
     with:
       aws_account_id: ${{ vars.STAGING_AWS_ACCOUNT_ID }}
