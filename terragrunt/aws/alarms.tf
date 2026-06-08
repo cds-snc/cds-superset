@@ -73,7 +73,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_cpu" {
     ServiceName = each.key
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
@@ -98,7 +98,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_high_memory" {
     ServiceName = each.key
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 #
@@ -124,7 +124,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_unhealthy_hosts" 
     TargetGroup  = aws_lb_target_group.superset.arn_suffix
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
@@ -147,7 +147,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_healthy_hosts" {
     TargetGroup  = aws_lb_target_group.superset.arn_suffix
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
@@ -177,7 +177,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_load_balancer_response_time" {
     }
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 #
@@ -215,7 +215,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_warnings" {
   alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 #
@@ -253,7 +253,7 @@ resource "aws_cloudwatch_metric_alarm" "superset_ecs_errors" {
   alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
 
-  tags = local.common_tags
+  tags = local.core_tags
 }
 
 #
@@ -276,7 +276,7 @@ resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
 # Sentinel Forwarder
 #
 module "sentinel_forwarder" {
-  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v10.11.4"
+  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v11.3.5"
 
   function_name = "sentinel-forwarder"
   layer_arn     = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:253"
@@ -315,6 +315,8 @@ resource "aws_cloudwatch_metric_alarm" "ses_bounce_rate_high" {
 
   alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+
+  tags = local.core_tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "ses_complaint_rate_high" {
@@ -331,6 +333,8 @@ resource "aws_cloudwatch_metric_alarm" "ses_complaint_rate_high" {
 
   alarm_actions = [aws_sns_topic.cloudwatch_alert_warning.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alert_ok.arn]
+
+  tags = local.core_tags
 }
 
 #
@@ -381,5 +385,5 @@ resource "aws_cloudwatch_metric_alarm" "athena_long_query_failed" {
     QueryType  = "DML"
   }
 
-  tags = local.common_tags
+  tags = local.core_tags
 }

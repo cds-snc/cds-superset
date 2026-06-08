@@ -4,7 +4,7 @@ locals {
 }
 
 module "github_workflow_roles" {
-  source = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v10.11.4"
+  source = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v11.3.5"
 
   roles = [
     {
@@ -34,6 +34,7 @@ resource "aws_iam_policy" "docker_push" {
   name   = local.docker_push_role
   path   = "/"
   policy = data.aws_iam_policy_document.docker_push.json
+  tags   = local.core_tags
 }
 
 #trivy:ignore:AVD-AWS-0342
@@ -70,6 +71,7 @@ resource "aws_iam_policy" "docker_deploy" {
   name   = local.docker_deploy_role
   path   = "/"
   policy = data.aws_iam_policy_document.docker_deploy.json
+  tags   = local.core_tags
 }
 
 #trivy:ignore:AVD-AWS-0342

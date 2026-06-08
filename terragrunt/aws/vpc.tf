@@ -1,13 +1,5 @@
-locals {
-  prefix = "cds"
-  common_tags = {
-    Terraform  = "true"
-    CostCentre = var.billing_code
-  }
-}
-
 module "vpc" {
-  source = "github.com/cds-snc/terraform-modules//vpc?ref=v10.11.4"
+  source = "github.com/cds-snc/terraform-modules//vpc?ref=v11.3.5"
   name   = "superspace-${var.env}"
 
   enable_flow_log                  = false
@@ -69,7 +61,7 @@ resource "aws_security_group" "superset_ecs" {
   description = "NSG for Superset ECS Tasks"
   name        = "superset_ecs"
   vpc_id      = module.vpc.vpc_id
-  tags        = local.common_tags
+  tags        = local.core_tags
 }
 
 resource "aws_security_group_rule" "superset_ecs_egress_all" {
@@ -107,7 +99,7 @@ resource "aws_security_group" "superset_lb" {
   name        = "superset_lb"
   description = "NSG for Superset load balancer"
   vpc_id      = module.vpc.vpc_id
-  tags        = local.common_tags
+  tags        = local.core_tags
 }
 
 resource "aws_security_group_rule" "superset_lb_ingress_internet_https" {
@@ -135,7 +127,7 @@ resource "aws_security_group" "superset_db" {
   name        = "superset_db"
   description = "NSG for Superset database"
   vpc_id      = module.vpc.vpc_id
-  tags        = local.common_tags
+  tags        = local.core_tags
 }
 
 resource "aws_security_group_rule" "superset_db_ingress_ecs" {
@@ -153,7 +145,7 @@ resource "aws_security_group" "superset_redis" {
   name        = "${local.prefix}-redis-sg"
   description = "Default redis security group"
   vpc_id      = module.vpc.vpc_id
-  tags        = local.common_tags
+  tags        = local.core_tags
 }
 
 resource "aws_security_group_rule" "superset_redis_ingress_ecs" {
