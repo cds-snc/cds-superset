@@ -90,6 +90,9 @@ jobs:
 
   docker-deploy:
     needs: [docker-push, get-version]
+    permissions:
+      id-token: write
+      contents: read
     uses: ./.github/workflows/docker-deploy.yml
     with:
       aws_account_id: ${{ vars.PROD_AWS_ACCOUNT_ID }}
