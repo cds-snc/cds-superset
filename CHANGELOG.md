@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.29.1](https://github.com/cds-snc/cds-superset/compare/v3.29.0...v3.29.1) (2026-06-15)
+
+
+### Bug Fixes
+
+* added missing permissions ([#846](https://github.com/cds-snc/cds-superset/issues/846)) ([3fc654e](https://github.com/cds-snc/cds-superset/commit/3fc654e37a05ca9dad33b8838586c669f9a847b8))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#843](https://github.com/cds-snc/cds-superset/issues/843)) ([0caf651](https://github.com/cds-snc/cds-superset/commit/0caf651df6b02c9f6e08fd16beed40458e208d43))
+* **deps:** update all non-major github action dependencies ([#842](https://github.com/cds-snc/cds-superset/issues/842)) ([6e804ae](https://github.com/cds-snc/cds-superset/commit/6e804ae75ecb19dc6670c325adb19a21f8419265))
+* **deps:** update all non-major github action dependencies ([#847](https://github.com/cds-snc/cds-superset/issues/847)) ([10cfa62](https://github.com/cds-snc/cds-superset/commit/10cfa62823733ea2a1c60cea13b9e65b7123df20))
+* **deps:** update all patch dependencies to v3.31.1 ([#848](https://github.com/cds-snc/cds-superset/issues/848)) ([e80151f](https://github.com/cds-snc/cds-superset/commit/e80151ff45b4afd68afd5a077b8f1545dc183b86))
+
 ## [3.29.0](https://github.com/cds-snc/cds-superset/compare/v3.28.0...v3.29.0) (2026-06-08)
 
 
