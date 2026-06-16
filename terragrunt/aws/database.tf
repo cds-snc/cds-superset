@@ -7,7 +7,7 @@ module "superset_db" {
 
   database_name  = "superset"
   engine         = "aurora-postgresql"
-  engine_version = "16.11"
+  engine_version = "16.14"
   instances      = var.superset_database_instances_count
   instance_class = var.superset_database_instance_class
   username       = var.superset_database_username
