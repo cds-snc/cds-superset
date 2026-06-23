@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.29.2](https://github.com/cds-snc/cds-superset/compare/v3.29.1...v3.29.2) (2026-06-22)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all minor dependencies to v3.32.0 ([#851](https://github.com/cds-snc/cds-superset/issues/851)) ([b951531](https://github.com/cds-snc/cds-superset/commit/b951531042f7c885c134cfd119d0659ac87d7c6a))
+* **deps:** update all non-major github action dependencies to v2.1.6 ([#850](https://github.com/cds-snc/cds-superset/issues/850)) ([b142b53](https://github.com/cds-snc/cds-superset/commit/b142b539dcffc70efb5987ddf96deccb670bd3ff))
+* **deps:** update docker pin digests ([#849](https://github.com/cds-snc/cds-superset/issues/849)) ([504b067](https://github.com/cds-snc/cds-superset/commit/504b06758d3e7514e0e410db17426c8d17d67fa7))
+
 ## [3.29.1](https://github.com/cds-snc/cds-superset/compare/v3.29.0...v3.29.1) (2026-06-15)
 
 
