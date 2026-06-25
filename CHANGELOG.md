@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.30.0](https://github.com/cds-snc/cds-superset/compare/v3.29.2...v3.30.0) (2026-06-25)
+
+
+### Features
+
+* version bump ([#853](https://github.com/cds-snc/cds-superset/issues/853)) ([6a07d8c](https://github.com/cds-snc/cds-superset/commit/6a07d8cb3679294ca303f7ff55061be98d3b126c))
+
 ## [3.29.2](https://github.com/cds-snc/cds-superset/compare/v3.29.1...v3.29.2) (2026-06-22)
 
 
