@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.30.0](https://github.com/cds-snc/cds-superset/compare/v3.29.2...v3.30.0) (2026-06-29)
+
+
+### Features
+
+* version bump ([#853](https://github.com/cds-snc/cds-superset/issues/853)) ([6a07d8c](https://github.com/cds-snc/cds-superset/commit/6a07d8cb3679294ca303f7ff55061be98d3b126c))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#856](https://github.com/cds-snc/cds-superset/issues/856)) ([3db0e51](https://github.com/cds-snc/cds-superset/commit/3db0e51950fdf93c96147c13d6a76daaae1a0878))
+* **deps:** update all non-major github action dependencies ([#855](https://github.com/cds-snc/cds-superset/issues/855)) ([20b879f](https://github.com/cds-snc/cds-superset/commit/20b879f904d8d585a28642fcaed4a6b76cd6c080))
+
 ## [3.29.2](https://github.com/cds-snc/cds-superset/compare/v3.29.1...v3.29.2) (2026-06-22)
 
 
