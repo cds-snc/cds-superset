@@ -1,12 +1,11 @@
+from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import sys
-from datetime import datetime
 
 
 class Handler(BaseHTTPRequestHandler):
     def _log(self, body: bytes) -> None:
-        ts = datetime.utcnow().isoformat(timespec="seconds") + "Z"
+        ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
         print(f"\n{'=' * 70}", flush=True)
         print(f"[{ts}]  {self.command} {self.path}", flush=True)
         print(f"{'-' * 70}", flush=True)
@@ -40,6 +39,6 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 9000
+    port = 9000
     print(f"Webhook receiver listening on :{port}", flush=True)
     HTTPServer(("0.0.0.0", port), Handler).serve_forever()
