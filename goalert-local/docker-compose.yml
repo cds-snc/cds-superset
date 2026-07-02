@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: goalert
+      POSTGRES_PASSWORD: goalert
+      POSTGRES_DB: goalert
+    ports:
+      - "5433:5432"
+    volumes:
+      - goalert-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U goalert"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  goalert:
+    image: goalert/goalert:v0.34.1
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    environment:
+      GOALERT_DB_URL: "postgres://goalert:goalert@postgres/goalert"
+      GOALERT_DATA_ENCRYPTION_KEY: "Twsf1ItKfPjUb87gg/P6UGFqAFNdMFrNt3vwfgYTUoM=" # local dev only
+      GOALERT_PUBLIC_URL: "http://localhost:8081"
+      GOALERT_LOG_FORMAT: "plain"
+      GOALERT_LISTEN: ":8081"
+    command: ["goalert", "--db-url", "postgres://goalert:goalert@postgres/goalert", "--data-encryption-key", "Twsf1ItKfPjUb87gg/P6UGFqAFNdMFrNt3vwfgYTUoM="]
+
+  webhook:
+    image: python:3.12-alpine
+    working_dir: /app
+    volumes:
+      - ./webhook-receiver.py:/app/webhook-receiver.py:ro
+    command: ["python", "/app/webhook-receiver.py", "9000"]
+    ports:
+      - "9000:9000"
+
+volumes:
+  goalert-db:
