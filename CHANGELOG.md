@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.30.1](https://github.com/cds-snc/cds-superset/compare/v3.30.0...v3.30.1) (2026-07-06)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#862](https://github.com/cds-snc/cds-superset/issues/862)) ([34d4e03](https://github.com/cds-snc/cds-superset/commit/34d4e035be613399a97eb81bb424ef637063a17f))
+* **deps:** update all non-major github action dependencies ([#861](https://github.com/cds-snc/cds-superset/issues/861)) ([72d16a4](https://github.com/cds-snc/cds-superset/commit/72d16a4898eddd86160fd1b7f78991a9d266bc3b))
+* **deps:** update mcr.microsoft.com/devcontainers/base:bullseye docker digest to 6c9ed5e ([#859](https://github.com/cds-snc/cds-superset/issues/859)) ([72af84b](https://github.com/cds-snc/cds-superset/commit/72af84b23b2084448667b5d9a81f0a14e8400bee))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v11.3.6 ([#860](https://github.com/cds-snc/cds-superset/issues/860)) ([fd4cf58](https://github.com/cds-snc/cds-superset/commit/fd4cf58309169ae022f6128102a1891511131a40))
+
 ## [3.30.0](https://github.com/cds-snc/cds-superset/compare/v3.29.2...v3.30.0) (2026-06-29)
 
 
