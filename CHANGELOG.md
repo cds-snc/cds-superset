@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.30.2](https://github.com/cds-snc/cds-superset/compare/v3.30.1...v3.30.2) (2026-07-13)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#870](https://github.com/cds-snc/cds-superset/issues/870)) ([b6aabc0](https://github.com/cds-snc/cds-superset/commit/b6aabc00cc95a1890ff1a59c1607abaab737df1e))
+* **deps:** update actions/checkout action to v7 ([#864](https://github.com/cds-snc/cds-superset/issues/864)) ([cc509c5](https://github.com/cds-snc/cds-superset/commit/cc509c508a067220478b97d8e68dfc4a5c444066))
+* **deps:** update actions/create-github-app-token action to v3 ([#865](https://github.com/cds-snc/cds-superset/issues/865)) ([b512608](https://github.com/cds-snc/cds-superset/commit/b512608601f99936ddec7e8e34bb378c9dc3ecab))
+* **deps:** update actions/dependency-review-action action to v5 ([#866](https://github.com/cds-snc/cds-superset/issues/866)) ([c5486c3](https://github.com/cds-snc/cds-superset/commit/c5486c387be89640740cc2f80785e46a4eca99e7))
+* **deps:** update all minor dependencies ([#868](https://github.com/cds-snc/cds-superset/issues/868)) ([a8e1fb4](https://github.com/cds-snc/cds-superset/commit/a8e1fb4df79d74240e13cccd3d802364239270fb))
+* **deps:** update all non-major github action dependencies ([#869](https://github.com/cds-snc/cds-superset/issues/869)) ([8b61a62](https://github.com/cds-snc/cds-superset/commit/8b61a627ce919c0678492adfb2bc0e1fa8f62674))
+* **deps:** update googleapis/release-please-action action to v5 ([#867](https://github.com/cds-snc/cds-superset/issues/867)) ([9780b34](https://github.com/cds-snc/cds-superset/commit/9780b34d5662f075e9d1fdd8f6f86642cfc1969b))
+
 ## [3.30.1](https://github.com/cds-snc/cds-superset/compare/v3.30.0...v3.30.1) (2026-07-06)
 
 
