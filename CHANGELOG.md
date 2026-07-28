@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.30.3](https://github.com/cds-snc/cds-superset/compare/v3.30.2...v3.30.3) (2026-07-27)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#875](https://github.com/cds-snc/cds-superset/issues/875)) ([2289798](https://github.com/cds-snc/cds-superset/commit/2289798ed4339731ed32cea8bc638467e7e7fb52))
+* **deps:** update all non-major github action dependencies ([#872](https://github.com/cds-snc/cds-superset/issues/872)) ([7e33733](https://github.com/cds-snc/cds-superset/commit/7e3373352edc74fd98d8fa4c2aa309b7a5d4f8f0))
+* **deps:** update dependency pyathena to v3.35.2 ([#874](https://github.com/cds-snc/cds-superset/issues/874)) ([465ed1e](https://github.com/cds-snc/cds-superset/commit/465ed1e2dfb4d62831f4d6954541fa7bb7492864))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v11.4.4 ([#873](https://github.com/cds-snc/cds-superset/issues/873)) ([eaf7713](https://github.com/cds-snc/cds-superset/commit/eaf7713bd5876943b43dfc7719ec6e6f479d7950))
+
 ## [3.30.2](https://github.com/cds-snc/cds-superset/compare/v3.30.1...v3.30.2) (2026-07-13)
 
 
