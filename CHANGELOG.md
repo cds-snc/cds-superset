@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.30.4](https://github.com/cds-snc/cds-superset/compare/v3.30.3...v3.30.4) (2026-08-31)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#883](https://github.com/cds-snc/cds-superset/issues/883)) ([a5812cf](https://github.com/cds-snc/cds-superset/commit/a5812cf435d2696eb182aee5ff17cfcba0f9a62a))
+* **deps:** lock file maintenance ([#885](https://github.com/cds-snc/cds-superset/issues/885)) ([ed4920c](https://github.com/cds-snc/cds-superset/commit/ed4920cc85a4d1d17284d5b47b6415a75eae1194))
+* **deps:** update all minor dependencies ([#882](https://github.com/cds-snc/cds-superset/issues/882)) ([4822fa4](https://github.com/cds-snc/cds-superset/commit/4822fa43568692410d780c122616f8b2fda2999a))
+* **deps:** update all non-major github action dependencies ([#877](https://github.com/cds-snc/cds-superset/issues/877)) ([2ec89dc](https://github.com/cds-snc/cds-superset/commit/2ec89dc200b363e063dfd5d85e2a734b3789492c))
+* **deps:** update all non-major github action dependencies ([#880](https://github.com/cds-snc/cds-superset/issues/880)) ([9cfb18d](https://github.com/cds-snc/cds-superset/commit/9cfb18d1f19b58cb76bd05917bf677ed1f74bf24))
+* **deps:** update all non-major github action dependencies ([#884](https://github.com/cds-snc/cds-superset/issues/884)) ([7d9eee7](https://github.com/cds-snc/cds-superset/commit/7d9eee7ea5fe6576fa4b12121e5810f40029aa90))
+* **deps:** update all patch dependencies ([#878](https://github.com/cds-snc/cds-superset/issues/878)) ([9d89403](https://github.com/cds-snc/cds-superset/commit/9d894033c66362b5b0cb587c35c530342b3c5490))
+* **deps:** update dependency pyathena to v3.35.4 ([#881](https://github.com/cds-snc/cds-superset/issues/881)) ([6bece2e](https://github.com/cds-snc/cds-superset/commit/6bece2e484453f50b8c3e7fab66c90fa341d1617))
+
 ## [3.30.3](https://github.com/cds-snc/cds-superset/compare/v3.30.2...v3.30.3) (2026-07-27)
 
 
