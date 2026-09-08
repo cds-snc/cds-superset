@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.30.5](https://github.com/cds-snc/cds-superset/compare/v3.30.4...v3.30.5) (2026-09-08)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all non-major github action dependencies ([#886](https://github.com/cds-snc/cds-superset/issues/886)) ([561c0fa](https://github.com/cds-snc/cds-superset/commit/561c0faf6358033647e436ce1e175da7a1d6747f))
+* **deps:** update dependency authlib to v1.8.0 ([#887](https://github.com/cds-snc/cds-superset/issues/887)) ([734a87d](https://github.com/cds-snc/cds-superset/commit/734a87d8703dd8abcb8cb8b087233028ac7a0f2a))
+
 ## [3.30.4](https://github.com/cds-snc/cds-superset/compare/v3.30.3...v3.30.4) (2026-08-31)
 
 
