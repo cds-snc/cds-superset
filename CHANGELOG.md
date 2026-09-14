@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.30.5](https://github.com/cds-snc/cds-superset/compare/v3.30.4...v3.30.5) (2026-09-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#891](https://github.com/cds-snc/cds-superset/issues/891)) ([c2245df](https://github.com/cds-snc/cds-superset/commit/c2245df8589af0229b03a9cf687f18c206958ea5))
+* **deps:** update all non-major github action dependencies ([#886](https://github.com/cds-snc/cds-superset/issues/886)) ([561c0fa](https://github.com/cds-snc/cds-superset/commit/561c0faf6358033647e436ce1e175da7a1d6747f))
+* **deps:** update dependency authlib to v1.8.0 ([#887](https://github.com/cds-snc/cds-superset/issues/887)) ([734a87d](https://github.com/cds-snc/cds-superset/commit/734a87d8703dd8abcb8cb8b087233028ac7a0f2a))
+* **deps:** update dependency pyathena to v3.36.0 ([#890](https://github.com/cds-snc/cds-superset/issues/890)) ([ae60141](https://github.com/cds-snc/cds-superset/commit/ae60141436f8e539d9edd47b1a636eb878285700))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v11.4.7 ([#889](https://github.com/cds-snc/cds-superset/issues/889)) ([6db223c](https://github.com/cds-snc/cds-superset/commit/6db223c564422376efebcf6f873e59da0a1b31c7))
+
 ## [3.30.4](https://github.com/cds-snc/cds-superset/compare/v3.30.3...v3.30.4) (2026-08-31)
 
 
