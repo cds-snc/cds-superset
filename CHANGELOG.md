@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.30.6](https://github.com/cds-snc/cds-superset/compare/v3.30.5...v3.30.6) (2026-09-21)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-python action to v7 ([#896](https://github.com/cds-snc/cds-superset/issues/896)) ([e1d69b9](https://github.com/cds-snc/cds-superset/commit/e1d69b9b910db5c88590802194342b241137461c))
+* **deps:** update all non-major github action dependencies ([#894](https://github.com/cds-snc/cds-superset/issues/894)) ([db14370](https://github.com/cds-snc/cds-superset/commit/db14370520abb2a62bcbcaf9bdec118b90f5fed4))
+* **deps:** update apache/superset:6.1.0 docker digest to 16b50bb ([#892](https://github.com/cds-snc/cds-superset/issues/892)) ([3a09f03](https://github.com/cds-snc/cds-superset/commit/3a09f035d41b627b79ba00493e86d78bb2e03165))
+* **deps:** update dependency psycopg2-binary to v2.9.13 ([#893](https://github.com/cds-snc/cds-superset/issues/893)) ([f711384](https://github.com/cds-snc/cds-superset/commit/f711384d7a6bc21e9472399b4228316c10862f22))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v12 ([#897](https://github.com/cds-snc/cds-superset/issues/897)) ([a5db632](https://github.com/cds-snc/cds-superset/commit/a5db632b6eb4723144dfecf15f68c0580bed5c4b))
+
 ## [3.30.5](https://github.com/cds-snc/cds-superset/compare/v3.30.4...v3.30.5) (2026-09-14)
 
 
