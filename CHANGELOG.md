@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.30.8](https://github.com/cds-snc/cds-superset/compare/v3.30.7...v3.30.8) (2026-10-05)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#904](https://github.com/cds-snc/cds-superset/issues/904)) ([69f4cc5](https://github.com/cds-snc/cds-superset/commit/69f4cc5657da822254c61d5743d505bba27b65c7))
+* **deps:** update dependency flake8 to v7.4.1 ([#903](https://github.com/cds-snc/cds-superset/issues/903)) ([1c248d9](https://github.com/cds-snc/cds-superset/commit/1c248d96788a07e1c9dd9ff7cf8cb2058edb78c9))
+* **deps:** update github/codeql-action action to v4.38.2 ([#902](https://github.com/cds-snc/cds-superset/issues/902)) ([3d4e9c7](https://github.com/cds-snc/cds-superset/commit/3d4e9c7ba3000dbc1fcb1da6bee26ea867314cba))
+
 ## [3.30.7](https://github.com/cds-snc/cds-superset/compare/v3.30.6...v3.30.7) (2026-09-28)
 
 
