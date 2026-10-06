@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.30.9](https://github.com/cds-snc/cds-superset/compare/v3.30.8...v3.30.9) (2026-10-06)
+
+
+### Bug Fixes
+
+* remove shield automatic response ([#906](https://github.com/cds-snc/cds-superset/issues/906)) ([eeee747](https://github.com/cds-snc/cds-superset/commit/eeee7470d1d5c28d45c53bfde77fab0b3b35f85b))
+
 ## [3.30.8](https://github.com/cds-snc/cds-superset/compare/v3.30.7...v3.30.8) (2026-10-05)
 
 
