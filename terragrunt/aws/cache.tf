@@ -5,7 +5,7 @@ resource "aws_elasticache_replication_group" "superset_cache" {
   engine               = "valkey"
   engine_version       = "7.2"
   parameter_group_name = "default.valkey7"
-  node_type            = var.env == "prod" ? "cache.t2.small" : "cache.t2.micro"
+  node_type            = var.env == "prod" ? "cache.t3.small" : "cache.t3.micro"
   num_cache_clusters   = 1
   port                 = 6379
 
