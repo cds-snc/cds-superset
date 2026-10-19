@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.30.9](https://github.com/cds-snc/cds-superset/compare/v3.30.8...v3.30.9) (2026-10-19)
+
+
+### Bug Fixes
+
+* remove shield automatic response ([#906](https://github.com/cds-snc/cds-superset/issues/906)) ([eeee747](https://github.com/cds-snc/cds-superset/commit/eeee7470d1d5c28d45c53bfde77fab0b3b35f85b))
+* upgrade to latest gen of cache nodes ([#911](https://github.com/cds-snc/cds-superset/issues/911)) ([f55ad92](https://github.com/cds-snc/cds-superset/commit/f55ad92a9b2c7afcde1ee89792fc5d18e54aaf5b))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#910](https://github.com/cds-snc/cds-superset/issues/910)) ([2b8ede3](https://github.com/cds-snc/cds-superset/commit/2b8ede3713a3d98f7ef0e17d8694e84670e563f7))
+* **deps:** lock file maintenance ([#915](https://github.com/cds-snc/cds-superset/issues/915)) ([b2ca7e7](https://github.com/cds-snc/cds-superset/commit/b2ca7e775b26f1394c9aad6941b21b77567bdd9e))
+* **deps:** update all minor dependencies ([#909](https://github.com/cds-snc/cds-superset/issues/909)) ([49ebe31](https://github.com/cds-snc/cds-superset/commit/49ebe31ea4217495cad53a826c1ba22725394255))
+* **deps:** update all minor dependencies ([#914](https://github.com/cds-snc/cds-superset/issues/914)) ([ddfa4fc](https://github.com/cds-snc/cds-superset/commit/ddfa4fc3dd098fdfe6563e4ddda2b6a0b0b211cb))
+* **deps:** update all non-major github action dependencies ([#908](https://github.com/cds-snc/cds-superset/issues/908)) ([3ef8d72](https://github.com/cds-snc/cds-superset/commit/3ef8d72ec0dd71d5522feb063f2a05ef92b7d3c6))
+* **deps:** update all non-major github action dependencies ([#912](https://github.com/cds-snc/cds-superset/issues/912)) ([dd8db96](https://github.com/cds-snc/cds-superset/commit/dd8db969a755b835884c13613f8f97be16efe9b7))
+* **deps:** update dependency black to v26.10.1 ([#913](https://github.com/cds-snc/cds-superset/issues/913)) ([0c9e66e](https://github.com/cds-snc/cds-superset/commit/0c9e66e671f3713e61d1043eda9c0aeadd75c518))
+
 ## [3.30.8](https://github.com/cds-snc/cds-superset/compare/v3.30.7...v3.30.8) (2026-10-05)
 
 
