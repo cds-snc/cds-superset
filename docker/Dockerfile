@@ -1,7 +1,6 @@
 FROM apache/superset:6.1.0@sha256:16b50bbef6648912a79e3293d418fefa743ce555d36c5af6b85d859119ed7f88
 USER root
 
-
 # Adjust system packages.
 # Removals are done to reduce image size and security vulnerabilities.
 RUN apt-get update && \
