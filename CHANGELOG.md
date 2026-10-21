@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.30.10](https://github.com/cds-snc/cds-superset/compare/v3.30.9...v3.30.10) (2026-10-21)
+
+
+### Bug Fixes
+
+* bump certifi, uv and pip for emSign CA incident ([#916](https://github.com/cds-snc/cds-superset/issues/916)) ([2c4bb6d](https://github.com/cds-snc/cds-superset/commit/2c4bb6d79cc54c1c37c621e8cf045b935044aaf9))
+
 ## [3.30.9](https://github.com/cds-snc/cds-superset/compare/v3.30.8...v3.30.9) (2026-10-19)
 
 
