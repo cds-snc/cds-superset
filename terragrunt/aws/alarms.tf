@@ -276,12 +276,29 @@ resource "aws_cloudwatch_query_definition" "superset_ecs_errors" {
 # Sentinel Forwarder
 #
 module "sentinel_forwarder" {
-  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v12.1.2"
+  source = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v13.1.0"
 
   function_name = "sentinel-forwarder"
-  layer_arn     = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:253"
-  customer_id   = var.sentinel_workspace_id
-  shared_key    = var.sentinel_workspace_key
+  layer_arn     = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:273"
+
+  # Kept for rollback only: the layer ignores these once dce_endpoint and
+  # dcr_config are set.
+  customer_id = var.sentinel_workspace_id
+  shared_key  = var.sentinel_workspace_key
+
+  # Logs Ingestion API (v2). No stored secret: the Lambda's role assumes the
+  # Sentinel forwarder hub role in Log Archive, which mints the token Entra
+  # accepts. See cds-snc/sentinel-connectors docs/aws-forwarder-v2-onboarding.md
+  dce_endpoint = "https://dce-sentinel-forwarder-v2-153n.canadacentral-1.ingest.monitor.azure.com"
+  dcr_config = {
+    AWSCloudWatchLog = {
+      dcrImmutableId = "dcr-6eccfc9e7ef34cd293566d5073d551f6"
+      streamName     = "Custom-AWSCloudWatchLog_v2_Input"
+    }
+  }
+  azure_client_id = "97057b1c-9b09-4dd3-a4f9-d9df6d181949"
+  azure_tenant_id = "221ca1d3-b3f2-4346-8abc-88f802495c7d"
+  hub_role_arn    = "arn:aws:iam::274536870005:role/sentinel-forwarder-hub"
 
   cloudwatch_log_arns = [
     "arn:aws:logs:${var.region}:${var.account_id}:log-group:${local.rds_cluster_postgresql_log_group_name}"
