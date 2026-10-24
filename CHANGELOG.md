@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.31.0](https://github.com/cds-snc/cds-superset/compare/v3.30.10...v3.31.0) (2026-10-24)
+
+
+### Features
+
+* send Superset role grants to Sentinel through the Logs Ingestion API ([#918](https://github.com/cds-snc/cds-superset/issues/918)) ([681963e](https://github.com/cds-snc/cds-superset/commit/681963ea0296e7c0ff747637a039804fec3345c9))
+
 ## [3.30.10](https://github.com/cds-snc/cds-superset/compare/v3.30.9...v3.30.10) (2026-10-21)
 
 
