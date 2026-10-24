@@ -10,7 +10,7 @@ playwright==1.63.0
 # Security updates
 urllib3>=2.6.0
 werkzeug>=3.1.4
-brotli>=1.2.0
+brotli>=1.2.1
 jaraco.context>=6.1.0
 uv>=0.13.4
 pip>=26.2.2
