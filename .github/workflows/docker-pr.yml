@@ -7,8 +7,7 @@ on:
       - "docker/**"
       - ".github/workflows/docker-pr.yml"
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   docker-hadolint:
@@ -50,6 +49,8 @@ jobs:
 
   python-validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@58d95c286bfa233aec52055237b26a20c6ae13a5 # v1.2.1
@@ -71,9 +72,9 @@ jobs:
           make ARGS=--check fmt
 
   docker-build:
-    
     runs-on: ubuntu-24.04-arm
-
+    permissions:
+      contents: read
     steps: 
 
       - name: Audit DNS requests

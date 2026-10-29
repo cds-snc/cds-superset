@@ -10,8 +10,7 @@ on:
       SLACK_WEBHOOK_URL:
         required: true
 
-permissions:
-  contents: none
+permissions: {}
 
 jobs:
   on-failure:

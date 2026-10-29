@@ -5,12 +5,13 @@ on:
       - ".github/workflows/*.yml"
       - ".github/workflows/scripts/check-workflow-run-trigger.sh"
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   workflow-pr:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@58d95c286bfa233aec52055237b26a20c6ae13a5 # v1.2.1
