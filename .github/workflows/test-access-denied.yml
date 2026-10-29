@@ -12,24 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
-    
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@58d95c286bfa233aec52055237b26a20c6ae13a5 # v1.2.1
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
-          DNS_PROXY_SENTINELFORWARDINGMODE: "oidc"
-          DNS_PROXY_SENTINELTENANTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_TENANT_ID }}"
-          DNS_PROXY_SENTINELCLIENTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_CLIENT_ID }}"
-          DNS_PROXY_SENTINELDCEURI: "${{ secrets.SENTINEL_DCE_ENDPOINT }}"
-          DNS_PROXY_SENTINELDCRIMMUTABLEID: "${{ vars.SENTINEL_DCR_RULE_ID_DNS_PROXY }}"
-          DNS_PROXY_SENTINELSTREAMNAME: Custom-GitHubMetadata_CI_DNS_Queries_V2_Input
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: "${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}"
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: "${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}"
           DNS_PROXY_SAFELIST: "${{ vars.DNS_PROXY_SAFELIST }}"
           DNS_PROXY_WILDCARDGREEDY: "true"
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
         
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -57,9 +53,8 @@ jobs:
   workflow-failure:
     needs: [test-access]
     if: failure()
-    permissions:
-      id-token: write
     uses: ./.github/workflows/workflow-failure.yml
     secrets:
-      SENTINEL_DCE_ENDPOINT: ${{ secrets.SENTINEL_DCE_ENDPOINT }}
+      LOG_ANALYTICS_WORKSPACE_ID: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+      LOG_ANALYTICS_WORKSPACE_KEY: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
       SLACK_WEBHOOK_URL: ${{ secrets.PROD_CLOUDWATCH_ALERT_SLACK_WEBHOOK }}

@@ -16,19 +16,14 @@ jobs:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
       pull-requests: write
-      id-token: write
 
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@58d95c286bfa233aec52055237b26a20c6ae13a5 # v1.2.1
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
-          DNS_PROXY_SENTINELFORWARDINGMODE: "oidc"
-          DNS_PROXY_SENTINELTENANTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_TENANT_ID }}"
-          DNS_PROXY_SENTINELCLIENTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_CLIENT_ID }}"
-          DNS_PROXY_SENTINELDCEURI: "${{ secrets.SENTINEL_DCE_ENDPOINT }}"
-          DNS_PROXY_SENTINELDCRIMMUTABLEID: "${{ vars.SENTINEL_DCR_RULE_ID_DNS_PROXY }}"
-          DNS_PROXY_SENTINELSTREAMNAME: Custom-GitHubMetadata_CI_DNS_Queries_V2_Input
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: "${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}"
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: "${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}"
           DNS_PROXY_SAFELIST: "${{ vars.DNS_PROXY_SAFELIST }}"
           DNS_PROXY_WILDCARDGREEDY: "true"
 
@@ -56,18 +51,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
     steps:
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@58d95c286bfa233aec52055237b26a20c6ae13a5 # v1.2.1
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
-          DNS_PROXY_SENTINELFORWARDINGMODE: "oidc"
-          DNS_PROXY_SENTINELTENANTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_TENANT_ID }}"
-          DNS_PROXY_SENTINELCLIENTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_CLIENT_ID }}"
-          DNS_PROXY_SENTINELDCEURI: "${{ secrets.SENTINEL_DCE_ENDPOINT }}"
-          DNS_PROXY_SENTINELDCRIMMUTABLEID: "${{ vars.SENTINEL_DCR_RULE_ID_DNS_PROXY }}"
-          DNS_PROXY_SENTINELSTREAMNAME: Custom-GitHubMetadata_CI_DNS_Queries_V2_Input
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: "${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}"
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: "${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}"
           DNS_PROXY_SAFELIST: "${{ vars.DNS_PROXY_SAFELIST }}"
           DNS_PROXY_WILDCARDGREEDY: "true"
 
@@ -82,24 +72,17 @@ jobs:
           make ARGS=--check fmt
 
   docker-build:
-    
     runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
-      id-token: write
-
     steps: 
 
       - name: Audit DNS requests
         uses: cds-snc/dns-proxy-action@58d95c286bfa233aec52055237b26a20c6ae13a5 # v1.2.1
         env:
           DNS_PROXY_FORWARDTOSENTINEL: "true"
-          DNS_PROXY_SENTINELFORWARDINGMODE: "oidc"
-          DNS_PROXY_SENTINELTENANTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_TENANT_ID }}"
-          DNS_PROXY_SENTINELCLIENTID: "${{ vars.SENTINEL_FORWARDER_V2_GITHUB_ACTIONS_CLIENT_ID }}"
-          DNS_PROXY_SENTINELDCEURI: "${{ secrets.SENTINEL_DCE_ENDPOINT }}"
-          DNS_PROXY_SENTINELDCRIMMUTABLEID: "${{ vars.SENTINEL_DCR_RULE_ID_DNS_PROXY }}"
-          DNS_PROXY_SENTINELSTREAMNAME: Custom-GitHubMetadata_CI_DNS_Queries_V2_Input
+          DNS_PROXY_LOGANALYTICSWORKSPACEID: "${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}"
+          DNS_PROXY_LOGANALYTICSSHAREDKEY: "${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}"
           DNS_PROXY_SAFELIST: "${{ vars.DNS_PROXY_SAFELIST }}"
           DNS_PROXY_WILDCARDGREEDY: "true"
 
