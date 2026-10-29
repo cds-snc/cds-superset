@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.31.1](https://github.com/cds-snc/cds-superset/compare/v3.31.0...v3.31.1) (2026-10-29)
+
+
+### Bug Fixes
+
+* switch to Athena managed query results ([#925](https://github.com/cds-snc/cds-superset/issues/925)) ([7ecb185](https://github.com/cds-snc/cds-superset/commit/7ecb185e80ff81a8bbd83f58b3fc7b4a8e07de23))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#923](https://github.com/cds-snc/cds-superset/issues/923)) ([40a032d](https://github.com/cds-snc/cds-superset/commit/40a032d1caa589be66f204ff15f15238c703f0cd))
+* **deps:** update all minor dependencies ([#921](https://github.com/cds-snc/cds-superset/issues/921)) ([5ea028a](https://github.com/cds-snc/cds-superset/commit/5ea028a9b817cf7ea9c7c6c791ffed9cd49df7bc))
+* **deps:** update all non-major github action dependencies ([#922](https://github.com/cds-snc/cds-superset/issues/922)) ([0af259e](https://github.com/cds-snc/cds-superset/commit/0af259ed3c67b389b7ba8df8d2a7031f582fa983))
+* upgrade dns-proxy-action to v1.2.1 ([#926](https://github.com/cds-snc/cds-superset/issues/926)) ([3a4a7ba](https://github.com/cds-snc/cds-superset/commit/3a4a7ba6d8b5f091eb4211cb35dbac2e8af04502))
+
 ## [3.31.0](https://github.com/cds-snc/cds-superset/compare/v3.30.10...v3.31.0) (2026-10-24)
 
 
