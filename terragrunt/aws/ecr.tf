@@ -44,3 +44,8 @@ resource "aws_ecr_lifecycle_policy" "superset-image" {
   }
   EOT
 }
+
+resource "aws_ecr_pull_through_cache_rule" "public" {
+  ecr_repository_prefix = "ecr-public"
+  upstream_registry_url = "public.ecr.aws"
+}
