@@ -1,6 +1,7 @@
 locals {
   docker_push_role   = "${var.product_name}-docker-push"
   docker_deploy_role = "${var.product_name}-docker-deploy"
+  docker_pull        = "${var.product_name}-docker-pull"
 }
 
 module "github_workflow_roles" {
@@ -16,9 +17,13 @@ module "github_workflow_roles" {
       name      = local.docker_deploy_role
       repo_name = "cds-superset"
       claim     = "ref:refs/heads/main"
+    },
+    {
+      name      = local.docker_pull
+      repo_name = "cds-superset"
+      claim     = "ref:refs/heads/main"
     }
   ]
-
   oidc_exists       = true
   billing_tag_value = var.billing_code
 }
@@ -135,5 +140,42 @@ data "aws_iam_policy_document" "docker_deploy" {
       "arn:aws:ssm:${var.region}:${var.account_id}:parameter/ecs/superset/celery-worker/container-image",
       "arn:aws:ssm:${var.region}:${var.account_id}:parameter/ecs/superset/celery-beat/container-image",
     ]
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "docker_pull" {
+  role       = local.docker_pull
+  policy_arn = aws_iam_policy.docker_pull.arn
+
+  depends_on = [module.github_workflow_roles]
+}
+
+resource "aws_iam_policy" "docker_pull" {
+  name   = local.docker_pull
+  path   = "/"
+  policy = data.aws_iam_policy_document.docker_pull.json
+  tags   = local.core_tags
+}
+
+data "aws_iam_policy_document" "docker_pull" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:BatchImportUpstreamImage",
+      "ecr:GetDownloadUrlForLayer"
+    ]
+    resources = [
+      "arn:aws:ecr:${var.region}:${var.account_id}:repository/*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "ecr:GetAuthorizationToken",
+    ]
+    resources = ["*"]
   }
 }
