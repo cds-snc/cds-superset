@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.31.1](https://github.com/cds-snc/cds-superset/compare/v3.31.0...v3.31.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* add ECR public pull through cache ([#933](https://github.com/cds-snc/cds-superset/issues/933)) ([6052005](https://github.com/cds-snc/cds-superset/commit/60520055cc3d8a43acb419bb4d5a8436d9ac09f5))
+* switch to Athena managed query results ([#925](https://github.com/cds-snc/cds-superset/issues/925)) ([7ecb185](https://github.com/cds-snc/cds-superset/commit/7ecb185e80ff81a8bbd83f58b3fc7b4a8e07de23))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#923](https://github.com/cds-snc/cds-superset/issues/923)) ([40a032d](https://github.com/cds-snc/cds-superset/commit/40a032d1caa589be66f204ff15f15238c703f0cd))
+* **deps:** lock file maintenance ([#932](https://github.com/cds-snc/cds-superset/issues/932)) ([7120b86](https://github.com/cds-snc/cds-superset/commit/7120b86c684867e9540982244ccdcbd53e889ef6))
+* **deps:** update all minor dependencies ([#921](https://github.com/cds-snc/cds-superset/issues/921)) ([5ea028a](https://github.com/cds-snc/cds-superset/commit/5ea028a9b817cf7ea9c7c6c791ffed9cd49df7bc))
+* **deps:** update all non-major github action dependencies ([#922](https://github.com/cds-snc/cds-superset/issues/922)) ([0af259e](https://github.com/cds-snc/cds-superset/commit/0af259ed3c67b389b7ba8df8d2a7031f582fa983))
+* **deps:** update all non-major github action dependencies ([#930](https://github.com/cds-snc/cds-superset/issues/930)) ([3444f72](https://github.com/cds-snc/cds-superset/commit/3444f727ced2ec2cbf06b3d46ec765c1999fd331))
+* **deps:** update dependency playwright to v1.64.1 ([#929](https://github.com/cds-snc/cds-superset/issues/929)) ([4d92bf1](https://github.com/cds-snc/cds-superset/commit/4d92bf11793a5283c66031c61a479474b5504e63))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v13 ([#927](https://github.com/cds-snc/cds-superset/issues/927)) ([7c8cd00](https://github.com/cds-snc/cds-superset/commit/7c8cd007d77359237ca0bd9113c0ac66caae0934))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v13.2.0 ([#931](https://github.com/cds-snc/cds-superset/issues/931)) ([975fe9c](https://github.com/cds-snc/cds-superset/commit/975fe9cea870fa7a6cb6b7bb36437127305d50a4))
+* upgrade dns-proxy-action to v1.2.1 ([#926](https://github.com/cds-snc/cds-superset/issues/926)) ([3a4a7ba](https://github.com/cds-snc/cds-superset/commit/3a4a7ba6d8b5f091eb4211cb35dbac2e8af04502))
+
 ## [3.31.0](https://github.com/cds-snc/cds-superset/compare/v3.30.10...v3.31.0) (2026-10-24)
 
 
