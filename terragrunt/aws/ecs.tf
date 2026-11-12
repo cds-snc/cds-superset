@@ -44,13 +44,13 @@ locals {
   container_env_google_auth = [
     {
       "name"  = "GOOGLE_OAUTH_EMAIL_DOMAIN"
-      "value" = "cds-snc.ca"
+      "value" = "@cds-snc\\.ca$"
     }
   ]
   container_env_zitadel_auth = [
     {
       "name"  = "ZITADEL_OAUTH_EMAIL_DOMAIN"
-      "value" = "cds-snc.ca"
+      "value" = "@cds-snc\\.ca$"
     },
     {
       "name"  = "ZITADEL_DOMAIN"
