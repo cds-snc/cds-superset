@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.31.3](https://github.com/cds-snc/cds-superset/compare/v3.31.2...v3.31.3) (2026-11-12)
+
+
+### Bug Fixes
+
+* bound allowed OAuth domain regex ([#939](https://github.com/cds-snc/cds-superset/issues/939)) ([2a1800b](https://github.com/cds-snc/cds-superset/commit/2a1800b6756df7b68fc480278928893eaa1ca270))
+
 ## [3.31.2](https://github.com/cds-snc/cds-superset/compare/v3.31.1...v3.31.2) (2026-11-09)
 
 
