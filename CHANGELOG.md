@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.32.0](https://github.com/cds-snc/cds-superset/compare/v3.31.4...v3.32.0) (2026-11-18)
+
+
+### Features
+
+* **cache:** require encryption in transit and authentication ([#945](https://github.com/cds-snc/cds-superset/issues/945)) ([f9e5a4a](https://github.com/cds-snc/cds-superset/commit/f9e5a4ae74cfb18585abb437690a8854b35bcf2c))
+
 ## [3.31.4](https://github.com/cds-snc/cds-superset/compare/v3.31.3...v3.31.4) (2026-11-17)
 
 
