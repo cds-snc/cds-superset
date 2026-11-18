@@ -1,7 +1,8 @@
 name: Terraform Drift Check Production
 
 concurrency:
-  group: terraform-production
+  group: update-production
+  queue: max
   cancel-in-progress: false
 
 on:

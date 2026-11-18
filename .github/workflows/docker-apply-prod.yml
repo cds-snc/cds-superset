@@ -1,5 +1,10 @@
 name: Docker build and push Production
 
+concurrency:
+  group: update-production
+  queue: max
+  cancel-in-progress: false
+
 on:
   push:
     branches:
