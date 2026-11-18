@@ -16,9 +16,44 @@ resource "aws_elasticache_replication_group" "superset_cache" {
 
   at_rest_encryption_enabled = true
   transit_encryption_enabled = true
-  transit_encryption_mode    = "preferred"
+  transit_encryption_mode    = "required"
+  user_group_ids             = [aws_elasticache_user_group.superset_cache.user_group_id]
 
   apply_immediately = true
+
+  tags = local.common_tags
+}
+
+resource "random_password" "superset_cache" {
+  length  = 64
+  special = false
+}
+
+resource "aws_ssm_parameter" "superset_cache_password" {
+  name  = "superset_cache_password"
+  type  = "SecureString"
+  value = random_password.superset_cache.result
+  tags  = local.core_tags
+}
+
+resource "aws_elasticache_user" "superset_cache" {
+  user_id       = "superset-${var.env}"
+  user_name     = "superset-${var.env}"
+  engine        = "VALKEY"
+  access_string = "on ~* &* +@all"
+
+  authentication_mode {
+    type      = "password"
+    passwords = [random_password.superset_cache.result]
+  }
+
+  tags = local.common_tags
+}
+
+resource "aws_elasticache_user_group" "superset_cache" {
+  user_group_id = "superset-cache-${var.env}"
+  engine        = "VALKEY"
+  user_ids      = [aws_elasticache_user.superset_cache.user_id]
 
   tags = local.common_tags
 }
