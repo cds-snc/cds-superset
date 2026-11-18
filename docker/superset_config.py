@@ -2,6 +2,7 @@ import logging
 import os
 
 from datetime import timedelta
+from urllib.parse import quote
 from celery.schedules import crontab
 from flask import session
 from flask_appbuilder.security.manager import AUTH_DB, AUTH_OAUTH
@@ -37,10 +38,28 @@ REDIS_SSL = os.getenv("SUPERSET_ENV") != "development"
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", "6379")
 REDIS_PROTOCOL = "rediss" if REDIS_SSL else "redis"
-REDIS_ARGS = "?ssl_cert_reqs=required" if REDIS_SSL else ""
-REDIS_URL = f"{REDIS_PROTOCOL}://{REDIS_HOST}:{REDIS_PORT}"
+REDIS_ARGS = "?ssl_cert_reqs=required&ssl_check_hostname=true" if REDIS_SSL else ""
+REDIS_USER = os.environ["REDIS_USER"] if REDIS_SSL else None
+REDIS_PASSWORD = os.environ["REDIS_PASSWORD"] if REDIS_SSL else None
+REDIS_AUTH = (
+    f"{quote(REDIS_USER, safe='')}:{quote(REDIS_PASSWORD, safe='')}@"
+    if REDIS_SSL
+    else ""
+)
+REDIS_URL = f"{REDIS_PROTOCOL}://{REDIS_AUTH}{REDIS_HOST}:{REDIS_PORT}"
 REDIS_CELERY_DB = os.getenv("REDIS_CELERY_DB", "0")
 REDIS_RESULTS_DB = os.getenv("REDIS_RESULTS_DB", "1")
+REDIS_CLIENT_OPTIONS = (
+    {
+        "ssl": True,
+        "ssl_cert_reqs": "required",
+        "ssl_check_hostname": True,
+        "username": REDIS_USER,
+        "password": REDIS_PASSWORD,
+    }
+    if REDIS_SSL
+    else {}
+)
 
 CACHE_WARMUP_EXECUTORS = [FixedExecutor(os.getenv("CACHE_WARMUP_EXECUTORS"))]
 THUMBNAIL_EXECUTORS = [
@@ -54,7 +73,9 @@ def redis_cache(key, timeout):
         "CACHE_TYPE": "RedisCache",
         "CACHE_DEFAULT_TIMEOUT": timeout,
         "CACHE_KEY_PREFIX": key,
-        "CACHE_REDIS_URL": REDIS_URL,
+        "CACHE_REDIS_HOST": REDIS_HOST,
+        "CACHE_REDIS_PORT": REDIS_PORT,
+        "CACHE_OPTIONS": REDIS_CLIENT_OPTIONS,
     }
 
 
@@ -109,8 +130,7 @@ RESULTS_BACKEND = RedisCache(
     host=REDIS_HOST,
     port=REDIS_PORT,
     key_prefix="superset_results",
-    ssl=REDIS_SSL,
-    ssl_cert_reqs="required",
+    **REDIS_CLIENT_OPTIONS,
 )
 
 # Database pool size increase based on:
@@ -144,7 +164,7 @@ SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = "Strict"
 SESSION_SERVER_SIDE = True
 SESSION_TYPE = "redis"
-SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0)
+SESSION_REDIS = Redis(host=REDIS_HOST, port=REDIS_PORT, db=0, **REDIS_CLIENT_OPTIONS)
 SESSION_PERMANENT = True
 PERMANENT_SESSION_LIFETIME = int(timedelta(hours=12).total_seconds())
 
@@ -222,6 +242,10 @@ SMTP_MAIL_FROM = os.getenv("SMTP_MAIL_FROM")
 EMAIL_REPORTS_SUBJECT_PREFIX = "[CDS Superset] "
 
 RATELIMIT_STORAGE_URI = REDIS_URL
+# limits selects TLS from the URI and passes the other options to a connection pool.
+RATELIMIT_STORAGE_OPTIONS = {
+    key: value for key, value in REDIS_CLIENT_OPTIONS.items() if key != "ssl"
+}
 WTF_CSRF_ENABLED = True
 WTF_CSRF_TIME_LIMIT = int(timedelta(hours=12).total_seconds())
 WTF_CSRF_EXEMPT_LIST = [

@@ -25,6 +25,10 @@ locals {
       "value" = tostring(aws_elasticache_replication_group.superset_cache.port)
     },
     {
+      "name"  = "REDIS_USER"
+      "value" = aws_elasticache_user.superset_cache.user_name
+    },
+    {
       "name"  = "CACHE_WARMUP_EXECUTORS"
       "value" = "cache-warmer"
     },
@@ -122,6 +126,10 @@ locals {
     }
   ]
   container_secrets_all = [
+    {
+      "name"      = "REDIS_PASSWORD"
+      "valueFrom" = aws_ssm_parameter.superset_cache_password.arn
+    },
     {
       "name"      = "GUEST_TOKEN_JWT_SECRET"
       "valueFrom" = aws_ssm_parameter.guest_token_jwt_secret.arn
@@ -478,6 +486,7 @@ data "aws_iam_policy_document" "ecs_task_ssm_parameters" {
       aws_ssm_parameter.zitadel_oauth_client_id.arn,
       aws_ssm_parameter.zitadel_oauth_client_secret.arn,
       aws_ssm_parameter.guest_token_jwt_secret.arn,
+      aws_ssm_parameter.superset_cache_password.arn,
       aws_ssm_parameter.slack_api_token.arn,
       aws_ssm_parameter.smtp_password.arn,
       aws_ssm_parameter.smtp_user.arn,
