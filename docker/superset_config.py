@@ -257,7 +257,7 @@ WTF_CSRF_EXEMPT_LIST = [
 ]
 
 # Embedded dashboard authentication
-GUEST_ROLE_NAME = "ReadOnly"
+GUEST_ROLE_NAME = "ReadOnlyGuest"
 GUEST_TOKEN_JWT_SECRET = os.getenv("GUEST_TOKEN_JWT_SECRET")
 GUEST_TOKEN_JWT_AUDIENCE = "superset"
 GUEST_TOKEN_JWT_EXP_SECONDS = int(timedelta(minutes=5).total_seconds())
@@ -476,7 +476,7 @@ FAB_ROLES = {
         ["Tag", "can_write"],
     ],
     "PlatformUser": [],
-    "ReadOnly": [
+    "ReadOnlyGuest": [
         [".*", "can_external_metadata"],
         [".*", "can_external_metadata_by_name"],
         [".*", "can_get"],
@@ -494,14 +494,10 @@ FAB_ROLES = {
         ["Dashboard", "can_drill"],
         ["Dashboard", "can_view_chart_as_table"],
         ["Dashboards", "menu_access"],
-        ["FilterSets", "can_add"],
-        ["FilterSets", "can_delete"],
-        ["FilterSets", "can_edit"],
         ["Home", "menu_access"],
         ["Log", "can_recent_activity"],
         ["Manage", "menu_access"],
         ["ReportSchedule", "can_read"],
-        ["ReportSchedule", "can_write"],
         ["ResetMyPasswordView", "can_this_form_get"],
         ["ResetMyPasswordView", "can_this_form_post"],
         ["SQLLab", "can_estimate_query_cost"],
@@ -538,6 +534,13 @@ FAB_ROLES = {
         ["TagView", "can_post"],
     ],
 }
+
+FAB_ROLES["ReadOnly"] = FAB_ROLES["ReadOnlyGuest"] + [
+    ["FilterSets", "can_add"],
+    ["FilterSets", "can_delete"],
+    ["FilterSets", "can_edit"],
+    ["ReportSchedule", "can_write"],
+]
 
 RECAPTCHA_PUBLIC_KEY = ""
 RECAPTCHA_PRIVATE_KEY = ""
