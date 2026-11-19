@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.32.1](https://github.com/cds-snc/cds-superset/compare/v3.32.0...v3.32.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* remote write permissions from guest role ([#949](https://github.com/cds-snc/cds-superset/issues/949)) ([a5a1396](https://github.com/cds-snc/cds-superset/commit/a5a139691e5bcc3e93dbdc338ee0c80201e8dbc8))
+* share workflow concurrency by environment ([#947](https://github.com/cds-snc/cds-superset/issues/947)) ([a654df8](https://github.com/cds-snc/cds-superset/commit/a654df8ca2c78ca376fe04f70372cec3493a58e0))
+
 ## [3.32.0](https://github.com/cds-snc/cds-superset/compare/v3.31.4...v3.32.0) (2026-11-18)
 
 
