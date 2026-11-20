@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.33.0](https://github.com/cds-snc/cds-superset/compare/v3.32.1...v3.33.0) (2026-11-20)
+
+
+### Features
+
+* add WAF IP blocklist ([#950](https://github.com/cds-snc/cds-superset/issues/950)) ([e74f96f](https://github.com/cds-snc/cds-superset/commit/e74f96ffe2958ea543995e1628dc795a8b0c74f9))
+
 ## [3.32.1](https://github.com/cds-snc/cds-superset/compare/v3.32.0...v3.32.1) (2026-11-19)
 
 
