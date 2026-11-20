@@ -54,6 +54,41 @@ resource "aws_wafv2_web_acl" "superset" {
       sampled_requests_enabled   = true
     }
   }
+
+  rule {
+    name     = "BlockedIPv4"
+    priority = 5
+
+    action {
+      block {}
+    }
+
+    statement {
+      and_statement {
+        statement {
+          ip_set_reference_statement {
+            arn = module.waf_ip_blocklist.ipv4_blocklist_arn
+          }
+        }
+        statement {
+          not_statement {
+            statement {
+              ip_set_reference_statement {
+                arn = aws_wafv2_ip_set.ipv4_allowlist.arn
+              }
+            }
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "BlockedIPv4"
+      sampled_requests_enabled   = true
+    }
+  }
+
   rule {
     name     = "CanadaOnlyGeoRestriction"
     priority = 10
@@ -535,4 +570,33 @@ resource "aws_shield_protection" "superset_route53" {
   name         = "superset-route53"
   resource_arn = aws_route53_zone.superset.arn
   tags         = local.core_tags
+}
+
+module "waf_ip_blocklist" {
+  source = "github.com/cds-snc/terraform-modules//waf_ip_blocklist?ref=v14.0.1"
+
+  service_name = "superset"
+
+  athena_query_results_bucket = module.athena_bucket.s3_bucket_id
+  athena_query_source_bucket  = var.cbs_satellite_bucket_name
+
+  lb_status_code_skip              = ["403"]
+  waf_rule_ids_skip                = ["BlockedIPv4"]
+  waf_block_threshold              = 50
+  waf_ip_blocklist_update_schedule = "rate(15 minutes)"
+
+  billing_tag_value = var.billing_code
+}
+
+resource "aws_wafv2_ip_set" "ipv4_allowlist" {
+  name               = "superset_ipv4_allowlist"
+  scope              = "REGIONAL"
+  ip_address_version = "IPV4"
+  addresses          = []
+
+  lifecycle {
+    ignore_changes = [
+      addresses
+    ]
+  }
 }
