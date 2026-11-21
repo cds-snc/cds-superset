@@ -10,8 +10,8 @@ module "superset_db" {
   engine_version = "16.13"
   instances      = var.superset_database_instances_count
   instance_class = var.superset_database_instance_class
-  username       = var.superset_database_username
-  password       = var.superset_database_password
+  username       = data.aws_ssm_parameter.superset_database_username.value
+  password       = data.aws_ssm_parameter.superset_database_password.value
   use_proxy      = false
 
   backup_retention_period      = 14
@@ -143,15 +143,33 @@ resource "aws_ssm_parameter" "superset_database_host" {
 }
 
 resource "aws_ssm_parameter" "superset_database_username" {
-  name  = "superset_database_username"
-  type  = "SecureString"
-  value = var.superset_database_username
-  tags  = local.core_tags
+  name             = "superset_database_username"
+  type             = "SecureString"
+  value_wo         = var.superset_database_username
+  value_wo_version = 1
+  tags             = local.core_tags
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_ssm_parameter" "superset_database_password" {
-  name  = "superset_database_password"
-  type  = "SecureString"
-  value = var.superset_database_password
-  tags  = local.core_tags
+  name             = "superset_database_password"
+  type             = "SecureString"
+  value_wo         = var.superset_database_password
+  value_wo_version = 1
+  tags             = local.core_tags
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+data "aws_ssm_parameter" "superset_database_username" {
+  name = "superset_database_username"
+}
+
+data "aws_ssm_parameter" "superset_database_password" {
+  name = "superset_database_password"
 }
