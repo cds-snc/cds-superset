@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "github.com/cds-snc/terraform-modules//vpc?ref=v13.3.0"
+  source = "github.com/cds-snc/terraform-modules//vpc?ref=v14.0.0"
   name   = "superspace-${var.env}"
 
   enable_flow_log                  = false
