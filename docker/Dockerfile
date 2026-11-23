@@ -18,6 +18,7 @@ RUN apt-get update && \
         xvfb && \
     apt-get autoremove -y && \
     apt-get install -y --no-install-recommends \
+        libatomic1 \
         libecpg-dev && \
     apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
