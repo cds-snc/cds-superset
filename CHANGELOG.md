@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.33.0](https://github.com/cds-snc/cds-superset/compare/v3.32.1...v3.33.0) (2026-11-27)
+
+
+### Features
+
+* add WAF IP blocklist ([#950](https://github.com/cds-snc/cds-superset/issues/950)) ([e74f96f](https://github.com/cds-snc/cds-superset/commit/e74f96ffe2958ea543995e1628dc795a8b0c74f9))
+
+
+### Bug Fixes
+
+* switch to write-only SSM parameters ([#952](https://github.com/cds-snc/cds-superset/issues/952)) ([7061bb7](https://github.com/cds-snc/cds-superset/commit/7061bb75d105da5024f530c6539a19fe2f126053))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([#955](https://github.com/cds-snc/cds-superset/issues/955)) ([e874c2c](https://github.com/cds-snc/cds-superset/commit/e874c2c13f6ccbcc133066c20b532782dec0a005))
+* **deps:** update dependency authlib to v1.9.8 ([#954](https://github.com/cds-snc/cds-superset/issues/954)) ([02c3270](https://github.com/cds-snc/cds-superset/commit/02c327096e115997eb98760c4d31d377ebc339cc))
+* **deps:** update dependency playwright to v1.65.2 ([#953](https://github.com/cds-snc/cds-superset/issues/953)) ([5643801](https://github.com/cds-snc/cds-superset/commit/5643801e72c3dab3590c6b4952494b28bfbdac87))
+* **deps:** update terraform github.com/cds-snc/terraform-modules to v14 ([#956](https://github.com/cds-snc/cds-superset/issues/956)) ([2aa0274](https://github.com/cds-snc/cds-superset/commit/2aa0274c630f01a1c5dc95abce716a6c239b144a))
+
 ## [3.32.1](https://github.com/cds-snc/cds-superset/compare/v3.32.0...v3.32.1) (2026-11-19)
 
 
